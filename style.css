@@ -286,6 +286,12 @@ a:hover{
     flex-direction: column;
     align-items: center;  
 }
+
+#Two_id_gif{
+    width: 380px;
+    height: 350px;
+}
+
 .u-2d{
     text-align: center; /*text는 text-align*/
     font-family: "Noto Sans KR", sans-serif;
@@ -312,6 +318,12 @@ a:hover{
     align-items: center;    
     margin-bottom: 35px;
     /*justify-content: space-between; */
+}
+
+
+#Three_id_gif{
+    width: 380px;
+    height: 350px;
 }
 
 .descirption_3D-cavity{
@@ -346,6 +358,11 @@ a:hover{
     line-height: 24px; 
 }
 
+#vor_gif{
+    width: 410px;
+    height: 380px;
+
+}
 
 /*CFD Control*/
 
@@ -369,6 +386,11 @@ a:hover{
     margin-right:10px;
     margin-left:10px;
     margin-bottom: 20px;
+}
+
+#burgers{
+    width: 380px;
+    height: 350px;
 }
 
 .burgers_cap{
