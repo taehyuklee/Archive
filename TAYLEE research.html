@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title>TAYLEE Research</title>
 
-    <!--Style css Link<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">-->
+    <!--Style css Link-->
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <!--google font Montserrat-->
@@ -182,7 +182,13 @@
 
         </div>
 
-        <p class="prediction-description">Description: Preidction model.</p>
+        <p class="prediction-description">&nbsp Description: In order to predict the concentration of fine dust, we have received about 10 years(from 2008 to 2018) of data from public protal for meteorological data and air quality data. 
+            It consists of data in units of time and has about 90,000 numbers of data.
+            There are about 30 explanatory variables (as Input information) such as temperature and humidity, NO2, PM10, and SO2 etc. And the goal is to multivariative non-linear regression of PM2.5 through a neural network using above 30 explanatory variables.
+            Among the explanatory variables, the variables that are able to explain PM2.5 most were selected based on the Akaike Information Criteria (AIC) value. Afterwards, Imputation was performed to fill in the empty values.
+            To ensure independence among explanatory selected variables, a Variance Inflation factor was used.
+            Finally, the concentration of PM2.5 was predicted by window learning with 14 selected variables.
+            The above time series plot is about 6hrs and 12hrs forecasts.</p>
 
 
         <!--footer-->
