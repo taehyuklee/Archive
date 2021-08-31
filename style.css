@@ -44,7 +44,7 @@ a:hover{
     display: flex;
     flex-direction: row;
     background-color: rgba(201, 201, 201, 0.651);
-    height: 50px;    
+    height: 60px;    
     border-radius: 15px;
     /*#efe7e3*/
     /*Site이름은 왼쪽, menu는 오른쪽에 하고싶다.
@@ -85,7 +85,7 @@ a:hover{
 .nav_menu{
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 20px;
     margin-right: 22px;
     margin-left: 15px;    
 }
@@ -210,8 +210,13 @@ a:hover{
     margin-right: 60px;
 }
 
+.About_me{
+    font-family: "Montserrat", sans-serif;
+
+}
+
 .Personal-info{
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 18px;
     margin-left: 20px;
     line-height: 30px;
@@ -219,7 +224,7 @@ a:hover{
 }
 
 .Interests{
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 18px;
     margin-left: 20px;
     line-height: 30px;    
@@ -244,19 +249,63 @@ a:hover{
 }
 
 .Resmue-title{    
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 25px;
     margin-top:20px;
     margin-bottom:20px;}
 
 .Education-section{
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 17px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    line-height: 25px;
+}
+
+.Capability{
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    line-height: 30px; /*줄간격*/
     margin-left: 20px;
     margin-bottom: 30px;
 }
 
+#logo{
+    margin-left: 20px;
+    height: 80px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
+.git_menu{
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    margin-left: 265px;    
+}
+
+.git_menu:hover{
+    color: rgb(163, 0, 0);
+    transition: 0.5s
+}
+
+.Awards{
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-left: 20px;
+    margin-bottom: 100px;
+}
+
+.Orga_menu{
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    margin-top: 20px;  
+    margin-left: 20px;    
+}
+
+.Orga_menu:hover{
+    color: rgb(163, 0, 0);
+    transition: 0.5s
+}
 
 /*--------------------------- Research part ---------------------------*/
 
@@ -442,7 +491,11 @@ a:hover{
 }
 
 .prediction-description{
-
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    margin-left: 20px;
+    line-height: 24px; 
     margin-bottom:300px;
 
 }
