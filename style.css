@@ -270,6 +270,14 @@ a:hover{
     margin-bottom: 30px;
 }
 
+.Cap-sub{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 550;
+    margin-top:0;
+}
+
 #logo{
     margin-left: 20px;
     height: 80px;
