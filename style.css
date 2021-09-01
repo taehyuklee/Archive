@@ -87,7 +87,8 @@ a:hover{
     font-weight: 500;
     font-size: 20px;
     margin-right: 22px;
-    margin-left: 15px;    
+    margin-left: 15px;   
+    text-shadow: 1.3px 1.3px 1.3px gray; 
 }
 
 
@@ -98,13 +99,30 @@ a:hover{
     display: flex;
     flex-direction: column;
     margin-top: 100px;
+
 }
 
 .Korean-comment{
     font-family: "Montserrat", sans-serif;
     font-weight: 550; /*bold*/
-    margin-top: 100px;
+    margin-top: 100px;   
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-timing-function:ease-in-out;
+
 }
+
+@keyframes slidein {
+    from {
+      margin-left: -10%;
+      width: 100%
+    }
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
 
 .my-name{
     color: green;
@@ -135,7 +153,21 @@ a:hover{
 
     /*Letter 사이의 간격*/
     Letter-spacing: -0.2px;
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-timing-function:ease-in-out;
 }
+
+@keyframes slidein {
+    from {
+      margin-left: -10%;
+      width: 100%
+    }
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 
 /*--------------------------- recent works ---------------------------*/
 .recent-menu{
@@ -147,7 +179,7 @@ a:hover{
     text-align: right;
 
     font-family: "Montserrat", sans-serif;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 500;
     color: #C3B4AE
 
@@ -506,4 +538,47 @@ a:hover{
     line-height: 24px; 
     margin-bottom:300px;
 
+}
+
+
+/*--------------------------- School project part ---------------------------*/
+
+.System_control_title{
+    display: block;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+/*숫자가 앞에 올 수는 없다 CLASS 이름*/
+
+.System-control-video{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;    
+    margin-bottom: 40px;
+}
+
+
+.system_class{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    margin-left:10px;
+    margin-right:10px;
+}
+
+#system_img{
+    width: 350px;
+    height: 350px;
+}
+
+.system_sub{
+    text-align: center; /*text는 text-align*/
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    margin: 0;
+    margin-right: 24px;
+    margin-top: 20px;
 }
