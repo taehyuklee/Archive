@@ -240,6 +240,7 @@ a:hover{
 #profile-picture{
     width: 400px;
     margin-right: 60px;
+    border-radius:15px;
 }
 
 .About_me{
