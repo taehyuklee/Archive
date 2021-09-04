@@ -49,9 +49,9 @@ a:hover{
     /*rgb(0, 59, 98);*/
     height: 100px;    
     border-radius: 15px;
-    border-style: solid;
+    /*border-style: solid;*/
     /* 위 | 오른쪽 | 아래 | 왼쪽 */
-    border-color: rgb(0, 59, 98);
+    /*border-color: rgb(0, 59, 98);*/
     /*#efe7e3*/
     /*Site이름은 왼쪽, menu는 오른쪽에 하고싶다.
     contents에 관한 건 Jujstify-content로 한다 중요!*/
@@ -79,7 +79,7 @@ a:hover{
 
     /*font family 적용*/
     font-family: "Noto Sans", sans-serif;
-    font-size: 25px;
+    font-size: 35px;
     color: black;
 
 }
@@ -111,8 +111,8 @@ a:hover{
 .nav_menu{
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-size: 20px;
-    margin-right: 22px;
+    font-size: 18px;
+    margin-right: 50px;
     margin-left: 15px;   
     text-shadow: 1.3px 1.3px 1.3px gray; 
 }
