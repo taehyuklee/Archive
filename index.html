@@ -17,10 +17,15 @@
     ,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
      rel="stylesheet">
 
-    <!--Google font -->
+    <!-- Google font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" 
     rel="stylesheet">
 
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+
+
+    
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({            
             tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
@@ -28,6 +33,7 @@
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 
+    
 </head>
 
 
@@ -37,13 +43,18 @@
 
     <!--Navigation division-->
     <nav class = "navigator"> <!--nav part for work & Information-->
-        <h3 class="site-name"><a href="index.html">TAYLEE</a></h3>
+        <h3 class="site-name"><a href="index.html">TAYLEE's <a class="name-archive">Archive</a></a></h3>
             <!--unorder list는 순서만 안매길뿐 같은 항목에 있는 것을 의미-->
         <ul class = "menu_ul">
             <!--li unorder list안에 항목들 적을때 필요-->
             <li class ="list_menu"><a class = "nav_menu" href="index.html">HOME</a></li>
             <li class ="list_menu"><a class = "nav_menu" href="TAYLEE Info.html">INFO</a></li>
-            <li class ="list_menu"><a class = "nav_menu" href="TAYLEE research.html">RESEARCH</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="TAYLEE research.html">RESEARCH</a>
+
+            </li>
+            <li class ="list_menu"><a class = "nav_menu" href="TAYLEE project.html">Project</a>
+
+            </li>
             <!-- anchor도 class를 걸어서 나중에 같이 한꺼번에 처리할때 편하니까-->
         </ul>
     </nav>    
@@ -70,29 +81,34 @@
         </div>
 
 
-        <h5 class="recent-menu"> RECENT WORKS</h5>
+        <h5 class="recent-menu"> TOPICS</h5>
 
-        <div class = "recent works">
+        <div class = "recent-works">
 
+            <div class="Back_ground_c">
+                <img id="Back_ground", src="./background/Fluid-image.jpg">
+                <p class="back-s">Fluid mechanics</p>
+            </div>
 
-            
+            <div class="Back_ground_c">
+                <img id="Back_ground", src="./background/Comp-image.jpg">
+                <p class="back-s">Big data & Artificial Intelligence</p>
+            </div>
         </div>
 
-
-
-        <footer class = "footer">
-            <h3 class="contact">CONTACT ME</h3>
-            <div class ="links">
-                <a class="blog" href="https://blog.naver.com/fish991">BLOG</a>
-                <a class="instagram" href="https://www.instagram.com/lee_taehyuk/">INSTAGRAM</a>
-            </div>
-            <p>feel free to contact me!</p>
-
-        </footer>
-
-
-
     </div>
+
+    
+
+    <footer class = "footer">
+        <h3 class="contact">CONTACT ME</h3>
+        <div class ="links">
+            <a class="blog" href="https://blog.naver.com/fish991">BLOG</a>
+            <a class="instagram" href="https://www.instagram.com/lee_taehyuk/">INSTAGRAM</a>
+        </div>
+        <p>feel free to contact me!</p>
+
+    </footer>
 
 
 

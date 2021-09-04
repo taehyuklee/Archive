@@ -28,14 +28,16 @@ body{
 }
 
 a{
-    color: dimgrey;
+    color: black;
     text-decoration: none;
 }
 
 a:hover{
     color: white;
+    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
     transition: 0.3s
 }
+
 
 /*--------------------------- Navigator ---------------------------*/
 .navigator{
@@ -43,9 +45,13 @@ a:hover{
     전체 frame뿐만 아니라 element나 block안에서도도 Flex를 쓸수 있다*/
     display: flex;
     flex-direction: row;
-    background-color: rgba(201, 201, 201, 0.651);
-    height: 60px;    
+    background-color: white;
+    /*rgb(0, 59, 98);*/
+    height: 100px;    
     border-radius: 15px;
+    border-style: solid;
+    /* 위 | 오른쪽 | 아래 | 왼쪽 */
+    border-color: rgb(0, 59, 98);
     /*#efe7e3*/
     /*Site이름은 왼쪽, menu는 오른쪽에 하고싶다.
     contents에 관한 건 Jujstify-content로 한다 중요!*/
@@ -55,16 +61,36 @@ a:hover{
     /*h3와 ul에 관해서 space-between이 된다*/
 }
 
+.navigator>a{
+    color: black;
+    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+    transition: 0.3s
+}
+
+.navigator>a:hover{
+    color: white;
+    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+    transition: 0.3s
+}
+
 .site-name{
     margin: 0px;
     margin-left: 25px;    
 
     /*font family 적용*/
-    font-family: "Montserrat", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 25px;
     color: black;
 
 }
+
+.name-archive{
+    /*font family 적용*/
+    font-family: "Noto Sans", sans-serif;
+    font-size: 23px;
+    color: rgb(0, 72, 167);
+}
+
 
 .menu_ul{
     margin:0px;
@@ -179,10 +205,37 @@ a:hover{
     text-align: right;
 
     font-family: "Montserrat", sans-serif;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 500;
-    color: #C3B4AE
+    color: rgb(122, 120, 120)
+/*#C3B4AE*/
+}
 
+.recent-works{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;  
+
+}
+
+.Back_ground_c{
+    margin-top:20px;
+    margin-right:10px;
+    margin-left:10px;
+    margin-bottom:20px;
+
+}
+
+#Back_ground{
+    width:450px;
+    height:300px;
+}
+
+.back-s{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    text-align: center;
 }
 
 
@@ -191,26 +244,37 @@ a:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color:rgb(49, 49, 49);
+    border-radius: 0px;
 
-    margin-bottom: 200px;
+    /*margin-bottom: 200px; rgb(0, 59, 98);*/
 }
 
 .contact{
     font-family: "Montserrat", sans-serif;
-    font-size: 25px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
+
     
-    color: #000000;
+    color: white;
     /*border-top: 1px solid #C2B4AB;*/
-    margin-bottom: 40px;
+    margin-bottom: 13px;
+    margin-left:5px;
 }
 
 .links>a{
  /*>: 자식태그 <: 부모태그*/
     font-family: "Montserrat", sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 600;
     margin-left: 5px;
+    color: white;
+}
+
+.links>a:hover{
+    color: rgb(182, 69, 69);
+    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+    transition: 0.3s
 }
 
 .footer>p{
@@ -218,6 +282,7 @@ a:hover{
     font-weight: 100; /*bold*/
     font-size: 15px;
     font-style: italic;
+    color: white;
 
     margin-top: 5px;
 }
@@ -240,7 +305,7 @@ a:hover{
 #profile-picture{
     width: 400px;
     margin-right: 60px;
-    border-radius:15px;
+    border-radius: 15px;
 }
 
 .About_me{
@@ -333,7 +398,7 @@ a:hover{
     font-family: "Montserrat", sans-serif;
     font-size: 17px;
     margin-left: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
 }
 
 .Orga_menu{
@@ -347,6 +412,14 @@ a:hover{
     color: rgb(163, 0, 0);
     transition: 0.5s
 }
+
+.certificate{
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-left: 20px;
+    margin-bottom: 100px;
+}
+
 
 /*--------------------------- Research part ---------------------------*/
 
@@ -544,6 +617,66 @@ a:hover{
 
 /*--------------------------- School project part ---------------------------*/
 
+/*Data analysis (2017-1)*/
+
+.Data_analysis-title{
+    display: block;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.data_analysis{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;    
+    margin-bottom: 40px;
+
+}
+
+
+.data_class{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    margin-left:20px;
+    margin-right:20px;
+}
+
+
+#data_img{
+    width: 500px;
+    height: 230px;
+}
+
+#clustering_img{
+    width: 450px;
+    height: 270px;
+}
+
+
+.data_sub{
+    text-align: center; /*text는 text-align*/
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    margin: 0;
+    margin-right: 24px;
+    margin-top: 20px;
+}
+
+.descirption_data{
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    margin-left: 20px;
+    line-height: 24px; 
+    margin-bottom:300px;
+}
+
+
+/*Autonomous control*/
+
 .System_control_title{
     display: block;
     margin-left: 30px;
@@ -551,7 +684,6 @@ a:hover{
     align-items: flex-start;
 }
 
-/*숫자가 앞에 올 수는 없다 CLASS 이름*/
 
 .System-control-video{
     display: flex;
@@ -570,10 +702,12 @@ a:hover{
     margin-right:10px;
 }
 
+
 #system_img{
-    width: 350px;
+    width: 500px;
     height: 350px;
 }
+
 
 .system_sub{
     text-align: center; /*text는 text-align*/
@@ -582,4 +716,135 @@ a:hover{
     margin: 0;
     margin-right: 24px;
     margin-top: 20px;
+}
+
+.descirption_system{
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    margin-left: 20px;
+    line-height: 24px; 
+    margin-bottom:300px;
+}
+
+.down_report{
+    color: dimgrey;
+    text-decoration: none;
+}
+
+.down_report:hover{
+    color: rgb(165, 17, 17) ;
+    transition: 0.5s
+}
+
+
+
+/*Robust design*/
+
+.Robust_design{
+    display: block;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.Robust_class_total{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;    
+    margin-bottom: 40px;
+
+}
+
+
+.robust_class{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    margin-left:20px;
+    margin-right:20px;
+}
+
+
+#schematic_img{
+    width: 350px;
+    height: 220px;
+}
+
+
+.thesis_sub{
+    text-align: center; /*text는 text-align*/
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    margin: 0;
+    margin-right: 24px;
+    margin-top: 20px;
+}
+
+.description_thesis{
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    margin-left: 20px;
+    line-height: 24px; 
+    margin-bottom:300px;
+}
+
+
+
+
+
+
+
+/*Fine dust forecasting*/
+
+.Thesis-title{
+    display: block;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.data_analysis{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;    
+    margin-bottom: 40px;
+
+}
+
+
+.thesis_class{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    margin-left:20px;
+    margin-right:20px;
+}
+
+
+#schematic_img{
+    width: 350px;
+    height: 220px;
+}
+
+
+.thesis_sub{
+    text-align: center; /*text는 text-align*/
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    margin: 0;
+    margin-right: 24px;
+    margin-top: 20px;
+}
+
+.description_thesis{
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    margin-left: 20px;
+    line-height: 24px; 
+    margin-bottom:300px;
 }
