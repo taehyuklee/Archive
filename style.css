@@ -39,7 +39,7 @@ a:hover{
 }
 
 
-/*--------------------------- Navigator ---------------------------*/
+/*P0--------------------------- Navigator ---------------------------*/
 .navigator{
     /*navigation안에서도 Flex로 만들어서 해준다
     전체 frame뿐만 아니라 element나 block안에서도도 Flex를 쓸수 있다*/
@@ -120,7 +120,7 @@ a:hover{
 
 
 
-/*--------------------------- dashboard ---------------------------*/
+/*P1--------------------------- dashboard ---------------------------*/
 .dashobards{
     display: flex;
     flex-direction: column;
@@ -182,6 +182,7 @@ a:hover{
     animation-duration: 3s;
     animation-name: slidein;
     animation-timing-function:ease-in-out;
+    margin-bottom: 60px;
 }
 
 @keyframes slidein {
@@ -195,7 +196,7 @@ a:hover{
     }
   }
 
-/*--------------------------- recent works ---------------------------*/
+/*P3--------------------------- recent works ---------------------------*/
 .recent-menu{
     /*display는 항상 앞에 와야하네 font보다*/
 
@@ -220,8 +221,8 @@ a:hover{
 
 .Back_ground_c{
     margin-top:20px;
-    margin-right:10px;
-    margin-left:10px;
+    margin-right:20px;
+    margin-left:20px;
     margin-bottom:20px;
 
 }
@@ -239,7 +240,7 @@ a:hover{
 }
 
 
-/*--------------------------- Footer ---------------------------*/
+/*P4--------------------------- Footer ---------------------------*/
 .footer{
     display: flex;
     flex-direction: column;
@@ -290,7 +291,7 @@ a:hover{
 
 
 
-/*--------------------------- Profile-section ---------------------------*/
+/*P5--------------------------- Profile-section ---------------------------*/
 .profile-section{
 
     display: flex;
@@ -421,7 +422,7 @@ a:hover{
 }
 
 
-/*--------------------------- Research part ---------------------------*/
+/*P6--------------------------- Research part ---------------------------*/
 
 /*CFD Simulation*/
 
@@ -615,7 +616,7 @@ a:hover{
 }
 
 
-/*--------------------------- School project part ---------------------------*/
+/*P7--------------------------- School project part ---------------------------*/
 
 /*Data analysis (2017-1)*/
 
