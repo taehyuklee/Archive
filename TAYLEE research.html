@@ -61,147 +61,27 @@
 
     <div class = "frame"> <!--div for grouping-->
 
-        <!--CFD Simulation-->
-        <h3 class="CFD-title">1. Computational Fluid Dynamics</h3>
 
-        <!--2D lid driven-->
-        <h4 class="Two-D-title">2D Lid driven problem (Low Reynolds number)</h4>  
+        <h4 class="Research-title"> Research & Technique</h4>  
 
-        <div class="Two-Cavity-video">
-            <div class="Two_id">
-                <img id="Two_id_gif", src="./Cavity/video u velocity.gif">
-                <p class="u-2d">(a) 2D-u velocity field</p>
+        <div class="Research-img">
+
+            <div class="Research-class">
+                <a class="R_img_click" href="Cavity.html"><img id="Research_id", src="./Background/Research-fluid img.jpg"></a>
+                <p class="Research_sub"> A. Computational Fluid Dynamics</p>
             </div>
 
-            <div class="Two_id">
-                <img id="Two_id_gif", src="./Cavity/video v velocity.gif">
-                <p class="u-2d">(b) 2D-v velocity field</p>
+            <div class="Research-class">
+                <a class="R_img_click" href="DRL.html"><img id="Research_id", src="./Background/Machine learning.png"></a>
+                <p class="Research_sub"> B. Deep Reinforcement learning</p>
             </div>
 
-            <div class="Two_id">
-                <img id="Two_id_gif", src="./Cavity/VECTOR VIDEO.gif">
-                <p class="u-2d">(c) 2D-vector field</p>  
-            </div>
-        </div>
-        
-
-        <!--3D lid driven-->
-        <h4 class="Three-D-title">3D Lid driven problem (Low Reynolds number)</h4>  
-
-        <div class="Three-Cavity-video">
-
-            <div class="Three_id">
-                <img id="Three_id_gif", src="./Cavity/3d video u velocity.gif">
-                <p class="u-3d">(a) 3D-u velocity field</p>
-            </div>
-
-            <div class="Three_id">
-                <img id="Three_id_gif", src="./Cavity/3d video v velocity.gif">
-                <p class="u-3d">(b) 3D-v velocity field</p>
-            </div>
-
-            <div class="Three_id">
-                <img id="Three_id_gif", src="./Cavity/3d video w velocity.gif">
-                <p class="u-3d">(c) 3D-w velocity field</p>
+            <div class="Research-class">
+                <a class="R_img_click" href="Prediction.html"><img id="Research_id", src="./Background/Time forecasting image.png"></a>
+                <p class="Research_sub"> C. Time Forecasting</p>
             </div>            
         </div>
 
-        <p class="descirption_3D-cavity"> &nbsp Description: 2D & 3D Low Reynolds number(Re=100) Lid driven problem. For Navier-Stokes equation, The viscous term and Convective term are advanced 
-        by Crank Nicholson and Adams Bashforth respectively and solved by Finite Difference Method for all directions of x, y and z. 
-        The programming languages ​​are C or Python. Each velocity fields and vector fields are shown above. </p>
-        
-
-        <!--2D High reynolds lid driven-->
-        <h4 class="Two-D-title">2D Lid driven (High Reynolds number)</h4>  
-
-        <div class="Two-Cavity-video">        
-            <div class="Two_id">
-                <img id="vor_gif", src="./Cavity/Re50000 20sec.gif">
-                <p class="u-2d">(a) Vorticity (Re:50000) (grids:200X200)</p>
-            </div>
-
-            <div class="Two_id">
-                <img id="vor_gif", src="./Cavity/Re100000 200x200 video.gif">
-                <p class="u-2d">(b) Vorticity (Re:100000) (grids:200X200)</p>
-            </div>
-
-            <div class="Two_id">
-                <img id="vor_gif", src="./Cavity/Re 100000 256x256.gif">
-                <p class="u-2d">(c) Vorticity (Re:100000) (grids:256X256)</p>
-            </div>
-
-        </div>
-        
-        <p class="descirption_2D-high-cavity"> &nbsp Description: High Reynolds number Lid driven problem, Grids resolution becomes important at high Reynolds number. 
-            as you can see (b), (c). They are operated as same condition. only difference is grids resolution. 
-            (c) high resolution reflects the small scales much better. 
-            It is clear that the behavior is completely different from (b) by the small scales.
-            This is reason why grids resolution becomes more important as turbulence develops.<br></p>
-
-
-
-
-
-
-
-        <!--CFD Control-->
-        <h3 class="RL">2. Deep Reinforcement learning (applied to CFD)</h3>
-        <h4 class="DRL-title">TD3 (off-policy) & PPO (on-policy)</h4>  
-        
-        <div class="Burgers">
-
-            <div class="Control-div">
-                <img id="burgers", src="./Reinforcement/Burgers equation nu=0.1.gif">
-                <p class="burgers_cap">(a) burgers equation (no control)</p>
-            </div>
-
-            <div class="Control-div">
-                <img id="burgers", src="./Reinforcement/TD3 burgers.gif">
-                <p class="TD3_cap">(b) TD3-Control</p>
-            </div>
-
-            <div class="Control-div">
-                <img id="burgers", src="./Reinforcement/ppo burgers.gif">
-                <p class="PPO_cap">(c) PPO-Control</p>
-            </div>    
-
-        </div>        
-        
-         <p class="burgers-description">&nbsp Description: Machine learning is applied with CFD as a domain. Here, the Burgers equation is simply Controlled by reinforcement learning is shown above.
-             (Burgers equation is one-dimensional Navier-Stoeks equation - here it is solved by spectral method). 
-             (a) is the burgers equation without control. Initial condition is sinusoidal, you can see that the sin waveform is broken down by the viscous term.
-             The results of training with reinforcement learning to maintain the initial state (sin waveform) are (b) and (c).
-             (b) is implemented with the TD3 algorithm of the deterministic policy family,
-             (c) is implemented as a PPO algorithm of the stochastic policy family.
-             <br></p>
-        
-
-
-
-
-        <!--Prediction-->
-        <h3 class="Prediction">3. Time Forecasting based on supervised learning</h3>
-
-        <h4 class="Window-title">Forecasting model for particle matters (PM2.5)</h4>
-
-
-        <div class="Forecasting-image" >
-
-            <img class="NN-model-img" width="1000" height="250"
-            src="./Prediction/6hrs NN.png"alt="6hrs prediction">
-
-            <img class="NN-model-img" width="1000" height="250"
-            src="./Prediction/12hrs NN.png"alt="12hrs prediction">
-
-        </div>
-
-        <p class="prediction-description">&nbsp Description: In order to predict the concentration of fine dust, we have received about 10 years(from 2008 to 2018) of data from public protal for meteorological data and air quality data. 
-            It consists of data in units of time and has about 90,000 numbers of data.
-            There are about 30 explanatory variables (as Input information) such as temperature and humidity, NO2, PM10, and SO2 etc. And the goal is to multivariative non-linear regression of PM2.5 through a neural network using above 30 explanatory variables.
-            Among the explanatory variables, the variables that are able to explain PM2.5 most were selected based on the Akaike Information Criteria (AIC) value. Afterwards, Imputation was performed to fill in the empty values.
-            To ensure independence among explanatory selected variables, a Variance Inflation factor was used.
-            Finally, the concentration of PM2.5 was predicted by window learning with 14 selected variables.
-            The above time series plot is about 6hrs and 12hrs forecasts.</p>
 
     </div>
     <!--footer-->

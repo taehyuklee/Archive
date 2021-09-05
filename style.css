@@ -16,7 +16,7 @@ body{
 .frame{
 
     /*apart from outline of right & left board*/
-    margin: 30px 210px;
+    margin: 30px 250px;
     /*margin first element 30px - top & bottom distance away
     second element 150px - left & right distance away */
     
@@ -422,6 +422,53 @@ a:hover{
 }
 
 
+
+/*P6---------------------------Research main page---------------------------*/
+
+.Research-title{
+    display: block;
+    margin-left: 0px;
+    margin-top:100px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+    font-size: 25px;
+}
+
+/*숫자가 앞에 올 수는 없다 CLASS 이름*/
+
+.Research-img{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;    
+    margin-bottom: 200px;
+    margin-top: 50px;
+}
+
+
+.Research-class{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+}
+
+#Research_id{
+    width: 380px;
+    height: 330px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.Research_sub{
+    text-align: center; /*text는 text-align*/
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 20px;
+    margin: 0;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+
 /*P6--------------------------- Research part ---------------------------*/
 
 /*CFD Simulation*/
@@ -523,9 +570,8 @@ a:hover{
 }
 
 #vor_gif{
-    width: 410px;
-    height: 380px;
-
+    width: 380px;
+    height: 350px;
 }
 
 /*CFD Control*/
