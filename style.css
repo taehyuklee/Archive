@@ -452,6 +452,12 @@ a:hover{
     align-items: center;  
 }
 
+.R_img_click:hover{
+    transform:scale(1.05,1.05);
+    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+    transition: 0.3s
+}
+
 #Research_id{
     width: 380px;
     height: 330px;
