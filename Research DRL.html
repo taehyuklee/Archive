@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+    <title>TAYLEE Home</title>
+
+    <!--Style css Link-->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!---->
+
+    <!--google font Montserrat-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital
+    ,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+     rel="stylesheet">
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" 
+    rel="stylesheet">
+
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+
+
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({            
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+    
+</head>
+
+
+
+<body oncontextmenu='return false'>
+
+    <!--Navigation division-->
+    <nav class = "navigator"> <!--nav part for work & Information-->
+        <h3 class="site-name"><a href="index.html">TAYLEE's <a class="name-archive">Archive</a></a></h3>
+            <!--unorder list는 순서만 안매길뿐 같은 항목에 있는 것을 의미-->
+        <ul class = "menu_ul">
+            <!--li unorder list안에 항목들 적을때 필요-->
+            <li class ="list_menu"><a class = "nav_menu" href="index.html">HOME</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="TAYLEE Info.html">INFO</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="TAYLEE research.html">RESEARCH</a>
+    
+            </li>
+            <li class ="list_menu"><a class = "nav_menu" href="TAYLEE project.html">PROJECT</a>
+    
+            </li>
+            <!-- anchor도 class를 걸어서 나중에 같이 한꺼번에 처리할때 편하니까-->
+        </ul>
+    </nav>    
+    
+    <div class = "frame"> <!--div for grouping-->
+    
+        <!--CFD Control-->
+        <h3 class="RL">Deep Reinforcement learning (applied to CFD)</h3>
+        <h4 class="DRL-title">TD3 (off-policy) & PPO (on-policy)</h4>  
+        
+        <div class="Burgers">
+
+            <div class="Control-div">
+                <img id="burgers", src="./Reinforcement/Burgers equation nu=0.1.gif">
+                <p class="burgers_cap">(a) burgers equation (no control)</p>
+            </div>
+
+            <div class="Control-div">
+                <img id="burgers", src="./Reinforcement/TD3 burgers.gif">
+                <p class="TD3_cap">(b) TD3-Control</p>
+            </div>
+
+            <div class="Control-div">
+                <img id="burgers", src="./Reinforcement/ppo burgers.gif">
+                <p class="PPO_cap">(c) PPO-Control</p>
+            </div>    
+
+        </div>        
+        
+         <p class="burgers-description">&nbsp Description: Machine learning is applied with CFD as a domain. Here, the Burgers equation is simply Controlled by reinforcement learning is shown above.
+             (Burgers equation is one-dimensional Navier-Stoeks equation - here it is solved by spectral method). 
+             (a) is the burgers equation without control. Initial condition is sinusoidal, you can see that the sin waveform is broken down by the viscous term.
+             The results of training with reinforcement learning to maintain the initial state (sin waveform) are (b) and (c).
+             (b) is implemented with the TD3 algorithm of the deterministic policy family,
+             (c) is implemented as a PPO algorithm of the stochastic policy family.
+             <br></p>
+    
+            
+    
+    </div>
+    
+    <!--footer-->
+    <footer class = "footer">
+        <h3 class="contact">CONTACT ME</h3>
+        <div class ="links">
+            <a class="blog" href="https://blog.naver.com/fish991">BLOG</a>
+            <a class="instagram" href="https://www.instagram.com/lee_taehyuk/">INSTAGRAM</a>
+        </div>
+        <p>feel free to contact me!</p>
+        
+    </footer>  
+
+
+</body>
+
+
+
+</html>
