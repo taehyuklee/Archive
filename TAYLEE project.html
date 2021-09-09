@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>TAYLEE Home</title>
+
+    <!--Style css Link-->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!---->
+
+    <!--google font Montserrat-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital
+    ,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+     rel="stylesheet">
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" 
+    rel="stylesheet">
+
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+
+
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({            
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+    
+</head>
+
+
+
+<body oncontextmenu='return false'>
+
+    <!--Navigation division-->
+    <nav class = "navigator"> <!--nav part for work & Information-->
+        <h3 class="site-name"><a href="index.html">TAYLEE's <a class="name-archive">Archive</a></a></h3>
+            <!--unorder list는 순서만 안매길뿐 같은 항목에 있는 것을 의미-->
+        <ul class = "menu_ul">
+            <!--li unorder list안에 항목들 적을때 필요-->
+            <li class ="list_menu"><a class = "nav_menu" href="index.html">HOME</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="TAYLEE Info.html">INFO</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="TAYLEE research.html">RESEARCH</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="TAYLEE project main.html">PROJECT</a></li>
+            <!-- anchor도 class를 걸어서 나중에 같이 한꺼번에 처리할때 편하니까-->
+        </ul>
+    </nav>     
+
+
+    <div class = "frame"> <!--div for grouping-->
+
+        <!--School project-->
+        <h3 class="Project-title"> Environmental Engineering undergraduated school project</h3>
+
+        <!--Environment-data analysis-->
+        <h4 class="Data_analysis-title">Environment-Data analysis - project (2017-1)</h4>  
+
+        <div class="data_analysis">            
+            
+            <div class="data_class">
+                <img id="data_img", src="./Project/Data analysis (env)/Correlation coefficient.png">
+                <p class="data_sub">(a) Correlation coefficient </p>  
+            </div>
+
+            <div class="data_class">
+                <img id="clustering_img", src="./Project/Data analysis (env)/Clustering analysis.png">
+                <p class="data_sub">(b) Clustering analysis </p>  
+            </div>
+        </div>
+        
+
+        <p class="descirption_data"> &nbsp Description: </p>
+
+
+
+        <!--School project-->
+        <h3 class="Project-title"> Mechanical Engineering undergraduated school project</h3>
+
+        <!--Self-driving-->
+        <h4 class="System_control_title">Autonomous vehicle with DRL - project (2018-2)</h4>  
+
+        <div class="System-control-video">            
+            
+            <div class="system_class">
+                <img id="system_img", src="./Project/Creative design(2)/autonomous.gif">
+                <p class="system_sub">(a) Autonomous driving-1 (DDPG) </p>  
+            </div>
+
+            <div class="system_class">
+                <img id="system_img", src="./Project/Creative design(2)/autonomous2.gif">
+                <p class="system_sub">(b) Autonomous driving-2 (DDPG) </p>  
+            </div>
+        </div>
+        
+        <p class="descirption_system"> &nbsp Description: <a class="down_report" href="./Creative design(2)/Creative design(2) - Final report.pdf" download> Final report (download) </a>  
+        </p>
+ 
+        
+        <!--Robust design-->
+        <h4 class="Robust_design">Robust design -project (2019-1)</h4>  
+
+        <div class="Robust_class_total">            
+            
+            <div class="robust_class">
+                <img id="schematic_img", src="./Project/Robust design/P-diagram.PNG">
+                <p class="thesis_sub">(a) Parameter-diagram (P-daigram) </p>  
+            </div>
+
+            <div class="robust_class">
+                <img id="schematic_img", src="./Project/Robust design/TSS.PNG">
+                <p class="thesis_sub">(b) Parameter sensitivity </p>  
+            </div>
+
+            <div class="robust_class">
+                <img id="schematic_img", src="./Project/Robust design/Optimized.png">
+                <p class="thesis_sub">(c) Neural netowkr scatter plot </p>  
+            </div>
+        </div>
+        
+
+        <p class="description_thesis"> &nbsp Description: <a class="down_report" href="./Thesis/Lee, TaeHyuk - Poster.pdf" download> Poster (download) </a>  
+        </p>
+
+
+        <!--PM2.5 forecasting-->
+        <h4 class="Thesis-title">Undergraduated thesis - Time forecasting (2019-1)</h4>  
+
+        <div class="data_analysis">            
+            
+            <div class="thesis_class">
+                <img id="schematic_img", src="./Project/Thesis/Imputation img.png">
+                <p class="thesis_sub">(a) Imputed data </p>  
+            </div>
+
+            <div class="thesis_class">
+                <img id="schematic_img", src="./Project/Thesis/Neural network time series.png">
+                <p class="thesis_sub">(b) Neural netowkr time series </p>  
+            </div>
+
+            <div class="thesis_class">
+                <img id="schematic_img", src="./Project/Thesis/Neural network scatter.png">
+                <p class="thesis_sub">(c) Neural netowkr scatter plot </p>  
+            </div>
+        </div>
+        
+
+        <p class="description_thesis"> &nbsp Description: <a class="down_report" href="./Thesis/Lee, TaeHyuk - Poster.pdf" download> Poster (download) </a>  
+        </p>
+
+
+    </div>
+
+
+
+    <!--footer-->
+    <footer class = "footer">
+        <h3 class="contact">CONTACT ME</h3>
+        <div class ="links">
+            <a class="blog" href="https://blog.naver.com/fish991">BLOG</a>
+            <a class="instagram" href="https://www.instagram.com/lee_taehyuk/">INSTAGRAM</a>
+        </div>
+        <p>feel free to contact me!</p>
+
+    </footer>   
+
+    
+</body>
+</html>
