@@ -165,7 +165,7 @@ body {
 /* menu part*/
 .project_menu{
     line-height: 40px;
-    padding-left: 20px;
+    padding-left: 22px;
 }
 
 .project_menu:before{
@@ -173,8 +173,8 @@ body {
     position: absolute;
     display: block;
     top: 16px;
-    width:9px;
-    height:9px;
+    width:10px;
+    height:10px;
     background-color: black;
 
 }
