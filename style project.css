@@ -153,13 +153,6 @@
     height: 280px;
 }
 
-
-#optimized_img{
-    width: 600px;
-    height: 300px;
-}
-
-
 .MD1_sub{
     text-align: center; /*text는 text-align*/
     font-family: "Noto Sans KR", sans-serif;
@@ -472,7 +465,7 @@
 
 
 #Mec_img{
-    width: 350px;
+    width: 380px;
     height: 300px;
 }
 
