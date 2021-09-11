@@ -22,12 +22,12 @@
     /*justify-content: space-between; */
 }
 
-
+/*
 #Three_id_gif{
     width: 360px;
     height: 330px;
 }
-
+*/
 .descirption_3D-cavity{
     display: inline-block;
     font-family: "Montserrat", sans-serif;
@@ -97,10 +97,11 @@
     line-height: 24px; 
 }
 
+/*
 #vor_gif{
     width: 360px;
     height: 330px;
-}
+}*/
 
 /*CFD Control*/
 
@@ -125,11 +126,11 @@
     margin-left:10px;
     margin-bottom: 20px;
 }
-
+/*
 #burgers{
     width: 360px;
     height: 330px;
-}
+}*/
 
 .burgers_cap{
     text-align: center; /*text는 text-align*/
@@ -178,10 +179,10 @@
 .NN-model-img{
     margin-top:10px;
     margin-bottom:10px;
-    width: 1000px;
-    height: 250px;
-}
 
+}
+/*    width: 1000px;
+    height: 250px;*/
 .prediction-description{
     display: inline-block;
     font-family: "Montserrat", sans-serif;

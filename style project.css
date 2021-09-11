@@ -26,7 +26,7 @@
     margin-right:20px;
 }
 
-
+/*
 #EnvMon_img{
     width: 330px;
     height: 240px;
@@ -35,7 +35,7 @@
 #Envgraph_img{
     width: 650px;
     height: 400px;
-}
+}*/
 
 .EnvMon_sub{
     text-align: center; /*text는 text-align*/
@@ -88,7 +88,7 @@
     margin-right:20px;
 }
 
-
+/*
 #data_img{
     width: 500px;
     height: 230px;
@@ -98,7 +98,7 @@
     width: 450px;
     height: 270px;
 }
-
+*/
 
 .data_sub{
     text-align: center; /*text는 text-align*/
@@ -147,11 +147,11 @@
     margin-top:25px;
 }
 
-
+/*
 #MD1_img{
     width: 380px;
     height: 280px;
-}
+}*/
 
 .MD1_sub{
     text-align: center; /*text는 text-align*/
@@ -215,11 +215,11 @@
     margin-right:10px;
 }
 
-
+/*
 #system_img{
     width: 500px;
     height: 350px;
-}
+}*/
 
 
 .system_sub{
@@ -279,7 +279,7 @@
     margin-right:20px;
 }
 
-
+/*
 #CAD_img{
     width: 350px;
     height: 300px;
@@ -288,7 +288,7 @@
 #draw_img{
     width: 650px;
     height: 400px;
-}
+}*/
 
 .CAD_sub{
     text-align: center; /*text는 text-align*/
@@ -339,7 +339,7 @@
     margin-top:25px;
 }
 
-
+/*
 #robust_img{
     width: 380px;
     height: 280px;
@@ -349,7 +349,7 @@
 #optimized_img{
     width: 600px;
     height: 300px;
-}
+}*/
 
 
 .robust_sub{
@@ -401,11 +401,11 @@
     margin-right:20px;
 }
 
-
+/*
 #schematic_img{
     width: 350px;
     height: 220px;
-}
+}*/
 
 
 .thesis_sub{
@@ -463,7 +463,7 @@
     margin-right:20px;
 }
 
-
+/*
 #Mec_img{
     width: 380px;
     height: 300px;
@@ -478,7 +478,7 @@
     width: 250px;
     height: 200px;
 
-}
+}*/
 
 .Mec_sub{
     text-align: center; /*text는 text-align*/
@@ -547,10 +547,14 @@
     margin-top:50px;
 }
 
+/*
+  logo  width: 200px;
+    height: 50px;
+
 #grad_poster_img{
     width: 450px;
     height: 650px;
-}
+}*/
 
 
 .description_grad{
@@ -586,11 +590,12 @@
 }
 
 #Light_id{
-    width: 340px;
-    height: 230px;
+
     margin:30px;
 
 }
+/*  Light id  width: 340px;
+    height: 230px;*/
 
 .Light_sub{
     font-family: "Montserrat", sans-serif;
@@ -613,11 +618,12 @@
 }
 
 #Sound_id{
-    width: 340px;
-    height: 230px;
+
     margin-left: 55px;
 
 }
+/*  Light id  width: 340px;
+    height: 230px;*/
 
 .Sound_sub{
     font-family: "Montserrat", sans-serif;
