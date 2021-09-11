@@ -3,45 +3,6 @@
 
 /*CFD Simulation*/
 
-/*2-D lid-driven*/
-.Two-D-title{
-    display: block;
-    margin-left: 30px;
-    margin-bottom: 20px;
-    align-items: flex-start;
-}
-
-/*숫자가 앞에 올 수는 없다 CLASS 이름*/
-
-.Two-Cavity-video{
-    display: flex;
-    flex-direction: row;
-    justify-content: center; 
-    align-items: center;    
-    margin-bottom: 40px;
-}
-
-
-.Two_id{
-    display: flex;
-    flex-direction: column;
-    align-items: center;  
-}
-
-#Two_id_gif{
-    width: 360px;
-    height: 330px;
-}
-
-.u-2d{
-    text-align: center; /*text는 text-align*/
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 14px;
-    margin: 0;
-    margin-right: 24px;
-}
-
-
 /*3-D lid-driven*/
 .Three-D-title{
     display: block;
