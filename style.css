@@ -232,11 +232,11 @@ a:hover{
 
 }
 
-/*
+
 #Back_ground{
     width:450px;
     height:300px;
-}*/
+}
 
 .back-s{
     font-family: "Montserrat", sans-serif;
@@ -310,13 +310,12 @@ a:hover{
 }
 
 #profile-picture{
-
+    width: 400px;
+    height: 530px;
     margin-right: 60px;
     border-radius: 15px;
 }
 
-    /*width: 400px;
-    height: 530px;*/
 
 .About_me{
     font-family: "Montserrat", sans-serif;
@@ -470,13 +469,13 @@ a:hover{
 }
 
 #Research_id{
-
+    width: 300px;
+    height: 280px;
     margin-right: 30px;
     margin-left: 30px;
 }
 
- /*   width: 300px;
-    height: 280px;*/
+
 
 .Research_sub{
     text-align: center; /*text는 text-align*/
