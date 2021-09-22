@@ -1,0 +1,89 @@
+/*-------------------  Under courses ----------------------*/
+
+.Course-title{    
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    margin-top:100px;
+    margin-bottom:20px;}
+
+
+.Under-class{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width:85%;
+    
+    margin:0;
+    
+}
+
+ul.course-list{
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+}
+
+li{
+    margin-bottom:10px;
+}
+
+
+/*Env-courses*/
+.Env-courses{
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-left: 20px;
+    margin-right:20px;
+    margin-bottom: 30px;
+    line-height: 25px;
+}
+
+/*Mech-courses*/
+.Mech-courses{
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-left: 20px;
+    margin-right:20px;
+    margin-bottom: 30px;
+    line-height: 25px;
+}
+
+.Gpa-Info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top:35px;
+    width:85%
+}
+
+.env-gpa{
+    margin-left: 40px;
+}
+
+.mecha-gpa{
+
+    margin-right:110px;
+
+}
+
+/*------------------- Graduated courses ----------------------*/
+
+.Graduated-class{
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    
+    margin-left: 50px;
+    margin-right: 50px; 
+}
+
+
+.grad-gpa{
+    margin-left: 40px;
+    margin-bottom: 100px;
+}
+
+
