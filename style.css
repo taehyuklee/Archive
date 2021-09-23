@@ -274,7 +274,8 @@ a:hover{
     font-family: "Montserrat", sans-serif;
     font-size: 15px;
     font-weight: 600;
-    margin-left: 5px;
+    margin-left: 8px;
+    margin-right: 5px;
     color: white;
 }
 
@@ -406,10 +407,14 @@ a:hover{
     margin-bottom: 20px;
 }
 
+.git-logo-list{
+    list-style:none;
+}
+
 .git_menu{
     font-family: "Montserrat", sans-serif;
     font-size: 25px;
-    margin-left: 265px;    
+    margin-left: 230px;    
 }
 
 .git_menu:hover{
