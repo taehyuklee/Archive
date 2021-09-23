@@ -61,7 +61,7 @@ a:hover{
     /*Site이름은 왼쪽, menu는 오른쪽에 하고싶다.
     contents에 관한 건 Jujstify-content로 한다 중요!*/
     align-items: center;    
-    justify-content: space-between ; 
+    justify-content: space-between; 
 
     /*h3와 ul에 관해서 space-between이 된다*/
 }
@@ -353,6 +353,20 @@ a:hover{
 
     line-height: 30px; /*줄간격*/
     margin-left: 20px;
+}
+
+.gpa{
+    color: rgb(194, 0, 0);
+    margin-top:30px;
+    margin-left:30px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;   
+}
+
+.gpa:hover{
+    color: black;
+    transition: 0.5s
+
 }
 
 .Resmue-title{    
