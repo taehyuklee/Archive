@@ -13,7 +13,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    width:90%;
+    width:91%;
     
     margin:0;
     
@@ -58,17 +58,17 @@ li{
     align-items: flex-start;
     margin-top:35px;
     margin-left: 20px;
-    width:90%
+    width:91%
 }
 
 .env-gpa{
     margin-left: 20px;
+    line-height: 25px;
 }
 
 .mecha-gpa{
-
-    margin-right:105px;
-
+    margin-right:135px;
+    line-height: 25px;
 }
 
 .down_list{
@@ -92,5 +92,6 @@ li{
 .grad-gpa{
     margin-left: 20px;
     margin-bottom: 100px;
+    line-height: 25px;
 }
 
