@@ -434,7 +434,8 @@ a:hover{
     font-family: "Montserrat", sans-serif;
     font-size: 15px;
     margin-top: 20px;  
-    margin-left: 20px;    
+    margin-left: 20px;   
+    font-weight: 30px; 
 }
 
 .Orga_menu:hover{
