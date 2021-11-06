@@ -127,8 +127,6 @@
 }
 
 
-
-
 /*Objective*/
 .Objective{
     display: flex;
@@ -140,8 +138,9 @@
 }
 
 .mid-Ob{
-    margin-right: 900px;
+    margin-right: 800px;
     margin-bottom: 60px;
+    width: 200px;
 }
 
 /*& Box shaping*/
