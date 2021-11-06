@@ -86,11 +86,12 @@
     /*block element*/ 
     display: inline; /*display를 inline으로 해야하네*/
     text-align: center;
-    margin-right: 730px;
+    margin-right: 650px;
 
     font-family: "Montserrat", sans-serif;
     font-size: 18px;
-    font-weight: 700;
+    width:350px;
+    font-weight: 500;
     color: rgb(122, 120, 120)
 /*#C3B4AE*/
 }
