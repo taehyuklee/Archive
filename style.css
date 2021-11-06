@@ -13,6 +13,7 @@ body{
     width:100%;
     height:100%;  
     margin:0;
+    margin-top:5px;
     
 
 }
@@ -121,130 +122,6 @@ a:hover{
     margin-right: 35px;
     margin-left: 15px;   
     text-shadow: 1.3px 1.3px 1.3px gray; 
-}
-
-
-
-
-/*P1--------------------------- dashboard ---------------------------*/
-.dashobards{
-    display: flex;
-    flex-direction: column;
-    margin-top: 100px;
-
-}
-
-.Korean-comment{
-    font-family: "Montserrat", sans-serif;
-    font-weight: 550; /*bold*/
-    margin-top: 100px;   
-    animation-duration: 3s;
-    animation-name: slidein;
-    animation-timing-function:ease-in-out;
-
-}
-
-@keyframes slidein {
-    from {
-      margin-left: -10%;
-      width: 100%
-    }
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
-  }
-
-
-.my-name{
-    color: green;
-}
-
-.my-name:hover{
-
-    color:rgb(94, 4, 79);
-    transition: 1.0;
-}
-
-.field-highlight{
-    color: dimgrey;    
-}
-
-.field-highlight:hover{
-
-    color:orange;
-    transition: 1.0;
-}
-
-.English-comment{
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 100; /*bold*/
-    font-size: 15px;
-    font-style: italic;
-    /*font-style italic 등*/
-
-    /*Letter 사이의 간격*/
-    Letter-spacing: -0.2px;
-    animation-duration: 3s;
-    animation-name: slidein;
-    animation-timing-function:ease-in-out;
-    margin-bottom: 60px;
-}
-
-@keyframes slidein {
-    from {
-      margin-left: -10%;
-      width: 100%
-    }
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
-  }
-
-/*P3--------------------------- recent works ---------------------------*/
-.recent-menu{
-    /*display는 항상 앞에 와야하네 font보다*/
-
-    /*이걸 오른쪽으로 보내고싶은거임*/
-    /*block element*/ 
-    display: inline; /*display를 inline으로 해야하네*/
-    text-align: right;
-
-    font-family: "Montserrat", sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    color: rgb(122, 120, 120)
-/*#C3B4AE*/
-}
-
-.recent-works{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;  
-    margin-bottom: 130px;
-
-}
-
-.Back_ground_c{
-    margin-top:20px;
-    margin-right:20px;
-    margin-left:20px;
-    margin-bottom:20px;
-
-}
-
-
-#Back_ground{
-    width:450px;
-    height:300px;
-}
-
-.back-s{
-    font-family: "Montserrat", sans-serif;
-    font-size: 18px;
-    font-weight: 300;
-    text-align: center;
 }
 
 
@@ -507,3 +384,4 @@ a:hover{
     margin-right: 10px;
     margin-top: 20px;
 }
+
