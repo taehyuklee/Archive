@@ -3,13 +3,13 @@
     display: flex;
     flex-direction: column;
     margin-top: 100px;
-
 }
 
 .Korean-comment{
     font-family: "Montserrat", sans-serif;
     font-weight: 550; /*bold*/
     margin-top: 100px;   
+    margin-left: 3%;
     animation-duration: 3s;
     animation-name: slidein;
     animation-timing-function:ease-in-out;
@@ -22,7 +22,7 @@
       width: 100%
     }
     to {
-      margin-left: 0%;
+      margin-left: 3%;
       width: 100%;
     }
   }
@@ -60,7 +60,8 @@
     animation-duration: 3s;
     animation-name: slidein;
     animation-timing-function:ease-in-out;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
+    margin-left: 3%;
 }
 
 @keyframes slidein {
@@ -69,7 +70,7 @@
       width: 100%
     }
     to {
-      margin-left: 0%;
+      margin-left: 3%;
       width: 100%;
     }
   }
@@ -84,7 +85,8 @@
     /*이걸 오른쪽으로 보내고싶은거임*/
     /*block element*/ 
     display: inline; /*display를 inline으로 해야하네*/
-    text-align: right;
+    text-align: center;
+    margin-right: 730px;
 
     font-family: "Montserrat", sans-serif;
     font-size: 18px;
@@ -98,6 +100,7 @@
     flex-direction: row;
     justify-content: center;  
     margin-bottom: 100px;
+    margin-top: 0px;
 
 }
 
@@ -151,6 +154,7 @@
     height: 170px;
     margin-bottom: 70px;
     border-radius: 5%;
+    margin-right:70px;
     box-shadow: 10px 10px 20px 5px rgba(1, 1, 65, 0.1);;
     /*(오른쪽으로 얼마나 넓히는지) (아래로 얼마나 넓히는지) (얼마나 부드럽게 표현하는지) (전반적인 영역)*/
     
