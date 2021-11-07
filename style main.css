@@ -86,11 +86,10 @@
     /*block element*/ 
     display: inline; /*display를 inline으로 해야하네*/
     text-align: center;
-    width: 400px;
-    margin-right: 650px;
+    margin-right: 750px;
 
     font-family: "Montserrat", sans-serif;
-    font-size: 18px;
+    font-size: 16px;
 
     font-weight: 500;
     color: rgb(122, 120, 120)
@@ -213,7 +212,7 @@
 
 
 /*===== Resonsive frame =====*/
-@media (max-width: 830px) {
-.Object-frame .Objective{
-   margin:0;
+@media (max-width: 1400px) {
+.recent-menu{
+   width: 250px;
 }}
