@@ -216,10 +216,15 @@ body {
   /*===== // Vertical Timeline =====*/
     /*===== Resonsive Vertical Timeline =====*/
   @media screen and (max-width: 1030px){
+    .timeline-article p {
+      margin: 0 0 0 20px;
+    }
+
     .project_menu{
       font-size:15px;
       font-weight: 2000px;
     }
+
   }
 
   /*===== Resonsive Vertical Timeline =====*/
@@ -252,7 +257,10 @@ body {
       padding: 10px 25px;
       min-height: 65px;
     }
+
+   
     .timeline-article .content-left:before {
+      display:none;
       content: "\f0d9";
       right: auto;
       left: -8px;

@@ -192,3 +192,16 @@
     line-height: 24px; 
     margin-bottom:300px;
 }
+
+@media screen and (max-width: 1030px){
+    .descirption_3D-cavity, .burgers-description, .prediction-description{
+        margin-left:0;
+        margin-right:0;
+    }
+
+    #Three_id_gif, #vor_gif, #burgers{
+        width:310px;
+        height:280px;
+    }
+    
+}
