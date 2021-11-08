@@ -1,0 +1,206 @@
+
+
+
+/*P5--------------------------- Profile-section ---------------------------*/
+.profile-section{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin: 100px 100px;
+
+}
+
+#profile-picture{
+    width: 400px;
+    height: 530px;
+    margin-right: 60px;
+    border-radius: 15px;
+}
+
+
+.About_me{
+    font-family: "sans-serif, Montserrat";
+    font-size: 26px;
+    font-weight: 1500px;
+    margin:0;
+
+}
+
+.Personal-info{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    margin-left: 20px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+
+.Interests{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    margin-left: 20px;
+    line-height: 30px;    
+    margin-bottom: 40px;
+    margin-top:0;
+}
+
+
+.Introduction>h2{
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    margin: 0px;
+}
+
+.major{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    /*font-style: italic;*/
+
+    line-height: 30px; /*줄간격*/
+    margin-left: 20px;
+}
+
+.gpa{
+    color: rgb(194, 0, 0);
+    margin-top:30px;
+    margin-left:30px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;   
+}
+
+.gpa:hover{
+    color: black;
+    transition: 0.5s
+
+}
+/*Box here*/
+.For_center_CV{
+    display: flex;
+    justify-content: center;
+    margin-right: 55px;
+
+}
+
+.Resmue-title{    
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    margin-top:20px;
+    margin-bottom:20px;}
+
+.Education-section{
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    line-height: 25px;
+}
+
+.Capability{
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    line-height: 30px; /*줄간격*/
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.Cap-sub{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 550;
+    margin-top:0;
+}
+
+#logo{
+    margin-left: 20px;
+    height: 80px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.git-logo-list{
+    list-style:none;
+}
+
+.git_menu{
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    margin-left: 230px;    
+}
+
+.git_menu:hover{
+    color: rgb(163, 0, 0);
+    transition: 0.5s
+}
+
+.Awards{
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.Orga_menu{
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    margin-top: 20px;  
+    margin-left: 20px;   
+    font-weight: 30px; 
+}
+
+.Orga_menu:hover{
+    color: rgb(163, 0, 0);
+    transition: 0.5s
+}
+
+.certificate{
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-left: 20px;
+    margin-bottom: 100px;
+}
+
+
+@media screen and (max-width: 1030px){
+
+    .profile-section{
+        margin: 0px 0px;
+    }
+    #profile-picture{
+        width: 270px;
+        height: 380px;
+        margin-right: 40px;
+        border-radius: 15px;
+        margin-top: 50px;
+    }
+
+    .About_me{
+        font-size: 20px;
+    }
+
+    .Personal-info{
+        font-size: 15px;
+        margin-left: 20px;
+        line-height: 30px;
+        margin-bottom: 0;
+    }
+    
+    .Interests{
+        font-size: 15px;
+        margin-left: 20px;
+        line-height: 30px;    
+        margin-bottom: 40px;
+        margin-top:0;
+    }
+
+    .major{
+        font-size: 15px;
+    }
+
+    .gpa{
+
+        font-size: 15px;
+    }
+}

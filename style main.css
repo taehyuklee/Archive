@@ -16,18 +16,6 @@
 
 }
 
-@keyframes slidein {
-    from {
-      margin-left: -10%;
-      width: 100%
-    }
-    to {
-      margin-left: 3%;
-      width: 100%;
-    }
-  }
-
-
 .my-name{
     color: green;
 }
@@ -74,7 +62,6 @@
       width: 100%;
     }
   }
-
 
 
 
@@ -212,7 +199,31 @@
 
 
 /*===== Resonsive frame =====*/
-@media (max-width: 1400px) {
+@media (max-width: 1030px) {
 .recent-menu{
-   width: 250px;
-}}
+   text-align: center;
+   margin:0;
+   font-size:13px;
+   font-weight:500px;
+   margin-top: 20px;
+
+}
+
+.Korean-comment{
+    font-weight: 550; /*bold*/
+    margin-top: 60px;  
+    font-size:23px; 
+}
+.English-comment{
+    font-weight: 550; /*bold*/ 
+    font-size:10px; 
+}
+.Back_ground_c{
+    margin-bottom:0px;
+}
+
+.recent-works{
+    margin-bottom: 70px;
+
+}
+}

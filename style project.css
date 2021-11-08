@@ -426,6 +426,20 @@
     margin-bottom:300px;
 }
 
+@media screen and (max-width: 1030px){
+    .data_analysis{
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;    
+        margin-bottom: 40px;
+    }
+
+    .thesis_class{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
 
 
 /*Mechanical system control (2019-2)*/
