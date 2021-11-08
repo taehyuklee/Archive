@@ -171,29 +171,45 @@ a:hover{
 
 .contact{
     font-family: "Montserrat", sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
-
-    
     color: white;
     /*border-top: 1px solid #C2B4AB;*/
-    margin-bottom: 13px;
-    margin-left:5px;
+    margin-bottom: 11px;
+    margin-left:0px;
 }
 
-.links>a{
+.links{
+    display:flex;
+    flex-direction: row;
+    padding-left:50px;
+    padding-right:50px;
+}
+
+.blog, .instagram, .facebook{
+    color:white;
+}
+
+#Con-img{
+    margin-right:5px;
+}
+
+.links>li{
  /*>: 자식태그 <: 부모태그*/
     font-family: "Montserrat", sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    margin-left: 8px;
-    margin-right: 5px;
+    font-size: 17.5px;
+    font-weight: 550;
+    margin-left: 13px;
+    margin-right: 13px;
+    margin-top: 0px;
     color: white;
+    list-style:none;
 }
 
-.links>a:hover{
-    color: rgb(182, 69, 69);
-    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+
+.links>li:hover{
+    color: rgb(255, 255, 255);
+    filter: drop-shadow(3px 3px 3px rgb(255, 255, 255));
     transition: 0.3s
 }
 
