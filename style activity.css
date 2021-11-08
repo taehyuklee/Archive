@@ -154,3 +154,9 @@
 .space-null{
     margin-bottom: 150px;
 }
+
+@media screen and (max-width: 1030px){
+.Activity_frame{
+    margin-top:50px;
+}
+}
