@@ -51,24 +51,20 @@ li{
 
 
 /*-------------------  GPA Info ----------------------*/
-.Gpa-Info{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top:35px;
-    margin-left: 20px;
-    width:91%
-}
-
 .env-gpa{
-    margin-left: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    margin-top: 55px;
     line-height: 25px;
+    width:100%
 }
 
 .mecha-gpa{
-    margin-right:135px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    margin-top:55px;
     line-height: 25px;
+    width:100%
 }
 
 .down_list{
@@ -90,8 +86,20 @@ li{
 /*------------------- Graduated courses ----------------------*/
 
 .grad-gpa{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
     margin-left: 20px;
     margin-bottom: 100px;
     line-height: 25px;
 }
 
+@media screen and (max-width: 1030px){
+    .Under-class{
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+}
