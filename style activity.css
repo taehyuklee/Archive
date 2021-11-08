@@ -1,3 +1,8 @@
+.Activity_frame{
+    display: flex;
+    flex-direction: column;
+}
+
 .Extra-activity{
     display: inline; 
     text-align: left;
@@ -11,7 +16,7 @@
 .Clubs{
     display: inline; 
     text-align: left;
-
+    margin-top: 0;
     /*font-family: "Montserrat", sans-serif;*/
     font-size: 18px;
     font-weight: 500;
