@@ -180,23 +180,26 @@ body {
 .project_menu{
     font-family: "Montserrat", sans-serif;
     line-height: 40px;
-    padding-left: 22px;
+    /*padding-left: 22px;*/
     font-size: 19px;
 }
 
-.project_menu:before{
+.project_menu::before{
     content: "";
-    position: absolute;
+    position: relative;
     display: block;
-    top: 16px;
-    width:10px;
-    height:10px;
+    top: 26px;
+    width:11px;
+    height:11px;
+    right:20px;
     background-color: black;
 
 }
 
 .project_menu:hover:before{
     transform: rotate(270deg);
+    color: rgb(100, 4, 4);
+    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
     transition: 0.5s;
     transition-timing-function: ease-in-out;
 }
@@ -215,6 +218,7 @@ body {
 
   /*===== // Vertical Timeline =====*/
     /*===== Resonsive Vertical Timeline =====*/
+    
   @media screen and (max-width: 1030px){
     .timeline-article p {
       margin: 0 0 0 20px;
@@ -228,6 +232,7 @@ body {
   }
 
   /*===== Resonsive Vertical Timeline =====*/
+  
   @media only screen and (max-width: 830px) {
     #conference-timeline .timeline-start,
     #conference-timeline .timeline-end {
