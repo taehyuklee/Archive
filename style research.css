@@ -185,7 +185,7 @@
     margin-bottom: 20px;
 }
 
-#Turb_con{
+#Turb_con_id{
     width: 700px;
     height: 470px;
     margin-right: 5px;
@@ -277,6 +277,11 @@
     #Three_id_gif, #vor_gif, #burgers{
         width:310px;
         height:280px;
+    }
+
+    .Turb_con{
+        display: flex;
+        flex-direction: column;
     }
     
 }
