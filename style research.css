@@ -163,6 +163,81 @@
     line-height: 24px; 
 }
 
+/*Turbulence control*/
+.Turb_con{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;    
+    margin-bottom: 15px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.DRL-title{
+    margin-left:20px;
+}
+
+.Control-div{
+    margin-right:10px;
+    margin-left:10px;
+    margin-bottom: 20px;
+}
+
+#Turb_con{
+    width: 700px;
+    height: 470px;
+    margin-right: 5px;
+}
+
+#Turb_con_shear{
+    width: 520px;
+    height: 470px;
+    margin-left:5px;
+}
+
+.Turb_con_cap{
+    text-align: center; /*text는 text-align*/
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    margin: 0;
+}
+
+
+
+.Turb_con-description{
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
+    line-height: 24px; 
+}
+
+.conf_tur{
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    line-height: 24px; 
+}
+
+.Link_tur{
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    margin:0;
+    text-align: center; 
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.conf_tur:hover{
+    color: rgb(139, 54, 54);
+    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+    transition: 0.3s
+}
+
+
 /*Time Prediction*/
 
 .Window-title{
