@@ -250,7 +250,15 @@
     transition: 0.5s
 }
 
-
+@media screen and (max-width: 1030px){
+    .System-control-video{
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;    
+        margin-bottom: 40px;
+    }
+}
 
 /*(2019-1) Computer aided design */
 
