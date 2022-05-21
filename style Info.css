@@ -113,7 +113,7 @@
     margin-top:0;
 }
 
-#logo{
+.logo{
     margin-left: 20px;
     height: 80px;
     margin-top: 20px;
@@ -156,6 +156,12 @@
 }
 
 .certificate{
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-left: 20px;
+}
+
+.career{
     font-family: "Montserrat", sans-serif;
     font-size: 17px;
     margin-left: 20px;
