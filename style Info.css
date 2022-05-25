@@ -178,6 +178,14 @@
     margin-bottom: 100px;
 }
 
+#apiGwPj{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    margin-left: 2%;
+    color: rgb(194, 0, 0);
+    font-weight: 400px; 
+}
+
 
 @media screen and (max-width: 1030px){
 
