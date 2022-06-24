@@ -172,22 +172,79 @@
     margin-bottom: 60px;
 }
 
-.career{
+/*------- Company - Careers ---------*/
+.careers{
+    display: flex;
+    flex-direction: row;
+    align-items: left;   
     font-family: "Montserrat", sans-serif;
     font-size: 17px;
     margin-left: 20px;
     margin-bottom: 100px;
 }
 
+.Company_img{
+    display: flex;
+    justify-content: center;
+    width:150; 
+    height:100;
+   
+}
+
+.Career_element{
+    margin-left: 20px;
+}
+
+.fromdate{
+    font-size: 15px;
+    color: rgb(27, 0, 117);
+}
+
+.fromdate:hover{
+    font-size: 15px;
+    color: rgb(27, 0, 117);
+}
+
+.Compoany_title{
+    font-size: 20px;
+    font-weight: 500;
+    width:50%;
+}
+
+.Compoany_title:hover{
+    color:rgb(94, 4, 79);
+    transition: 1.0;
+}
+
+.Company_role{
+    font-size: 18px;
+    font-weight: 350;
+}
+
+.Company_project{
+    font-size: 18px;
+    font-weight: 350;  
+}
+
 #apiGwPj{
     font-family: "Montserrat", sans-serif;
     font-size: 18px;
-    margin-left: 2%;
-    color: rgb(194, 0, 0);
+
+    color: rgb(125, 0, 0);
     font-weight: 400px; 
 }
 
+.project_sttus{
+    font-size: 15px;
+    font-weight: 350;   
+}
 
+.project_sttus:hover{
+    font-size: 15px;
+    color: rgb(27, 0, 117);
+}
+
+/*------- Reactive Response ---------*/
 @media screen and (max-width: 1030px){
 
     .profile-section{

@@ -21,7 +21,7 @@ body{
 .frame{
 
     /*apart from outline of right & left board*/
-    margin: 30px 200px;
+    margin: 30px 180px;
     max-width:100%;
 
     /*margin first element 30px - top & bottom distance away
