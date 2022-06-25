@@ -96,6 +96,7 @@
     margin-left: 20px;
     margin-bottom: 100px;*/
 
+/*----------- Education-title --------------*/
 .Education-section{
     font-family: "Montserrat", sans-serif;
     font-size: 17px;
@@ -104,10 +105,28 @@
     line-height: 25px;
 }
 
+.school{
+    font-family: "sans-serif";
+    font-size: 19px;
+    font-weight: 1000px;
+    color:rgb(33, 0, 164);
+    margin-bottom:3.5px;
+}
+
+#army{
+    font-family: "sans-serif";
+    font-size: 18px;
+    font-weight: 500px;
+    color: rgb(143, 0, 0);
+}
+
+
+
+/*----------- Capability --------------*/
 .Capability{
     font-family: "Montserrat", sans-serif;
     font-size: 17px;
-    line-height: 30px; /*줄간격*/
+    line-height: 28px; /*줄간격*/
     margin-left: 20px;
     margin-bottom: 60px;
 }
@@ -115,7 +134,7 @@
 .Cap-sub{
     font-family: "Montserrat", sans-serif;
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     font-weight: 700;
     margin-top:0;
 }
@@ -125,7 +144,8 @@
     font-size: 17px;
     margin-bottom: 10px;
     font-weight: 550;
-    margin-top:0;
+    margin-top:0px;
+    margin-left: 10px;
 }
 
 
@@ -181,6 +201,7 @@
     color: rgb(163, 0, 0);
     transition: 0.5s
 }
+
 /*--------- Certificate -----------*/
 .certificate{
     display: flex;
