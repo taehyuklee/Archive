@@ -88,6 +88,13 @@
     font-size: 25px;
     margin-top:20px;
     margin-bottom:20px;}
+    /*    display: flex;
+    flex-direction: row;
+    align-items: left;   
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-left: 20px;
+    margin-bottom: 100px;*/
 
 .Education-section{
     font-family: "Montserrat", sans-serif;
@@ -174,12 +181,43 @@
     color: rgb(163, 0, 0);
     transition: 0.5s
 }
-
+/*--------- Certificate -----------*/
 .certificate{
+    display: flex;
+    flex-direction: row;
+    align-items: left;   
     font-family: "Montserrat", sans-serif;
     font-size: 17px;
     margin-left: 20px;
-    margin-bottom: 60px;
+    margin-bottom: 100px;
+}
+
+#kdataImg{
+    margin-left: 0px;
+}
+
+.Certificate_img{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+}
+
+.certificate_cluster{
+    display:flex;
+    flex-direction: column;
+    justify-items: center;
+    vertical-align: middle;
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.certificate_element{
+    display: flex;
+    vertical-align:middle;
+    line-height: 20px;
 }
 
 /*------- Company - Careers ---------*/
@@ -218,7 +256,7 @@
 .Compoany_title{
     font-size: 20px;
     font-weight: 500;
-    width:50%;
+    width:100%;
 }
 
 .Compoany_title:hover{
@@ -293,7 +331,16 @@
     }
 
     .gpa{
-
         font-size: 15px;
+    }
+
+    .certificate_element{
+        font-size: 15px;   
+        line-height: 20px;
+    }
+
+    #kdataImg{
+        font-size: 13px;
+        text-align: center;
     }
 }
