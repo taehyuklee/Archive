@@ -97,6 +97,11 @@
 }
 
 /* Customize */
+
+#springcloud-img{
+    margin-top:-10px;
+}
+
 #notion_img{
     vertical-align:middle;
     margin-bottom: 4px;
@@ -176,12 +181,32 @@
         margin-left:-5px;
     }
 
+    #springcloud-img{
+        width:280px;
+        height: 100px;
+        margin-top: -10px;
+    }
+
     #network-img{
         width:250px;
         height:100px;
         margin-left:-5px;
         border-radius: 10px;
     }
+
+    #java-img{
+        margin-left: -25px;
+        margin-top: -5px;
+    }
+
+    #java_title{
+        margin-left: -10px;
+    }
+
+    #java_descript{
+        margin-left: 5px;
+    }
+
 
     .box-script{
         margin-top: 25px;
