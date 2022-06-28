@@ -113,7 +113,7 @@
 
 #java_box_image{
     margin-top: 25px;
-    margin-left: 60px;
+    margin-left: 70px;
 }
 
 #java_title{
@@ -123,6 +123,7 @@
 #java_descript{
     margin-left:20px;
 }
+
 
 
 @media screen and (max-width: 1030px){
