@@ -114,7 +114,7 @@ a:hover{
     /*한줄로 오게 하고 싶으면 inline을 해준다*/
     display: inline-block;
     margin:0;     
-    padding:8px 12px; 
+    padding:7px 11px; 
 }
 
 .nav_menu{

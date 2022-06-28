@@ -101,7 +101,7 @@
     font-family: "Montserrat", sans-serif;
     font-size: 17px;
     margin-left: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     line-height: 25px;
 }
 
@@ -118,6 +118,26 @@
     font-size: 18px;
     font-weight: 500px;
     color: rgb(143, 0, 0);
+}
+
+/*------------ Activites ---------------*/
+
+.Resume-activity{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 800px;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    margin-left: 20px;
+}
+
+.Resume-activity:hover{
+    color: rgb(163, 0, 0);
+    transition: 0.5s
+}
+
+.activities{
+    margin-bottom:30px;
 }
 
 
@@ -159,6 +179,7 @@
 
 .git-logo-list{
     list-style:none;
+    margin-top: 20px;
 }
 
 .git_menu{
