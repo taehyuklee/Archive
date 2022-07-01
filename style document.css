@@ -118,7 +118,7 @@
 
 #java_box_image{
     margin-top: 25px;
-    margin-left: 70px;
+    margin-left: 40px;
 }
 
 #java_title{
@@ -196,12 +196,12 @@
     }
 
     #java-img{
-        margin-left: -25px;
+        margin-left: -20px;
         margin-top: -5px;
     }
 
     #java_title{
-        margin-left: -10px;
+        margin-left: 0px;
     }
 
     #java_descript{
