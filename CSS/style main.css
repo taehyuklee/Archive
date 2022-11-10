@@ -1,0 +1,242 @@
+/*P1--------------------------- dashboard ---------------------------*/
+.dashobards{
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.Korean-comment{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550; /*bold*/
+    margin-top: 100px;   
+    margin-left: 3%;
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-timing-function:ease-in-out;
+
+}
+
+.my-name{
+    color: green;
+}
+
+.my-name:hover{
+
+    color:rgb(94, 4, 79);
+    transition: 1.0;
+}
+
+.field-highlight{
+    color: dimgrey;    
+}
+
+.field-highlight:hover{
+
+    color:orange;
+    transition: 1.0;
+}
+
+.English-comment{
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 100; /*bold*/
+    font-size: 15px;
+    font-style: italic;
+    /*font-style italic 등*/
+
+    /*Letter 사이의 간격*/
+    Letter-spacing: -0.2px;
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-timing-function:ease-in-out;
+    margin-bottom: 80px;
+    margin-left: 3%;
+}
+
+@keyframes slidein {
+    from {
+      margin-left: -10%;
+      width: 100%
+    }
+    to {
+      margin-left: 3%;
+      width: 100%;
+    }
+  }
+
+  /*------- DashBoards Banner -----------*/
+  .dashboards{
+    display: block; /*display를 inline으로 해야하네*/
+    justify-content: center;
+    text-align: center;
+    width:100%
+  }
+
+  .banner{
+    display: inline;
+    text-align: left;
+
+  }
+
+
+/*P3--------------------------- recent works ---------------------------*/
+.recent-menu{
+    /*display는 항상 앞에 와야하네 font보다*/
+
+    /*이걸 오른쪽으로 보내고싶은거임*/
+    /*block element*/ 
+    display: inline; /*display를 inline으로 해야하네*/
+    text-align: center;
+    margin-right: 750px;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+
+    font-weight: 500;
+    color: rgb(122, 120, 120)
+/*#C3B4AE*/
+}
+
+.recent-works{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;  
+    margin-bottom: 100px;
+    margin-top: 0px;
+
+}
+
+.Back_ground_c{
+    margin-top:20px;
+    margin-right:20px;
+    margin-left:20px;
+    margin-bottom:20px;
+}
+
+
+.Back_ground{
+    width:450px;
+    height:300px;
+    border-radius: 5%;
+}
+
+.back-s{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.Object-frame{
+    margin-left:160px
+}
+
+
+/*Objective*/
+.Objective{
+    display: flex;
+    flex-direction: Column;
+    justify-content: center; 
+    margin-bottom: 150px;
+    margin-left:70px;
+    align-items: center; /*중앙정렬*/
+}
+
+.mid-Ob{
+    margin-right: 800px;
+    margin-bottom: 60px;
+    width: 200px;
+}
+
+/*& Box shaping*/
+.box{
+    display: flex;
+    flex-direction: row;
+    width: 990px;
+    height: 170px;
+    margin-bottom: 70px;
+    border-radius: 5%;
+    margin-right:70px;
+    box-shadow: 10px 10px 20px 5px rgba(1, 1, 65, 0.1);;
+    /*(오른쪽으로 얼마나 넓히는지) (아래로 얼마나 넓히는지) (얼마나 부드럽게 표현하는지) (전반적인 영역)*/
+    
+}
+.box-image{
+    margin-top: 30px;
+    width: 100px;
+    height: 100px;
+    margin-right:5px;
+    margin-left: 10px;
+
+}
+
+.box-img{
+    width:100px;
+    height:100px;
+    border-radius: 1%;
+}
+
+.more-bottom{
+    color: rgb(170, 0, 0);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight:1000px;
+}
+
+.more-bottom:hover{
+    color: rgb(3, 3, 110);
+    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+    transition: 0.3s
+}
+
+/*------------*/
+.Ob-title{
+    margin-bottom: 0px;
+    margin-top:15px;
+    margin-left:15px;
+    font-size: 23px;
+    font-weight: 800;
+    align-items: center;
+    text-align: left;
+}
+
+.Ob-descript{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    width: 850px;
+    text-align: left;
+    margin-left:15px;
+    margin-top: 15px;
+    line-height: 30px;
+}
+
+
+/*===== Resonsive frame =====*/
+@media (max-width: 1030px) {
+.recent-menu{
+   text-align: center;
+   margin:0;
+   font-size:13px;
+   font-weight:500px;
+   margin-top: 20px;
+
+}
+
+.Korean-comment{
+    font-weight: 550; /*bold*/
+    margin-top: 60px;  
+    font-size:23px; 
+}
+.English-comment{
+    font-weight: 550; /*bold*/ 
+    font-size:10px; 
+}
+.Back_ground_c{
+    margin-bottom:0px;
+}
+
+.recent-works{
+    margin-bottom: 70px;
+
+}
+}

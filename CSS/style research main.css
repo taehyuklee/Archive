@@ -1,0 +1,90 @@
+
+/*P6---------------------------Research main page---------------------------*/
+
+.Resarch-list{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Research-title{
+    display: block;
+    margin-right:750px;
+    margin-top:100px;
+    align-items: center;
+    font-size: 25px;
+    width: 300px;
+}
+
+.For_details{
+    font-size:16px;
+    margin-right:740px;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/*숫자가 앞에 올 수는 없다 CLASS 이름*/
+
+.Research-img{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;    
+    margin-bottom: 200px;
+    margin-top: 50px;
+    max-width:100%;
+
+}
+
+
+.Research-class{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+}
+
+.R_img_click:hover{
+    transform:scale(1.05,1.05);
+    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+    transition: 0.3s
+}
+
+#Research_id{
+    width: 300px;
+    height: 280px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+
+
+.Research_sub{
+    text-align: center; /*text는 text-align*/
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 20px;
+    margin: 0;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 1030px){
+
+    .Research-title{
+        margin-right:280px;
+        margin-top:50px;
+    }
+
+    .For_details{
+        width: 300px;
+        margin-right:240px;
+    }
+    .Research-img{
+        display: flex;
+        flex-direction: column;    
+    }
+
+    .Research-class{
+        margin-top:50px;
+        margin-bottom:50px;
+    }
+}

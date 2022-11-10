@@ -1,0 +1,222 @@
+
+/*P6---------------------------Research main page---------------------------*/
+
+.Archive_box{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Archive_title{
+    display: block;
+    margin-right:750px;
+    margin-top:100px;
+    align-items: center;
+    font-size: 25px;
+    width: 300px;
+}
+
+.For_details{
+    font-size:16px;
+    margin-right:740px;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/*숫자가 앞에 올 수는 없다 CLASS 이름*/
+
+.Archive_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: left;    
+    margin-bottom: 200px;
+    margin-top: 50px;
+    max-width:100%;
+    align-items: center;
+}
+
+.box{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 170px;
+    margin-bottom: 70px;
+    border-radius: 0%;
+    margin-left:0px;
+    box-shadow: 10px 10px 20px 5px rgba(1, 1, 65, 0.1);;
+    /*(오른쪽으로 얼마나 넓히는지) (아래로 얼마나 넓히는지) (얼마나 부드럽게 표현하는지) (전반적인 영역)*/
+}
+
+.box-image{
+    margin-top: 45px;
+    width: 350px;
+    height: 100px;
+    margin-right:5px;
+    margin-left: 30px;
+
+}
+
+.box-img{
+    width:300px;
+    height:80px;
+    border-radius: 1%;
+}
+
+.box-script{
+    margin-top: 35px;
+    width: 450px;
+    margin-left:25px;
+
+}
+
+/*------------*/
+.Ob-title{
+    margin-bottom: 0px;
+    margin-top:15px;
+    margin-left:15px;
+    font-size: 23px;
+    font-weight: 800;
+    align-items: center;
+    text-align: left;
+}
+
+.Ob-descript{
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    width: 200px;
+    text-align: left;
+    margin-left:35px;
+    margin-top: 15px;
+    color: crimson;
+}
+
+.notion{
+    margin-left:7px;
+}
+
+/* Customize */
+
+#springcloud-img{
+    margin-top:-10px;
+}
+
+#notion_img{
+    vertical-align:middle;
+    margin-bottom: 4px;
+}
+
+#net_box_image{
+    margin-top: 25px;
+    
+}
+
+#network-img{
+    border-radius: 10px;
+}
+
+#java_box_image{
+    margin-top: 25px;
+    margin-left: 40px;
+}
+
+#java_title{
+    margin-left:0px;
+}
+
+#java_descript{
+    margin-left:20px;
+}
+
+
+
+@media screen and (max-width: 1030px){
+    
+    .Archive_list{
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: left;    
+        margin-bottom: 200px;
+        margin-top: 50px;
+        max-width:700px;
+        align-items: center;
+    }
+
+
+    .For_details{
+        width: 300px;
+        margin-right:240px;
+    }
+    .Research-img{
+        display: flex;
+        flex-direction: column;    
+    }
+
+    .Research-class{
+        margin-top:50px;
+        margin-bottom:50px;
+    }
+
+    
+    .Archive_title{
+        margin-right:280px;
+        margin-top:50px;
+    }
+    
+    .box{
+        width:100%;
+        height:150px;
+    }    
+
+    .box-image{
+        margin-top: 38px;
+        width:250px;
+    
+    }
+
+    #spring-img{
+        width:250px;
+        height:70px;
+        margin-left:-5px;
+    }
+
+    #springcloud-img{
+        width:280px;
+        height: 100px;
+        margin-top: -10px;
+    }
+
+    #network-img{
+        width:250px;
+        height:100px;
+        margin-left:-5px;
+        border-radius: 10px;
+    }
+
+    #java-img{
+        margin-left: -20px;
+        margin-top: -5px;
+    }
+
+    #java_title{
+        margin-left: 0px;
+    }
+
+    #java_descript{
+        margin-left: 5px;
+    }
+
+
+    .box-script{
+        margin-top: 25px;
+        width: 300px;
+        margin-left:20px;
+    
+    }
+    .Ob-title{
+        font-size:18px;
+    }
+
+}
