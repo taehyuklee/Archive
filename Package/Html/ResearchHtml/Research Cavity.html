@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+    <title>TAYLEE Research</title>
+
+    <!--Style css Link-->
+    <link rel="stylesheet" type="text/css" href="/Package/CSS/style research.css">
+    <link rel="stylesheet" type="text/css" href="/Package/CSS/style.css">
+
+    <!---->
+
+    <!--google font Montserrat-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital
+    ,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+     rel="stylesheet">
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" 
+    rel="stylesheet">
+
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+
+
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({            
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+    
+    <!--Java script event-->
+    <script src="/Package/Js/main.js" defer></script>
+    
+</head>
+
+
+
+<body bgproperties="fixed" oncontextmenu='return false'>
+
+    <!--Navigation division-->
+    <nav class = "navigator"> <!--nav part for work & Information-->
+        <h3 class="site-name"><a href="/index.html">TAYLEE's <a class="name-archive">Archive</a></a></h3>
+            <!--unorder list는 순서만 안매길뿐 같은 항목에 있는 것을 의미-->
+        <ul class = "menu_ul">
+            <!--li unorder list안에 항목들 적을때 필요-->
+            <li class ="list_menu"><a class = "nav_menu" href="/index.html">Home</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="/Package/Html/MainHtml/TAYLEE Info.html">Info</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="/Package/Html/MainHtml/TAYLEE documents.html">Documents</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="/Package/Html/MainHtml/TAYLEE research.html">Research</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="/Package/Html/MainHtml/TAYLEE project.html">Project</a></li>
+            <!-- anchor도 class를 걸어서 나중에 같이 한꺼번에 처리할때 편하니까-->
+        </ul>
+        
+        <a href="#" class="nav__toogle">
+            <i class="hamburger"><img id="ham_menu", alt = "hamburger", src="/Main/hamburger menu.png" width=24 height=24></i>
+        </a>
+    
+    </nav>  
+    
+    <div class = "frame"> <!--div for grouping-->
+    
+        <!--CFD Simulation-->
+        <h3 class="CFD-title">Computational Fluid Dynamics</h3>
+
+
+        <!--3D lid driven-->
+        <h4 class="Three-D-title">3D Lid driven problem (Low Reynolds number)</h4>  
+
+        <div class="Three-Cavity-video">
+
+            <div class="Three_id">
+                <img id="Three_id_gif", src="/Cavity/3d video u velocity.gif" width=360 height=330>
+                <p class="u-3d">(a) 3D-u velocity field</p>
+            </div>
+
+            <div class="Three_id">
+                <img id="Three_id_gif", src="/Cavity/3d video v velocity.gif" width=360 height=330>
+                <p class="u-3d">(b) 3D-v velocity field</p>
+            </div>
+
+            <div class="Three_id">
+                <img id="Three_id_gif", src="/Cavity/3d video w velocity.gif" width=360 height=330>
+                <p class="u-3d">(c) 3D-w velocity field</p>
+            </div>            
+        </div>
+
+        <p class="descirption_3D-cavity"> &nbsp <b>Description</b>: 3D Low Reynolds number(Re=100) Lid driven problem. For Navier-Stokes equation, The viscous term and Convective term are advanced 
+        by Crank Nicholson and Adams Bashforth respectively and solved by Finite Difference Method for all directions of x, y and z. 
+        The programming languages ​​are C or Python. Each velocity fields and vector fields are shown above. </p>
+        
+
+        <!--2D High reynolds lid driven-->
+        <h4 class="Two-D-title">2D Lid driven (High Reynolds number)</h4>  
+
+        <div class="Two-Cavity-video">        
+            <div class="Two_id">
+                <img id="vor_gif", src="/Cavity/Re50000 20sec.gif" width=360 height=330>
+                <p class="u-2d">(a) Vorticity (Re:50000) (grids:200X200)</p>
+            </div>
+
+            <div class="Two_id">
+                <img id="vor_gif", src="/Cavity/Re100000 200x200 video.gif" width=360 height=330>
+                <p class="u-2d">(b) Vorticity (Re:100000) (grids:200X200)</p>
+            </div>
+
+            <div class="Two_id">
+                <img id="vor_gif", src="/Cavity/Re 100000 256x256.gif" width=360 height=330>
+                <p class="u-2d">(c) Vorticity (Re:100000) (grids:256X256)</p>
+            </div>
+
+        </div>
+        
+        <p class="descirption_2D-high-cavity"> &nbsp <b>Description</b>: High Reynolds number Lid driven problem, Grids resolution becomes important at high Reynolds number. 
+            as you can see (b), (c). They are operated as same condition. only difference is grids resolution. 
+            (c) high resolution reflects the small scales much better. 
+            It is clear that the behavior is completely different from (b) by the small scales.
+            This is reason why grids resolution becomes more important as turbulence develops.<br></p>
+
+
+    
+            
+    
+    </div>
+    
+    <!--footer-->
+    <footer class = "footer">
+        <h3 class="contact">CONTACT ME</h3>
+        <ul class ="links">
+            <li class="Con_list"><a class="blog", rel="noopener", href="https://blog.naver.com/fish991" target='_blank'><img id="Con-img", alt="MainBlog", src="/Main/Blog.png" height="18" width="18"/> BLOG</a></li>
+            <li class="Con_list"><a class="instagram", rel="noopener", href="https://www.instagram.com/lee_taehyuk/" target='_blank'><img id="Con-img", alt="Instagram", src="/Main/Instagram.png" height="18" width="18"/> INSTAGRAM</a></li>
+            <li class="Con_list"><a class="facebook", rel="noopener", href="https://www.facebook.com/Gogizip91/" target='_blank'><img id="Con-img", alt="Facebook", src="/Main/Facebook.png" height="18" width="18"/> FACEBOOK</a></li>
+        </ul>
+        <p>feel free to contact me!</p>
+
+    </footer>
+
+
+</body>
+
+
+
+</html>

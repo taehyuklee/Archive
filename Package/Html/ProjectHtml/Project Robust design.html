@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>TAYLEE Project</title>
+
+    <!--Style css Link-->
+    <link rel="stylesheet" type="text/css" href="/Package/CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="/Package/CSS/style project.css">
+
+    <!---->
+
+    <!--google font Montserrat-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital
+    ,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+     rel="stylesheet">
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" 
+    rel="stylesheet">
+
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+
+
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({            
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+    
+    <!--Java script event-->
+    <script src="/Package/Js/main.js" defer></script>
+    
+</head>
+
+
+
+<body bgproperties="fixed" oncontextmenu='return false'>
+
+    <!--Navigation division-->
+    <nav class = "navigator"> <!--nav part for work & Information-->
+        <h3 class="site-name"><a href="/index.html">TAYLEE's <a class="name-archive">Archive</a></a></h3>
+            <!--unorder list는 순서만 안매길뿐 같은 항목에 있는 것을 의미-->
+        <ul class = "menu_ul">
+            <!--li unorder list안에 항목들 적을때 필요-->
+            <li class ="list_menu"><a class = "nav_menu" href="/index.html">Home</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="/Package/Html/MainHtml/TAYLEE Info.html">Info</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="/Package/Html/MainHtml/TAYLEE documents.html">Documents</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="/Package/Html/MainHtml/TAYLEE research.html">Research</a></li>
+            <li class ="list_menu"><a class = "nav_menu" href="/Package/Html/MainHtml/TAYLEE project.html">Project</a></li>
+            <!-- anchor도 class를 걸어서 나중에 같이 한꺼번에 처리할때 편하니까-->
+        </ul>
+        
+        <a href="#" class="nav__toogle">
+            <i class="hamburger"><img id="ham_menu", alt = "hamburger", src="/Main/hamburger menu.png" width=24 height=24></i>
+        </a>
+    
+    </nav> 
+
+    <div class = "frame"> <!--div for grouping-->
+
+        <!--School project-->
+        <h3 class="Project-title"> Mechanical Engineering undergraduated school project</h3>
+        
+        <!--Robust design-->
+        <h4 class="Robust_design">Robust design -project (2019-1)</h4>  
+
+        <div class="Robust_class_total">            
+            
+            <div class="robust_class">
+                <img id="robust_img", src="/Project/Robust design/P-diagram.PNG" width=380 height=280>
+                <p class="robust_sub">(a) Parameter-diagram (P-daigram) </p>  
+            </div>
+
+            <div class="robust_class">
+                <img id="robust_img", src="/Project/Robust design/TSS.PNG" width=380 height=280>
+                <p class="robust_sub">(b) Parameter sensitivity </p>  
+            </div>
+        </div>
+        
+        <div class="Robust_class_total">   
+            <div class="robust_class">
+                <img id="optimized_img", src="/Project/Robust design/Optimized.png" width=600 height=300>
+                <p class="robust_sub">(c) Optimized model </p>  
+            </div>
+        </div>
+        
+
+
+        
+
+        <p class="description_thesis"> 
+        &nbsp <b>Description</b>: &nbsp <a class="down_report" href="/Project/Robust design/Robust design - Individual report (Lee, Tae Hyuk).pdf" download> Robust design Individual report - Korean language (download) </a>
+        &nbsp <a class="down_report" href="/Project/Robust design/Robust design - Presentation (team).pdf" download> Robust design Presentation material - pdf (download) </a>  
+
+        </p>
+
+
+    </div>
+
+
+
+    <!--footer-->
+    <footer class = "footer">
+        <h3 class="contact">CONTACT ME</h3>
+        <ul class ="links">
+            <li class="Con_list"><a class="blog", rel="noopener", href="https://blog.naver.com/fish991" target='_blank'><img id="Con-img", alt="MainBlog", src="/Main/Blog.png" height="18" width="18"/> BLOG</a></li>
+            <li class="Con_list"><a class="instagram", rel="noopener", href="https://www.instagram.com/lee_taehyuk/" target='_blank'><img id="Con-img", alt="Instagram", src="/Main/Instagram.png" height="18" width="18"/> INSTAGRAM</a></li>
+            <li class="Con_list"><a class="facebook", rel="noopener", href="https://www.facebook.com/Gogizip91/" target='_blank'><img id="Con-img", alt="Facebook", src="/Main/Facebook.png" height="18" width="18"/> FACEBOOK</a></li>
+        </ul>
+        <p>feel free to contact me!</p>
+
+    </footer>
+
+    
+</body>
+</html>
