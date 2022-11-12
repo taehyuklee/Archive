@@ -670,3 +670,37 @@
 }
 
 /* Time line */
+
+
+
+
+
+
+/*(2020-1) Basic of CFD Project*/
+
+.description_mid{
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
+    line-height: 24px; 
+    margin-bottom: 20px;
+}
+
+.description_2D-cavity{
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    margin-bottom: 80px;
+    margin-left: 50px;
+    margin-right: 50px;
+    line-height: 24px; 
+}
+
+.eqn{
+    padding: 0px;
+}
+
+
+/* Time line */
