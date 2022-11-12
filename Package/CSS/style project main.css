@@ -185,7 +185,6 @@ body {
   /*padding-left: 22px;*/
   font-size: 17px;
   margin-left: 80px;
-  width:168px;
 }
 
 .sample_menu::before{
@@ -212,7 +211,6 @@ body {
   color: rgb(100, 4, 4);
   filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
   transition: 0.3s;
-  text-align: center;
 
 }
 
