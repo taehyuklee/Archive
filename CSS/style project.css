@@ -704,3 +704,23 @@
 
 
 /* Time line */
+
+
+/*(2021-1) Dynamic Time Warping Project*/
+.DTW_class{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    margin-left:20px;
+    margin-right:20px;
+    margin-bottom: 20px;
+}
+.DTW_img{
+    display: inline-block;
+    width: 800px;
+    height: 500px;
+}
+
+
+
+/* Time line */

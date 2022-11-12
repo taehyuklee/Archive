@@ -177,6 +177,45 @@ body {
 
   }
 
+  
+/* samle - menu part */
+.sample_menu{
+  font-family: "Montserrat", sans-serif;
+  line-height: 15px;
+  /*padding-left: 22px;*/
+  font-size: 17px;
+  margin-left: 80px;
+  width:168px;
+}
+
+.sample_menu::before{
+  content: "";
+  position: relative;
+  display: block;
+  top: 13px;
+  width:11px;
+  height:11px;
+  right:20px;
+  background-color: black;
+
+}
+
+.sample_menu:hover:before{
+  transform: rotate(270deg);
+  color: rgb(100, 4, 4);
+  filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+  transition: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
+.sample_menu:hover{
+  color: rgb(100, 4, 4);
+  filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+  transition: 0.3s;
+  text-align: center;
+
+}
+
 
 /* menu part*/
 .project_menu{
@@ -213,8 +252,6 @@ body {
     text-align: center;
 
   }
-
-
 
 
 
