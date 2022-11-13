@@ -53,6 +53,7 @@
     margin-left: 20px;
     line-height: 24px; 
     margin-bottom:300px;
+    text-align: justify;
 }
 
 
@@ -116,6 +117,7 @@
     margin-left: 20px;
     line-height: 24px; 
     margin-bottom:300px;
+    text-align: justify;
 }
 
 
@@ -180,6 +182,7 @@
     line-height: 24px; 
     margin-bottom:300px;
     margin-top:50px;
+    text-align: justify;
 }
 
 
@@ -314,6 +317,7 @@
     margin-left: 20px;
     line-height: 24px; 
     margin-bottom:300px;
+    text-align: justify;
 }
 
 
@@ -376,6 +380,7 @@
     margin-left: 20px;
     line-height: 24px; 
     margin-bottom:300px;
+    text-align: justify;
 }
 
 
@@ -432,6 +437,7 @@
     margin-left: 20px;
     line-height: 24px; 
     margin-bottom:300px;
+    text-align: justify;
 }
 
 @media screen and (max-width: 1030px){
@@ -519,6 +525,7 @@
     line-height: 24px; 
     margin-bottom:300px;
     margin-top:50px;
+    text-align: justify;
 }
 
 
@@ -584,6 +591,7 @@
     margin-left: 20px;
     line-height: 24px; 
     margin-bottom:50px;
+    text-align: justify;
 }
 
 .Graduation_video{
@@ -667,6 +675,7 @@
     margin-left: 20px;
     line-height: 24px; 
     margin-bottom:150px;
+    text-align: justify;
 }
 
 /* Time line */
@@ -686,6 +695,7 @@
     margin-right: 50px;
     line-height: 24px; 
     margin-bottom: 20px;
+    text-align: justify;
 }
 
 .description_2D-cavity{
@@ -696,6 +706,7 @@
     margin-left: 50px;
     margin-right: 50px;
     line-height: 24px; 
+    text-align: justify;
 }
 
 .eqn{
