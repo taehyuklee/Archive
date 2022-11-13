@@ -227,7 +227,7 @@ a:hover{
 
 @media screen and (max-width: 1030px){
 .frame{
-    margin: 20px 160px;
+    margin: 20px 180px;
 }
 .navigator{
     flex-direction: column;
