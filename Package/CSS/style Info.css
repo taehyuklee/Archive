@@ -269,8 +269,9 @@
     align-items: left;   
     font-family: "Montserrat", sans-serif;
     font-size: 17px;
+    margin-top: 40px;
     margin-left: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
 }
 
 .Company_img{
@@ -295,7 +296,7 @@
     color: rgb(27, 0, 117);
 }
 
-.Compoany_title{
+.Company_title{
     font-size: 20px;
     font-weight: 500;
     width:100%;
