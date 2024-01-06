@@ -232,7 +232,7 @@
 }
 
 .bottom{
-    margin-bottom: 100px;
+    margin-bottom: 200px;
 }
 
 .conf_tur:hover{
@@ -269,7 +269,7 @@
     font-size: 15px;
     margin-left: 20px;
     line-height: 24px; 
-    margin-bottom:300px;
+    margin-bottom:50px;
 }
 
 @media screen and (max-width: 1030px){
