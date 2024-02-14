@@ -1,91 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-    <title>TAYLEE Home</title>
+        
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <title>TAYLEE Home</title>
 
-    <!--Style css Link-->
-    <link rel="stylesheet" type="text/css" href="package/css/style.css">
-    <link rel="stylesheet" type="text/css" href="package/css/style main.css">
-    <!---->
+        <!--Style css Link-->
+        <link rel="stylesheet" type="text/css" href="package/css/style.css">
+        <link rel="stylesheet" type="text/css" href="package/css/style main.css">
+        <!---->
 
-    <!--google font Montserrat-->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital
-    ,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet">
+        <!--google font Montserrat-->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital
+        ,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
 
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" 
-    rel="stylesheet">
+        <!-- Google font -->
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" 
+        rel="stylesheet">
 
-    <!-- Noto Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
-
-
-    
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({            
-            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
-        });
-    </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-
-    <script src="package/js/main.js" defer></script>
-    
-</head>
+        <!-- Noto Sans -->
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
 
 
+        
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({            
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
+            });
+        </script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 
-<body id="frame" bgproperties="fixed">
+        <script src="package/js/main.js" defer></script>
+        
+    </head>
 
 
-    <div id = "index_select">
 
-        <div id="portfolio">
-            <a id ="portfolio_img" href="TAYLEE Home.html">
-                <img id="portfolio", alt="portfolio", src="./resources/index/Portfolio.png" width=300 height=300>
-            </a>
-            <p id="portfolio_letter">
-                My Portfolio-page
-            </p>
+    <body id="frame" bgproperties="fixed">
+
+            <!--Navigation division-->
+            <nav class = "page_navigator"> <!--nav part for work & Information-->
+                <h3 class="page_site-name"><a href="index.html">TAYLEE's <a class="page_name-archive">Page</a></a></h3>
+                    <!--unorder list는 순서만 안매길뿐 같은 항목에 있는 것을 의미-->
+            </nav>  
+
+        <div id="container">
+            <div id = "index_select">
+
+                <div id="portfolio">
+                    <a id ="portfolio_img" href="TAYLEE Home.html">
+                        <img id="portfolio", alt="portfolio", src="./resources/index/Portfolio.png" width=300 height=300>
+                    </a>
+                    <p id="portfolio_letter">
+                        My Portfolio-page
+                    </p>
+                </div>
+        
+                <div id="line"> </div>
+        
+                <div id="API">
+                    <a id = "openapi_img">
+                        <img id="openapi", alt="openapi", src="./resources/index/Open API.png" width=300 height=300>
+                    </a>
+                    <p id="api_letter">
+                        My Open-APIs
+                    </p>
+        
+                </div>
+        
+            </div>
+        
+        
+            <div class="wrapper">
+                <div class="typing-demo">
+                    Hi, Welcome to TAYLEE's page. 
+                </div>
+            </div>
+        
+            <div class="arrow-down">
+                <a id = "arrow-down" href="#about">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
         </div>
 
-        <div id="line"> </div>
-
-        <div id="API">
-            <a id = "openapi_img">
-                <img id="openapi", alt="openapi", src="./resources/index/Open API.png" width=300 height=300>
-            </a>
-            <p id="api_letter">
-                My Open-APIs
-            </p>
+        <div id="container2">
 
         </div>
-
-    </div>
-
-
-    <div class="wrapper">
-        <div class="typing-demo">
-            Hi, Welcome to TAYLEE page. 
-        </div>
-    </div>
-
-    <div class="arrow-down">
-        <a id = "arrow-down" href="#about">
-            <span></span>
-            <span></span>
-            <span></span>
-        </a>
-    </div>
+        
 
 
-</body>
-
+    </body>
 
 </html>
 
@@ -96,6 +107,16 @@
         height: 100%;
         justify-items: center;
         align-items: center;
+    }
+
+    #container{
+        height : 400vh;
+        background-color: rgb(255, 255, 255);
+    }
+
+    #container2{
+        height: 400vh;
+        background-color: rgb(237, 237, 237);
     }
 
     #index_select{
@@ -111,13 +132,13 @@
     
     
     #portfolio_img, #portfolio_letter{
-        margin-right: 150px;
+        margin-right: 120px;
         font-size: 40px;
         font-family: "Roboto", sans-serif;
     }
 
     #openapi_img, #api_letter{
-        margin-left: 150px;
+        margin-left: 120px;
         font-size: 40px;
         font-family: "Roboto", sans-serif;
     }
@@ -140,7 +161,7 @@
     }
 
 
-
+    /*Typing effect*/
     .wrapper {
         margin-top: 80px;
         height: 10vh;
@@ -150,8 +171,8 @@
     }
 
     .typing-demo {
-        width: 27ch;
-        animation: typing 1.8s steps(27, end), blink .5s step-end infinite alternate;
+        width: 29ch;
+        animation: typing 1.8s steps(29, end), blink .5s step-end infinite alternate;
         white-space: nowrap;
         overflow: hidden;
         border-right: 3px solid;
@@ -172,6 +193,7 @@
     }
 
 
+    /*arrow effect*/
     .arrow-down span{
         display: block;
         align-self: center;
@@ -219,4 +241,53 @@
         animation-delay: -0.6s;
     }
 
+
+    .page_navigator{
+        /*navigation안에서도 Flex로 만들어서 해준다
+        전체 frame뿐만 아니라 element나 block안에서도도 Flex를 쓸수 있다*/
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+        /*rgb(0, 59, 98);*/
+        height: 100px;    
+        border-radius: 15px;
+        align-items: center;    
+        justify-content: space-between; 
+
+        /*h3와 ul에 관해서 space-between이 된다*/
+    }
+
+    .page_navigator>a{
+        color: black;
+        filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+        transition: 0.3s
+    }
+
+    .page_navigator>a:hover{
+        color: white;
+        filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+        transition: 0.3s
+    }
+
+    .page_site-name{
+        margin: 0px;
+        margin-left: 25px;    
+
+        /*font family 적용*/
+        font-family: "Noto Sans", sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    .page_name-archive{
+        /*font family 적용*/
+        font-family: "Noto Sans", sans-serif;
+        font-size: 32px;
+        color: rgb(0, 72, 167);
+    }   
 </style>
+
+
+<script>
+
+</script>
