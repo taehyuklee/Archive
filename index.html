@@ -43,10 +43,23 @@
         <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 
         <script src="package/js/main.js" defer></script>
+
         
+        <script defer>
+            function mouseenterHandler() {
+                document.getElementById("api_text").textContent = "Under Construction";
+            }
+            function mouseleaveHandler() {
+                document.getElementById("api_text").textContent = "My Open-APIs page";
+            }
+
+            function goPage(){
+                document.querySelector('.container2').scrollIntoView({behavior:'smooth'});
+            }
+
+        </script>
+ 
     </head>
-
-
 
     <body id="frame" bgproperties="fixed">
 
@@ -56,7 +69,7 @@
                     <!--unorder list는 순서만 안매길뿐 같은 항목에 있는 것을 의미-->
             </nav>  
 
-        <div id="container">
+        <div class="container">
             <div id = "index_select">
 
                 <div id="portfolio">
@@ -80,7 +93,7 @@
                     </div>
         
                 </div>
-        
+
             </div>
         
         
@@ -90,21 +103,22 @@
                 </div>
             </div>
         
-            <div class="arrow-down">
-                <a id = "arrow-down" href="#about">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
+            <div class="go-page" onclick="goPage()">
+                <div class="arrow-down">
+                    <a id = "arrow-down" href="#about">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
             </div>
-        </div>
-
-        <div id="container2">
 
         </div>
-        
 
-    </body>
+        <div class="container2">
+
+
+
 
 </html>
 
@@ -117,14 +131,14 @@
         align-items: center;
     }
 
-    #container{
+    .container{
         height : 400vh;
         background-color: rgb(255, 255, 255);
     }
 
-    #container2{
-        height: 400vh;
-        background-color: rgb(237, 237, 237);
+    .container2{
+        height: 250vh;
+        background-color: rgb(255, 255, 255);
     }
 
     #index_select{
@@ -228,6 +242,7 @@
         transform: rotate(45deg);
         margin: -10px;
         animation: animate-arrows 2s infinite;
+        pointer-events: cursor;
     }
 
 
@@ -236,6 +251,11 @@
         margin-top: 100px;
         justify-content: center;
         align-items: center;
+    }
+
+    .arrow-down.visible {
+        opacity: 1;
+        pointer-events: auto;
     }
 
 
@@ -310,14 +330,10 @@
         font-size: 32px;
         color: rgb(0, 72, 167);
     }   
+
+    
 </style>
 
 
-<script>
-    function mouseenterHandler() {
-        document.getElementById("api_text").textContent = "Under Construction";
-    }
-    function mouseleaveHandler() {
-        document.getElementById("api_text").textContent = "My Open-APIs page";
-    }
-</script>
+
+
