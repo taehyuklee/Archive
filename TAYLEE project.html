@@ -2,42 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title>TAYLEE Project</title>
 
     <!--Style css Link-->
     <link rel="stylesheet" type="text/css" href="package/css/style.css">
     <link rel="stylesheet" type="text/css" href="package/css/style project main.css">
 
-    <!---->
-
-    <!--google font Montserrat-->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital
-    ,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet">
-
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" 
-    rel="stylesheet">
-
-    <!-- Noto Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
-
-
-    
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({            
-            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
-        });
-    </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-
     <!--Java script event-->
     <script src="package/js/main.js" defer></script>  
     <script src="package/js/components/nav.js" sync></script>
     <script src="package/js/components/footer.js" sync></script>
+    <script src="package/js/components/header.js" sync></script>
+
+    <common-header-component></common-header-component>
     
 </head>
 
@@ -205,56 +182,55 @@
 
     </section>
 
+    
+    <!--School project-->
+    <h2 class="Project-title"> KT DS project</h2>
+    
+    <!-- Vertical Timeline -->
+    <section class="conference-timeline">
+      <div class="timeline-start">Start</div>
+      <div class="conference-center-line"></div> <!--center line stem-->
 
+      <!-- contents for each time line-->
+      <div class="conference-timeline-content">
+        
+          <!-- 2022 time line- Article -->
+          <div class="timeline-article">
+            <div class="content-right-container">
+              <div class="content-right">
+                <p style="font-family:'sans-serif'; width:200px;">
+                  <a class="project_menu" href="./html_project/Project API Gateway Solution.html"> API Gateway Solution</a> </p>
+              </div>
+              <span class="timeline-author">Development of Cloud service</span>
+            </div>
+            <div class="meta-date">
+              <span class="date">2022</span>
+            </div>
+          </div>
+          <!-- // Article -->
+        
+          <!-- 2023 time line- Article -->
+          <div class="timeline-article">
+            <div class="content-left-container">
+              <div class="content-left">
+                <p><a class="project_menu" href="./html_project/Project API Optimization.html"> Performance Optimization</a> </p>
+                <p><a class="project_menu" href="./html_project/Project Test Code.html"> Test code for D-Pla code</a> </p>
+                <p><a class="project_menu" href="./html_project/Project Management of Redis.html"> Management of Redis</a> </p>
+              </div>
 
-     <!--School project-->
-     <h2 class="Project-title"> KT DS project</h2>
-     
-     <!-- Vertical Timeline -->
-     <section class="conference-timeline">
-       <div class="timeline-start">Start</div>
-       <div class="conference-center-line"></div> <!--center line stem-->
- 
-       <!-- contents for each time line-->
-       <div class="conference-timeline-content">
-         
-           <!-- 2022 time line- Article -->
-           <div class="timeline-article">
-             <div class="content-right-container">
-               <div class="content-right">
-                 <p style="font-family:'sans-serif'; width:200px;">
-                   <a class="project_menu" href="./html_project/Project API Gateway Solution.html"> API Gateway Solution</a> </p>
-               </div>
-               <span class="timeline-author">Development of Cloud service</span>
-             </div>
-             <div class="meta-date">
-               <span class="date">2022</span>
-             </div>
-           </div>
-           <!-- // Article -->
-         
-           <!-- 2023 time line- Article -->
-           <div class="timeline-article">
-             <div class="content-left-container">
-               <div class="content-left">
-                 <p><a class="project_menu" href="./html_project/Project API Optimization.html"> Performance Optimization</a> </p>
-                 <p><a class="project_menu" href="./html_project/Project Test Code.html"> Test code for D-Pla code</a> </p>
-                 <p><a class="project_menu" href="./html_project/Project Management of Redis.html"> Management of Redis</a> </p>
-               </div>
+              <span class="timeline-author">Development of Cloud service</span>
+            </div>
+            <div class="meta-date">
+              <span class="date">2023</span>
+            </div>
+          </div>
+          <!-- // Article -->
 
-               <span class="timeline-author">Development of Cloud service</span>
-             </div>
-             <div class="meta-date">
-               <span class="date">2023</span>
-             </div>
-           </div>
-           <!-- // Article -->
- 
-       </div>
- 
-       <div class="timeline-end">End</div>
- 
-     </section>
+      </div>
+
+      <div class="timeline-end">End</div>
+
+    </section>
 
 
 

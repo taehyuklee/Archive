@@ -27,11 +27,6 @@ class common_header_class extends HTMLElement{
             </script>
             <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 
-            <!-- common - javascript -->
-            <script src="package/js/main.js" defer></script>
-            <script src="package/js/components/nav.js" sync></script>
-            <script src="package/js/components/footer.js" sync></script>
-
         </head>
         `
     }
