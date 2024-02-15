@@ -21,7 +21,7 @@ class nav_class extends HTMLElement{
     }
 }
 
-customElements.define('custom-nav', nav_class);
+customElements.define('nav-component', nav_class);
 
 
 //project nav 경로가 달라서 어쩔수 없이 따로 해줘야 한다.
@@ -48,4 +48,4 @@ class other_nav_class extends HTMLElement{
     }
 }
 
-customElements.define('other-custom-nav', other_nav_class);
+customElements.define('other-nav-component', other_nav_class);
