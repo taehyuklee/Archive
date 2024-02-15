@@ -18,6 +18,7 @@
     height: 570px;
     margin-right: 60px;
     border-radius: 15px;
+    object-fit: cover;
 }
 
 
