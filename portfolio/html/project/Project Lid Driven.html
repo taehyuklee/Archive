@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <title>TAYLEE Project</title>
+
+    <!--Style css Link-->
+    <link rel="stylesheet" type="text/css" href="../../css/style research.css">
+    <link rel="stylesheet" type="text/css" href="../../css/style project.css">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+    <!-- Latex -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({            
+            tex2jax: {inlineMath: [['$','$'], ['\\','\\']]}            
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+    <!--Java script event-->
+    <script src="../../js/main.js" defer></script>
+    <script src="../../js/components/nav.js" sync></script>
+    <script src="../../js/components/footer.js" sync></script>
+    <script src="../../js/components/header.js" sync></script>
+
+    <common-header-component></common-header-component>
+    
+</head>
+
+
+
+<body bgproperties="fixed" oncontextmenu='return false'>
+
+    <other-nav-component></other-nav-component>
+
+    <div class = "frame"> <!--div for grouping-->
+    
+        <!--CFD Simulation-->
+        <h3 class="CFD-title">Computational Fluid Dynamics (CFD)</h3>
+
+
+        <!--2D lid driven-->
+        <h4 class="Three-D-title">2D Lid driven problem (Low Reynolds number) - (2020-1)</h4>  
+
+        <div class="Three-Cavity-video">
+
+            <div class="Three_id">
+                <img id="Three_id_gif", src="../../resources/cavity/video u velocity.gif" width=360 height=330>
+                <p class="u-3d">(a) 2D-u velocity field</p>
+            </div>
+
+            <div class="Three_id">
+                <img id="Three_id_gif", src="../../resources/cavity/video v velocity.gif" width=360 height=330>
+                <p class="u-3d">(b) 2D-v velocity field</p>
+            </div>
+
+            <div class="Three_id">
+                <img id="Three_id_gif", src="../../resources/cavity/video vector.gif" width=360 height=330>
+                <p class="u-3d">(c) 2D-w velocity field</p>
+            </div>            
+        </div>
+
+        <p class="description_mid"> &nbsp Navier-Stokes eqn & Divergence free eqn are as follow </p>
+        <p class= "eqn">
+            $$  \frac{\partial {u}}{\partial t} + ({u} \cdot \nabla) {u}  =  -\nabla p + \dfrac{1}{Re_\tau}\nabla^2 {u} $$ 
+            $$  \nabla \cdot {u} = 0 $$ 
+        </p>
+
+        <p class="description_2D-cavity"> &nbsp <b>Description</b>: We studied about computational fluid dynamics (CFD), which is simply simulation used to predict flow in a range of environments, including pipe, open channel, and even semiconductor. You might question why CFD is required rather than experimentation. I can confirm that fluid dynamics experiments are prohibitively expensive.
+            The prominent scientists Navier and Stokes formulated the Navier-Stokes equation, which models fluid flow based on F=ma. However, nobody can find the exact solution to the given equation. Unknown parameters are more than just numbers of equations. Therefore, we must solve this problem using numerical method such as Finite Difference method, Spectral method etc. I solved the given equation using the C/C++ and Python programming languages.
+        </p>
+
+    </div>
+
+    <other-footer-component></other-footer-component>
+
+
+</body>
+
+
+
+</html>

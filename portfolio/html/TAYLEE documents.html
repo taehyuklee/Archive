@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TAYLEE Documents</title>
+
+    <!--Style css Link-->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style document.css">
+    
+    <!--Java script event-->
+    <script src="../js/main.js" defer></script>  
+    <script src="../js/components/nav.js" sync></script>
+    <script src="../js/components/footer.js" sync></script>
+    <script src="../js/components/header.js" sync></script>
+
+    <common-header-component></common-header-component>
+    
+</head>
+
+
+
+<body bgproperties="fixed" oncontextmenu='return false'>
+
+    <nav-component></nav-component>
+
+    <div class = "frame"> <!--div for grouping-->
+
+        <div class="Archive_box">
+            <h4 class="Archive_title"> Archive with notion </h4> 
+            <h2 class="For_details"> Archive for my knowledge</h2> 
+
+            <div class="Archive_list">
+
+                <!--Spring notion-->
+                <div class = "topic-box" OnClick="location.href ='document/Document Archive ME.html'" style="cursor:pointer;" target='_blank'>
+                    
+                    <div class = "topic-box-image">
+                        <img id="MEImg", alt="MEImg", src="../resources/documentLogo/MEImg.jpg" width=300 height=150>
+                    </div>
+    
+                    <div class="topic-box-script"> 
+                        <p class="topic-Ob-title">Mechanical Eng. Repo</p>
+                        <p class="topic-Ob-descript"> Recorded from 2018 - 2021 </p>
+                        <br>
+                    </div>
+                </div>
+
+                
+                <!--Spring Cloud-->
+                <div class = "topic-box" OnClick="location.href ='document/Document Archive CS.html'" style="cursor:pointer;" target='_blank'>
+                    
+                    <div class = "topic-box-image">
+                        <img id="CSImg", alt="box_img", src="../resources/documentLogo/CSImg.jpg" width=300 height=150>
+                    </div>
+    
+                    <div class="topic-box-script"> 
+                        <p class="topic-Ob-title">Computer Science Repo</p>
+                        <p class="topic-Ob-descript"> Start recording from 2022 </p>
+                        <br>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <footer-component></footer-component>
+
+    
+</body>
+</html>
