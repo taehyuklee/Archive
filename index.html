@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         
         <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-        <title>TAYLEE Home</title>
+        <title>TAYLEE's page</title>
 
         <!--Style css Link-->
         <link rel="stylesheet" type="text/css" href="package/css/style.css">
@@ -25,7 +25,15 @@
         <!-- Noto Sans -->
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
 
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PR00E53V0"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
+            gtag('config', 'G-0PR00E53V0');
+        </script>
         
         <script type="text/x-mathjax-config">
             MathJax.Hub.Config({            
@@ -44,7 +52,7 @@
 
             <!--Navigation division-->
             <nav class = "page_navigator"> <!--nav part for work & Information-->
-                <h3 class="page_site-name"><a href="index.html">TAYLEE's <a class="page_name-archive">Page</a></a></h3>
+                <h3 class="page_site-name"><a href="index.html">TAYLEE's</a> <a class="page_name-archive">Page</a></h3>
                     <!--unorder list는 순서만 안매길뿐 같은 항목에 있는 것을 의미-->
             </nav>  
 
@@ -261,7 +269,7 @@
     .page_navigator{
         /*navigation안에서도 Flex로 만들어서 해준다
         전체 frame뿐만 아니라 element나 block안에서도도 Flex를 쓸수 있다*/
-        display: flex;
+        display: inline-block;
         flex-direction: row;
         background-color: white;
         /*rgb(0, 59, 98);*/
@@ -287,7 +295,8 @@
 
     .page_site-name{
         margin: 0px;
-        margin-left: 25px;    
+        margin-left: 25px; 
+        margin-top: 10px;   
 
         /*font family 적용*/
         font-family: "Noto Sans", sans-serif;
@@ -306,9 +315,9 @@
 
 <script>
     function mouseenterHandler() {
-      document.getElementById("api_text").textContent = "Under Construction";
+        document.getElementById("api_text").textContent = "Under Construction";
     }
     function mouseleaveHandler() {
-      document.getElementById("api_text").textContent = "My Open-APIs page";
+        document.getElementById("api_text").textContent = "My Open-APIs page";
     }
-  </script>
+</script>
