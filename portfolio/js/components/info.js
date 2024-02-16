@@ -10,7 +10,7 @@ class info_class extends HTMLElement{
     
             <!--profile section-->
             <div class ="profile-section">
-                <img id="profile-picture", alt="myPics", src="/portfolio/resources/infoImg/Lee's pics.jpg" width=400 height=530>
+                <img id="profile-picture", alt="myPics", src="./portfolio/resources/infoImg/Lee's pics.jpg" width=400 height=530>
                 
                 <div class ="Introduction">
                     <p class ="About_me">ABOUT ME</p>
@@ -81,20 +81,20 @@ class info_class extends HTMLElement{
                         <p class = "Cap-sub">1. Programming language & Framework</p> 
                         &nbsp<p class = "LanguageTypes">Programming language</p>
                         &nbsp&nbsp - Java, Python, C, R script <br>
-                        &nbsp<img class="logo", alt="JavaLogo", src="/portfolio/resources/infoImg/Logo/Java-logo.png">
-                        &nbsp<img class="logo", alt="PythonLog", src="/portfolio/resources/infoImg/Logo/python-logo.png">
-                        &nbsp<img class="logo", alt="RLogo", src="/portfolio/resources/infoImg/Logo/R-logo.png">
-                        &nbsp<img class="logo", alt="CLogo", src="/portfolio/resources/infoImg/Logo/C-logo.png"> <br>
+                        &nbsp<img class="logo", alt="JavaLogo", src="./portfolio/resources/infoImg/Logo/Java-logo.png">
+                        &nbsp<img class="logo", alt="PythonLog", src="./portfolio/resources/infoImg/Logo/python-logo.png">
+                        &nbsp<img class="logo", alt="RLogo", src="./portfolio/resources/infoImg/Logo/R-logo.png">
+                        &nbsp<img class="logo", alt="CLogo", src="./portfolio/resources/infoImg/Logo/C-logo.png"> <br>
     
     
                         &nbsp<p class = "LanguageTypes">Framework</p>
                         &nbsp&nbsp - Tensorflow, Spring Boot <br>
-                        &nbsp<img class="logo", alt="TensorflowLogo", src="/portfolio/resources/infoImg/Logo/TF logo.png">         
-                        &nbsp<img class="logo", alt="SpringBootLogo" src="/portfolio/resources/infoImg/Logo/SpringBoot-logo.png"> <br>
+                        &nbsp<img class="logo", alt="TensorflowLogo", src="./portfolio/resources/infoImg/Logo/TF logo.png">         
+                        &nbsp<img class="logo", alt="SpringBootLogo" src="./portfolio/resources/infoImg/Logo/SpringBoot-logo.png"> <br>
     
                         
                         <li class= "git-logo-list"><a class = "git_menu", rel="noopener", href="https://github.com/TAEHYUKLEE" target='_blank'>
-                            <img src="/portfolio/resources/infoImg/Logo/Github-logo.png", alt="GitLogo", height="20" width="20"/>&nbsp Github (Link)</a></li>
+                            <img src="./portfolio/resources/infoImg/Logo/Github-logo.png", alt="GitLogo", height="20" width="20"/>&nbsp Github (Link)</a></li>
                         <br><br>
                         <p class = "Cap-sub">2. Data anylsis<br> </p>
                         &nbsp - Basic statistics (Correlation coefficient, R-squared, Skewness)<br>
@@ -129,7 +129,7 @@ class info_class extends HTMLElement{
     
                     <div class="certificate"> 
                         <div class="Certificate_img">
-                            <img id="kdataLogo", alt="kdata" , src="/portfolio/resources/infoImg/Logo/Kdata-Logo.png" width=150 height=70>
+                            <img id="kdataLogo", alt="kdata" , src="./portfolio/resources/infoImg/Logo/Kdata-Logo.png" width=150 height=70>
                             <a class = "Orga_menu", id="kdataImg", href="https://www.dataq.or.kr/www/main.do"> -Issuing organization-</a>
                         </div>
     
@@ -143,7 +143,7 @@ class info_class extends HTMLElement{
     
                     <div class="careers">
                         <div class="Company_img">
-                            <img id="sk-img", alt="sk" , src="/portfolio/resources/infoImg/Logo/SK-logo.jpeg" width=150 height=100>
+                            <img id="sk-img", alt="sk" , src="./portfolio/resources/infoImg/Logo/SK-logo.jpeg" width=150 height=100>
                         </div>
     
                         <div class = "Career_element">
@@ -159,7 +159,7 @@ class info_class extends HTMLElement{
     
                     <div class="careers">
                         <div class="Company_img">
-                            <img id="ktds-image", alt="ktds" , src="/portfolio/resources/infoImg/Logo/ktds-logo.png" width=150 height=100>
+                            <img id="ktds-image", alt="ktds" , src="./portfolio/resources/infoImg/Logo/ktds-logo.png" width=150 height=100>
                         </div>
     
                         <div class = "Career_element">
