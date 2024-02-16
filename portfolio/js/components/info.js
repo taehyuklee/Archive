@@ -143,7 +143,7 @@ class info_class extends HTMLElement{
     
                     <div class="careers">
                         <div class="Company_img">
-                            <img id="sk-img", alt="sk" , src="./portfolio/resources/infoImg/Logo/SK-logo.jpeg" width=150 height=100>
+                            <img id="sk-img", alt="sk" , src="./portfolio/resources/infoImg/Logo/SK-logo.png" width=150 height=100>
                         </div>
     
                         <div class = "Career_element">
