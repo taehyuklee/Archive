@@ -2,11 +2,15 @@
 <html lang="en">
         
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
         <title>TAYLEE's page</title>
 
         <!--Style css Link-->
         <link rel="stylesheet" type="text/css" href="portfolio/css/style.css">
         <link rel="stylesheet" type="text/css" href="portfolio/css/style main.css">
+        <link rel="stylesheet" type="text/css" href="portfolio/css/style Info.css">
 
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PR00E53V0"></script>
@@ -18,15 +22,18 @@
             gtag('config', 'G-0PR00E53V0');
         </script>
 
-        <script src="portfolio/js/main.js" defer></script>
+        <!-- <script src="portfolio/js/main.js" defer></script> -->
         <script src="portfolio/js/index.js" defer></script>
         <script src="portfolio/js/components/header.js" sync></script>
+        <script src="portfolio/js/components/info.js" sync></script>
 
         <common-header-component></common-header-component>
 
     </head>
 
-    <body id="frame" bgproperties="fixed">
+    
+
+    <body id="index_frame" bgproperties="fixed">
 
             <!--Navigation division-->
             <nav class = "page_navigator"> <!--nav part for work & Information-->
@@ -67,9 +74,10 @@
                     Hi, Welcome to TAYLEE's page. 
                 </div>
             </div>
-        
-            <div class="go-page" onclick="goPage()">
+
+            <div id="arrow-page" class="go-page"> 
                 <div class="arrow-down">
+                    <!-- onclick="goPage()" -->
                     <a id = "arrow-down" href="#about">
                         <span></span>
                         <span></span>
@@ -77,33 +85,36 @@
                     </a>
                 </div>
             </div>
-
+            
+        <div id = "imgHoverEvent" class="imgHoverEvent event1">
+            <div id="hoverBox" class="hoverBox">
+                <info-component></info-component>
+            </div>
         </div>
 
-        <div class="container2">
+        <!-- <div class="container2"></div> -->
 
-
-
-
+    </body>
 </html>
 
 <style>
     
-    #frame{
+    #index_frame{
         width: 100%;
-        height: 100%;
+        height: 1000;
         justify-items: center;
         align-items: center;
     }
 
     .container{
-        height : 400vh;
+        height : 800px;
         background-color: rgb(255, 255, 255);
     }
 
     .container2{
-        height: 250vh;
-        background-color: rgb(255, 255, 255);
+        height: 400vh;
+        background-color: rgb(169, 0, 0);
+        opacity: 0.1;
     }
 
     #index_select{
@@ -141,7 +152,7 @@
 
     }
     #api:hover > #api_text{
-        color: rgb(160, 29, 29);
+        color: rgb(106, 0, 0);
         transition: all 1.3s ease;
         font-family: "Montserrat", sans-serif;
         font-size: 33px;
@@ -296,6 +307,42 @@
         color: rgb(0, 72, 167);
     }   
     
+
+    /*Hover box*/
+    .imgHoverEvent{
+        width: 100%; 
+        height: 100%; 
+        margin: 30px; 
+        position: relative; 
+        overflow: hidden; 
+        display: inline-block;
+    }
+
+    .imgHoverEvent .imgBox{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background-size: auto 100%;
+    }
+
+    .imgHoverEvent .hoverBox{
+        position: absolute; 
+        top:0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    .event1 .hoverBox{
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 5%,rgb(120, 120, 120) 90%); 
+        transform: translateY(100%); 
+        transition: 1s;
+    }
+
+    .event1:hover .hoverBox{
+        transform: translateY(0);
+    }
 </style>
 
 
