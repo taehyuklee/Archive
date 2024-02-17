@@ -7,7 +7,7 @@ function mouseleaveHandler() {
 }
 
 function goPage(){
-    document.querySelector('.container2').scrollIntoView({behavior:'smooth'});
+    document.querySelector('#imgHoverEvent').scrollIntoView({behavior:'smooth'});
 }
 
 //index portfolio 등록
