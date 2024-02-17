@@ -38,7 +38,7 @@ class info_class extends HTMLElement{
                         Environment engineering<br> 
                         Mechanical engineering<br> 
                     </p>
-                    <a class = "gpa" href="TAYLEE Info course list.html">-Course List (Click)-</a>
+                    
                 </div>
     
             </div>
@@ -69,11 +69,7 @@ class info_class extends HTMLElement{
     
                         
                     </div><br>
-    
-                    <h5 class = "Resmue-title">Activities</h5>
-                    <div class="activities">
-                        <a class = "Resume-activity" href="TAYLEE Activity.html">1. School Activities (Click for details)</a>
-                    </div><br>
+
     
     
                     <h5 class = "Resmue-title">Capability</h5>
