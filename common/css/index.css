@@ -1,0 +1,249 @@
+  
+    #index_frame{
+        width: 100%;
+        height: 1000;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .container{
+        height : 800px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .container2{
+        height: 400vh;
+        background-color: rgb(169, 0, 0);
+        opacity: 0.1;
+    }
+
+    #index_select{
+        margin-top:80px;
+        display: flex;
+        flex-direction: row;
+
+        /*outline: dashed 1px black;*/
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+    
+    #portfolio_img, #port_text{
+        margin-right: 123px;
+    }
+
+    #openapi_img, #api_text{
+        margin-left: 123px;
+    }
+
+    #port_text, #api_text{
+        font-size: 30px;
+        margin-top: 20px;
+        font-family: "Montserrat", sans-serif;
+    }
+    
+
+    #portfolio:hover> #port_text{
+        color: rgb(0, 70, 128);
+        transition: all 1.3s ease;
+        font-family: "Montserrat", sans-serif;
+        font-size: 33px;
+
+    }
+    #api:hover > #api_text{
+        color: rgb(106, 0, 0);
+        transition: all 1.3s ease;
+        font-family: "Montserrat", sans-serif;
+        font-size: 33px;
+    }
+
+
+    #portfolio, #api{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #line{
+        border-left : solid #444444;
+        height : 500px;
+    }
+
+
+
+    /*Typing effect*/
+    .wrapper {
+        margin-top: 80px;
+        height: 10vh;
+        /*This part is important for centering*/
+        display: grid;
+        place-items: center;
+    }
+
+    .typing-demo {
+        width: 29ch;
+        animation: typing 1.8s steps(29, end), blink .5s step-end infinite alternate;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid;
+        font-family: monospace;
+        font-size: 3em;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0
+        }
+    }
+        
+    @keyframes blink {
+        50% {
+            border-color: transparent
+        }
+    }
+
+    /*Text effect*/
+
+
+    /*arrow effect*/
+    .arrow-down span{
+        display: block;
+        align-self: center;
+        width: 2.5em;
+        height: 2.5em;
+        border-bottom: 1.5px solid #000000;
+        border-right: 1.5px solid #000000;
+        transform: rotate(45deg);
+        margin: -10px;
+        animation: animate-arrows 2s infinite;
+        pointer-events: cursor;
+    }
+
+
+    .arrow-down{
+        display: flex; /*display 설정 하지 않으면 align이 먹질 않는다*/
+        margin-top: 100px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .arrow-down.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+
+
+    @keyframes animate-arrows{
+        0%{
+            opacity: 0;
+            transform: rotate(45deg) translate(-1.5em, -1.5em);
+        }
+        50%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+            transform: rotate(45deg) translate(1.5em, 1.5em);
+        }
+    }   
+
+
+    .arrow-down span:nth-child(1){
+        animation-delay: -0.2s;
+    }
+    .arrow-down span:nth-child(2){
+        animation-delay: -0.4s;
+    }
+    .arrow-down span:nth-child(3){
+        animation-delay: -0.6s;
+    }
+
+
+    .page_navigator{
+        /*navigation안에서도 Flex로 만들어서 해준다
+        전체 frame뿐만 아니라 element나 block안에서도도 Flex를 쓸수 있다*/
+        position:relative;
+        margin-left: 35px;
+        margin-top: 20px;
+        display: inline-block;
+        flex-direction: row;
+        background-color: white;
+        /*rgb(0, 59, 98);*/
+        height: 100px;    
+        border-radius: 15px;
+        align-items: center;    
+        justify-content: space-between; 
+
+
+        /*h3와 ul에 관해서 space-between이 된다*/
+    }
+
+    .page_navigator>a{
+        color: black;
+        filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+        transition: 0.3s
+    }
+
+    .page_navigator>a:hover{
+        color: white;
+        filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+        transition: 0.3s
+    }
+
+    .page_site-name{
+        margin: 0px;
+        margin-left: 25px; 
+        margin-top: 10px;   
+
+        /*font family 적용*/
+        font-family: "Noto Sans", sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    .page_name-archive{
+        /*font family 적용*/
+        font-family: "Noto Sans", sans-serif;
+        font-size: 32px;
+        color: rgb(0, 72, 167);
+    }   
+    
+
+    /*Hover box*/
+    .imgHoverEvent{
+        width: 100%; 
+        height: 100%; 
+        margin: 30px; 
+        position: relative; 
+        overflow: hidden; 
+        display: inline-block;
+    }
+
+    .imgHoverEvent .imgBox{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background-size: auto 100%;
+    }
+
+    .imgHoverEvent .hoverBox{
+        position: absolute; 
+        top:0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    .event1 .hoverBox {
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 5%,rgb(120, 120, 120) 90%); 
+        transform: translateY(100%); 
+        transition: 1s;
+    }
+
+    .event1:hover .hoverBox {
+        transform: translateY(0);
+    }
