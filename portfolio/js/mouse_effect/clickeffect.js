@@ -1,9 +1,9 @@
 // <![CDATA[
-var sparks=75; // how many sparks per clicksplosion
-var speed=33; // how fast - smaller is faster
-var bangs=5; // how many can be launched simultaneously (note that using too many can slow the script down)
+var sparks=60; // how many sparks per clicksplosion
+var speed=28; // how fast - smaller is faster
+var bangs=10; // how many can be launched simultaneously (note that using too many can slow the script down)
 // var colours=new Array('#03f', '#f03', '#0e0', '#93f', '#0cf', '#f93', '#f0c'); 
-var colours=new Array('gray', 'gray', '#2E2E2E', 'black', '#0cf', '#f93', 'gray'); 
+var colours=new Array('gray', 'gray', 'gray', 'black', 'gray', 'black', 'gray'); 
 //                     blue    red     green   purple  cyan    orange  pink
 
 /****************************
@@ -44,7 +44,7 @@ function clicksplode() { if (document.getElementById) {
   set_width();
   set_scroll();
   for (i=0; i<bangs; i++) for (j=sparks*i; j<sparks+sparks*i; j++) {
-    stars[j]=createDiv('*', 25);
+    stars[j]=createDiv('*', 15);
     document.body.appendChild(stars[j]);
   }
 }}
@@ -91,7 +91,7 @@ function eksplode(e) {
   x=(e)?e.pageX:event.x+sleft;
   N=++count%bangs;
   M=Math.floor(Math.random()*3*colours.length);
-  intensity[N]=5+Math.random()*30; //터지는 강도
+  intensity[N]=2+Math.random()*10; //터지는 강도
   for (i=N*sparks; i<(N+1)*sparks; i++) {
     Xpos[i]=x;
     Ypos[i]=y-5;
@@ -102,7 +102,7 @@ function eksplode(e) {
     if (M<colours.length) Z.color=colours[i%2?count%colours.length:M];
     else if (M<2*colours.length) Z.color=colours[count%colours.length];
     else Z.color=colours[i%colours.length];
-    Z.fontSize='13px';
+    Z.fontSize='8px';
     Z.visibility='visible';
   }
   clearTimeout(timers[N]);
