@@ -171,8 +171,7 @@ class info_class extends HTMLElement{
     
     
         </div>
-    
-        <footer-component></footer-component>
+
         
     </body>
     `;
