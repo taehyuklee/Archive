@@ -174,7 +174,7 @@ a:hover{
     font-weight: 600;
     color: white;
     /*border-top: 1px solid #C2B4AB;*/
-    margin-bottom: 22px;
+    margin-bottom: 20px;
     margin-left:0px;
 }
 
@@ -183,14 +183,16 @@ a:hover{
     flex-direction: row;
     padding-left:50px;
     padding-right:50px;
+    padding-bottom: 20px;
 }
 
-.blog, .instagram, .facebook, .linkedin{
+.blog, .instagram, .facebook, .linkedin, .github{
     color:white;
 }
 
 #Con-img{
     margin-right:5px;
+    margin-left: 5px;
 }
 
 .links>li{
