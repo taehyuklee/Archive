@@ -8,7 +8,20 @@ function mouseleaveHandler() {
 
 function goPage(){
     document.querySelector('#imgHoverEvent').scrollIntoView({behavior:'smooth'});
+    
 }
+
+var arrow_page = document.querySelector('.arrow-down');
+var event_box = document.querySelector('.event1');
+
+arrow_page.addEventListener('click', function() {
+    if(event_box.classList.contains('active')) {
+        event_box.classList.remove('active');
+    }
+    else{
+        event_box.classList.toggle('active');
+    }
+});
 
 //index portfolio 등록
 document.addEventListener('DOMContentLoaded', function() {
