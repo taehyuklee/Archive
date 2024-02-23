@@ -249,3 +249,7 @@
     .event1:hover .hoverBox {
         transform: translateY(0);
     }
+
+    .event1.active .hoverBox {
+        transform: translateY(0);
+    }
