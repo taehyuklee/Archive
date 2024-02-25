@@ -7,6 +7,70 @@
         background-color: transparent;
     }
 
+    /*Index Page navigator*/
+
+    
+    .page_navigator{
+        position:relative;
+        display: flex;
+        flex-direction: row;
+        background-color: transparent;
+        border-radius: 15px;
+        align-items: center;    
+        justify-content: space-between; 
+        padding-bottom: 30px;
+        height: 100px;    
+        margin-left: 35px;
+        margin-top: 20px;
+
+    }
+
+    .page_navigator>a{
+        color: black;
+        filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+        transition: 0.3s
+    }
+
+    .page_navigator>a:hover{
+        color: white;
+        filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+        transition: 0.3s
+    }
+
+    .page_site-name{
+        margin: 0px;
+        margin-left: 25px;   
+
+        /*font family 적용*/
+        font-family: "Noto Sans", sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    .page_name-archive{
+        /*font family 적용*/
+        font-family: "Noto Sans", sans-serif;
+        font-size: 32px;
+        color: rgb(0, 72, 167);
+    }   
+
+    .nav_list{
+        display: inline-block;
+        margin:0;     
+        padding:7px 11px; 
+    }
+
+    .i_nav_menu{
+        font-family: "Montserrat", sans-serif;
+        font-weight: 540;
+        font-size: 25px;
+        margin-top:100px;
+        margin-right: 70px;
+        margin-left: 15px;   
+        text-shadow: 1.3px 1.3px 1.3px gray; 
+    }
+
+    /*body container*/
     .container{
         height : 800px;
         background-color: rgb(255, 255, 255);
@@ -18,6 +82,8 @@
         opacity: 0.1;
     }
 
+
+    /*My Portfolio page 와 My Open-APIs page*/
     #index_select{
         margin-top:80px;
         display: flex;
@@ -31,10 +97,12 @@
     
     
     #portfolio_img, #port_text{
+        position: relative;
         margin-right: 123px;
     }
 
     #openapi_img, #api_text{
+        position: relative;
         margin-left: 123px;
     }
 
@@ -72,6 +140,79 @@
         height : 500px;
     }
 
+    
+    .background-image {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../assets/images/identity-image.jpg'); /* 실제 이미지 파일의 경로로 바꾸세요 */
+        background-size: cover; /* 이미지를 컨테이너에 맞게 조절합니다. */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        pointer-events: none; 
+        z-index: 1;
+        opacity: 0.85;
+    }
+
+    #openapi{
+        animation-duration: 12s;
+        animation-name: rotate;
+        animation-timing-function:ease-in-out;
+        animation-iteration-count: infinite;
+    }
+
+    #api_img_text{
+        position: absolute;
+        margin-left: 120px;
+        margin-bottom: 60px;
+    }
+
+    /*check image와 row로 나열하기 위함*/
+    #portfolio-cover-img{
+        display: flex;
+        flex-direction: row;
+    }
+
+    /*하나를 그 위의 tag로부터 움직이기 위해서는 그 위의 tag를 relative로 박아주고 시작해야함.*/
+    #portfolio_check{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        bottom: 160px;
+        left: 220px;
+        animation: fadeInFromLeft 6s infinite;   
+        animation-timing-function:ease-in-out;
+
+    }
+
+
+    @keyframes rotate {
+        from {
+            -webkit-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes fadeInFromLeft {
+        0%{
+            opacity: 0;
+        }
+        40%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+        }
+    }
 
 
     /*Typing effect*/
@@ -104,8 +245,6 @@
             border-color: transparent
         }
     }
-
-    /*Text effect*/
 
 
     /*arrow effect*/
@@ -161,56 +300,6 @@
     .arrow-down span:nth-child(3){
         animation-delay: -0.6s;
     }
-
-
-    .page_navigator{
-        /*navigation안에서도 Flex로 만들어서 해준다
-        전체 frame뿐만 아니라 element나 block안에서도도 Flex를 쓸수 있다*/
-        position:relative;
-        margin-left: 35px;
-        margin-top: 20px;
-        display: inline-block;
-        flex-direction: row;
-        background-color: white;
-        /*rgb(0, 59, 98);*/
-        height: 100px;    
-        border-radius: 15px;
-        align-items: center;    
-        justify-content: space-between; 
-
-
-        /*h3와 ul에 관해서 space-between이 된다*/
-    }
-
-    .page_navigator>a{
-        color: black;
-        filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
-        transition: 0.3s
-    }
-
-    .page_navigator>a:hover{
-        color: white;
-        filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
-        transition: 0.3s
-    }
-
-    .page_site-name{
-        margin: 0px;
-        margin-left: 25px; 
-        margin-top: 10px;   
-
-        /*font family 적용*/
-        font-family: "Noto Sans", sans-serif;
-        font-size: 50px;
-        color: black;
-    }
-
-    .page_name-archive{
-        /*font family 적용*/
-        font-family: "Noto Sans", sans-serif;
-        font-size: 32px;
-        color: rgb(0, 72, 167);
-    }   
     
 
     /*Hover box*/
