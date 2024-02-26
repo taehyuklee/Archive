@@ -161,7 +161,8 @@
         position: absolute;
         width: 70%;
         height: 700px;
-        background-color: rgb(83, 83, 83);
+        /* background-color: rgb(83, 83, 83); */
+        background: linear-gradient(to right, rgba(0, 0, 0, 0) 5%, rgb(120, 120, 120) 90%);
         /* filter: grayscale(100%); */
         animation: scrollIn;
         animation-timing-function:ease-in-out;
