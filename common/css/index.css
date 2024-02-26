@@ -183,8 +183,8 @@
         height: 50px;
         bottom: 160px;
         left: 220px;
-        animation: fadeInFromLeft 6s infinite;   
-        animation-timing-function:ease-in-out;
+        animation: slideInDiagonal 3s infinite;   
+        animation-timing-function:ease-out;
 
     }
 
@@ -220,17 +220,14 @@
         }
     }
 
-    @keyframes fadeInFromLeft {
-        0%{
-            opacity: 0;
+    @keyframes slideInDiagonal {
+        0% {
+          transform: translate(100%, 100%);
         }
-        40%{
-            opacity: 1;
+        40% {
+          transform: translate(0, 0);
         }
-        100%{
-            opacity: 0;
-        }
-    }
+      }
 
 
     /*Typing effect*/
