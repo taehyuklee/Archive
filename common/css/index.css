@@ -153,8 +153,20 @@
         background-repeat: no-repeat;
         background-color: transparent;
         pointer-events: none; 
-        z-index: 1;
-        opacity: 0.85;
+        opacity: 1.0;
+        
+    }
+
+    .gray-color{
+        position: absolute;
+        width: 70%;
+        height: 700px;
+        background-color: rgb(31, 65, 0);
+        /* filter: grayscale(100%); */
+        animation: scrollIn;
+        animation-timing-function:ease-in-out;
+        animation-duration: 5s;
+        opacity: 0.4;
     }
 
     #openapi{
@@ -222,12 +234,29 @@
 
     @keyframes slideInDiagonal {
         0% {
-          transform: translate(100%, 100%);
+            transform: translate(100%, 100%);
         }
         40% {
-          transform: translate(0, 0);
+            transform: translate(0, 0);
         }
-      }
+    }
+
+    @keyframes scrollIn {
+        0% {
+            /* transform: translate(0%, 0); */
+            width: 0;
+       
+        }
+        50% {
+            /* transform: translate(80%, 0); */
+            width: 70%;
+        }
+        
+        100%{
+            width: 70%;
+        }
+    }
+
 
 
     /*Typing effect*/
