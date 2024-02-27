@@ -1,7 +1,7 @@
 // <![CDATA[
-var sparks=60; // how many sparks per clicksplosion
+var sparks=50; // how many sparks per clicksplosion
 var speed=28; // how fast - smaller is faster
-var bangs=10; // how many can be launched simultaneously (note that using too many can slow the script down)
+var bangs=5; // how many can be launched simultaneously (note that using too many can slow the script down)
 // var colours=new Array('#03f', '#f03', '#0e0', '#93f', '#0cf', '#f93', '#f0c'); 
 var colours=new Array('gray', 'gray', 'gray', 'black', 'gray', 'black', 'gray'); 
 //                     blue    red     green   purple  cyan    orange  pink
@@ -91,7 +91,8 @@ function eksplode(e) {
   x=(e)?e.pageX:event.x+sleft;
   N=++count%bangs;
   M=Math.floor(Math.random()*3*colours.length);
-  intensity[N]=2+Math.random()*10; //터지는 강도
+  //intensity[N]=2+Math.random()*18; //터지는 강도
+  intensity[N]=13; //터지는 강도
   for (i=N*sparks; i<(N+1)*sparks; i++) {
     Xpos[i]=x;
     Ypos[i]=y-5;

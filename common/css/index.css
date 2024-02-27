@@ -162,13 +162,15 @@
         width: 70%;
         height: 700px;
         /* background-color: rgb(83, 83, 83); */
-        background: linear-gradient(to right, rgba(0, 0, 0, 0) 5%, rgb(120, 120, 120) 90%);
+        /*background: linear-gradient(to right, rgba(0, 0, 0, 0) 5%, rgb(120, 120, 120) 90%);*/
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 5%, rgb(120, 120, 120) 90%);
         /* filter: grayscale(100%); */
         animation: scrollIn;
         animation-timing-function:ease-in-out;
-        animation-duration: 5s;
-        opacity: 0.4;
+        animation-duration: 4.5s;
+        opacity: 0.5;
     }
+
 
     #openapi{
         animation-duration: 12s;
@@ -216,7 +218,6 @@
             margin-left: 57px;
             margin-bottom: 60px;
         }
-
     }
 
 
@@ -272,13 +273,13 @@
     }
 
     .typing-demo {
-        width: 29ch;
-        animation: typing 1.8s steps(29, end), blink .5s step-end infinite alternate;
+        width: 32ch;
+        animation: typing 1.8s steps(32, end), blink .5s step-end infinite alternate;
         white-space: nowrap;
         overflow: hidden;
-        border-right: 3px solid;
-        font-family: monospace;
-        font-size: 3em;
+        border-right: 2px solid;
+        /* font-family: monospace; */
+        font-size: 2.3em;
     }
 
     @keyframes typing {
@@ -388,4 +389,76 @@
 
     .event1.active .hoverBox {
         transform: translateY(0);
+    }
+
+    /* ----------------------- Banner ----------------------- */
+    .vision-banner{
+        position: absolute;
+        margin-left: 5%;
+        margin-top: 3%;
+    }
+    
+    .vision{
+        color: rgb(255, 253, 253);
+        animation-name: scrollInText;
+        animation-timing-function:ease-in-out;
+        animation-duration: 4.5s;
+    }
+
+    .summary{
+        color: white;
+        animation-name: scrollInText;
+        animation-timing-function:ease-in-out;
+        animation-duration: 4.5s;
+        font-family: "Noto Sans KR", sans-serif;
+        font-weight: 100; /*bold*/
+        font-size: 15px;
+        font-style: italic;
+    }
+
+    /*글씨 나오는 Animation*/
+    @keyframes scrollInText {
+        0% {
+            /* transform: translate(0%, 0); */
+            opacity: 0;
+        }
+        43%{
+            opacity: 0;
+        }
+        100% {
+            /* transform: translate(80%, 0); */
+            opacity: 1;
+        }
+    }
+
+    /*===== Reactive =====*/
+    @media (max-width: 1030px) {
+        .vision-banner{
+            position: absolute;
+            margin-left: 5%;
+            margin-top: 8%;
+        }
+
+        .gray-color{
+            width: 87%;
+            background: linear-gradient(to right, rgba(77, 77, 77, 0.5) 5%, rgb(120, 120, 120) 100%);
+            animation-timing-function:ease-in-out;
+            animation-duration: 3.5s;
+        }
+    
+
+        @keyframes scrollIn {
+            0% {
+                /* transform: translate(0%, 0); */
+                width: 0;
+            }
+            15%{
+                width: 0;
+            }
+            80% {
+                /* transform: translate(80%, 0); */
+                width: 87%;
+            }
+        
+        }
     }
