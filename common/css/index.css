@@ -411,8 +411,8 @@
         animation-timing-function:ease-in-out;
         animation-duration: 4.5s;
         font-family: "Noto Sans KR", sans-serif;
-        font-weight: 100; /*bold*/
-        font-size: 15px;
+        font-weight: 200; /*bold*/
+        font-size: 16px;
         font-style: italic;
     }
 
