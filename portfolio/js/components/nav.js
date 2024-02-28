@@ -34,7 +34,7 @@ class other_nav_class extends HTMLElement{
             '<li class="list_menu"><a id="dropdownButton" class="dropbtn" onclick="">Main</a>' +
                 '<div id="dropdownContent" class="dropdown-content">' +
                     '<a class="nav_menu" href="../TAYLEE Home.html">Archive</a>' +
-                    '<a class="nav_menu" href="../../index.html">Page</a>' +
+                    '<a class="nav_menu" href="../../../index.html">Page</a>' +
                 '</div></li>' +
             '<li class="list_menu"><a class="nav_menu" href="../TAYLEE Info.html">Info</a></li>' +
             '<li class="list_menu"><a class="nav_menu" href="../TAYLEE documents.html">Documents</a></li>' +
