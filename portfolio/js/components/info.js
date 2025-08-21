@@ -142,12 +142,14 @@ class info_class extends HTMLElement{
                             <img id="sk-img", alt="sk" , src="./portfolio/resources/infoImg/Logo/SK-logo.png" width=150 height=100>
                         </div>
     
-                        <div class = "Career_element">
-                            <a class = "Company_title", href="https://www.skcc.co.kr/"> SK Inc. C&C <a class="fromdate">(from 2023-01-01)</a> </a>
-                            <p class = "Company_role"> &nbsp Software Engineer & Manager</p>
-                            <p class = "Company_project", id="apiGwPj"> &nbsp &nbsp 1. Development of I-FACTs Manufacturing Solution</p>
-                            <!-- <p class = "Company_project", id="apiGwPj"> &nbsp &nbsp 1. in training <a class="project_sttus"> </a></p> -->
-                        </div>
+                    <div class = "Career_element">
+                        <a class = "Company_title", href="https://www.skcc.co.kr/"> SK Inc. AX(C&C) <a class="fromdate">(from 2023-01-01)</a> </a>
+                        <p class = "Company_role"> &nbsp Software Engineer & Manager</p>
+                        <p class = "Company_project", id="apiGwPj"> &nbsp &nbsp 1. Development of I-FACTs Data Analysis Systems</p>
+                        <p class = "Company_project", id="apiGwPj"> &nbsp &nbsp 2. Development of AI Service (Reinforced Security Agent)</p>
+                        <p class = "Company_project", id="apiGwPj"> &nbsp &nbsp 3. Public Cloud Infrastructure</p>
+                        <!-- <p class = "Company_project", id="apiGwPj"> &nbsp &nbsp 1. in training <a class="project_sttus"> </a></p> -->
+                    </div>
     
                     </div><br>
     
