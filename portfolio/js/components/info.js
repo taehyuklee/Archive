@@ -76,19 +76,21 @@ class info_class extends HTMLElement{
                     <div class="Capability">
                         <p class = "Cap-sub">1. Programming language & Framework</p> 
                         &nbsp<p class = "LanguageTypes">Programming language</p>
-                        &nbsp&nbsp - Java, Python, C, R script <br>
+                        &nbsp&nbsp - Java, &nbsp Python, &nbsp C, &nbsp R script <br>
                         &nbsp<img class="logo", alt="JavaLogo", src="./portfolio/resources/infoImg/Logo/Java-logo.png">
                         &nbsp<img class="logo", alt="PythonLog", src="./portfolio/resources/infoImg/Logo/python-logo.png">
                         &nbsp<img class="logo", alt="RLogo", src="./portfolio/resources/infoImg/Logo/R-logo.png">
                         &nbsp<img class="logo", alt="CLogo", src="./portfolio/resources/infoImg/Logo/C-logo.png"> <br>
     
     
-                        &nbsp<p class = "LanguageTypes">Framework</p>
-                        &nbsp&nbsp - Tensorflow, Spring Boot <br>
+                        &nbsp<p class = "LanguageTypes">Framework</p>                      
+                        &nbsp&nbsp - Tensorflow, &nbsp LangGraph, &nbsp Spring Boot, &nbsp FastAPI <br>
                         &nbsp<img class="logo", alt="TensorflowLogo", src="./portfolio/resources/infoImg/Logo/TF logo.png">         
-                        &nbsp<img class="logo", alt="SpringBootLogo" src="./portfolio/resources/infoImg/Logo/SpringBoot-logo.png"> <br>
-    
-                        
+                        &nbsp<img class="logo", alt="SpringBootLogo" src="./portfolio/resources/infoImg/Logo/langgraph-logo.png"> 
+                        &nbsp<img class="logo", alt="SpringBootLogo" src="./portfolio/resources/infoImg/Logo/SpringBoot-logo.png">
+                        &nbsp<img class="logo", alt="SpringBootLogo" src="./portfolio/resources/infoImg/Logo/fastapi-logo.png">
+                        <br>
+
                         <li class= "git-logo-list"><a class = "git_menu", rel="noopener", href="https://github.com/TAEHYUKLEE" target='_blank'>
                             <img src="./portfolio/resources/infoImg/Logo/Github-logo.png", alt="GitLogo", height="20" width="20"/>&nbsp Github (Link)</a></li>
                         <br><br>
