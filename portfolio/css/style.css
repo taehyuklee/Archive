@@ -70,13 +70,14 @@ a:hover{
 
 .navigator>a{
     color: black;
-    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+    filter: drop-shadow(2px 2px 5px rgb(0, 59, 98));
     transition: 0.3s
 }
 
 .navigator>a:hover{
-    color: white;
-    filter: drop-shadow(3px 3px 5px rgb(0, 59, 98));
+    color: rgb(22, 9, 70);
+    filter: drop-shadow(3px 3px 5px rgb(0, 106, 177));
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* 그림자 조금 더 진하게 */
     transition: 0.3s
 }
 
