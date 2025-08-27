@@ -273,14 +273,13 @@
     }
 
     .typing-demo {
-        width: 26ch;
-        animation: typing 1.8s steps(26, end), blink .5s step-end infinite alternate;
+        font-size: 2.3em;
+        /* font-family: monospace; */
+        border-right: 2px solid;
         white-space: nowrap;
         overflow: hidden;
-        border-right: 2px solid;
-        /* font-family: monospace; */
-        font-size: 2.3em;
     }
+
 
     @keyframes typing {
         from {

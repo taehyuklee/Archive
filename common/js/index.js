@@ -41,3 +41,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 }); 
+
+
+const text = "Profile summary is here, click or hover";
+const container = document.querySelector('.typing-demo');
+
+let i = 0;
+function type() {
+    if (i < text.length) {
+        container.textContent += text[i];
+        i++;
+        setTimeout(type, 55); // 글자 속도 조절
+    }
+}
+type();
