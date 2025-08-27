@@ -146,7 +146,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        aspect-ratio: 18.9 / 9; /* 화면 높이 100% : 원래는 height: 700px 이었음*/ 
+        aspect-ratio: 20 / 9; /* 화면 높이 100% : 원래는 height: 700px 이었음*/ 
         background-image: url('../assets/images/backImage/dark-backgoround.png'); /* 실제 이미지 파일의 경로로 바꾸세요 */
         background-size: cover; /* 이미지를 컨테이너에 맞게 조절합니다. */
         background-position: center;
@@ -159,16 +159,13 @@
 
     .gray-color{
         position: absolute;
-        width: 70%;
-        height: 700px;
-        /* background-color: rgb(83, 83, 83); */
-        /*background: linear-gradient(to right, rgba(0, 0, 0, 0) 5%, rgb(120, 120, 120) 90%);*/
-        background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 5%, rgb(120, 120, 120) 90%);
-        /* filter: grayscale(100%); */
-        animation: scrollIn;
-        animation-timing-function:ease-in-out;
-        animation-duration: 4.5s;
+        width: 70%;                 /* 폭은 70% */
+        height: 100%;               /* 높이는 background-image와 동일 */
+        top: 0;
+        left: 0;
+        background: linear-gradient(to right, rgba(0,0,0,0.3) 5%, rgb(120,120,120) 90%);
         opacity: 0.7;
+        animation: scrollIn 4.5s ease-in-out;
     }
 
 
