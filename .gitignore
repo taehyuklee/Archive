@@ -21,3 +21,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# 인수인계 문서 (로컬 전용, 배포 제외)
+handsover/

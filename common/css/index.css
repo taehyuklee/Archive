@@ -656,10 +656,15 @@
   .cv-js .cv-explore__eyebrow{opacity:1;transform:none;}
 }
 @media (max-width:560px){
-  .cv-topbar{padding:16px 18px;}
-  .cv-brand{font-size:20px;}
-  .cv-nav{gap:14px;}
-  .cv-nav a{font-size:13.5px;}
-  .cv-hero__inner{padding-top:90px;}
-  .cv-btn{padding:12px 22px;font-size:14px;}
+  .cv-topbar{padding:16px 16px;}
+  .cv-brand{font-size:19px;}
+  .cv-nav{gap:13px;}
+  .cv-nav a{font-size:13px;}
+  /* top-align hero so the title sits near the header (was centered → big gap) */
+  .cv-hero{padding:92px 18px 48px; min-height:auto; justify-content:flex-start;}  /* eyebrow↔헤더 간격 */
+  .cv-hero__inner{padding-top:0;}
+  .cv-title{font-size:clamp(30px,9vw,40px);line-height:1.14;margin:0 0 38px;}       /* 제목↔리드 간격 ↑ */
+  .cv-lead{font-size:14.5px;}
+  .cv-btn{padding:12px 20px;font-size:14px;}
+  .cv-scroll{display:none;}   /* scroll cue 불필요 (짧은 히어로) */
 }

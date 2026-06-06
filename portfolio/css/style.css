@@ -270,22 +270,37 @@ nav-component{ display:block; }
     align-items:  flex-start;
     height: auto;            /* let it grow with the open menu */
     margin-top:18px;
-    margin-bottom:20px;
+    margin-bottom:14px;
 }
+/* compact brand + hamburger in mobile/tablet (hamburger mode) — consistent on all pages */
+.site-name{ font-size:24px; }
+.name-archive{ font-size:16px; }
+.nav__toogle{ font-size:23px; right:18px; top:26px; }   /* 브랜드 텍스트(box h33)와 햄버거(26) 세로 중심 정렬 */
+#ham_menu{ width:26px; height:26px; display:block; }
 
-/* mobile menu = full-width vertical card */
+/* mobile menu = full-width vertical card, smooth slide-down open/close */
 .menu_ul{
-    display: none;
+    display: flex;            /* keep in flow so it can animate */
     flex-direction: column;
     align-items: stretch;
     width:100%;
-    margin-top:16px;
-    padding:8px;
     box-sizing:border-box;
     background:#fff;
     border:1px solid var(--line, #e6e9f1);
     border-radius:14px;
     box-shadow:0 10px 28px rgba(15,23,42,.10);
+    /* collapsed (closed) state */
+    max-height:0;
+    margin-top:0;
+    padding:0 8px;
+    opacity:0;
+    overflow:hidden;
+    transform:translateY(-8px);
+    transition: max-height .34s cubic-bezier(.4,0,.2,1),
+                opacity .24s ease,
+                transform .34s cubic-bezier(.4,0,.2,1),
+                margin-top .34s ease,
+                padding .34s ease;
 }
 
 .nav__toogle{
@@ -293,8 +308,11 @@ nav-component{ display:block; }
 }
 
 .menu_ul.active{
-    display: flex;
-    animation: fadein .25s ease-in-out;
+    max-height:640px;
+    margin-top:16px;
+    padding:8px;
+    opacity:1;
+    transform:translateY(0);
 }
 
 /* full-width tappable rows */
@@ -871,3 +889,42 @@ a.info-chip:hover{background:#fff;border-color:#c7d0e0;}
 /* text-only stack chip (for items without a logo image: JavaScript, databases) */
 .info-logo--text{padding:9px 14px;color:var(--accent,#003B62);background:linear-gradient(150deg,#eef4ff,#e6fbf7);}
 .info-logo--text span{font-weight:700;}
+
+
+/* ============================================================
+   Mobile fit-ups — fix horizontal overflow & oversized bits
+   ============================================================ */
+@media (max-width:560px){
+  /* footer CONTACT links overflowed (~549px) → wrap + tighten (오른쪽 여백 원인 제거) */
+  .links{ flex-wrap:wrap; justify-content:center; padding-left:14px; padding-right:14px; row-gap:10px; }
+  .links>li{ margin-left:9px; margin-right:9px; font-size:14.5px; }
+  /* hero title not too large on phones */
+  .pf-hero__title{ font-size:clamp(25px,7vw,34px); line-height:1.22; }
+  /* tighten the gap between the nav header and the hero title (portfolio Home) */
+  .pf-hero{ padding-top:30px; }
+  /* and the light inner-page header top gap */
+  .pf-pagehead{ padding-top:24px; }
+
+  /* ---- slightly smaller font scale on phones (아주 살짝) ---- */
+  .pf-h2{ font-size:23px; }
+  .pf-pagehead__title{ font-size:27px; }
+  .pf-pagehead__lead{ font-size:14.5px; }
+  .pf-pagehead__role{ font-size:14.5px; }
+  .pf-sub{ font-size:14px; }
+  .pf-card__title{ font-size:16.5px; }
+  .pf-card__desc{ font-size:13.5px; }
+  .pf-hero__lead{ font-size:14.5px; }
+  .info-chip, .info-tag{ font-size:13px; }
+
+  /* Tech stack chips: tidy 2-col grid so rows/cols line up (정갈하게) */
+  .info-stack{ padding:24px 18px; gap:26px 0; }
+  .info-stack__group{ flex-basis:100%; width:100%; }
+  .info-logos{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .info-logo{ justify-content:flex-start; font-size:12.5px; padding:8px 10px; gap:7px; }
+  .info-logo img{ width:22px; height:22px; }
+  .info-logo span{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0; }
+}
+/* safety net: never let anything cause sideways scroll on phones */
+@media (max-width:560px){
+  html, body{ overflow-x:hidden; }
+}

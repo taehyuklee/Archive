@@ -524,6 +524,24 @@ body {
     padding: 40px 0;
   }
 
+  /* section header: stack title row + meta on its own line whenever it gets tight
+     (태블릿/모바일 — 메타가 제목 옆에서 줄바꿈되며 깨지던 문제) */
+  @media (max-width: 900px) {
+    .proj-secthead { flex-wrap: wrap; row-gap: 6px; align-items: center; }
+    .proj-secthead .proj-dot { flex: 0 0 auto; }
+    .proj-secthead__title { font-size: 18px; }
+    .proj-toggle { order: 2; margin-left: auto; }
+    .proj-secthead__meta {
+      order: 3;
+      flex-basis: 100%;
+      width: 100%;
+      padding-left: 20px;       /* dot(10) + gap(10) 아래 정렬 */
+      font-size: 12.5px;
+      line-height: 1.5;
+      white-space: normal;
+    }
+  }
+
   @media (max-width: 520px) {
     .frame { padding: 36px 16px 72px; }
     .proj-h1 { font-size: 30px; }
