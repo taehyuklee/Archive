@@ -465,3 +465,20 @@ p code, li code {
     .docs-h3 { font-size: 18px; }
     .docs-post__body { font-size: 15px; }
 }
+
+
+/* ---- raster image figures + download/back link (project detail pages) ---- */
+.docs-fig img{ max-width:100%; height:auto; background:#fff; border:1px solid #e5e9ef; border-radius:10px; }
+.docs-fig-row figure img{ width:100%; height:auto; background:#fff; border:1px solid #e5e9ef; border-radius:10px; }
+.docs-downloads{ display:flex; flex-wrap:wrap; gap:12px; margin:10px 0 4px; }
+.docs-post a.docs-download{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:11px 20px; background:var(--accent-2,#0048A7); color:#fff !important;
+  border-radius:999px; font-weight:700; font-size:14px; text-decoration:none;
+  transition:background .16s ease, box-shadow .16s ease;
+}
+.docs-post a.docs-download:hover{ background:var(--accent,#003B62); color:#fff !important; box-shadow:0 6px 16px rgba(0,72,167,.25); }
+.docs-post a.docs-download--ghost{ background:#fff; color:var(--accent-2,#0048A7) !important; border:1px solid #cfe0f3; }
+.docs-post a.docs-download--ghost:hover{ background:#f1f6fc; }
+.docs-backlink{ display:inline-block; margin-top:44px; font-weight:700; color:var(--accent-2,#0048A7); text-decoration:none; }
+.docs-backlink:hover{ text-decoration:underline; }

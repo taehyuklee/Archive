@@ -895,9 +895,11 @@ a.info-chip:hover{background:#fff;border-color:#c7d0e0;}
    Mobile fit-ups — fix horizontal overflow & oversized bits
    ============================================================ */
 @media (max-width:560px){
-  /* footer CONTACT links overflowed (~549px) → wrap + tighten (오른쪽 여백 원인 제거) */
-  .links{ flex-wrap:wrap; justify-content:center; padding-left:14px; padding-right:14px; row-gap:10px; }
-  .links>li{ margin-left:9px; margin-right:9px; font-size:14.5px; }
+  /* footer CONTACT links: tidy 2×2 grid (어중간한 줄바꿈 방지) */
+  .links{ display:grid; grid-template-columns:1fr 1fr; gap:16px 12px; justify-items:start;
+          width:max-content; max-width:100%; margin:0 auto; padding:0; }
+  .links>li{ margin:0; font-size:14.5px; }
+  .links>li>a{ display:inline-flex; align-items:center; gap:7px; }
   /* hero title not too large on phones */
   .pf-hero__title{ font-size:clamp(25px,7vw,34px); line-height:1.22; }
   /* tighten the gap between the nav header and the hero title (portfolio Home) */

@@ -1,67 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>TAYLEE Project</title>
-    <!-- Open Graph / social share -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="TAYLEE's Archive">
-    <meta property="og:title" content="TAYLEE Project">
-    <meta property="og:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
-    <meta property="og:url" content="https://taehyuklee.github.io/portfolio/html/project/Project%20thesis.html">
-    <meta property="og:image" content="https://taehyuklee.github.io/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TAYLEE Project">
-    <meta name="twitter:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
-    <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Time Forecasting of PM2.5 via Neural Network — TAYLEE Archive</title>
+<!-- Open Graph / social share -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TAYLEE's Archive">
+<meta property="og:title" content="Time Forecasting of PM2.5 via Neural Network — TAYLEE Archive">
+<meta property="og:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
+<meta property="og:url" content="https://taehyuklee.github.io/portfolio/html/project/Project%20thesis.html">
+<meta property="og:image" content="https://taehyuklee.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Time Forecasting of PM2.5 via Neural Network — TAYLEE Archive">
+<meta name="twitter:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
+<meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
 
+<link rel="stylesheet" type="text/css" href="../../css/style.css?v=20260605-33">
+<link rel="stylesheet" type="text/css" href="../document/posts.css?v=20260605-33">
 
-    <!--Style css Link-->
-    <link rel="stylesheet" type="text/css" href="../../css/style.css?v=20260605-30">
-    <link rel="stylesheet" type="text/css" href="../../css/style project.css?v=20260605-30">
+<script src="../../js/main.js?v=20260605-33" defer></script>
+<script src="../../js/components/nav.js?v=20260605-33" sync></script>
+<script src="../../js/components/footer.js?v=20260605-33" sync></script>
+<script src="../../js/components/header.js?v=20260605-33" sync></script>
 
-    <!--Java script event-->
-    <script src="../../js/main.js?v=20260605-30" defer></script>
-    <script src="../../js/components/nav.js?v=20260605-30" sync></script>
-    <script src="../../js/components/footer.js?v=20260605-30" sync></script>
-    <script src="../../js/components/header.js?v=20260605-30" sync></script>
-
-    <common-header-component></common-header-component>
-    
+<common-header-component></common-header-component>
 </head>
+<body>
+<nav-component></nav-component>
 
+<main class="docs-post">
+  <article class="docs-post__article">
+    <header class="docs-post__header">
+      <p class="docs-post__eyebrow"><a href="../TAYLEE project.html">← Projects</a></p>
+      <h1 class="docs-post__title">Time Forecasting of PM2.5 via Neural Network</h1>
+    </header>
+    <div class="docs-post__body">
 
-<body bgproperties="fixed" oncontextmenu='return false'>
-    
-    <other-nav-component></other-nav-component>
-    
-    <div class = "frame"> <!--div for grouping-->
+<dl class="docs-meta">
+  <dt>Year</dt><dd>2019</dd>
+  <dt>Field</dt><dd>Mechanical engineering</dd>
+  <dt>Type</dt><dd>Undergraduate thesis</dd>
+</dl>
 
-        <!--School project-->
-        <h3 class="Project-title"> Mechanical Engineering undergraduated school project</h3>
-        
-        <!--PM2.5 forecasting-->
-        <h4 class="Thesis-title">Undergraduated thesis - Time forecasting (2019-1)</h4>  
+<h2 class="docs-h2">Overview</h2>
+<p class="docs-p">Undergraduate thesis developing a neural network to forecast fine particulate matter (PM2.5) — learning directly from statistically selected meteorological and air-quality variables instead of chaining together costly physical governing equations.</p>
 
-        <div class="data_analysis">            
-            
-            <div class="thesis_class">
-                <img id="schematic_img", src="../../resources/project/Under graduated thesis/Lee, TaeHyuk - Poster1.jpg" width=780 height=1200>
-                <p class="thesis_sub">(a) Project poster </p>  
-            </div>
+<h2 class="docs-h2">Key points</h2>
+<ul class="docs-list">
+  <li>Feed-forward neural network: 2 hidden layers, 256 neurons, ReLU activation, Adam optimizer, variance-scaling initializer.</li>
+  <li>Forecast PM2.5 24 hours ahead from 72 hours of prior data (PM10, visibility, SO₂, CO, NO₂, O₃, temperature, pressure, solar radiation, wind…).</li>
+  <li>Selected independent variables statistically via stepwise selection, AIC, and multicollinearity (VIF); imputed missing values with predictive-mean-matching.</li>
+  <li>Benchmarked against multiple linear regression (real-vs-predicted scatter, R²).</li>
+  <li>The network beat multiple regression (cost 0.11, validation 1.33), tracking real values more closely over time.</li>
+</ul>
 
-        </div>
-        
+<h2 class="docs-h2">Figures</h2>
+<div class="docs-fig">
+  <img src="../../resources/project/Under graduated thesis/Lee, TaeHyuk - Poster1.jpg" alt="Thesis poster" loading="lazy">
+  <figcaption>Thesis poster — full research summary</figcaption>
+</div>
 
-        <p class="description_thesis"> &nbsp <b>Description</b>: <a class="down_report" href="../../resources/project//Under graduated thesis/Lee, TaeHyuk - Poster.pdf" download> Poster (download) </a>  
-        </p>
+<div class="docs-downloads">
+  <a class="docs-download" href="../../resources/project/Under graduated thesis/Lee, TaeHyuk - Poster.pdf" target="_blank" rel="noopener">⤓ Poster (PDF)</a>
+</div>
 
+<a class="docs-backlink" href="../TAYLEE project.html">← Back to all projects</a>
 
     </div>
+  </article>
+</main>
 
-    <other-footer-component></other-footer-component>
-    
+<footer-component></footer-component>
 </body>
 </html>

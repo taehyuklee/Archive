@@ -1,77 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>TAYLEE Project</title>
-    <!-- Open Graph / social share -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="TAYLEE's Archive">
-    <meta property="og:title" content="TAYLEE Project">
-    <meta property="og:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
-    <meta property="og:url" content="https://taehyuklee.github.io/portfolio/html/project/Project%20Data%20analysis.html">
-    <meta property="og:image" content="https://taehyuklee.github.io/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TAYLEE Project">
-    <meta name="twitter:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
-    <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Environmental Data Analysis in R — TAYLEE Archive</title>
+<!-- Open Graph / social share -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TAYLEE's Archive">
+<meta property="og:title" content="Environmental Data Analysis in R — TAYLEE Archive">
+<meta property="og:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
+<meta property="og:url" content="https://taehyuklee.github.io/portfolio/html/project/Project%20Data%20analysis.html">
+<meta property="og:image" content="https://taehyuklee.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Environmental Data Analysis in R — TAYLEE Archive">
+<meta name="twitter:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
+<meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
 
+<link rel="stylesheet" type="text/css" href="../../css/style.css?v=20260605-33">
+<link rel="stylesheet" type="text/css" href="../document/posts.css?v=20260605-33">
 
-    <!--Style css Link-->
-    <link rel="stylesheet" type="text/css" href="../../css/style.css?v=20260605-30">
-    <link rel="stylesheet" type="text/css" href="../../css/style project.css?v=20260605-30">
+<script src="../../js/main.js?v=20260605-33" defer></script>
+<script src="../../js/components/nav.js?v=20260605-33" sync></script>
+<script src="../../js/components/footer.js?v=20260605-33" sync></script>
+<script src="../../js/components/header.js?v=20260605-33" sync></script>
 
-    <!--Java script event-->
-    <script src="../../js/main.js?v=20260605-30" defer></script>
-    <script src="../../js/components/nav.js?v=20260605-30" sync></script>
-    <script src="../../js/components/footer.js?v=20260605-30" sync></script>
-    <script src="../../js/components/header.js?v=20260605-30" sync></script>
-
-    <common-header-component></common-header-component>
-        
+<common-header-component></common-header-component>
 </head>
+<body>
+<nav-component></nav-component>
+
+<main class="docs-post">
+  <article class="docs-post__article">
+    <header class="docs-post__header">
+      <p class="docs-post__eyebrow"><a href="../TAYLEE project.html">← Projects</a></p>
+      <h1 class="docs-post__title">Environmental Data Analysis in R</h1>
+    </header>
+    <div class="docs-post__body">
+
+<dl class="docs-meta">
+  <dt>Year</dt><dd>2017</dd>
+  <dt>Field</dt><dd>Environmental engineering</dd>
+  <dt>Type</dt><dd>Undergraduate course project</dd>
+</dl>
+
+<h2 class="docs-h2">Overview</h2>
+<p class="docs-p">Statistical data-analysis project in R exploring whether people's late-night meal choices change with external factors — using correlation analysis and clustering to surface patterns in the data.</p>
+
+<h2 class="docs-h2">Key points</h2>
+<ul class="docs-list">
+  <li>Wrote R scripts to clean, transform, and analyze the dataset.</li>
+  <li>Computed a correlation-coefficient matrix to identify related variables.</li>
+  <li>Applied clustering analysis to group observations and reveal structure.</li>
+  <li>Practiced exploratory data analysis and statistical visualization.</li>
+</ul>
+
+<h2 class="docs-h2">Figures</h2>
+<div class="docs-fig-row">
+  <figure><img src="../../resources/project/Data analysis (env)/Correlation coefficient.png" alt="(a) Correlation coefficient" loading="lazy"><figcaption>(a) Correlation coefficient</figcaption></figure>
+  <figure><img src="../../resources/project/Data analysis (env)/Clustering analysis.png" alt="(b) Clustering analysis" loading="lazy"><figcaption>(b) Clustering analysis</figcaption></figure>
+</div>
 
 
 
-<body bgproperties="fixed" oncontextmenu='return false'>
-
-    <other-nav-component></other-nav-component>
-
-    <div class = "frame"> <!--div for grouping-->
-
-        <!--School project-->
-        <h3 class="Project-title"> Environmental Engineering undergraduated school project</h3>
-
-        <!--Environment-data analysis-->
-        <h4 class="Data_analysis-title">Environment-Data analysis - project (2017-1)</h4>  
-
-        <div class="data_analysis">            
-            
-            <div class="data_class">
-                <img id="data_img", src="../../resources/project/Data analysis (env)/Correlation coefficient.png" width=500 height=230>
-                <p class="data_sub">(a) Correlation coefficient </p>  
-            </div>
-
-            <div class="data_class">
-                <img id="clustering_img", src="../../resources/project/Data analysis (env)/Clustering analysis.png" width=450 height=270>
-                <p class="data_sub">(b) Clustering analysis </p>  
-            </div>
-        </div>
-        
-
-        <p class="description_data"> &nbsp <b>Description</b>: Using R-script, We analyzed data to find out whether people's choice of late-night meals changes depending on the weather.
-            The final goal is to optimize customer service according to the weather forecast.
-            Late-night meal data(from SKT big Hub) consist of variables such as pizza, chicken, and balck-noodles, etc. and weather data consist of precipitation, temperature, air pressure, and wind direction, etc. were collected.
-            Correlation analysis(a) and cluster analysis(b) were performed with the weather variable as the independent variable and the late-night meal menu as the dependent variable.
-            In conclusion, although no correlation was found, it was the first data analysis project that let me understand the importance of sharing role and the potential of data in Data Analysis Works.
-        </p>
-
-
+<a class="docs-backlink" href="../TAYLEE project.html">← Back to all projects</a>
 
     </div>
+  </article>
+</main>
 
-    <other-footer-component></other-footer-component>
-    
+<footer-component></footer-component>
 </body>
 </html>

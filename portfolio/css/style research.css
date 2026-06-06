@@ -289,3 +289,14 @@
     }
     
 }
+
+/* ---- responsive fit-up for old research/CFD detail pages ---- */
+@media (max-width:760px){
+  .frame{ max-width:100%; box-sizing:border-box; padding:24px 16px 60px; }
+  .frame img{ max-width:100%; height:auto; }
+  .Three-Cavity-video, .Two-Cavity-video, .Turb_con, .bottom{ flex-wrap:wrap; gap:16px; }
+  .Three_id, .Two_id{ flex:1 1 260px; max-width:100%; }
+  .Control-div{ flex-wrap:wrap; margin:0 0 16px; }
+  .Control-div img, .NN-model-img img, .NN-model-img{ max-width:100%; height:auto; }
+  .u-3d, .u-2d{ margin-right:0; }
+}

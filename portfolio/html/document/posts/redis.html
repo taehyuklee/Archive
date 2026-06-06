@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redis — In-Memory Middleware (Caching · Session · Operation) — TAYLEE Archive</title>
+    <!-- Open Graph / social share -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TAYLEE's Archive">
+    <meta property="og:title" content="Redis — In-Memory Middleware (Caching · Session · Operation) — TAYLEE Archive">
+    <meta property="og:description" content="Bringing Redis in as the in-memory middleware layer for a cloud service — caching, session and distributed lock on the client side, replication / sharding / Sentinel / Cluster on the server side.">
+    <meta property="og:url" content="https://taehyuklee.github.io/portfolio/html/document/posts/redis.html">
+    <meta property="og:image" content="https://taehyuklee.github.io/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Redis — In-Memory Middleware (Caching · Session · Operation) — TAYLEE Archive">
+    <meta name="twitter:description" content="Bringing Redis in as the in-memory middleware layer for a cloud service — caching, session, distributed lock, and its operation model.">
+    <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-33">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-33">
+
+<script src="../../../js/main.js?v=20260605-33" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-33" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-33" sync></script>
+<script src="../../../js/components/header.js?v=20260605-33" sync></script>
+
+<common-header-component></common-header-component>
+</head>
+<body>
+<nav-component></nav-component>
+
+<main class="docs-post">
+  <article class="docs-post__article">
+    <header class="docs-post__header">
+      <p class="docs-post__eyebrow"><a href="../../TAYLEE project.html">← Projects</a></p>
+      <h1 class="docs-post__title">Redis — In-Memory Middleware</h1>
+    </header>
+    <div class="docs-post__body">
+
+<div class="docs-langtabs" role="tablist">
+  <button class="docs-langbtn is-active" data-lang="en">English</button>
+  <button class="docs-langbtn" data-lang="ko">한국어</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="docs-lang" data-lang="en">
+
+<div class="docs-callout">
+  <div class="docs-callout__icon">⚡</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>One line</strong> — Toward the end of the KT DS cloud-service work, I brought <strong>Redis</strong> in as the in-memory middleware layer: <strong>caching</strong>, <strong>session store</strong> and <strong>distributed lock</strong> on the client (Spring Boot) side, and an <strong>operation model</strong> — replication · sharding · Sentinel / Cluster — on the server side. This page distills the engineering manual I wrote so the team could adopt it.</p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>Period</dt><dd>2023 · KT DS — Cloud service</dd>
+  <dt>Role</dt><dd>Backend &amp; middleware engineering · Spring–Redis integration</dd>
+  <dt>Scope</dt><dd>Server-side operation + client-side Spring Boot integration</dd>
+  <dt>Deliverable</dt><dd>Internal Redis manual (Redis 7.2), used as the team reference</dd>
+</dl>
+
+<h2 class="docs-h2">Why Redis — and where it fits</h2>
+<p class="docs-p"><strong>Redis</strong> (REmote DIctionary Server) is an open-source, in-memory key–value NoSQL store. Because it keeps data in memory it is extremely fast (~100K ops/s), but the same memory residency makes it <strong>volatile</strong> — so clustering and backup are non-negotiable for production. That speed-vs-volatility trade-off is exactly why it shines for short-lived, frequently-touched data: <strong>caching</strong>, <strong>session</strong>, message queue (<code>Streams</code>), <code>Pub/Sub</code>, and <strong>distributed locks</strong>. I integrated it at the <em>application</em> level through Spring Boot rather than driving it by hand with <code>redis-cli</code>.</p>
+
+<h3 class="docs-h3">Two integration patterns</h3>
+<div class="docs-fig">
+<svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <!-- Look-aside -->
+  <text x="180" y="22" text-anchor="middle" fill="#003B62" font-weight="700">Look-aside Cache</text>
+  <rect x="40" y="40" width="120" height="38" rx="8" fill="#e8f3fc" stroke="#0078d7"/><text x="100" y="63" text-anchor="middle">App (client)</text>
+  <rect x="40" y="118" width="120" height="38" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="100" y="141" text-anchor="middle">Redis</text>
+  <rect x="40" y="196" width="120" height="38" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="100" y="219" text-anchor="middle">DB</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="100" y1="78" x2="100" y2="116"/><polygon points="100,118 96,110 104,110"/>
+  </g>
+  <text x="116" y="100" fill="#0e8b87" font-weight="700">① hit?</text>
+  <line x1="135" y1="156" x2="135" y2="194" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="4 3"/><polygon points="135,196 131,188 139,188" fill="#94a3b8"/>
+  <text x="150" y="180" fill="#64748b">② miss → DB</text>
+  <text x="100" y="246" text-anchor="middle" fill="#64748b">read Redis before DB</text>
+  <!-- Write-back -->
+  <text x="540" y="22" text-anchor="middle" fill="#003B62" font-weight="700">Write-back</text>
+  <rect x="400" y="40" width="120" height="38" rx="8" fill="#e8f3fc" stroke="#0078d7"/><text x="460" y="63" text-anchor="middle">App (client)</text>
+  <rect x="400" y="118" width="120" height="38" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="460" y="141" text-anchor="middle">Redis (buffer)</text>
+  <rect x="400" y="196" width="120" height="38" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="460" y="219" text-anchor="middle">DB</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="460" y1="78" x2="460" y2="116"/><polygon points="460,118 456,110 464,110"/>
+    <line x1="460" y1="156" x2="460" y2="194"/><polygon points="460,196 456,188 464,188"/>
+  </g>
+  <text x="476" y="100" fill="#0078d7" font-weight="700">① write all</text>
+  <text x="476" y="180" fill="#0e8b87" font-weight="700">② batch insert</text>
+  <text x="560" y="180" fill="#64748b" font-size="11">1000×1 ≫ 1×1000</text>
+  <text x="540" y="246" text-anchor="middle" fill="#64748b">buffer writes, flush on a schedule</text>
+</svg>
+<figcaption>Look-aside (read through cache) vs Write-back (buffer writes, then batch-insert) — one big insert beats a thousand small ones</figcaption>
+</div>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">Server-side — operating Redis</h2>
+<p class="docs-p">Speed comes from living in RAM, so the whole operations story is really about <strong>protecting that memory</strong>: bounding it, replicating it for failover, and splitting it across servers when one box runs out.</p>
+
+<h3 class="docs-h3">⊙ Memory management</h3>
+<p class="docs-p">Redis is fast precisely because it reads/writes memory — but if physical memory fills up and the OS starts <strong>swapping</strong>, every access turns into disk I/O and throughput collapses. So I treat memory as the primary operational signal:</p>
+<ul class="docs-list">
+  <li>Set <code>maxmemory</code> deliberately, based on the service. Past the limit, Redis evicts according to its <strong>eviction policy</strong> (below).</li>
+  <li>Keep each instance ≤ <strong>½ of server RAM</strong> — this leaves headroom for the copy-on-write spike during replication (explained next).</li>
+  <li>Memory is managed in pages/frames, so storing wildly different value sizes causes <strong>fragmentation</strong> — actual footprint exceeds the stored data. Keeping similarly-sized values together helps.</li>
+  <li>Watch it continuously (<code>top</code>, plus the <code>INFO</code> metrics further down).</li>
+</ul>
+
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>maxmemory-policy</th><th>What it evicts when full</th></tr></thead>
+  <tbody>
+    <tr><th><code>noeviction</code></th><td>Nothing — returns an OOM error on writes</td></tr>
+    <tr><th><code>allkeys-lru</code></th><td>Least-recently-used key, across all keys</td></tr>
+    <tr><th><code>volatile-lru</code></th><td>LRU key, only among keys with a TTL</td></tr>
+    <tr><th><code>volatile-ttl</code></th><td>Shortest-TTL key first, among keys with a TTL</td></tr>
+    <tr><th><code>allkeys-random</code></th><td>A random key, across all keys</td></tr>
+    <tr><th><code>volatile-random</code></th><td>A random key, among keys with a TTL</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3 class="docs-h3">⊙ Replication — HA / disaster recovery</h3>
+<p class="docs-p">Redis is a process; it can die at any time. <strong>Replication</strong> keeps synchronized copies — an Origin (Master) plus Replicas (Slaves) forming a <strong>Replica Set</strong>. It uses <strong>asynchronous</strong> replication: the Origin <code>fork()</code>s a child process so it can keep serving while the child ships data to replicas.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <rect x="40" y="90" width="150" height="46" rx="10" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
+  <text x="115" y="111" text-anchor="middle" fill="#003B62" font-weight="700">Origin (Master)</text>
+  <text x="115" y="128" text-anchor="middle" fill="#64748b" font-size="11">serves traffic</text>
+  <rect x="250" y="90" width="130" height="46" rx="10" fill="#fff" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="315" y="111" text-anchor="middle" fill="#475569" font-weight="700">Child (fork)</text>
+  <text x="315" y="128" text-anchor="middle" fill="#64748b" font-size="11">RDB snapshot</text>
+  <rect x="540" y="40" width="150" height="42" rx="10" fill="#e9f7f3" stroke="#0e8b87"/><text x="615" y="66" text-anchor="middle">Replica (Slave)</text>
+  <rect x="540" y="146" width="150" height="42" rx="10" fill="#e9f7f3" stroke="#0e8b87"/><text x="615" y="172" text-anchor="middle">Replica (Slave)</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="190" y1="113" x2="248" y2="113"/><polygon points="250,113 242,109 242,117"/>
+    <line x1="380" y1="105" x2="538" y2="65"/><polygon points="540,64 531,64 534,72"/>
+    <line x1="380" y1="120" x2="538" y2="163"/><polygon points="540,164 531,156 534,164"/>
+  </g>
+  <text x="219" y="105" fill="#64748b" font-size="11">fork</text>
+  <text x="455" y="86" fill="#0e8b87" font-weight="700">send RDB → load</text>
+  <text x="40" y="215" fill="#64748b" font-size="11.5">New commands during the snapshot are queued in a <tspan font-weight="700" fill="#003B62">replication buffer</tspan> and replayed afterwards.</text>
+  <text x="40" y="234" fill="#64748b" font-size="11.5">Statement-level replication.</text>
+</svg>
+<figcaption>Full synchronization — fork a child, snapshot to RDB, ship to replicas, then replay buffered commands</figcaption>
+</div>
+
+<ul class="docs-list">
+  <li><strong>Full sync</strong> — used on first set-up or when replicas drift too far: fork → RDB snapshot → transfer → replicas load it; commands arriving meanwhile are buffered and replayed.</li>
+  <li><strong>Partial resync</strong> — for brief disconnects: each side tracks a <code>run_id</code> + replication <code>offset</code>, and the Origin replays only the missing range from its <code>backlog_buffer</code>. If the backlog overflows (or either side restarts), it falls back to a full sync.</li>
+  <li><strong>The COW gotcha:</strong> <code>fork()</code> shares parent pages copy-on-write; writes during sync allocate fresh pages, so a 32&nbsp;GB instance can momentarily need up to ~64&nbsp;GB. This is why I prefer <strong>many small instances</strong> (8&nbsp;GB&nbsp;×&nbsp;8) over a few big ones (32&nbsp;GB&nbsp;×&nbsp;2), and cap each at ≤ ½ of host RAM.</li>
+</ul>
+
+<h3 class="docs-h3">⊙ Sharding — scaling out</h3>
+<p class="docs-p">Replication is about availability, not capacity. One instance has finite RAM; when you can't scale up, you <strong>scale out</strong> by distributing data across servers — horizontal partitioning, called <strong>sharding</strong> in the NoSQL world. (Unlike DBMS partitioning, which divides <em>within</em> one server, sharding divides at the <em>server</em> boundary.) The real question is <em>how</em> you split the keys:</p>
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>Strategy</th><th>How</th><th>Trade-off</th></tr></thead>
+  <tbody>
+    <tr><th>Range</th><td>Split by key range (e.g. dates)</td><td>Simple, but uneven load → hot shards</td></tr>
+    <tr><th>Modular</th><td><code>hash(key) % N</code> servers</td><td>Even, but adding a node triggers heavy rebalancing (grow ×2 to halve it)</td></tr>
+    <tr><th>Index</th><td>A central index server places/locates data</td><td>Balanced, but the index is an extra failure point</td></tr>
+    <tr><th>Consistent hashing</th><td>Hash both keys and servers onto a ring</td><td>Only the affected slice rebalances on add/remove</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="360" y="22" text-anchor="middle" fill="#003B62" font-weight="700">Consistent hashing — a key maps to the next server clockwise</text>
+  <circle cx="360" cy="150" r="86" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+  <!-- clockwise direction hint -->
+  <path d="M 300 70 A 86 86 0 0 1 360 64" fill="none" stroke="#cbd5e1" stroke-width="1.4"/>
+  <polygon points="360,64 351,61 353,70" fill="#cbd5e1"/>
+  <!-- servers (120° apart, on the ring) -->
+  <circle cx="360" cy="64" r="8" fill="#0078d7"/><text x="360" y="48" text-anchor="middle" fill="#003B62" font-weight="700">S1 (10000)</text>
+  <circle cx="435" cy="193" r="8" fill="#0078d7"/><text x="450" y="197" text-anchor="start" fill="#003B62" font-weight="700">S2 (20000)</text>
+  <circle cx="286" cy="193" r="8" fill="#0078d7"/><text x="270" y="197" text-anchor="end" fill="#003B62" font-weight="700">S3 (30000)</text>
+  <!-- keys (on the ring, just before their target server clockwise) -->
+  <circle cx="322" cy="73" r="5" fill="#0e8b87"/><text x="312" y="62" text-anchor="end" fill="#0e8b87">key 9400 → S1</text>
+  <circle cx="446" cy="156" r="5" fill="#0e8b87"/><text x="460" y="140" text-anchor="start" fill="#0e8b87">key 12000 → S2</text>
+  <circle cx="312" cy="221" r="5" fill="#0e8b87"/><text x="300" y="236" text-anchor="end" fill="#0e8b87">key 28500 → S3</text>
+</svg>
+<figcaption>Consistent hashing localizes rebalancing — if S2 leaves, only its keys move and the rest stay put</figcaption>
+</div>
+
+<h3 class="docs-h3">⊙ Operation modes — Sentinel &amp; Cluster</h3>
+<p class="docs-p">Rather than wiring replication and failover by hand, Redis ships two managed modes that package these mechanisms for operations.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <!-- Sentinel -->
+  <text x="180" y="20" text-anchor="middle" fill="#003B62" font-weight="700">Sentinel — HA (auto-failover)</text>
+  <rect x="60" y="40" width="240" height="180" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <rect x="80" y="60" width="90" height="34" rx="7" fill="#fee2e2" stroke="#e11d48"/><text x="125" y="82" text-anchor="middle" fill="#b91c1c">Master ✗</text>
+  <rect x="190" y="60" width="92" height="34" rx="7" fill="#e9f7f3" stroke="#0e8b87"/><text x="236" y="82" text-anchor="middle">Replica↑</text>
+  <rect x="80" y="110" width="90" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="125" y="132" text-anchor="middle">Replica</text>
+  <rect x="190" y="110" width="92" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="236" y="132" text-anchor="middle">Replica</text>
+  <text x="180" y="172" text-anchor="middle" fill="#475569">3 Sentinels watch &amp; vote</text>
+  <text x="180" y="192" text-anchor="middle" fill="#64748b" font-size="11">quorum agrees → promote a replica</text>
+  <text x="180" y="210" text-anchor="middle" fill="#64748b" font-size="11">monitoring · failover · alarm</text>
+  <!-- Cluster -->
+  <text x="540" y="20" text-anchor="middle" fill="#003B62" font-weight="700">Cluster — HA + Sharding</text>
+  <rect x="420" y="40" width="240" height="180" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <rect x="438" y="58" width="204" height="30" rx="7" fill="#e8f3fc" stroke="#0078d7"/><text x="540" y="78" text-anchor="middle">Primary #1 · slot 0–5460</text>
+  <rect x="438" y="96" width="204" height="30" rx="7" fill="#e8f3fc" stroke="#0078d7"/><text x="540" y="116" text-anchor="middle">Primary #2 · slot 5461–10922</text>
+  <rect x="438" y="134" width="204" height="30" rx="7" fill="#e8f3fc" stroke="#0078d7"/><text x="540" y="154" text-anchor="middle">Primary #3 · slot 10923–16383</text>
+  <text x="540" y="186" text-anchor="middle" fill="#475569">crc16(key) % 16384 → slot → primary</text>
+  <text x="540" y="206" text-anchor="middle" fill="#64748b" font-size="11">each primary has a secondary · auto-failover</text>
+</svg>
+<figcaption>Sentinel adds automatic failover to replication; Cluster adds sharding on top via a 16,384-slot hash space</figcaption>
+</div>
+
+<ul class="docs-list">
+  <li><strong>Sentinel (HA):</strong> Sentinel processes ride alongside each Redis, monitor the nodes, and on master failure hold a <strong>quorum vote</strong> to promote a replica; they can also alert via Pub/Sub or shell scripts. Needs <strong>≥ 3 nodes</strong> so the vote has a majority. A recovered master rejoins as a replica.</li>
+  <li><strong>Cluster (HA + sharding):</strong> slots <code>0–16383</code> are divided across primaries; an incoming key is hashed with <code>crc16</code> then <code>% 16384</code> to pick its slot/primary. If a key lands on the wrong node it replies <code>-MOVED</code> and the client redirects. Secondaries auto-promote on failure (a different mechanism from Sentinel). Cost: the client needs slot-aware logic and the cluster carries slot-management overhead.</li>
+</ul>
+
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>Mode</th><th>High availability</th><th>Sharding</th></tr></thead>
+  <tbody>
+    <tr><th>Stand-alone</th><td>—</td><td>—</td></tr>
+    <tr><th>Sentinel</th><td>✓ (auto-failover)</td><td>—</td></tr>
+    <tr><th>Cluster</th><td>✓</td><td>✓</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3 class="docs-h3">⊙ Monitoring</h3>
+<p class="docs-p">Redis is single-threaded, so for CPU you scale the <em>per-core speed</em>, not the core count. The headline signals from <code>INFO</code>:</p>
+<div class="docs-code"><code># Memory
+used_memory_human:916.98K        # what Redis uses
+used_memory_rss_human:6.63M      # RSS — physical memory, OS view
+maxmemory_human:0B
+maxmemory_policy:noeviction
+# CPU  (single-thread → raise core speed, not count)
+used_cpu_sys:853.71
+used_cpu_user:923.68
+# Replication
+role:master
+connected_slaves:0
+master_repl_offset:0</code></div>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">Client-side — Spring Boot integration</h2>
+<p class="docs-p">On the application side Redis becomes a <em>client interface</em> problem. With <code>spring-boot-starter-data-redis</code> the connection auto-configures (Lettuce by default; Redisson is the other common client), and a small YAML block wires host / port / password and the Lettuce pool. From there I used three layers — caching, session, distributed lock.</p>
+
+<div class="docs-code"><code>dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+  implementation 'org.springframework.session:spring-session-data-redis'
+  implementation 'org.springframework.boot:spring-boot-starter-cache'
+}
+
+spring:
+  redis:
+    host: { redis-server ip }
+    port: { redis-server port }
+    password: { redis-server password }
+    lettuce:
+      pool: { max-active: 5, max-idle: 5, min-idle: 2 }</code></div>
+
+<h3 class="docs-h3">⊙ Caching — why, and three ways</h3>
+<p class="docs-p">If each WAS caches in its own JVM heap, the instances have to <strong>sync</strong> their caches with each other. Put the cache in Redis and that disappears — every instance just looks at one place.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 230" width="720" height="230" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <!-- Before -->
+  <text x="180" y="20" text-anchor="middle" fill="#e11d48" font-weight="700">Before — local cache per WAS</text>
+  <rect x="60" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="95" y="62" text-anchor="middle">WAS 1</text>
+  <rect x="155" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="190" y="62" text-anchor="middle">WAS 2</text>
+  <rect x="250" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="285" y="62" text-anchor="middle">WAS 3</text>
+  <g stroke="#e11d48" stroke-width="1.4" fill="none" stroke-dasharray="4 3">
+    <line x1="130" y1="57" x2="155" y2="57"/><line x1="225" y1="57" x2="250" y2="57"/>
+  </g>
+  <text x="190" y="100" text-anchor="middle" fill="#b91c1c">cache sync between every node ✗</text>
+  <!-- After -->
+  <text x="540" y="20" text-anchor="middle" fill="#0e8b87" font-weight="700">After — Redis as shared cache</text>
+  <rect x="420" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="455" y="62" text-anchor="middle">WAS 1</text>
+  <rect x="505" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="540" y="62" text-anchor="middle">WAS 2</text>
+  <rect x="590" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="625" y="62" text-anchor="middle">WAS 3</text>
+  <rect x="470" y="150" width="140" height="38" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="540" y="174" text-anchor="middle">Redis (1 source)</text>
+  <g stroke="#475569" stroke-width="1.4" fill="#475569">
+    <line x1="455" y1="74" x2="525" y2="148"/><line x1="540" y1="74" x2="540" y2="148"/><line x1="625" y1="74" x2="555" y2="148"/>
+  </g>
+  <text x="540" y="212" text-anchor="middle" fill="#0e8b87">no inter-node sync needed</text>
+</svg>
+<figcaption>Moving the cache out of per-WAS heaps into Redis removes the cross-instance sync cost</figcaption>
+</div>
+
+<p class="docs-p"><strong>1 · Spring Data Repository</strong> — a <code>CrudRepository</code> over a <code>@RedisHash</code> domain object; objects map to Redis hashes, <code>@Id</code>/<code>@Indexed</code> become lookup keys, and <code>@TimeToLive</code> sets expiry. Feels just like JPA.</p>
+<div class="docs-code"><code>@RedisHash(value = "people", timeToLive = 1800)
+public class Person implements Serializable {
+    @Id private Long id;
+    @Indexed private String name;
+    private Integer age;
+}
+
+public interface PersonRedisRepository extends CrudRepository&lt;Person, Long&gt; {
+    Optional&lt;Person&gt; findPersonByName(String name);   // save / findById / deleteById come for free
+}</code></div>
+
+<p class="docs-p"><strong>2 · Caching annotations</strong> — wrap a service method in a caching proxy: <code>@Cacheable</code> on reads, <code>@CachePut</code> on updates, <code>@CacheEvict</code> on deletes. You register a <code>CacheManager</code> with a serializer and a default TTL (else <code>redis-cli</code> shows opaque serialized bytes). Note: an updating method must <em>return</em> the value so the proxy can cache it.</p>
+<div class="docs-code"><code>@Cacheable(key = "#name", value = "personCache")
+public Person findPersonByName(String name) { return repo.getByName(name); }
+
+@CachePut(key = "#person.name", value = "personCache")
+public Person update(Person person) { return repo.updateByName(person); }   // must return!
+
+@CacheEvict(key = "#name", value = "personCache")
+public void delete(String name) { repo.deleteByName(name); }
+// → key in redis: "personCache::kim"</code></div>
+
+<p class="docs-p"><strong>3 · RedisTemplate</strong> — the low-level operator when you want a specific data structure directly: <code>opsForValue / opsForList / opsForSet / opsForZSet / opsForHash</code>, plus <code>expire</code>, <code>keys</code>, <code>rename</code>, <code>delete</code>. The catch I flagged for the team: even with List/Hash/Set you still address everything by the <em>Redis key</em> — don't confuse a hash's inner field with the Redis key — and <code>RedisCommandExecutionException: ERR no such key</code> on <code>rename</code> means you need solid error handling.</p>
+
+<h3 class="docs-h3">⊙ Session — Spring Session</h3>
+<p class="docs-p">Same story as caching: WAS-local sessions force sticky sessions or session sync across the cluster. Backing Spring Session with Redis centralizes it. Config goes in YAML — and one trap I documented: adding <code>@EnableRedisHttpSession</code> makes the annotation's attributes win and your YAML session settings stop taking effect.</p>
+<div class="docs-code"><code>server: { servlet: { session: { timeout: 60 } } }   # seconds
+spring:
+  session:
+    store-type: redis
+    redis:
+      namespace: spring:session:admin   # key prefix
+      flush-mode: on_save                # on_save vs immediate
+      cleanup-cron: 0/5 * * * * *        # sweep expired remnants
+
+@Bean   // avoid rune-like bytes in redis
+RedisSerializer&lt;Object&gt; springSessionDefaultRedisSerializer() {
+    return new GenericJackson2JsonRedisSerializer();
+}</code></div>
+<p class="docs-p"><code>flush-mode</code> is the subtle one: <strong>on_save</strong> writes the session only when the response is built, while <strong>immediate</strong> writes the moment you <code>setAttribute</code>/<code>getAttribute</code> — a behavioral difference you only catch with a deliberate <code>Thread.sleep</code> test before the response returns.</p>
+
+<h3 class="docs-h3">⊙ Distributed lock</h3>
+<p class="docs-p">To stop two processes/threads from touching a shared resource at once, I implemented a <strong>spin lock</strong> on Redis with <code>setIfAbsent</code> (atomic "set if not exists") plus a TTL so a crashed holder can't deadlock the resource; <code>unlock</code> is just a delete.</p>
+<div class="docs-code"><code>public Boolean lock(Long key) {
+    return redisTemplate.opsForValue()
+        .setIfAbsent(String.valueOf(key), "lock", Duration.ofMillis(10000L));
+}
+public Boolean unlock(Long key) { return redisTemplate.delete(String.valueOf(key)); }
+
+// usage — spin until acquired, always release in finally
+while (!redisLockRepository.lock(id)) { Thread.sleep(300); }   // sleep cushions Redis load
+try   { redisCRUDService.create(p1); }
+finally { redisLockRepository.unlock(id); }</code></div>
+<p class="docs-p">The spin lock's weakness is the constant re-polling load on Redis; the <code>Thread.sleep(300)</code> is the deliberate buffer that softens it.</p>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">What I took away</h2>
+<ul class="docs-list">
+  <li><strong>Redis is a memory-operations problem first.</strong> Most production risk traces back to memory — eviction policy, the copy-on-write spike on <code>fork</code>, and fragmentation — so I size instances to ≤ ½ host RAM and prefer many small ones.</li>
+  <li><strong>Pick the mode for the need:</strong> Sentinel when you only want HA, Cluster when you also need to shard — and remember Cluster pushes slot-awareness onto the client.</li>
+  <li><strong>On the app side, the right abstraction matters:</strong> repository / annotations for caching, Spring Session for session, a TTL-guarded <code>setIfAbsent</code> for locking — each with its own serializer and its own subtle config trap.</li>
+</ul>
+
+</div>
+
+<!-- ============================ 한국어 ============================ -->
+<div class="docs-lang" data-lang="ko" hidden>
+
+<div class="docs-callout">
+  <div class="docs-callout__icon">⚡</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>한 줄 요약</strong> — KT DS 클라우드 서비스 작업 막바지에 <strong>Redis</strong> 를 인메모리 미들웨어 계층으로 도입했다. 클라이언트(Spring Boot) 쪽은 <strong>캐싱 · 세션 저장소 · 분산 락</strong>, 서버 쪽은 <strong>운영 모델</strong>(Replication · Sharding · Sentinel / Cluster). 이 페이지는 팀이 도입할 수 있도록 작성한 엔지니어링 매뉴얼을 정리한 것이다.</p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>기간</dt><dd>2023 · KT DS — 클라우드 서비스</dd>
+  <dt>역할</dt><dd>백엔드·미들웨어 엔지니어링 · Spring–Redis 연동</dd>
+  <dt>범위</dt><dd>서버 측 운영 + 클라이언트 측 Spring Boot 연동</dd>
+  <dt>산출물</dt><dd>사내 Redis 매뉴얼 (Redis 7.2), 팀 레퍼런스로 사용</dd>
+</dl>
+
+<h2 class="docs-h2">왜 Redis인가 — 그리고 어디에 쓰는가</h2>
+<p class="docs-p"><strong>Redis</strong>(REmote DIctionary Server)는 오픈소스 인메모리 Key–Value NoSQL 저장소다. 메모리에 데이터를 두기에 매우 빠르지만(초당 약 10만 TPS), 같은 이유로 <strong>휘발성</strong> 이 있어 운영에서는 클러스터링·백업이 필수다. 이 속도 ↔ 휘발성 트레이드오프가 곧 Redis의 쓰임새를 규정한다 — 짧게 자주 접근하는 데이터: <strong>캐싱</strong>, <strong>세션</strong>, 메시지 큐(<code>Streams</code>), <code>Pub/Sub</code>, <strong>분산 락</strong>. 나는 <code>redis-cli</code> 로 직접 다루기보다 Spring Boot 를 통해 <em>애플리케이션</em> 단위로 연동했다.</p>
+
+<h3 class="docs-h3">두 가지 연동 패턴</h3>
+<div class="docs-fig">
+<svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <text x="180" y="22" text-anchor="middle" fill="#003B62" font-weight="700">Look-aside Cache</text>
+  <rect x="40" y="40" width="120" height="38" rx="8" fill="#e8f3fc" stroke="#0078d7"/><text x="100" y="63" text-anchor="middle">App (client)</text>
+  <rect x="40" y="118" width="120" height="38" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="100" y="141" text-anchor="middle">Redis</text>
+  <rect x="40" y="196" width="120" height="38" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="100" y="219" text-anchor="middle">DB</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="100" y1="78" x2="100" y2="116"/><polygon points="100,118 96,110 104,110"/>
+  </g>
+  <text x="116" y="100" fill="#0e8b87" font-weight="700">① 조회</text>
+  <line x1="135" y1="156" x2="135" y2="194" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="4 3"/><polygon points="135,196 131,188 139,188" fill="#94a3b8"/>
+  <text x="150" y="180" fill="#64748b">② miss → DB</text>
+  <text x="100" y="246" text-anchor="middle" fill="#64748b">DB 이전에 Redis 먼저 조회</text>
+  <text x="540" y="22" text-anchor="middle" fill="#003B62" font-weight="700">Write-back</text>
+  <rect x="400" y="40" width="120" height="38" rx="8" fill="#e8f3fc" stroke="#0078d7"/><text x="460" y="63" text-anchor="middle">App (client)</text>
+  <rect x="400" y="118" width="120" height="38" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="460" y="141" text-anchor="middle">Redis (buffer)</text>
+  <rect x="400" y="196" width="120" height="38" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="460" y="219" text-anchor="middle">DB</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="460" y1="78" x2="460" y2="116"/><polygon points="460,118 456,110 464,110"/>
+    <line x1="460" y1="156" x2="460" y2="194"/><polygon points="460,196 456,188 464,188"/>
+  </g>
+  <text x="476" y="100" fill="#0078d7" font-weight="700">① 일괄 적재</text>
+  <text x="476" y="180" fill="#0e8b87" font-weight="700">② 배치 insert</text>
+  <text x="560" y="180" fill="#64748b" font-size="11">1000×1 ≫ 1×1000</text>
+  <text x="540" y="246" text-anchor="middle" fill="#64748b">쓰기를 모아 주기적으로 flush</text>
+</svg>
+<figcaption>Look-aside(읽기 캐시) vs Write-back(쓰기 모아 배치 insert) — 큰 insert 한 번이 작은 insert 천 번보다 낫다</figcaption>
+</div>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">서버 측 — Redis 운영</h2>
+<p class="docs-p">속도가 RAM 거주에서 나오는 만큼, 운영의 본질은 결국 <strong>그 메모리를 지키는 것</strong> 이다 — 한계를 정하고, 장애 대비로 복제하고, 한 대가 부족할 때 여러 대로 나눈다.</p>
+
+<h3 class="docs-h3">⊙ 메모리 관리</h3>
+<p class="docs-p">Redis가 빠른 이유가 메모리 Read/Write인데, 물리 메모리가 차서 OS가 <strong>스왑</strong> 을 시작하면 모든 접근이 디스크 I/O가 되어 처리량이 급감한다. 그래서 메모리를 1순위 운영 지표로 본다:</p>
+<ul class="docs-list">
+  <li>서비스 특성에 맞춰 <code>maxmemory</code> 를 신중히 설정. 한계를 넘으면 <strong>eviction policy</strong>(아래)에 따라 데이터를 지운다.</li>
+  <li>각 인스턴스를 <strong>서버 RAM의 ½ 이하</strong> 로 — 복제 시 발생하는 copy-on-write 메모리 스파이크(다음 절) 여유를 두기 위함.</li>
+  <li>메모리는 page/frame 단위로 관리되므로, 크기 편차가 큰 값을 섞어 저장하면 <strong>파편화</strong> 가 심해진다(실제 데이터보다 메모리를 더 점유). 비슷한 크기끼리 저장하면 유리.</li>
+  <li><code>top</code> + 아래 <code>INFO</code> 지표로 지속 모니터링.</li>
+</ul>
+
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>maxmemory-policy</th><th>가득 찼을 때 삭제 대상</th></tr></thead>
+  <tbody>
+    <tr><th><code>noeviction</code></th><td>삭제 안 함 — 쓰기 시 OOM 오류 반환</td></tr>
+    <tr><th><code>allkeys-lru</code></th><td>전체 키 중 LRU(최근 최소 사용)</td></tr>
+    <tr><th><code>volatile-lru</code></th><td>TTL 있는 키 중 LRU</td></tr>
+    <tr><th><code>volatile-ttl</code></th><td>TTL 있는 키 중 TTL 짧은 것부터</td></tr>
+    <tr><th><code>allkeys-random</code></th><td>전체 키 중 무작위</td></tr>
+    <tr><th><code>volatile-random</code></th><td>TTL 있는 키 중 무작위</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3 class="docs-h3">⊙ Replication — 고가용성 / 장애 복구</h3>
+<p class="docs-p">Redis도 프로세스라 언제든 죽을 수 있다. <strong>Replication</strong> 은 동기화된 복제본을 유지한다 — Origin(Master) + Replica(Slave)들이 <strong>Replica Set</strong> 을 이룬다. <strong>비동기</strong> 복제를 쓰는데, Origin이 <code>fork()</code> 로 자식 프로세스를 만들어 서비스를 멈추지 않은 채 Replica에 데이터를 보낸다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <rect x="40" y="90" width="150" height="46" rx="10" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
+  <text x="115" y="111" text-anchor="middle" fill="#003B62" font-weight="700">Origin (Master)</text>
+  <text x="115" y="128" text-anchor="middle" fill="#64748b" font-size="11">서비스 지속</text>
+  <rect x="250" y="90" width="130" height="46" rx="10" fill="#fff" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="315" y="111" text-anchor="middle" fill="#475569" font-weight="700">Child (fork)</text>
+  <text x="315" y="128" text-anchor="middle" fill="#64748b" font-size="11">RDB 스냅샷</text>
+  <rect x="540" y="40" width="150" height="42" rx="10" fill="#e9f7f3" stroke="#0e8b87"/><text x="615" y="66" text-anchor="middle">Replica (Slave)</text>
+  <rect x="540" y="146" width="150" height="42" rx="10" fill="#e9f7f3" stroke="#0e8b87"/><text x="615" y="172" text-anchor="middle">Replica (Slave)</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="190" y1="113" x2="248" y2="113"/><polygon points="250,113 242,109 242,117"/>
+    <line x1="380" y1="105" x2="538" y2="65"/><polygon points="540,64 531,64 534,72"/>
+    <line x1="380" y1="120" x2="538" y2="163"/><polygon points="540,164 531,156 534,164"/>
+  </g>
+  <text x="219" y="105" fill="#64748b" font-size="11">fork</text>
+  <text x="455" y="86" fill="#0e8b87" font-weight="700">RDB 전송 → load</text>
+  <text x="40" y="215" fill="#64748b" font-size="11.5">스냅샷 도중 들어온 명령은 <tspan font-weight="700" fill="#003B62">복제 버퍼</tspan> 에 저장됐다 이후 재전송.</text>
+  <text x="40" y="234" fill="#64748b" font-size="11.5">Statement 단위 복제.</text>
+</svg>
+<figcaption>전체 동기화 — 자식 fork → RDB 스냅샷 → Replica 전송 → 적재 후 버퍼 명령 재생</figcaption>
+</div>
+
+<ul class="docs-list">
+  <li><strong>전체 동기화(full sync)</strong> — 최초 구성 또는 싱크 차이가 클 때: fork → RDB 스냅샷 → 전송 → Replica 적재. 그 사이 들어온 명령은 버퍼에 모았다 재생.</li>
+  <li><strong>부분 재동기화(partial resync)</strong> — 짧은 연결 끊김 시: 양쪽이 <code>run_id</code> + 복제 <code>offset</code> 을 추적하고, Origin이 <code>backlog_buffer</code> 에서 빠진 구간만 재전송. 백로그가 넘치거나 한쪽이 재시작하면 전체 동기화로 회귀.</li>
+  <li><strong>COW 함정:</strong> <code>fork()</code> 는 부모 페이지를 copy-on-write로 공유한다. 동기화 중 write가 발생하면 새 페이지를 할당하므로 32&nbsp;GB 인스턴스가 순간 최대 ~64&nbsp;GB 까지 점유할 수 있다. 그래서 <strong>큰 인스턴스 몇 개</strong>(32&nbsp;GB×2)보다 <strong>작은 인스턴스 여러 개</strong>(8&nbsp;GB×8)를 선호하고, 각각을 호스트 RAM의 ½ 이하로 제한한다.</li>
+</ul>
+
+<h3 class="docs-h3">⊙ Sharding — 확장(Scale-out)</h3>
+<p class="docs-p">Replication은 가용성이지 용량이 아니다. 한 인스턴스의 RAM은 유한하므로, scale-up이 어려우면 서버를 늘려 데이터를 분산하는 <strong>scale-out</strong> 으로 간다 — 수평적 파티셔닝, NoSQL에서는 <strong>Sharding</strong>. (DBMS 파티셔닝이 한 서버 <em>안</em>에서 나누는 것과 달리, Sharding은 <em>서버 단위</em>로 나눈다.) 핵심 질문은 <em>어떻게</em> 키를 나누느냐다:</p>
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>방식</th><th>원리</th><th>트레이드오프</th></tr></thead>
+  <tbody>
+    <tr><th>Range</th><td>키 범위(예: 날짜) 기준 분할</td><td>단순하지만 부하 불균형 → 핫 샤드</td></tr>
+    <tr><th>Modular</th><td><code>hash(key) % N</code> 서버</td><td>고르지만 증설 시 대규모 리밸런싱(2배씩 늘려 절반으로)</td></tr>
+    <tr><th>Index</th><td>중앙 인덱스 서버가 배치·조회</td><td>균형은 좋으나 인덱스가 추가 장애 지점</td></tr>
+    <tr><th>Consistent Hashing</th><td>키와 서버를 같은 링에 해싱</td><td>증감 시 영향받는 구간만 리밸런싱</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="360" y="22" text-anchor="middle" fill="#003B62" font-weight="700">Consistent Hashing — 키는 시계방향 다음 서버에 매핑</text>
+  <circle cx="360" cy="150" r="86" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+  <!-- 시계방향 힌트 -->
+  <path d="M 300 70 A 86 86 0 0 1 360 64" fill="none" stroke="#cbd5e1" stroke-width="1.4"/>
+  <polygon points="360,64 351,61 353,70" fill="#cbd5e1"/>
+  <!-- 서버 (120° 간격, 링 위) -->
+  <circle cx="360" cy="64" r="8" fill="#0078d7"/><text x="360" y="48" text-anchor="middle" fill="#003B62" font-weight="700">S1 (10000)</text>
+  <circle cx="435" cy="193" r="8" fill="#0078d7"/><text x="450" y="197" text-anchor="start" fill="#003B62" font-weight="700">S2 (20000)</text>
+  <circle cx="286" cy="193" r="8" fill="#0078d7"/><text x="270" y="197" text-anchor="end" fill="#003B62" font-weight="700">S3 (30000)</text>
+  <!-- 키 (링 위, 자신의 목표 서버 직전) -->
+  <circle cx="322" cy="73" r="5" fill="#0e8b87"/><text x="312" y="62" text-anchor="end" fill="#0e8b87">key 9400 → S1</text>
+  <circle cx="446" cy="156" r="5" fill="#0e8b87"/><text x="460" y="140" text-anchor="start" fill="#0e8b87">key 12000 → S2</text>
+  <circle cx="312" cy="221" r="5" fill="#0e8b87"/><text x="300" y="236" text-anchor="end" fill="#0e8b87">key 28500 → S3</text>
+</svg>
+<figcaption>Consistent Hashing은 리밸런싱을 국소화한다 — S2가 빠지면 S2의 키만 이동하고 나머지는 그대로</figcaption>
+</div>
+
+<h3 class="docs-h3">⊙ 운영 모드 — Sentinel &amp; Cluster</h3>
+<p class="docs-p">Replication·failover를 수동으로 엮는 대신, Redis는 이 메커니즘들을 운영 단위로 묶은 두 모드를 제공한다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="180" y="20" text-anchor="middle" fill="#003B62" font-weight="700">Sentinel — 고가용성 (자동 failover)</text>
+  <rect x="60" y="40" width="240" height="180" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <rect x="80" y="60" width="90" height="34" rx="7" fill="#fee2e2" stroke="#e11d48"/><text x="125" y="82" text-anchor="middle" fill="#b91c1c">Master ✗</text>
+  <rect x="190" y="60" width="92" height="34" rx="7" fill="#e9f7f3" stroke="#0e8b87"/><text x="236" y="82" text-anchor="middle">Replica↑</text>
+  <rect x="80" y="110" width="90" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="125" y="132" text-anchor="middle">Replica</text>
+  <rect x="190" y="110" width="92" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="236" y="132" text-anchor="middle">Replica</text>
+  <text x="180" y="172" text-anchor="middle" fill="#475569">Sentinel 3대가 감시·투표</text>
+  <text x="180" y="192" text-anchor="middle" fill="#64748b" font-size="11">quorum 동의 → Replica 승격</text>
+  <text x="180" y="210" text-anchor="middle" fill="#64748b" font-size="11">모니터링 · failover · 알림</text>
+  <text x="540" y="20" text-anchor="middle" fill="#003B62" font-weight="700">Cluster — 고가용성 + Sharding</text>
+  <rect x="420" y="40" width="240" height="180" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <rect x="438" y="58" width="204" height="30" rx="7" fill="#e8f3fc" stroke="#0078d7"/><text x="540" y="78" text-anchor="middle">Primary #1 · slot 0–5460</text>
+  <rect x="438" y="96" width="204" height="30" rx="7" fill="#e8f3fc" stroke="#0078d7"/><text x="540" y="116" text-anchor="middle">Primary #2 · slot 5461–10922</text>
+  <rect x="438" y="134" width="204" height="30" rx="7" fill="#e8f3fc" stroke="#0078d7"/><text x="540" y="154" text-anchor="middle">Primary #3 · slot 10923–16383</text>
+  <text x="540" y="186" text-anchor="middle" fill="#475569">crc16(key) % 16384 → slot → primary</text>
+  <text x="540" y="206" text-anchor="middle" fill="#64748b" font-size="11">primary마다 secondary · 자동 failover</text>
+</svg>
+<figcaption>Sentinel은 Replication에 자동 failover를 더하고, Cluster는 그 위에 16,384 슬롯 해시 공간으로 Sharding을 더한다</figcaption>
+</div>
+
+<ul class="docs-list">
+  <li><strong>Sentinel(HA):</strong> Sentinel 프로세스가 각 Redis 옆에 떠서 노드를 감시하고, Master 장애 시 <strong>quorum 투표</strong> 로 Replica를 승격시킨다. Pub/Sub·셸 스크립트로 알림도 가능. 다수결을 위해 <strong>3대 이상</strong> 필요. 복구된 Master는 Replica로 재합류.</li>
+  <li><strong>Cluster(HA + Sharding):</strong> 슬롯 <code>0–16383</code> 을 Primary들에 나누고, 유입 키를 <code>crc16</code> 해싱 후 <code>% 16384</code> 로 슬롯/Primary를 정한다. 키가 엉뚱한 노드에 가면 <code>-MOVED</code> 로 응답하고 클라이언트가 재전송. Secondary가 장애 시 자동 승격(Sentinel과 다른 메커니즘). 비용: 클라이언트의 슬롯 인지 로직과 슬롯 관리 오버헤드.</li>
+</ul>
+
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>모드</th><th>고가용성</th><th>Sharding</th></tr></thead>
+  <tbody>
+    <tr><th>Stand-alone</th><td>—</td><td>—</td></tr>
+    <tr><th>Sentinel</th><td>✓ (자동 failover)</td><td>—</td></tr>
+    <tr><th>Cluster</th><td>✓</td><td>✓</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3 class="docs-h3">⊙ 모니터링</h3>
+<p class="docs-p">Redis는 싱글 스레드라 CPU는 <em>코어 수</em>가 아니라 <em>코어당 성능</em>을 올려야 한다. <code>INFO</code> 의 핵심 지표:</p>
+<div class="docs-code"><code># Memory
+used_memory_human:916.98K        # Redis 사용량
+used_memory_rss_human:6.63M      # RSS — 물리 메모리, OS 관점
+maxmemory_human:0B
+maxmemory_policy:noeviction
+# CPU  (싱글 스레드 → 코어 수 아닌 코어 성능)
+used_cpu_sys:853.71
+used_cpu_user:923.68
+# Replication
+role:master
+connected_slaves:0
+master_repl_offset:0</code></div>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">클라이언트 측 — Spring Boot 연동</h2>
+<p class="docs-p">애플리케이션 쪽에서 Redis는 <em>클라이언트 인터페이스</em> 문제가 된다. <code>spring-boot-starter-data-redis</code> 만 넣으면 연결이 auto-configuration 되고(기본 Lettuce, 그 외 Redisson), 작은 YAML로 host / port / password 와 Lettuce 풀을 설정한다. 그 위에 캐싱·세션·분산 락 세 계층을 올렸다.</p>
+
+<div class="docs-code"><code>dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+  implementation 'org.springframework.session:spring-session-data-redis'
+  implementation 'org.springframework.boot:spring-boot-starter-cache'
+}
+
+spring:
+  redis:
+    host: { redis-server ip }
+    port: { redis-server port }
+    password: { redis-server password }
+    lettuce:
+      pool: { max-active: 5, max-idle: 5, min-idle: 2 }</code></div>
+
+<h3 class="docs-h3">⊙ 캐싱 — 왜, 그리고 세 가지 방법</h3>
+<p class="docs-p">각 WAS가 자기 JVM 힙에 캐싱하면 인스턴스끼리 캐시를 <strong>동기화</strong> 해야 한다. 캐시를 Redis에 두면 이 비용이 사라진다 — 모든 인스턴스가 한 곳만 본다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 230" width="720" height="230" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="180" y="20" text-anchor="middle" fill="#e11d48" font-weight="700">Before — WAS별 로컬 캐시</text>
+  <rect x="60" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="95" y="62" text-anchor="middle">WAS 1</text>
+  <rect x="155" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="190" y="62" text-anchor="middle">WAS 2</text>
+  <rect x="250" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="285" y="62" text-anchor="middle">WAS 3</text>
+  <g stroke="#e11d48" stroke-width="1.4" fill="none" stroke-dasharray="4 3">
+    <line x1="130" y1="57" x2="155" y2="57"/><line x1="225" y1="57" x2="250" y2="57"/>
+  </g>
+  <text x="190" y="100" text-anchor="middle" fill="#b91c1c">모든 노드 간 캐시 동기화 ✗</text>
+  <text x="540" y="20" text-anchor="middle" fill="#0e8b87" font-weight="700">After — Redis 공통 캐시</text>
+  <rect x="420" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="455" y="62" text-anchor="middle">WAS 1</text>
+  <rect x="505" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="540" y="62" text-anchor="middle">WAS 2</text>
+  <rect x="590" y="40" width="70" height="34" rx="7" fill="#fff" stroke="#94a3b8"/><text x="625" y="62" text-anchor="middle">WAS 3</text>
+  <rect x="470" y="150" width="140" height="38" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="540" y="174" text-anchor="middle">Redis (단일 소스)</text>
+  <g stroke="#475569" stroke-width="1.4" fill="#475569">
+    <line x1="455" y1="74" x2="525" y2="148"/><line x1="540" y1="74" x2="540" y2="148"/><line x1="625" y1="74" x2="555" y2="148"/>
+  </g>
+  <text x="540" y="212" text-anchor="middle" fill="#0e8b87">노드 간 동기화 불필요</text>
+</svg>
+<figcaption>캐시를 WAS별 힙에서 Redis로 옮기면 인스턴스 간 동기화 비용이 사라진다</figcaption>
+</div>
+
+<p class="docs-p"><strong>1 · Spring Data Repository</strong> — <code>@RedisHash</code> 도메인 객체 위의 <code>CrudRepository</code>. 객체는 Redis Hash로 매핑되고, <code>@Id</code>/<code>@Indexed</code> 가 조회 키, <code>@TimeToLive</code> 가 만료를 정한다. JPA와 거의 동일한 사용감.</p>
+<div class="docs-code"><code>@RedisHash(value = "people", timeToLive = 1800)
+public class Person implements Serializable {
+    @Id private Long id;
+    @Indexed private String name;
+    private Integer age;
+}
+
+public interface PersonRedisRepository extends CrudRepository&lt;Person, Long&gt; {
+    Optional&lt;Person&gt; findPersonByName(String name);   // save / findById / deleteById 기본 제공
+}</code></div>
+
+<p class="docs-p"><strong>2 · 캐싱 어노테이션</strong> — 서비스 메서드를 캐싱 프록시로 감싼다: 조회 <code>@Cacheable</code>, 수정 <code>@CachePut</code>, 삭제 <code>@CacheEvict</code>. <code>CacheManager</code> 에 serializer와 기본 TTL을 등록해야 한다(안 하면 <code>redis-cli</code> 에 직렬화된 바이트만 보임). 주의: 수정 메서드는 프록시가 캐싱할 수 있도록 값을 <em>반드시 return</em> 해야 한다.</p>
+<div class="docs-code"><code>@Cacheable(key = "#name", value = "personCache")
+public Person findPersonByName(String name) { return repo.getByName(name); }
+
+@CachePut(key = "#person.name", value = "personCache")
+public Person update(Person person) { return repo.updateByName(person); }   // 반드시 return!
+
+@CacheEvict(key = "#name", value = "personCache")
+public void delete(String name) { repo.deleteByName(name); }
+// → redis 키: "personCache::kim"</code></div>
+
+<p class="docs-p"><strong>3 · RedisTemplate</strong> — 특정 자료구조를 직접 다룰 때의 저수준 오퍼레이터: <code>opsForValue / opsForList / opsForSet / opsForZSet / opsForHash</code> 와 <code>expire</code>, <code>keys</code>, <code>rename</code>, <code>delete</code>. 팀에 강조한 함정: List/Hash/Set을 써도 모든 접근은 <em>Redis 키</em> 로 한다 — Hash 내부 필드와 Redis 키를 혼동하지 말 것 — 그리고 <code>rename</code> 시 <code>RedisCommandExecutionException: ERR no such key</code> 가 잘 나므로 에러 처리를 탄탄히.</p>
+
+<h3 class="docs-h3">⊙ 세션 — Spring Session</h3>
+<p class="docs-p">캐싱과 같은 이야기다. WAS 로컬 세션은 sticky session이나 클러스터 간 세션 동기화를 강제한다. Spring Session을 Redis로 받치면 중앙화된다. 설정은 YAML에 — 그리고 문서화한 함정 하나: <code>@EnableRedisHttpSession</code> 을 붙이면 어노테이션 속성이 우선해 YAML 세션 설정이 더 이상 먹지 않는다.</p>
+<div class="docs-code"><code>server: { servlet: { session: { timeout: 60 } } }   # 초 단위
+spring:
+  session:
+    store-type: redis
+    redis:
+      namespace: spring:session:admin   # 키 prefix
+      flush-mode: on_save                # on_save vs immediate
+      cleanup-cron: 0/5 * * * * *        # 만료 찌꺼기 청소 주기
+
+@Bean   // 룬 문자 방지
+RedisSerializer&lt;Object&gt; springSessionDefaultRedisSerializer() {
+    return new GenericJackson2JsonRedisSerializer();
+}</code></div>
+<p class="docs-p"><code>flush-mode</code> 가 미묘하다: <strong>on_save</strong> 는 응답 객체를 만들 때 세션을 저장하고, <strong>immediate</strong> 는 <code>setAttribute</code>/<code>getAttribute</code> 즉시 저장한다 — 응답 전에 <code>Thread.sleep</code> 을 걸어 테스트해야만 차이를 잡아낼 수 있다.</p>
+
+<h3 class="docs-h3">⊙ 분산 락(Distributed Lock)</h3>
+<p class="docs-p">두 프로세스/스레드가 공유 자원을 동시에 건드리지 못하게, Redis에 <strong>스핀 락</strong> 을 구현했다 — <code>setIfAbsent</code>("없으면 set"의 원자 연산) + TTL(점유 중 크래시가 자원을 데드락시키지 않도록). <code>unlock</code> 은 그냥 delete.</p>
+<div class="docs-code"><code>public Boolean lock(Long key) {
+    return redisTemplate.opsForValue()
+        .setIfAbsent(String.valueOf(key), "lock", Duration.ofMillis(10000L));
+}
+public Boolean unlock(Long key) { return redisTemplate.delete(String.valueOf(key)); }
+
+// 사용 — 획득까지 spin, 해제는 항상 finally
+while (!redisLockRepository.lock(id)) { Thread.sleep(300); }   // sleep으로 Redis 부하 완충
+try   { redisCRUDService.create(p1); }
+finally { redisLockRepository.unlock(id); }</code></div>
+<p class="docs-p">스핀 락의 약점은 Redis에 끊임없이 재요청하는 부하다. <code>Thread.sleep(300)</code> 이 이를 완충하는 의도적 버퍼다.</p>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">배운 점</h2>
+<ul class="docs-list">
+  <li><strong>Redis는 우선 메모리 운영 문제다.</strong> 운영 리스크 대부분이 메모리로 수렴한다 — eviction policy, <code>fork</code> 시 copy-on-write 스파이크, 파편화 — 그래서 인스턴스를 호스트 RAM ½ 이하로 잡고 작은 인스턴스 여러 개를 선호한다.</li>
+  <li><strong>필요에 맞춰 모드를 고른다:</strong> HA만 필요하면 Sentinel, 샤딩까지 필요하면 Cluster — 단 Cluster는 슬롯 인지 로직을 클라이언트에 떠넘긴다.</li>
+  <li><strong>앱 쪽은 적절한 추상화가 핵심:</strong> 캐싱은 repository/어노테이션, 세션은 Spring Session, 락은 TTL을 건 <code>setIfAbsent</code> — 각각 고유의 serializer와 미묘한 설정 함정을 동반한다.</li>
+</ul>
+
+</div>
+
+    </div>
+  </article>
+</main>
+
+<footer-component></footer-component>
+
+<script>
+(function(){
+  var btns = document.querySelectorAll('.docs-langbtn');
+  var panes = document.querySelectorAll('.docs-lang');
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var lang = b.getAttribute('data-lang');
+      btns.forEach(function(x){ x.classList.toggle('is-active', x.getAttribute('data-lang')===lang); });
+      panes.forEach(function(p){ p.hidden = (p.getAttribute('data-lang')!==lang); });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
