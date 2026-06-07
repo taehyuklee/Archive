@@ -19,14 +19,14 @@
     <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
 
 
-<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-41">
-<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-41">
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-44">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-44">
 
-<script src="../../../js/main.js?v=20260605-41" defer></script>
-<script src="../../../js/components/nav.js?v=20260605-41" sync></script>
-<script src="../../../js/components/footer.js?v=20260605-41" sync></script>
-<script src="../../../js/components/header.js?v=20260605-41" sync></script>
-<script src="../../../js/components/docs-toc.js?v=20260605-41" defer></script>
+<script src="../../../js/main.js?v=20260605-44" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-44" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-44" sync></script>
+<script src="../../../js/components/header.js?v=20260605-44" sync></script>
+<script src="../../../js/components/docs-toc.js?v=20260605-44" defer></script>
 
 <common-header-component></common-header-component>
 </head>
@@ -95,7 +95,7 @@
 <figcaption>Database &gt; Collection &gt; Document 계층. Document 는 BSON 으로 중첩 객체·배열을 그대로 담는다</figcaption>
 </div>
 <p class="docs-p">실제 운영했던 API 트래픽 통계 문서 — 통계 안에 API별 → 결과별 → 에러별 통계가 <strong>배열로 중첩</strong> 되어 있다(한 번에 계층 데이터를 읽기 위함).</p>
-<div class="docs-code"><code>{
+<div class="docs-code"><code class="language-json">{
   "_id": ObjectId("62aababcddda6517b7f7149a"),
   "svcId": "GOOGLE",
   "statBaseUnit": "MI",
@@ -117,7 +117,7 @@
 show dbs                 # 전체 데이터베이스
 use admin                # 사용 DB 전환
 show collections         # 현재 DB 의 컬렉션(≈ 테이블) 목록</code></div>
-<div class="docs-code"><code># 생성 (Create)
+<div class="docs-code"><code class="language-bash"># 생성 (Create)
 db.admUser.insertOne({ "userId": "beast@kt.com", "userNm": "Beast", "sttus": "NRML",
                        "lastLoginDt": ISODate("2022-10-25T04:48:13Z") });
 db.admHndlr.insertMany([ { "hndlrId": "REQ.KT-AUTH" }, { "hndlrId": "REQ.KT-AUTH1" } ]);

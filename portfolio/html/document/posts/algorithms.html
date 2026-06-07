@@ -19,14 +19,14 @@
     <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
 
 
-<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-41">
-<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-41">
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-44">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-44">
 
-<script src="../../../js/main.js?v=20260605-41" defer></script>
-<script src="../../../js/components/nav.js?v=20260605-41" sync></script>
-<script src="../../../js/components/footer.js?v=20260605-41" sync></script>
-<script src="../../../js/components/header.js?v=20260605-41" sync></script>
-<script src="../../../js/components/docs-toc.js?v=20260605-41" defer></script>
+<script src="../../../js/main.js?v=20260605-44" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-44" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-44" sync></script>
+<script src="../../../js/components/header.js?v=20260605-44" sync></script>
+<script src="../../../js/components/docs-toc.js?v=20260605-44" defer></script>
 
 <common-header-component></common-header-component>
 </head>
@@ -44,11 +44,26 @@
 <div class="docs-callout">
   <div class="docs-callout__icon">🧩</div>
   <div class="docs-callout__body">
-    <p class="docs-p"><strong>한 줄 소개</strong> — 직접 풀었던 알고리즘 문제들을 <strong>유형별로 분류</strong> 해 문제집 형식으로 묶었다. 큰 줄기는 <em>자료구조 활용 → 완전탐색 → 구현·시뮬레이션 → DFS·백트래킹 → BFS·최단거리 → DP → 그리디</em>. 출처는 주로 <strong>삼성 SW 역량테스트(백준)</strong> · <strong>프로그래머스 고득점 키트</strong> · <strong>Softeer</strong> 다. 언어는 <strong>Java</strong>.</p>
+    <p class="docs-p"><strong>한 줄 소개</strong> — 직접 풀었던 알고리즘 문제들을 <strong>유형별로 분류</strong> 해 문제집 형식으로 묶었다. 큰 줄기는 <em>자료구조 활용 → 완전탐색 → 구현·시뮬레이션 → DFS·백트래킹 → BFS·최단거리 → DP → 그리디</em>. 출처는 <strong>백준 · 프로그래머스 · Softeer · CodeTree · 삼성 SW Expert · Codility</strong> 등이며, 언어는 주로 <strong>Java</strong>(일부 Python). 전체 풀이 코드(270+ 문제)는 GitHub 에 모아 두었다 → <a href="https://github.com/taehyuklee/Algorithm" target="_blank" rel="noopener">github.com/taehyuklee/Algorithm</a>.</p>
   </div>
 </div>
 
 <!-- ===================== 0 ===================== -->
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>온라인 저지</th><th>문제 수*</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr><td>백준 (BOJ)</td><td>~70</td><td>삼성형 시뮬레이션 · 자료구조 전반</td></tr>
+    <tr><td>삼성 SW 역량 / SW Expert</td><td>~44</td><td>격자 시뮬레이션 (Java · Python 양쪽 풀이)</td></tr>
+    <tr><td>프로그래머스</td><td>~42</td><td>고득점 키트 · Lv1~3</td></tr>
+    <tr><td>Codility</td><td>~26</td><td><strong>정확성 + 성능(시간복잡도)</strong> 채점</td></tr>
+    <tr><td>Softeer (현대차)</td><td>~22</td><td>구현 · DP · 그리디</td></tr>
+    <tr><td>CodeTree · 재현 · Warm-up</td><td>~50</td><td>코드트리 시뮬레이션 · 기본기</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="docs-p" style="font-size:13px;color:#64748b;">* 대략치 — 전체 풀이 코드는 <a href="https://github.com/taehyuklee/Algorithm" target="_blank" rel="noopener">github.com/taehyuklee/Algorithm</a> 에 270+ 파일로 정리돼 있다.</p>
+
 <h2 class="docs-h2">0 · 들어가며 — Java 로 알고리즘 풀기</h2>
 <p class="docs-p">Java 로 알고리즘을 풀려면 먼저 <strong>Collection 프레임워크</strong> 의 자료구조가 내부적으로 어떻게 동작하는지 알아야 한다. 어떤 자료구조를 고르냐가 곧 시간복잡도를 결정한다.</p>
 <div class="docs-table-wrap">
@@ -173,6 +188,13 @@
     <p class="docs-p">시뮬레이션은 <strong>상태를 객체로 모델링</strong> 하면 깔끔하다. 예) 체스판 말 이동(17837)은 말을 <code>Horse{num,x,y,dir}</code> 로 두고, 칸마다 <code>List&lt;Horse&gt;</code> 를 쌓아 색(흰=한 칸 이동, 빨=역순으로 쌓기, 파=방향 반전) 규칙을 그대로 옮겼다.</p>
   </div>
 </div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">🗂️</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>GitHub 삼성 컬렉션</strong> — 위 표 외에도 스타트 택시 · 어른/청소년 상어 · 마법사 상어(블리자드·복제·파이어볼·토네이도) · 컨베이어 벨트 · 모노미노도미노 · 온풍기 · 포탑 부수기 · 메이즈 러너 · 코드트리빵 · 산타 선물공장 · 나무 박멸 · 어항 정리 · <strong>2024 상반기(왕실의 기사 · 루돌프 소싸움)</strong> 등 <strong>40여 문제를 Java·Python 양쪽</strong>으로 풀어 정리했다.</p>
+    <p class="docs-p">반복되는 패턴은 <strong>재사용 "삼성 모듈"</strong> 로 빼 두었다 — <code>좌표 회전(시계/반시계)</code> · <code>나선(spiral) 순회</code> · <code>주기 경계(periodic boundary) 이동</code> · <code>PriorityQueue + Comparator</code>. 격자 문제는 이 모듈 조합으로 빠르게 조립한다.</p>
+  </div>
+</div>
 
 <!-- ===================== 4 ===================== -->
 <h2 class="docs-h2">4 · DFS · 백트래킹</h2>
@@ -248,7 +270,7 @@
 </div>
 
 <hr class="docs-divider">
-<p class="docs-source">📓 <strong>2022–2023년</strong> 제가 코딩테스트를 준비하며 직접 푼 문제들(삼성 SW 역량테스트·프로그래머스·Softeer)을 Java 로 풀고 유형별로 정리한 노트입니다 · 원본 <a href="https://jealous-watch-86a.notion.site/c0a78c15c13c497b9e37085752519249" target="_blank" rel="noopener">Notion 에서 보기 ↗</a></p>
+<p class="docs-source">📓 <strong>2022–2023년</strong> 제가 코딩테스트를 준비하며 직접 푼 문제들(삼성 SW 역량테스트·프로그래머스·Softeer)을 Java 로 풀고 유형별로 정리한 노트입니다 · 전체 풀이 <a href="https://github.com/taehyuklee/Algorithm" target="_blank" rel="noopener">GitHub · Algorithm ↗</a> · 정리 <a href="https://jealous-watch-86a.notion.site/c0a78c15c13c497b9e37085752519249" target="_blank" rel="noopener">Notion ↗</a></p>
 
     </div>
   </article>

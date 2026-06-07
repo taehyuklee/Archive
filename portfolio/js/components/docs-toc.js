@@ -35,7 +35,7 @@
       '.docs-source{margin:18px 0 0;padding:13px 16px;border-top:1px solid #eef1f6;',
       "font:500 12.5px/1.6 'Montserrat','Noto Sans KR',sans-serif;color:#64748b;text-align:center;}",
       '.docs-source strong{color:#334155;font-weight:700;}',
-      '.docs-source a{color:#0048A7;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s ease;}',
+      '.docs-source a{color:#0048A7;text-decoration:none;white-space:nowrap;border-bottom:1px solid transparent;transition:border-color .15s ease;}',
       '.docs-source a:hover{border-bottom-color:#0048A7;}',
       /* Java 코드 문법 강조 (dark .docs-code 배경 기준) */
       '.docs-code .tok-com{color:#7186a3;font-style:italic;}',
@@ -75,15 +75,20 @@
     return { pages: pages, slides: slides };
   }
 
-  // --- 가벼운 다국어(java·bash·python) 문법 강조 ---
+  // --- 가벼운 다국어(java·bash·python·gradle·yaml·json) 문법 강조 ---
   var KW = {
     java: /^(public|private|protected|static|final|class|interface|enum|void|new|return|this|super|extends|implements|import|package|abstract|throws|try|catch|finally|if|else|for|while|do|switch|case|break|continue|null|true|false|instanceof|boolean|int|long|double|float|char|byte|short)$/,
     python: /^(def|class|return|import|from|as|if|elif|else|for|while|in|is|not|and|or|None|True|False|with|try|except|finally|raise|lambda|yield|pass|break|continue|global|nonlocal|assert|del|async|await|self)$/,
-    bash: /^(sudo|apt|apt-get|yum|dnf|cd|ls|pwd|mkdir|rmdir|rm|cp|mv|cat|less|more|echo|printf|grep|awk|sed|find|chmod|chown|chgrp|ln|tar|gzip|gunzip|zip|unzip|wget|curl|ssh|scp|systemctl|service|export|source|alias|kill|ps|top|df|du|free|mount|umount|ifconfig|ip|ping|netstat|ss|crontab|vi|vim|nano|man|sudo|touch|head|tail|wc|sort|uniq|xargs|which|whereis|history|reboot|shutdown|useradd|usermod|passwd|groupadd|lsblk|fdisk|mkfs|lvcreate|vgcreate|pvcreate)$/
+    bash: /^(sudo|apt|apt-get|yum|dnf|cd|ls|pwd|mkdir|rmdir|rm|cp|mv|cat|less|more|echo|printf|grep|awk|sed|find|chmod|chown|chgrp|ln|tar|gzip|gunzip|zip|unzip|wget|curl|ssh|scp|systemctl|service|export|source|alias|kill|ps|top|df|du|free|mount|umount|ifconfig|ip|ping|netstat|ss|crontab|vi|vim|nano|man|sudo|touch|head|tail|wc|sort|uniq|xargs|which|whereis|history|reboot|shutdown|useradd|usermod|passwd|groupadd|lsblk|fdisk|mkfs|lvcreate|vgcreate|pvcreate|mongo|mongodump|mongorestore|rs)$/,
+    gradle: /^(plugins|id|group|version|java|sourceCompatibility|repositories|mavenCentral|dependencies|implementation|api|runtimeOnly|compileOnly|annotationProcessor|testImplementation|testRuntimeOnly|developmentOnly|ext|set|dependencyManagement|imports|mavenBom|tasks|named|useJUnitPlatform)$/,
+    js: /^(var|let|const|function|return|if|else|for|while|do|switch|case|break|continue|new|this|typeof|instanceof|in|of|null|true|false|undefined|class|extends|super|import|export|from|default|async|await|try|catch|finally|throw|delete|void|yield)$/
   };
+  KW.groovy = KW.gradle;
   function escHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function span(c, s) { return '<span class="' + c + '">' + escHtml(s) + '</span>'; }
+  var SLASH = { java: 1, gradle: 1, groovy: 1, js: 1 };   // // 주석 계열 (그 외 bash/python 은 # 주석)
   function buildRe(lang) {
-    var comment = (lang === 'java') ? '\\/\\/[^\\n]*|\\/\\*[\\s\\S]*?\\*\\/' : '#[^\\n]*';
+    var comment = SLASH[lang] ? '\\/\\/[^\\n]*|\\/\\*[\\s\\S]*?\\*\\/' : '#[^\\n]*';
     var string = (lang === 'python')
       ? '"""[\\s\\S]*?"""|\'\'\'[\\s\\S]*?\'\'\'|"(?:\\\\.|[^"\\\\])*"|\'(?:\\\\.|[^\'\\\\])*\''
       : '"(?:\\\\.|[^"\\\\])*"|\'(?:\\\\.|[^\'\\\\])*\'';
@@ -92,25 +97,62 @@
     var ident = '[A-Za-z_$][A-Za-z0-9_$]*';
     return new RegExp('(' + comment + ')|(' + string + ')|(' + special + ')|(' + num + ')|(' + ident + ')', 'g');
   }
-  function highlightCode(code, lang) {
+  function highlightCodeGeneral(code, lang) {
     var src = code.textContent, kw = KW[lang], re = buildRe(lang);
     var out = '', last = 0, m;
     while ((m = re.exec(src))) {
       out += escHtml(src.slice(last, m.index));
       last = re.lastIndex;
-      if (m[1]) out += '<span class="tok-com">' + escHtml(m[1]) + '</span>';
-      else if (m[2]) out += '<span class="tok-str">' + escHtml(m[2]) + '</span>';
-      else if (m[3]) out += '<span class="tok-ann">' + escHtml(m[3]) + '</span>';
-      else if (m[4]) out += '<span class="tok-num">' + escHtml(m[4]) + '</span>';
+      if (m[1]) out += span('tok-com', m[1]);
+      else if (m[2]) out += span('tok-str', m[2]);
+      else if (m[3]) out += span('tok-ann', m[3]);
+      else if (m[4]) out += span('tok-num', m[4]);
       else if (m[5]) {
         var w = m[5];
-        if (kw && kw.test(w)) out += '<span class="tok-kw">' + w + '</span>';
-        else if (lang !== 'bash' && /^[A-Z]/.test(w)) out += '<span class="tok-typ">' + w + '</span>';
+        if (kw && kw.test(w)) out += span('tok-kw', w);
+        else if (lang !== 'bash' && lang !== 'gradle' && /^[A-Z]/.test(w)) out += span('tok-typ', w);
         else out += escHtml(w);
       }
     }
     out += escHtml(src.slice(last));
     code.innerHTML = out;
+  }
+  function highlightYaml(code) {
+    var src = code.textContent, out = '', last = 0, m;
+    // 주석 / 문자열 / 키(콜론 앞) / 불린·null / 숫자
+    var re = /(#[^\n]*)|("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|([A-Za-z_][\w.$/-]*)(?=\s*:(?:\s|$))|\b(true|false|null|yes|no|on|off)\b|(\b\d[\d.]*\b)/g;
+    while ((m = re.exec(src))) {
+      out += escHtml(src.slice(last, m.index));
+      last = re.lastIndex;
+      if (m[1]) out += span('tok-com', m[1]);
+      else if (m[2]) out += span('tok-str', m[2]);
+      else if (m[3]) out += span('tok-kw', m[3]);
+      else if (m[4]) out += span('tok-ann', m[4]);
+      else if (m[5]) out += span('tok-num', m[5]);
+    }
+    out += escHtml(src.slice(last));
+    code.innerHTML = out;
+  }
+  function highlightJson(code) {
+    var src = code.textContent, out = '', last = 0, m;
+    // 문자열-키(+콜론) / 문자열-값 / 불린·null / 숫자 / 식별자(ObjectId·ISODate 등)
+    var re = /("(?:\\.|[^"\\])*")(\s*:)|("(?:\\.|[^"\\])*")|\b(true|false|null)\b|(-?\b\d[\d.eE+-]*\b)|([A-Za-z_$][\w$]*)/g;
+    while ((m = re.exec(src))) {
+      out += escHtml(src.slice(last, m.index));
+      last = re.lastIndex;
+      if (m[1]) out += span('tok-kw', m[1]) + escHtml(m[2]);
+      else if (m[3]) out += span('tok-str', m[3]);
+      else if (m[4]) out += span('tok-ann', m[4]);
+      else if (m[5]) out += span('tok-num', m[5]);
+      else if (m[6]) out += span('tok-typ', m[6]);
+    }
+    out += escHtml(src.slice(last));
+    code.innerHTML = out;
+  }
+  function highlightCode(code, lang) {
+    if (lang === 'yaml' || lang === 'properties') return highlightYaml(code);
+    if (lang === 'json') return highlightJson(code);
+    return highlightCodeGeneral(code, lang);
   }
   function langOf(code) {
     var raw = code.getAttribute('data-lang') || '';
@@ -118,8 +160,10 @@
     raw = (raw || (cls && cls[1]) || '').toLowerCase();
     if (raw === 'shell' || raw === 'sh' || raw === 'console' || raw === 'zsh') return 'bash';
     if (raw === 'py') return 'python';
-    if (raw === 'java' || raw === 'bash' || raw === 'python') return raw;
-    return null;
+    if (raw === 'yml') return 'yaml';
+    if (raw === 'javascript' || raw === 'js') return 'js';
+    var ok = { java:1, bash:1, python:1, gradle:1, groovy:1, yaml:1, properties:1, json:1, js:1 };
+    return ok[raw] ? raw : null;
   }
   function highlightJavaAll(root) {   // 이름은 유지하되 모든 지원 언어를 처리
     var codes = (root || document).querySelectorAll('.docs-code code');

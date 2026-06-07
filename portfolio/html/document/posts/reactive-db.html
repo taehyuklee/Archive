@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reactive DB · R2DBC & Reactive Mongo — TAYLEE Archive</title>
+    <!-- Open Graph / social share -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TAYLEE's Archive">
+    <meta property="og:title" content="Reactive DB · R2DBC & Reactive Mongo — TAYLEE Archive">
+    <meta property="og:description" content="WebFlux 논블로킹 CRUD 를 R2DBC(PostgreSQL)와 Reactive MongoDB 양쪽으로 구현하고, 멀티 DB 전환·R2DBC의 @Id 함정·관계 매핑 차이를 커스텀 애너테이션으로 푼 학습/구현 노트. (GitHub: RxProgramming)">
+    <meta property="og:url" content="https://taehyuklee.github.io/portfolio/html/document/posts/reactive-db.html">
+    <meta property="og:image" content="https://taehyuklee.github.io/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Reactive DB · R2DBC & Reactive Mongo — TAYLEE Archive">
+    <meta name="twitter:description" content="R2DBC · Reactive Mongo 논블로킹 DB 구현 노트 (멀티DB 전환·@Id·관계 매핑).">
+    <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-44">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-44">
+
+<script src="../../../js/main.js?v=20260605-44" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-44" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-44" sync></script>
+<script src="../../../js/components/header.js?v=20260605-44" sync></script>
+<script src="../../../js/components/docs-toc.js?v=20260605-44" defer></script>
+
+<common-header-component></common-header-component>
+</head>
+<body>
+<nav-component></nav-component>
+
+<main class="docs-post">
+  <article class="docs-post__article">
+    <header class="docs-post__header">
+      <p class="docs-post__eyebrow"><a href="../../TAYLEE documents.html">← Documents</a></p>
+      <h1 class="docs-post__title">Reactive DB · R2DBC &amp; Reactive Mongo</h1>
+    </header>
+    <div class="docs-post__body" data-paginate="true" data-per-page="2">
+
+<div class="docs-callout">
+  <div class="docs-callout__icon">⚡</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>한 줄 소개</strong> — WebFlux 로 논블로킹을 만들어도 DB 접근이 블로킹(JDBC)이면 거기서 막힌다. 그래서 DB 까지 논블로킹으로 — <strong>R2DBC(PostgreSQL)</strong> 와 <strong>Reactive MongoDB</strong> 두 갈래로 직접 CRUD API 를 구현했다. 직접 만든 레포지토리 → <a href="https://github.com/taehyuklee/RxProgramming" target="_blank" rel="noopener">github.com/taehyuklee/RxProgramming</a> (Spring Cloud Gateway + WebFlux 리액티브 API). 이 글은 그 <strong>rxApis</strong> 패키지(mongoRxApi · postgreRxApi · multidbRxApi)의 설계를 정리한 것이다.</p>
+  </div>
+</div>
+
+<!-- ===================== 1 ===================== -->
+<h2 class="docs-h2">1 · 무엇을 만들었나</h2>
+<p class="docs-p">레포는 크게 두 덩어리다 — <strong>gatewayMsa</strong>(API 게이트웨이 → 마이크로서비스 라우팅)와 <strong>rxApis</strong>(WebFlux 기반 논블로킹 REST API). 이 글의 주제는 rxApis 의 <strong>리액티브 DB</strong> 다.</p>
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>모듈</th><th>DB</th><th>핵심</th></tr></thead>
+  <tbody>
+    <tr><td><code>postgreRxApi</code></td><td>R2DBC · PostgreSQL</td><td>관계형 + 논블로킹. R2DBC 의 <code>@Id</code> 생성 규칙이 JPA 와 달라 주의 필요</td></tr>
+    <tr><td><code>mongoRxApi</code></td><td>Reactive MongoDB</td><td>문서형 + 논블로킹. 연관 데이터를 임베딩</td></tr>
+    <tr><td><code>multidbRxApi</code></td><td>둘 다 (yaml 선택)</td><td>auto-config 를 모두 끄고, yaml 설정으로 Postgres/Mongo 를 <strong>전환</strong></td></tr>
+  </tbody>
+</table>
+</div>
+<div class="docs-fig">
+<svg viewBox="0 0 720 200" width="720" height="200" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="360" y="20" text-anchor="middle" fill="#003B62" font-weight="700">WebFlux → 논블로킹 DB 두 갈래</text>
+  <rect x="40" y="84" width="120" height="44" rx="10" fill="#e9f7f3" stroke="#0e8b87" stroke-width="1.5"/><text x="100" y="104" text-anchor="middle" font-weight="700">WebFlux</text><text x="100" y="120" text-anchor="middle" fill="#64748b" font-size="9.5">Netty · Mono/Flux</text>
+  <g text-anchor="middle">
+    <rect x="300" y="44" width="150" height="40" rx="9" fill="#e8f3fc" stroke="#0078d7"/><text x="375" y="68">R2DBC</text>
+    <rect x="300" y="128" width="150" height="40" rx="9" fill="#f0fbf8" stroke="#0e8b87"/><text x="375" y="152">Reactive Mongo</text>
+    <rect x="560" y="44" width="120" height="40" rx="9" fill="#eef2f7" stroke="#94a3b8"/><text x="620" y="68">PostgreSQL</text>
+    <rect x="560" y="128" width="120" height="40" rx="9" fill="#eef2f7" stroke="#94a3b8"/><text x="620" y="152">MongoDB</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569"><line x1="160" y1="98" x2="296" y2="66"/><polygon points="300,64 291,64 294,73"/><line x1="160" y1="114" x2="296" y2="146"/><polygon points="300,148 291,143 291,152"/><line x1="450" y1="64" x2="556" y2="64"/><polygon points="560,64 552,60 552,68"/><line x1="450" y1="148" x2="556" y2="148"/><polygon points="560,148 552,144 552,152"/></g>
+  <text x="375" y="104" text-anchor="middle" fill="#64748b" font-size="9.5">둘 다 논블로킹 드라이버 (반환 Mono/Flux)</text>
+</svg>
+<figcaption>WebFlux 가 논블로킹이면 DB 드라이버도 논블로킹이어야 — R2DBC(관계형) 또는 Reactive Mongo(문서형)</figcaption>
+</div>
+
+<!-- ===================== 2 ===================== -->
+<h2 class="docs-h2">2 · 두 드라이버 — 의존성과 설정값</h2>
+<div class="docs-code"><code class="language-gradle">// 의존성 (build.gradle)
+// R2DBC + PostgreSQL
+implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+runtimeOnly  'org.postgresql:r2dbc-postgresql'
+// Reactive MongoDB
+implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'</code></div>
+<div class="docs-code"><code class="language-yaml"># application.yaml
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: ********
+    pool:
+      max-size: 100
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/
+      database: RxTest</code></div>
+
+<!-- ===================== 3 ===================== -->
+<h2 class="docs-h2">3 · DB 설정 (수동 Config)</h2>
+<p class="docs-p">각 드라이버를 Java Config 로 직접 구성했다. Reactive Mongo 는 <code>AbstractReactiveMongoConfiguration</code> 을 상속해 <code>MongoClient</code>·<code>ReactiveMongoTemplate</code> 을, R2DBC 는 <code>ConnectionFactory</code> 로부터 <code>R2dbcEntityTemplate</code>·<code>DatabaseClient</code> 를 만든다.</p>
+<div class="docs-code"><code class="language-java">// Reactive MongoDB
+@Configuration
+@ConditionalOnProperty(value = "common.db", havingValue = "mongo")   // yaml 로 켜고 끔
+@EnableReactiveMongoRepositories(basePackages = "...person.repository")
+public class RxMongoConfig extends AbstractReactiveMongoConfiguration {
+    @Override public MongoClient reactiveMongoClient() { return MongoClients.create(); }
+    @Override protected String getDatabaseName() { return "TestDB"; }
+    @Bean public ReactiveMongoTemplate reactiveMongoTemplate() {
+        return new ReactiveMongoTemplate(reactiveMongoClient(), getDatabaseName());
+    }
+}
+
+// R2DBC (PostgreSQL)
+@Configuration
+@ConditionalOnProperty(value = "common.db", havingValue = "rdb")
+@EnableR2dbcRepositories(basePackages = "...person.repository")
+public class R2dbcTemplate {
+    @Bean public R2dbcEntityTemplate r2dbcEntityTemplate(ConnectionFactory cf) {
+        return new R2dbcEntityTemplate(cf);
+    }
+    @Bean public DatabaseClient databaseClient(ConnectionFactory cf) {
+        return DatabaseClient.builder().connectionFactory(cf).build();
+    }
+}</code></div>
+
+<!-- ===================== 4 ===================== -->
+<h2 class="docs-h2">4 · 멀티 DB 전환 (multidbRxApi)</h2>
+<p class="docs-p">하나의 코드베이스로 Postgres·Mongo 를 골라 쓰려면, 스프링이 자동으로 켜는 <strong>auto-config 를 전부 끄고</strong> 위의 Java Config 를 <code>@ConditionalOnProperty(common.db)</code> 로 한쪽만 활성화한다.</p>
+<div class="docs-code"><code class="language-yaml"># application.yaml — 자동설정 제외 + 스위치
+spring:
+  autoconfigure:
+    exclude:
+      - org...data.r2dbc.R2dbcAutoConfiguration
+      - org...data.r2dbc.R2dbcRepositoriesAutoConfiguration
+      - org...data.mongo.MongoReactiveDataAutoConfiguration
+      - org...data.mongo.MongoReactiveRepositoriesAutoConfiguration
+common:
+  db: mongo        # ← "mongo" 또는 "rdb" 로 전환</code></div>
+<div class="docs-fig">
+<svg viewBox="0 0 720 150" width="720" height="150" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <rect x="40" y="56" width="170" height="40" rx="9" fill="#fef3e7" stroke="#d98324"/><text x="125" y="76" text-anchor="middle" font-weight="700">common.db</text><text x="125" y="90" text-anchor="middle" fill="#64748b" font-size="9.5">yaml 값</text>
+  <rect x="300" y="56" width="180" height="40" rx="9" fill="#eef2f7" stroke="#94a3b8"/><text x="390" y="80" text-anchor="middle">@ConditionalOnProperty</text>
+  <g text-anchor="middle">
+    <rect x="560" y="26" width="130" height="36" rx="8" fill="#e8f3fc" stroke="#0078d7"/><text x="625" y="49">R2dbcTemplate</text>
+    <rect x="560" y="90" width="130" height="36" rx="8" fill="#f0fbf8" stroke="#0e8b87"/><text x="625" y="113">RxMongoConfig</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569"><line x1="210" y1="76" x2="296" y2="76"/><polygon points="300,76 292,72 292,80"/></g>
+  <g stroke="#0078d7" stroke-width="1.5" fill="#0078d7"><line x1="480" y1="68" x2="556" y2="46"/><polygon points="560,45 551,45 554,54"/></g>
+  <text x="520" y="40" fill="#0078d7" font-size="9">="rdb"</text>
+  <g stroke="#0e8b87" stroke-width="1.5" fill="#0e8b87"><line x1="480" y1="84" x2="556" y2="106"/><polygon points="560,107 551,103 551,112"/></g>
+  <text x="520" y="118" fill="#0e8b87" font-size="9">="mongo"</text>
+</svg>
+<figcaption>yaml 의 common.db 값에 따라 R2DBC Config 또는 Reactive Mongo Config 중 하나만 빈으로 등록된다</figcaption>
+</div>
+
+<!-- ===================== 5 ===================== -->
+<h2 class="docs-h2">5 · R2DBC 의 함정 ① — @Id (insert vs update)</h2>
+<p class="docs-p">R2DBC 는 JPA 와 <strong>@Id 생성·식별 원리가 다르다</strong>. JPA 영속성 컨텍스트가 없어서, ID 가 채워진 엔티티를 <code>save()</code> 할 때 이게 <em>새 INSERT 인지 기존 UPDATE 인지</em> 스스로 판단하지 못한다(직접 부여한 String id 면 더더욱). 그래서 <code>Persistable&lt;ID&gt;</code> 을 구현해 <code>isNew()</code> 로 직접 알려준다.</p>
+<div class="docs-code"><code class="language-java">@Data @Accessors(chain = true)
+@Table("Person")     // R2DBC (관계형 테이블)
+@Document            // Reactive Mongo (문서) — 같은 엔티티를 양쪽에 매핑
+public class Person extends AuditEntity implements Persistable<String> {
+
+    @Transient private boolean isNew;     // 영속 여부 플래그
+
+    @Id private String id;
+    // private String teamId;   // mongo 면 불필요(임베딩), rdb 면 FK 로 주입
+
+    private String email;
+    private String name;
+    private Integer score;
+
+    @Override public boolean isNew() { return isNew; }   // true → INSERT, false → UPDATE
+}</code></div>
+
+<!-- ===================== 6 ===================== -->
+<h2 class="docs-h2">6 · 관계 매핑의 차이 — 임베딩 vs FK</h2>
+<p class="docs-p">가장 까다로운 지점. <strong>Mongo</strong> 는 연관 데이터를 한 문서에 <em>임베딩</em> 하면 그만이지만, <strong>R2DBC</strong> 는 관계형이라 <em>FK</em> 로 잇고 따로 조회해 조립해야 한다 — 게다가 R2DBC 엔 JPA 의 <code>@OneToMany</code> 같은 연관관계 매핑이 없다. 그래서 JPA 의 <code>@JoinColumn</code> 을 흉내 낸 <strong>커스텀 애너테이션 <code>@RxJoinColumn</code> / <code>@RxTransient</code></strong> 를 만들고, AOP 와 save 콜백으로 연관 데이터를 채워 넣게 했다.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 180" width="720" height="180" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="10.5">
+  <text x="180" y="18" text-anchor="middle" fill="#0e8b87" font-weight="700">Mongo — 임베딩</text>
+  <rect x="60" y="36" width="240" height="120" rx="9" fill="#f0fbf8" stroke="#0e8b87"/>
+  <g font-family="monospace" font-size="10" fill="#0f172a"><text x="76" y="56">Team {</text><text x="92" y="74">teamName,</text><text x="92" y="92">teamMembers: [</text><text x="108" y="110">{ Person },</text><text x="108" y="128">{ Person }</text><text x="92" y="146">] }</text></g>
+  <text x="540" y="18" text-anchor="middle" fill="#0078d7" font-weight="700">R2DBC — FK + 조립</text>
+  <g text-anchor="middle">
+    <rect x="420" y="48" width="110" height="40" rx="8" fill="#e8f3fc" stroke="#0078d7"/><text x="475" y="72">Team</text>
+    <rect x="600" y="48" width="110" height="40" rx="8" fill="#e8f3fc" stroke="#0078d7"/><text x="655" y="66">Person</text><text x="655" y="80" font-size="8.5" fill="#64748b">team_id (FK)</text>
+  </g>
+  <g stroke="#0078d7" stroke-width="1.6" fill="#0078d7"><line x1="530" y1="68" x2="596" y2="68"/><polygon points="600,68 592,64 592,72"/></g>
+  <text x="565" y="112" text-anchor="middle" fill="#64748b" font-size="9.5">@RxJoinColumn(name="team_id")</text>
+  <text x="565" y="128" text-anchor="middle" fill="#64748b" font-size="9.5">+ AOP·save 콜백으로 조립</text>
+</svg>
+<figcaption>Mongo 는 한 문서에 임베딩, R2DBC 는 FK 로 나눠 저장 후 커스텀 애너테이션으로 조립</figcaption>
+</div>
+<div class="docs-code"><code class="language-java">@Data @Accessors(chain = true)
+@Table("Team") @Document
+public class Team extends AuditEntity implements Persistable<String> {
+    @Transient private boolean isNew;
+    @Id private String id;
+    private String teamName;
+
+    @RxTransient                            // 컬럼/필드로 저장하지 않음
+    @RxJoinColumn(name = "team_id")         // 직접 만든 "조인 컬럼" — FK 로 연결
+    private List<Person> teamMembers = new ArrayList<>();
+
+    @Override public boolean isNew() { return isNew; }
+}
+
+// 커스텀 애너테이션 정의
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ FIELD, METHOD, ANNOTATION_TYPE })
+public @interface RxJoinColumn { String name(); }</code></div>
+
+<!-- ===================== 7 ===================== -->
+<h2 class="docs-h2">7 · Repository 와 반환 타입</h2>
+<p class="docs-p">리액티브 레포지토리는 JPA 의 <code>PagingAndSortingRepository</code> 대신 <strong><code>ReactiveSortingRepository</code></strong>(또는 <code>ReactiveCrudRepository</code>)를 상속한다. 핵심 차이는 <strong>반환값이 <code>Mono</code>/<code>Flux</code> 로 감싸진다</strong> 는 것 — 블로킹 없이 결과 스트림을 흘려보낸다. 같은 인터페이스로 R2DBC·Mongo 양쪽에서 동작한다.</p>
+<div class="docs-code"><code class="language-java">@Repository
+public interface PersonRepository extends ReactiveSortingRepository<Person, String> {
+    Mono<Void>   deleteById(String id);
+    Mono<Person> findByEmail(String email);   // 메서드 이름 → 쿼리 자동 생성
+}
+
+// 컨트롤러도 Mono/Flux 를 그대로 반환 (논블로킹)
+@GetMapping("/persons")
+public Flux<Person> findAll() { return personRepository.findAll(); }
+
+@PostMapping("/person")
+public Mono<Person> save(@RequestBody Person person) {
+    return personRepository.save(person.setNew(true));   // isNew=true → INSERT
+}</code></div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">🧭</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>배운 점</strong> — "리액티브"는 단순히 WebFlux 를 쓰는 게 아니라 <strong>요청 → 비즈니스 → DB</strong> 전 구간이 논블로킹이어야 의미가 있다. R2DBC 는 JPA 의 편의(영속성 컨텍스트·연관관계·@Id 자동 판별)가 없어 직접 메워야 할 부분이 많았고, 그 과정에서 <code>Persistable</code>·커스텀 애너테이션·AOP·save 콜백까지 만들어 보며 Spring Data 의 추상화 동작을 깊이 이해할 수 있었다.</p>
+  </div>
+</div>
+
+<!-- ===================== 8 ===================== -->
+<h2 class="docs-h2">8 · 게이트웨이 필터에서 리액티브 DB 조회</h2>
+<p class="docs-p">DB 설정만 따로 떼어 정리한 companion 레포 → <a href="https://github.com/taehyuklee/ReactiveDataBase" target="_blank" rel="noopener">github.com/taehyuklee/ReactiveDataBase</a> (MultiDB · ReactiveMongoDB · R2dbc 모듈). 여기서 한 발 더 나아가, <strong>Spring Cloud Gateway 필터 안에서 리액티브 DB 를 조회</strong> 하는 것도 실험했다 — <code>AbstractGatewayFilterFactory</code> 를 만들어, 라우팅 체인이 끝난 뒤 <code>Mono.defer</code> 로 DB 를 <em>논블로킹 조회</em> 해 응답 헤더에 실어 보낸다.</p>
+<div class="docs-code"><code class="language-java">@Component @Slf4j
+public class DbFetchGatewayFilterFactory
+        extends AbstractGatewayFilterFactory&lt;DbFetchGatewayFilterFactory.Config&gt; {
+
+    private final PersonRepository personRepository;   // ReactiveCrudRepository
+    public DbFetchGatewayFilterFactory(PersonRepository personRepository) {
+        super(Config.class);
+        this.personRepository = personRepository;
+    }
+
+    @Override
+    public GatewayFilter apply(Config config) {
+        return (exchange, chain) ->
+            chain.filter(exchange).then(Mono.defer(() ->     // 라우팅이 끝난 뒤
+                personRepository.findAll()                    // 논블로킹 DB 조회 (Flux)
+                    .doOnNext(p -&gt; exchange.getResponse().getHeaders()
+                                          .add(p.getFirstName(), p.getLastName()))
+                    .doOnComplete(() -&gt; log.info("end thread"))
+                    .then()                                    // Mono&lt;Void&gt; 로 마무리
+            ));
+    }
+    public static class Config {}
+}</code></div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">🔗</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>인터페이스 관점</strong> — 결국 핵심은 "<strong>JPA(블로킹) 인터페이스</strong> ↔ <strong>Reactive(논블로킹) 인터페이스</strong>"의 대응이다. <code>JpaRepository</code>(블로킹)와 <code>ReactiveCrudRepository</code>/<code>ReactiveSortingRepository</code>(논블로킹)는 거의 같은 메서드 모양을 가지되, 후자는 결과를 <code>Mono</code>/<code>Flux</code> 로 돌려준다 — 그래서 게이트웨이 필터·서비스·DB 까지 하나의 리액티브 체인으로 이어 붙일 수 있다.</p>
+  </div>
+</div>
+
+<hr class="docs-divider">
+<p class="docs-source">📓 <strong>2023년</strong> 제가 리액티브 프로그래밍을 공부하며 직접 구현한 노트입니다 · 구현 <a href="https://github.com/taehyuklee/RxProgramming" target="_blank" rel="noopener">GitHub · RxProgramming ↗</a> · DB 설정 <a href="https://github.com/taehyuklee/ReactiveDataBase" target="_blank" rel="noopener">ReactiveDataBase ↗</a> · 정리 <a href="https://jealous-watch-86a.notion.site/Reactive-DB-6497b3d63dce4d1395e8f105b177ed52" target="_blank" rel="noopener">Notion ↗</a></p>
+
+    </div>
+  </article>
+</main>
+
+<footer-component></footer-component>
+
+</body>
+</html>

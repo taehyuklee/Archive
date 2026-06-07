@@ -19,13 +19,13 @@
     <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
 
 
-<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-41">
-<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-41">
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-44">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-44">
 
-<script src="../../../js/main.js?v=20260605-41" defer></script>
-<script src="../../../js/components/nav.js?v=20260605-41" sync></script>
-<script src="../../../js/components/footer.js?v=20260605-41" sync></script>
-<script src="../../../js/components/header.js?v=20260605-41" sync></script>
+<script src="../../../js/main.js?v=20260605-44" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-44" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-44" sync></script>
+<script src="../../../js/components/header.js?v=20260605-44" sync></script>
 
 <common-header-component></common-header-component>
 </head>
@@ -235,7 +235,7 @@
 
 <h3 class="docs-h3">⊙ Monitoring</h3>
 <p class="docs-p">Redis is single-threaded, so for CPU you scale the <em>per-core speed</em>, not the core count. The headline signals from <code>INFO</code>:</p>
-<div class="docs-code"><code># Memory
+<div class="docs-code"><code class="language-bash"># Memory
 used_memory_human:916.98K        # what Redis uses
 used_memory_rss_human:6.63M      # RSS — physical memory, OS view
 maxmemory_human:0B
@@ -253,7 +253,7 @@ master_repl_offset:0</code></div>
 <h2 class="docs-h2">Client-side — Spring Boot integration</h2>
 <p class="docs-p">On the application side Redis becomes a <em>client interface</em> problem. With <code>spring-boot-starter-data-redis</code> the connection auto-configures (Lettuce by default; Redisson is the other common client), and a small YAML block wires host / port / password and the Lettuce pool. From there I used three layers — caching, session, distributed lock.</p>
 
-<div class="docs-code"><code>dependencies {
+<div class="docs-code"><code class="language-gradle">dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-data-redis'
   implementation 'org.springframework.session:spring-session-data-redis'
   implementation 'org.springframework.boot:spring-boot-starter-cache'
@@ -296,7 +296,7 @@ spring:
 </div>
 
 <p class="docs-p"><strong>1 · Spring Data Repository</strong> — a <code>CrudRepository</code> over a <code>@RedisHash</code> domain object; objects map to Redis hashes, <code>@Id</code>/<code>@Indexed</code> become lookup keys, and <code>@TimeToLive</code> sets expiry. Feels just like JPA.</p>
-<div class="docs-code"><code>@RedisHash(value = "people", timeToLive = 1800)
+<div class="docs-code"><code class="language-java">@RedisHash(value = "people", timeToLive = 1800)
 public class Person implements Serializable {
     @Id private Long id;
     @Indexed private String name;
@@ -308,7 +308,7 @@ public interface PersonRedisRepository extends CrudRepository&lt;Person, Long&gt
 }</code></div>
 
 <p class="docs-p"><strong>2 · Caching annotations</strong> — wrap a service method in a caching proxy: <code>@Cacheable</code> on reads, <code>@CachePut</code> on updates, <code>@CacheEvict</code> on deletes. You register a <code>CacheManager</code> with a serializer and a default TTL (else <code>redis-cli</code> shows opaque serialized bytes). Note: an updating method must <em>return</em> the value so the proxy can cache it.</p>
-<div class="docs-code"><code>@Cacheable(key = "#name", value = "personCache")
+<div class="docs-code"><code class="language-java">@Cacheable(key = "#name", value = "personCache")
 public Person findPersonByName(String name) { return repo.getByName(name); }
 
 @CachePut(key = "#person.name", value = "personCache")
@@ -322,7 +322,7 @@ public void delete(String name) { repo.deleteByName(name); }
 
 <h3 class="docs-h3">⊙ Session — Spring Session</h3>
 <p class="docs-p">Same story as caching: WAS-local sessions force sticky sessions or session sync across the cluster. Backing Spring Session with Redis centralizes it. Config goes in YAML — and one trap I documented: adding <code>@EnableRedisHttpSession</code> makes the annotation's attributes win and your YAML session settings stop taking effect.</p>
-<div class="docs-code"><code>server: { servlet: { session: { timeout: 60 } } }   # seconds
+<div class="docs-code"><code class="language-yaml">server: { servlet: { session: { timeout: 60 } } }   # seconds
 spring:
   session:
     store-type: redis
@@ -339,7 +339,7 @@ RedisSerializer&lt;Object&gt; springSessionDefaultRedisSerializer() {
 
 <h3 class="docs-h3">⊙ Distributed lock</h3>
 <p class="docs-p">To stop two processes/threads from touching a shared resource at once, I implemented a <strong>spin lock</strong> on Redis with <code>setIfAbsent</code> (atomic "set if not exists") plus a TTL so a crashed holder can't deadlock the resource; <code>unlock</code> is just a delete.</p>
-<div class="docs-code"><code>public Boolean lock(Long key) {
+<div class="docs-code"><code class="language-java">public Boolean lock(Long key) {
     return redisTemplate.opsForValue()
         .setIfAbsent(String.valueOf(key), "lock", Duration.ofMillis(10000L));
 }
@@ -548,7 +548,7 @@ finally { redisLockRepository.unlock(id); }</code></div>
 
 <h3 class="docs-h3">⊙ 모니터링</h3>
 <p class="docs-p">Redis는 싱글 스레드라 CPU는 <em>코어 수</em>가 아니라 <em>코어당 성능</em>을 올려야 한다. <code>INFO</code> 의 핵심 지표:</p>
-<div class="docs-code"><code># Memory
+<div class="docs-code"><code class="language-bash"># Memory
 used_memory_human:916.98K        # Redis 사용량
 used_memory_rss_human:6.63M      # RSS — 물리 메모리, OS 관점
 maxmemory_human:0B
@@ -566,7 +566,7 @@ master_repl_offset:0</code></div>
 <h2 class="docs-h2">클라이언트 측 — Spring Boot 연동</h2>
 <p class="docs-p">애플리케이션 쪽에서 Redis는 <em>클라이언트 인터페이스</em> 문제가 된다. <code>spring-boot-starter-data-redis</code> 만 넣으면 연결이 auto-configuration 되고(기본 Lettuce, 그 외 Redisson), 작은 YAML로 host / port / password 와 Lettuce 풀을 설정한다. 그 위에 캐싱·세션·분산 락 세 계층을 올렸다.</p>
 
-<div class="docs-code"><code>dependencies {
+<div class="docs-code"><code class="language-gradle">dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-data-redis'
   implementation 'org.springframework.session:spring-session-data-redis'
   implementation 'org.springframework.boot:spring-boot-starter-cache'
@@ -607,7 +607,7 @@ spring:
 </div>
 
 <p class="docs-p"><strong>1 · Spring Data Repository</strong> — <code>@RedisHash</code> 도메인 객체 위의 <code>CrudRepository</code>. 객체는 Redis Hash로 매핑되고, <code>@Id</code>/<code>@Indexed</code> 가 조회 키, <code>@TimeToLive</code> 가 만료를 정한다. JPA와 거의 동일한 사용감.</p>
-<div class="docs-code"><code>@RedisHash(value = "people", timeToLive = 1800)
+<div class="docs-code"><code class="language-java">@RedisHash(value = "people", timeToLive = 1800)
 public class Person implements Serializable {
     @Id private Long id;
     @Indexed private String name;
@@ -619,7 +619,7 @@ public interface PersonRedisRepository extends CrudRepository&lt;Person, Long&gt
 }</code></div>
 
 <p class="docs-p"><strong>2 · 캐싱 어노테이션</strong> — 서비스 메서드를 캐싱 프록시로 감싼다: 조회 <code>@Cacheable</code>, 수정 <code>@CachePut</code>, 삭제 <code>@CacheEvict</code>. <code>CacheManager</code> 에 serializer와 기본 TTL을 등록해야 한다(안 하면 <code>redis-cli</code> 에 직렬화된 바이트만 보임). 주의: 수정 메서드는 프록시가 캐싱할 수 있도록 값을 <em>반드시 return</em> 해야 한다.</p>
-<div class="docs-code"><code>@Cacheable(key = "#name", value = "personCache")
+<div class="docs-code"><code class="language-java">@Cacheable(key = "#name", value = "personCache")
 public Person findPersonByName(String name) { return repo.getByName(name); }
 
 @CachePut(key = "#person.name", value = "personCache")
@@ -633,7 +633,7 @@ public void delete(String name) { repo.deleteByName(name); }
 
 <h3 class="docs-h3">⊙ 세션 — Spring Session</h3>
 <p class="docs-p">캐싱과 같은 이야기다. WAS 로컬 세션은 sticky session이나 클러스터 간 세션 동기화를 강제한다. Spring Session을 Redis로 받치면 중앙화된다. 설정은 YAML에 — 그리고 문서화한 함정 하나: <code>@EnableRedisHttpSession</code> 을 붙이면 어노테이션 속성이 우선해 YAML 세션 설정이 더 이상 먹지 않는다.</p>
-<div class="docs-code"><code>server: { servlet: { session: { timeout: 60 } } }   # 초 단위
+<div class="docs-code"><code class="language-yaml">server: { servlet: { session: { timeout: 60 } } }   # 초 단위
 spring:
   session:
     store-type: redis
@@ -650,7 +650,7 @@ RedisSerializer&lt;Object&gt; springSessionDefaultRedisSerializer() {
 
 <h3 class="docs-h3">⊙ 분산 락(Distributed Lock)</h3>
 <p class="docs-p">두 프로세스/스레드가 공유 자원을 동시에 건드리지 못하게, Redis에 <strong>스핀 락</strong> 을 구현했다 — <code>setIfAbsent</code>("없으면 set"의 원자 연산) + TTL(점유 중 크래시가 자원을 데드락시키지 않도록). <code>unlock</code> 은 그냥 delete.</p>
-<div class="docs-code"><code>public Boolean lock(Long key) {
+<div class="docs-code"><code class="language-java">public Boolean lock(Long key) {
     return redisTemplate.opsForValue()
         .setIfAbsent(String.valueOf(key), "lock", Duration.ofMillis(10000L));
 }

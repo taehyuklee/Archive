@@ -19,14 +19,14 @@
     <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
 
 
-<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-41">
-<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-41">
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-44">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-44">
 
-<script src="../../../js/main.js?v=20260605-41" defer></script>
-<script src="../../../js/components/nav.js?v=20260605-41" sync></script>
-<script src="../../../js/components/footer.js?v=20260605-41" sync></script>
-<script src="../../../js/components/header.js?v=20260605-41" sync></script>
-<script src="../../../js/components/docs-toc.js?v=20260605-41" defer></script>
+<script src="../../../js/main.js?v=20260605-44" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-44" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-44" sync></script>
+<script src="../../../js/components/header.js?v=20260605-44" sync></script>
+<script src="../../../js/components/docs-toc.js?v=20260605-44" defer></script>
 
 <!-- KaTeX for math -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
@@ -349,6 +349,25 @@
 
 <div class="docs-equation">\[ \begin{pmatrix} b_1 & c_1 & & \\ a_2 & b_2 & c_2 & \\ & \ddots & \ddots & \ddots \\ & & a_{n} & b_{n} \end{pmatrix} \begin{pmatrix} \delta\hat u_1 \\ \delta\hat u_2 \\ \vdots \\ \delta\hat u_{n} \end{pmatrix} = \begin{pmatrix} f_1 \\ f_2 \\ \vdots \\ f_{n} \end{pmatrix} \]</div>
 
+<div class="docs-code"><code class="language-java">// TDMA (Thomas algorithm) — 삼중대각 행렬 A·x = d 를 O(n) 에 푼다
+// a: 하부대각, b: 주대각, c: 상부대각, d: 우변
+void tdma(double *a, double *b, double *c, double *d, double *x, int n) {
+    for (int i = 1; i &lt; n; i++) {          // ① 전방 소거 (forward elimination)
+        double f = a[i] / b[i-1];           //   윗 행을 빼서 하부대각 a[i] 제거
+        b[i] -= f * c[i-1];
+        d[i] -= f * d[i-1];
+    }
+    x[n-1] = d[n-1] / b[n-1];               // ② 맨 아래 행의 해부터
+    for (int i = n-2; i &gt;= 0; i--)           //   후방 대입 (back substitution)
+        x[i] = (d[i] - c[i] * x[i+1]) / b[i];
+}</code></div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">🧮</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>수치해석 기법 모음 (C++)</strong> — 위 채널 유동에 쓰인 <strong>TDMA</strong> 를 포함해, 학부·대학원에서 공부하며 직접 구현한 수치해석 코드를 레포에 모아 두었다 → <a href="https://github.com/taehyuklee/Numerical_Method" target="_blank" rel="noopener">github.com/taehyuklee/Numerical_Method</a>. 근 찾기(<em>이분법 · Newton · Secant</em>), 보간(<em>Lagrange · 3차 스플라인 · Chebyshev 노드</em>), 선형계(<em>Gauss–Jordan · Gauss–Seidel · 역행렬 · TDMA</em>), 적분(<em>Simpson · 사다리꼴</em>), 상미분방정식(<em>Runge–Kutta</em>), 멀티그리드 등이 들어 있다.</p>
+  </div>
+</div>
+
 <p class="docs-p">\(u,w\) 는 ghost cell 을 고려한 no-slip(\(u_{y'=0}=-u_{y'=-0}\) 등)을, \(v\) 는 액추에이터 유무(No actuator: 양 벽 \(v=0\) / With actuator: \(v_0=\) bottom act, \(v_{128}=\) top act)를 첫·마지막 행에 반영한다. \(u,w\) point 는 staggered grid 위에, \(v\) point 는 collocated grid 위에 있으므로 위치에 맞게 보간(interpolation)하여 적용한다.</p>
 
 <h3 class="docs-h3">이산 RHS \(f_{(x,y,z)}\) — Fourier · 차분 명시형</h3>
@@ -462,7 +481,7 @@ f_{(x,y,z)} = &-\frac{\Delta t}{2}\Bigg[\,3\Big( i\alpha\,\widehat{(u_1u_j)}^{\,
     <img src="assets/numerical-flow/819be93cb7cf.png" alt="slide" loading="lazy">
   </div>
 </details>
-<p class="docs-source">📑 위 슬라이드는 제가 <strong>대학원 시절</strong> 채널 유동 수치해석(DNS)을 직접 수행하고 정리한 자료입니다.</p>
+<p class="docs-source">📑 위 슬라이드는 제가 <strong>대학원 시절</strong> 채널 유동 수치해석(DNS)을 직접 수행하고 정리한 자료입니다 · 수치해석 기법 구현 <a href="https://github.com/taehyuklee/Numerical_Method" target="_blank" rel="noopener">GitHub · Numerical_Method ↗</a></p>
 
     </div>
   </article>

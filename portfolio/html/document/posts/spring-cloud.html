@@ -19,14 +19,14 @@
     <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
 
 
-<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-41">
-<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-41">
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-44">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-44">
 
-<script src="../../../js/main.js?v=20260605-41" defer></script>
-<script src="../../../js/components/nav.js?v=20260605-41" sync></script>
-<script src="../../../js/components/footer.js?v=20260605-41" sync></script>
-<script src="../../../js/components/header.js?v=20260605-41" sync></script>
-<script src="../../../js/components/docs-toc.js?v=20260605-41" defer></script>
+<script src="../../../js/main.js?v=20260605-44" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-44" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-44" sync></script>
+<script src="../../../js/components/header.js?v=20260605-44" sync></script>
+<script src="../../../js/components/docs-toc.js?v=20260605-44" defer></script>
 
 <common-header-component></common-header-component>
 </head>
@@ -102,7 +102,7 @@ public class DiscoveryServiceApplication {
 @SpringBootApplication
 @EnableDiscoveryClient       // Eureka 에 자신을 등록
 public class UserServiceApplication { /* ... */ }</code></div>
-<div class="docs-code"><code># Eureka 서버 application.yml
+<div class="docs-code"><code class="language-yaml"># Eureka 서버 application.yml
 server:
   port: 8761                 # Eureka 표준 포트
 spring:
@@ -180,7 +180,7 @@ public class FilterConfig {
             .build();
     }
 }</code></div>
-<div class="docs-code"><code># YAML 로 같은 라우트 구성
+<div class="docs-code"><code class="language-yaml"># YAML 로 같은 라우트 구성
 spring:
   application:
     name: apigateway-service
@@ -204,7 +204,7 @@ spring:
 <!-- ===================== 4 ===================== -->
 <h2 class="docs-h2">4 · 왜 Reactive 인가? — Web MVC vs WebFlux</h2>
 <p class="docs-p">전통적 <strong>Spring MVC</strong> 는 <strong>Tomcat</strong> 위에서 <em>요청 1개당 스레드 1개</em>(thread-per-request)로 동작한다 — I/O(DB·외부 API) 동안 그 스레드는 <strong>블로킹</strong>되어 논다. 트래픽이 몰리면 스레드가 고갈된다. <strong>Spring WebFlux</strong> 는 <strong>Netty</strong> 위에서 <em>적은 수의 이벤트 루프 스레드</em>로 <strong>논블로킹</strong> 처리한다 — I/O 를 기다리지 않고 다른 요청을 처리하다가, 완료되면 콜백으로 이어간다.</p>
-<div class="docs-code"><code>// Spring MVC  → Tomcat (8080), 블로킹
+<div class="docs-code"><code class="language-gradle">// Spring MVC  → Tomcat (8080), 블로킹
 implementation 'org.springframework.boot:spring-boot-starter-web'
 
 // Spring WebFlux → Netty (8080), 논블로킹
@@ -286,7 +286,7 @@ implementation 'org.springframework.boot:spring-boot-starter-webflux'
 <!-- ===================== 7 ===================== -->
 <h2 class="docs-h2">7 · Reactive DB — R2DBC</h2>
 <p class="docs-p">아무리 WebFlux 로 논블로킹을 만들어도, DB 접근이 <strong>블로킹(JDBC)</strong> 이면 거기서 막힌다. 그래서 <strong>R2DBC</strong>(Reactive Relational DB) · <strong>reactive MongoDB</strong> 같은 논블로킹 드라이버를 쓴다 — JDBC 와 다른 드라이버이고, 반환값이 <code>Mono</code>/<code>Flux</code> 로 감싸져 나온다.</p>
-<div class="docs-code"><code>// 논블로킹 DB 의존성
+<div class="docs-code"><code class="language-gradle">// 논블로킹 DB 의존성
 implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
 runtimeOnly  'org.postgresql:r2dbc-postgresql'
 implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'</code></div>
@@ -388,7 +388,7 @@ public final Mono<T> timeout(Duration timeout, Mono<? extends T> fallback, Sched
 <!-- ===================== 11 ===================== -->
 <h2 class="docs-h2">11 · 중앙 설정 — Config Server</h2>
 <p class="docs-p">여러 마이크로서비스의 설정(포트·토큰·DB 정보 등)을 각자 들고 있으면 유지보수가 어렵다. <strong>Spring Cloud Config Server</strong> 가 외부 저장소(Git 등)의 설정을 중앙에서 관리하고, 각 서비스(Config Client)는 부팅 시 이를 받아온다. 구축 순서는 <em>Config Server → Config Client → 값 암호화 → 설정 저장소를 private 으로</em>.</p>
-<div class="docs-code"><code>// Config Server 의존성 (이걸 추가하면 WebFlux 를 넣어도 Netty 대신 Tomcat 으로 뜬다)
+<div class="docs-code"><code class="language-gradle">// Config Server 의존성 (이걸 추가하면 WebFlux 를 넣어도 Netty 대신 Tomcat 으로 뜬다)
 implementation 'org.springframework.cloud:spring-cloud-config-server'
 implementation 'org.springframework.boot:spring-boot-starter-actuator'</code></div>
 <div class="docs-code"><code class="language-java">@SpringBootApplication
