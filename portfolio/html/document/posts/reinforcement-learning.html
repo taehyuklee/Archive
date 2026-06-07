@@ -19,13 +19,14 @@
     <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
 
 
-<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-33">
-<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-33">
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-41">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-41">
 
-<script src="../../../js/main.js?v=20260605-33" defer></script>
-<script src="../../../js/components/nav.js?v=20260605-33" sync></script>
-<script src="../../../js/components/footer.js?v=20260605-33" sync></script>
-<script src="../../../js/components/header.js?v=20260605-33" sync></script>
+<script src="../../../js/main.js?v=20260605-41" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-41" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-41" sync></script>
+<script src="../../../js/components/header.js?v=20260605-41" sync></script>
+<script src="../../../js/components/docs-toc.js?v=20260605-41" defer></script>
 
 <!-- KaTeX for math -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
@@ -44,7 +45,7 @@
       <p class="docs-post__eyebrow"><a href="../../TAYLEE documents.html">← Documents</a></p>
       <h1 class="docs-post__title">강화학습 (Reinforcement Learning)</h1>
     </header>
-    <div class="docs-post__body">
+    <div class="docs-post__body" data-paginate="true" data-per-page="3">
 
 <p class="docs-p">강화학습을 <strong>MDP(Markov Decision Process)</strong> 관점에서 바닥부터 정리한 글이다. 한 줄기로 꿰면 — <em>5가지 요소 → Markov Process → MDP → 가치함수(V, Q)와 Bellman 방정식 → (모델 기반) Dynamic Programming → (모델 free) Monte-Carlo · Temporal Difference → SARSA · Q-learning</em>.</p>
 
@@ -458,6 +459,7 @@ V(s_t)^{(N)} &= \frac{1}{N(s_t)}\sum_{i=1}^{N} G_{t,i}
     <img src="assets/reinforcement-learning/e9f721c885b7.png" alt="slide" loading="lazy">
   </div>
 </details>
+<p class="docs-source">📑 위 슬라이드는 제가 <strong>대학원 시절</strong> 강화학습을 직접 공부하며 만들고 정리한 발표 자료입니다.</p>
 
     </div>
   </article>
@@ -499,37 +501,6 @@ V(s_t)^{(N)} &= \frac{1}{N(s_t)}\sum_{i=1}^{N} G_{t,i}
 })();
 </script>
 
-<script>
-/* 긴 본문을 H2 섹션 단위 페이지로 나누고 prev/next 네비게이션 추가.
-   원본 PPT 슬라이드(.docs-slides)는 페이지에서 제외되어 항상 맨 아래에 남는다. */
-(function(){
-  var body=document.querySelector('.docs-post__body'); if(!body) return;
-  var slides=body.querySelector('.docs-slides');
-  var kids=[].slice.call(body.children);
-  var perPage=3, inPage=0;
-  var pages=[], cur=document.createElement('div'); cur.className='docs-page';
-  kids.forEach(function(n){
-    if(n===slides) return;
-    if(n.tagName==='H2'){ if(inPage>=perPage && cur.childNodes.length){ pages.push(cur); cur=document.createElement('div'); cur.className='docs-page'; inPage=0; } inPage++; }
-    cur.appendChild(n);
-  });
-  if(cur.childNodes.length) pages.push(cur);
-  if(pages.length<2) return;
-  pages.forEach(function(p){ body.insertBefore(p, slides||null); });
-  var nav=document.createElement('div'); nav.className='docs-pagenav';
-  var prev=document.createElement('button'); prev.className='docs-pagebtn'; prev.type='button'; prev.textContent='← 이전';
-  var ctr=document.createElement('span'); ctr.className='docs-pagecounter';
-  var next=document.createElement('button'); next.className='docs-pagebtn'; next.type='button'; next.textContent='다음 →';
-  nav.appendChild(prev); nav.appendChild(ctr); nav.appendChild(next);
-  body.insertBefore(nav, slides||null);
-  var idx=0;
-  function show(i){ idx=Math.max(0,Math.min(pages.length-1,i)); pages.forEach(function(p,k){p.hidden=(k!==idx);}); ctr.textContent=(idx+1)+' / '+pages.length; prev.disabled=idx===0; next.disabled=idx===pages.length-1; }
-  function go(i){ show(i); var h=document.querySelector('.docs-post__header'); if(h) h.scrollIntoView({behavior:'smooth',block:'start'}); }
-  prev.addEventListener('click',function(){go(idx-1);});
-  next.addEventListener('click',function(){go(idx+1);});
-  show(0);
-})();
-</script>
 
 </body>
 </html>

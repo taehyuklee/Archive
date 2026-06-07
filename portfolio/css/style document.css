@@ -2,7 +2,7 @@
 /*===========================================================================
   Documents page (redesigned) — applied to TAYLEE documents.html
   Uses .docs-* classes; legacy .topic-box / .box / .Archive_* below are kept
-  for the subpages (Document Archive Project / ME / CS).
+  for the subpages (Document Archive ME / CS).
 ===========================================================================*/
 
 .docs-page{
@@ -52,6 +52,27 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
 }
+
+/* grouped sections within an archive */
+.docs-group + .docs-group{ margin-top: 72px; }
+.docs-group__title{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px;
+    font: 800 13px/1 'Montserrat', 'Noto Sans KR', sans-serif;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #003B62;
+}
+.docs-group__title::before{
+    content: "";
+    width: 18px;
+    height: 3px;
+    border-radius: 2px;
+    background: #0048A7;
+}
+.docs-group__count{ font-size: 12px; font-weight: 700; color: #94a3b8; letter-spacing: 0; }
 
 .docs-card{
     display: flex;

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MongoDB · NoSQL 문서 DB — TAYLEE Archive</title>
+    <!-- Open Graph / social share -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TAYLEE's Archive">
+    <meta property="og:title" content="MongoDB · NoSQL 문서 DB — TAYLEE Archive">
+    <meta property="og:description" content="MongoDB(NoSQL 문서 DB)의 데이터 구조(BSON·Document·임베딩), 기본 쿼리, 고가용성 replicaSet(Primary/Secondary·oplog·election)을 실무 예시와 다이어그램으로 정리한 학습 노트.">
+    <meta property="og:url" content="https://taehyuklee.github.io/portfolio/html/document/posts/mongodb.html">
+    <meta property="og:image" content="https://taehyuklee.github.io/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MongoDB · NoSQL 문서 DB — TAYLEE Archive">
+    <meta name="twitter:description" content="MongoDB 데이터 구조·쿼리·replicaSet 정리 노트 (실무 예시 + 다이어그램).">
+    <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-41">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-41">
+
+<script src="../../../js/main.js?v=20260605-41" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-41" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-41" sync></script>
+<script src="../../../js/components/header.js?v=20260605-41" sync></script>
+<script src="../../../js/components/docs-toc.js?v=20260605-41" defer></script>
+
+<common-header-component></common-header-component>
+</head>
+<body>
+<nav-component></nav-component>
+
+<main class="docs-post">
+  <article class="docs-post__article">
+    <header class="docs-post__header">
+      <p class="docs-post__eyebrow"><a href="../../TAYLEE documents.html">← Documents</a></p>
+      <h1 class="docs-post__title">MongoDB · NoSQL 문서 DB</h1>
+    </header>
+    <div class="docs-post__body" data-paginate="true" data-per-page="2">
+
+<div class="docs-callout">
+  <div class="docs-callout__icon">🍃</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>한 줄 소개</strong> — MongoDB 는 행·열의 테이블이 아니라 <strong>JSON 형태의 문서(Document)</strong> 로 데이터를 저장하는 <strong>NoSQL 문서 DB</strong> 다. 스키마가 유연하고 중첩 구조를 그대로 담을 수 있다. 이 글은 <strong>데이터 구조 · 기본 쿼리 · 고가용성 replicaSet</strong> 을, KT 에서 API 트래픽 통계·게이트웨이 저장소로 MongoDB 를 운영하며 정리한 실무 예시와 함께 다룬다.</p>
+  </div>
+</div>
+
+<!-- ===================== 1 ===================== -->
+<h2 class="docs-h2">1 · MongoDB 란? (RDB vs Document)</h2>
+<p class="docs-p">관계형 DB(RDB)는 데이터를 <strong>테이블(행·열)</strong> 로 정규화해 나누고 JOIN 으로 잇는다. MongoDB 는 연관된 데이터를 <strong>하나의 문서</strong> 안에 <em>중첩(임베딩)</em> 해 담는다 — 스키마가 고정되지 않아 유연하고, 한 번의 조회로 연관 데이터를 함께 읽을 수 있다.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 210" width="720" height="210" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="180" y="20" text-anchor="middle" fill="#e11d48" font-weight="700">RDB — 정규화된 테이블</text>
+  <g text-anchor="middle" font-size="10">
+    <rect x="40" y="40" width="280" height="70" rx="6" fill="#fff" stroke="#94a3b8"/>
+    <line x1="40" y1="62" x2="320" y2="62" stroke="#94a3b8"/><line x1="130" y1="40" x2="130" y2="110" stroke="#94a3b8"/><line x1="225" y1="40" x2="225" y2="110" stroke="#94a3b8"/>
+    <text x="85" y="55">id</text><text x="177" y="55">name</text><text x="272" y="55">team_id</text>
+    <text x="85" y="80">1</text><text x="177" y="80">Lee</text><text x="272" y="80">10</text>
+    <text x="85" y="100">2</text><text x="177" y="100">Kim</text><text x="272" y="100">10</text>
+    <rect x="120" y="135" width="160" height="44" rx="6" fill="#fff" stroke="#94a3b8"/><line x1="120" y1="157" x2="280" y2="157" stroke="#94a3b8"/><line x1="180" y1="135" x2="180" y2="179" stroke="#94a3b8"/>
+    <text x="150" y="150">team_id</text><text x="230" y="150">name</text><text x="150" y="173">10</text><text x="230" y="173">Backend</text>
+  </g>
+  <text x="180" y="200" text-anchor="middle" fill="#64748b" font-size="9.5">테이블을 나누고 JOIN (FK)</text>
+  <text x="540" y="20" text-anchor="middle" fill="#0e8b87" font-weight="700">MongoDB — 임베딩 문서</text>
+  <rect x="400" y="40" width="280" height="139" rx="8" fill="#f0fbf8" stroke="#0e8b87"/>
+  <g font-family="monospace" font-size="10.5" fill="#0f172a">
+    <text x="418" y="60">{</text>
+    <text x="432" y="76">"_id": ObjectId("…"),</text>
+    <text x="432" y="92">"name": "Lee",</text>
+    <text x="432" y="108">"team": {</text>
+    <text x="450" y="124">"name": "Backend",</text>
+    <text x="450" y="140">"members": ["Lee","Kim"]</text>
+    <text x="432" y="156">}</text>
+    <text x="418" y="172">}</text>
+  </g>
+  <text x="540" y="200" text-anchor="middle" fill="#64748b" font-size="9.5">연관 데이터를 한 문서에 중첩</text>
+</svg>
+<figcaption>RDB 는 테이블로 쪼개 JOIN, MongoDB 는 연관 데이터를 하나의 문서에 임베딩한다</figcaption>
+</div>
+
+<!-- ===================== 2 ===================== -->
+<h2 class="docs-h2">2 · 데이터 구조 — Database · Collection · Document</h2>
+<p class="docs-p">MongoDB 의 계층은 <strong>Database &gt; Collection &gt; Document</strong> 다. RDB 에 대응시키면 <em>Collection ≈ Table</em>, <em>Document ≈ Row</em> 이지만, Document 는 <strong>BSON</strong>(Binary JSON)으로 자유로운 중첩 구조를 가진다. 모든 문서엔 고유 <code>_id</code>(ObjectId)가 자동 부여된다.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 150" width="720" height="150" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <rect x="30" y="50" width="150" height="54" rx="9" fill="#e8f3fc" stroke="#0078d7"/><text x="105" y="73" text-anchor="middle" font-weight="700">Database</text><text x="105" y="91" text-anchor="middle" fill="#64748b" font-size="9">config, test …</text>
+  <rect x="250" y="50" width="150" height="54" rx="9" fill="#fef3e7" stroke="#d98324"/><text x="325" y="73" text-anchor="middle" font-weight="700">Collection</text><text x="325" y="91" text-anchor="middle" fill="#64748b" font-size="9">≈ Table (admUser)</text>
+  <rect x="470" y="40" width="220" height="74" rx="9" fill="#f0fbf8" stroke="#0e8b87"/><text x="580" y="60" text-anchor="middle" font-weight="700">Document (BSON)</text><text x="580" y="78" text-anchor="middle" fill="#64748b" font-size="9">≈ Row · _id(ObjectId)</text><text x="580" y="98" text-anchor="middle" fill="#64748b" font-size="9">중첩 객체·배열 가능</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569"><line x1="180" y1="77" x2="246" y2="77"/><polygon points="250,77 242,73 242,81"/><line x1="400" y1="77" x2="466" y2="77"/><polygon points="470,77 462,73 462,81"/></g>
+  <text x="360" y="138" text-anchor="middle" fill="#64748b" font-size="9.5">Database 안에 여러 Collection, Collection 안에 여러 Document</text>
+</svg>
+<figcaption>Database &gt; Collection &gt; Document 계층. Document 는 BSON 으로 중첩 객체·배열을 그대로 담는다</figcaption>
+</div>
+<p class="docs-p">실제 운영했던 API 트래픽 통계 문서 — 통계 안에 API별 → 결과별 → 에러별 통계가 <strong>배열로 중첩</strong> 되어 있다(한 번에 계층 데이터를 읽기 위함).</p>
+<div class="docs-code"><code>{
+  "_id": ObjectId("62aababcddda6517b7f7149a"),
+  "svcId": "GOOGLE",
+  "statBaseUnit": "MI",
+  "totCnt": 6, "sucesCnt": 0, "failCnt": 6,
+  "statApiTrafcs": [{                       // 중첩 배열: API별 통계
+      "sysId": "CAPRI", "apiId": "API-GET", "totCnt": 6,
+      "statResultTrafcs": [{                // 다시 중첩: 결과별 통계
+          "rsltType": "F", "totCnt": 6,
+          "statErrorTrafcs": [{ "errCd": "AGW-E502", "totCnt": 6 }]   // 또 중첩: 에러별
+      }]
+  }],
+  "_class": "com.ktds.act.stat.totalization.entity.StatSvcTrafc"   // Spring Data 매핑 타입
+}</code></div>
+
+<!-- ===================== 3 ===================== -->
+<h2 class="docs-h2">3 · 기본 쿼리 (Mongo Shell)</h2>
+<p class="docs-p">Mongo Shell 로 DB·컬렉션을 탐색하고 문서를 CRUD 한다.</p>
+<div class="docs-code"><code class="language-bash"># 탐색
+show dbs                 # 전체 데이터베이스
+use admin                # 사용 DB 전환
+show collections         # 현재 DB 의 컬렉션(≈ 테이블) 목록</code></div>
+<div class="docs-code"><code># 생성 (Create)
+db.admUser.insertOne({ "userId": "beast@kt.com", "userNm": "Beast", "sttus": "NRML",
+                       "lastLoginDt": ISODate("2022-10-25T04:48:13Z") });
+db.admHndlr.insertMany([ { "hndlrId": "REQ.KT-AUTH" }, { "hndlrId": "REQ.KT-AUTH1" } ]);
+
+# 조회 (Read)
+db.admUser.find({ "sttus": "NRML" });          // 조건 조회
+db.admUser.find({ "loginFailCnt": { $gt: 3 } });// 연산자($gt/$lt/$in …)
+
+# 수정 (Update) / 삭제 (Delete)
+db.admUser.updateOne({ "userId": "beast@kt.com" }, { $set: { "sttus": "LOCK" } });
+db.admUser.deleteOne({ "userId": "beast@kt.com" });</code></div>
+<p class="docs-p"><code>ObjectId</code>·<code>ISODate</code> 같은 BSON 타입과, 다른 문서를 가리키는 <code>DBRef</code> 를 쓸 수 있다. Spring 에서는 <strong>Spring Data MongoDB</strong> 로 <code>MongoRepository</code> 를 선언하면 위 쿼리들이 메서드로 자동 매핑되고, 저장 시 <code>_class</code> 필드에 자바 타입이 기록된다.</p>
+
+<!-- ===================== 4 ===================== -->
+<h2 class="docs-h2">4 · 고가용성 — replicaSet</h2>
+<p class="docs-p">DB 서버 하나만 있으면 그게 죽는 순간 서비스 전체가 멈춘다. <strong>replicaSet</strong> 은 같은 데이터를 여러 노드에 복제해 <strong>고가용성</strong> 을 확보한다(클러스터의 3대 목표: 고가용성·병렬처리·성능). 데이터를 여러 서버에 <em>분산 저장</em> 하는 <strong>sharded cluster</strong>(수평 확장)와는 목적이 다르다.</p>
+<ul class="docs-list">
+  <li><strong>Primary</strong> — <em>쓰기(write)</em> 를 담당. 모든 변경을 <strong>oplog</strong>(operation log) 에 기록한다.</li>
+  <li><strong>Secondary</strong> — Primary 의 oplog 를 <em>비동기로 복제</em> 해 같은 데이터를 유지한다.</li>
+  <li><strong>Election</strong> — Primary 가 죽으면 남은 노드들이 <em>투표</em> 해 새 Primary 를 뽑는다(과반수 필요).</li>
+</ul>
+<div class="docs-fig">
+<svg viewBox="0 0 720 200" width="720" height="200" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">replicaSet — Primary / Secondary</text>
+  <rect x="290" y="36" width="140" height="46" rx="10" fill="#e9f7f3" stroke="#0e8b87" stroke-width="1.8"/><text x="360" y="58" text-anchor="middle" font-weight="700">PRIMARY</text><text x="360" y="74" text-anchor="middle" fill="#64748b" font-size="9">write · oplog</text>
+  <rect x="90" y="134" width="150" height="44" rx="10" fill="#e8f3fc" stroke="#0078d7"/><text x="165" y="156" text-anchor="middle" font-weight="700">SECONDARY</text><text x="165" y="171" text-anchor="middle" fill="#64748b" font-size="9">read · replicate</text>
+  <rect x="480" y="134" width="150" height="44" rx="10" fill="#e8f3fc" stroke="#0078d7"/><text x="555" y="156" text-anchor="middle" font-weight="700">SECONDARY</text><text x="555" y="171" text-anchor="middle" fill="#64748b" font-size="9">read · replicate</text>
+  <g stroke="#0e8b87" stroke-width="1.6" fill="#0e8b87"><line x1="320" y1="82" x2="180" y2="132"/><polygon points="176,134 186,132 181,124"/><line x1="400" y1="82" x2="542" y2="132"/><polygon points="546,134 541,124 536,132"/></g>
+  <text x="220" y="108" fill="#0e6b5e" font-size="9.5">oplog 복제(async)</text>
+  <g stroke="#e11d48" stroke-width="1.4" fill="none" stroke-dasharray="4 3"><path d="M240 156 C340 130 380 130 480 156"/></g>
+  <text x="360" y="128" text-anchor="middle" fill="#e11d48" font-size="9.5">Primary 장애 시 → election (과반수 투표)</text>
+</svg>
+<figcaption>Primary 가 쓰기·oplog 를 담당하고 Secondary 들이 비동기 복제. Primary 가 죽으면 투표로 새 Primary 를 선출</figcaption>
+</div>
+<div class="docs-code"><code class="language-bash"># replicaSet 구성 (각 노드 27017)
+rs.initiate({ _id: "replset", members: [{ _id: 0, host: "mongodb-0.mongodb:27017" }] })
+rs.add({ _id: 1, host: "mongodb-1.mongodb:27017" })
+rs.add({ _id: 2, host: "mongodb-2.mongodb:27017" })
+rs.remove("mongodb-2.mongodb:27017")
+# 강제 재구성
+var config = rs.config(); config.members[0].host = "mongodb5:27022"
+rs.reconfig(config, { "force": true })</code></div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">🏢</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>실무 메모 (분당·대전 이중화)</strong> — 게이트웨이·백엔드를 분당과 대전 두 데이터센터에 두고 MongoDB 도 양쪽에 replica 를 뒀다. 한쪽 센터가 통째로 죽어도 <strong>과반수(quorum)</strong> 가 유지되도록 <em>Spare(Passive) 노드</em> 를 추가했다 — 한 센터가 죽어도 남은 센터 + spare 로 과반을 넘겨 election 이 성립한다. 둘 다 죽는 최악도 대비해 <em>데이터 디렉토리 덤프·백업</em> 을 선행하고, DB 끼리 도메인(호스트) 연동으로 동기화했다.</p>
+  </div>
+</div>
+
+<!-- ===================== 5 ===================== -->
+<h2 class="docs-h2">5 · 운영 — 백업 · 파일 저장 · 설치</h2>
+<ul class="docs-list">
+  <li><strong>Dump &amp; Restore</strong> — <code>mongodump</code> 로 데이터 디렉토리를 덤프하고 <code>mongorestore</code> 로 복구한다(이중화 환경에서 백업을 선행).</li>
+  <li><strong>파일 업로드/다운로드 (GridFS)</strong> — 16MB 가 넘는 큰 파일은 <strong>GridFS</strong> 로 청크 분할해 저장한다(<code>fs.files</code> + <code>fs.chunks</code>).</li>
+  <li><strong>설치/배포</strong> — 로컬·EC2·Kubernetes 등에 배포하고, <code>db.createUser({ user, pwd, roles:["readWrite"] })</code> 로 계정·권한을 관리한다.</li>
+</ul>
+<div class="docs-code"><code class="language-bash"># 접속 (특정 노드 포트로)
+mongo localhost:27018
+# 사용자 생성
+db.createUser({ user: "act_user", pwd: "****", roles: ["readWrite"] })
+# 백업 디렉토리
+mkdir ~/dump</code></div>
+
+<hr class="docs-divider">
+<p class="docs-source">📓 <strong>2022년</strong> 제가 KT DS 에서 API 게이트웨이·트래픽 통계 시스템을 운영하며 MongoDB(데이터 구조·쿼리·분당/대전 replicaSet)를 직접 다루고 정리한 노트입니다 · 원본 <a href="https://jealous-watch-86a.notion.site/MongoDB-d407f2eb1168443b9e2e630cb7c35cda" target="_blank" rel="noopener">Notion 에서 보기 ↗</a></p>
+
+    </div>
+  </article>
+</main>
+
+<footer-component></footer-component>
+
+</body>
+</html>

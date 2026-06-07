@@ -3,35 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JAVA - RxProgramming (feat. Spring Cloud) — TAYLEE Archive</title>
+<title>Spring Cloud · Reactive Programming — TAYLEE Archive</title>
     <!-- Open Graph / social share -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TAYLEE's Archive">
-    <meta property="og:title" content="JAVA - RxProgramming (feat. Spring Cloud) — TAYLEE Archive">
-    <meta property="og:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
+    <meta property="og:title" content="Spring Cloud · Reactive Programming — TAYLEE Archive">
+    <meta property="og:description" content="MSA 를 위한 Spring Cloud(Eureka·Gateway·Config·Resilience4J)와 리액티브 프로그래밍(WebFlux·Netty·Mono/Flux·R2DBC·Schedulers)을 코드와 다이어그램으로 정리한 학습 노트.">
     <meta property="og:url" content="https://taehyuklee.github.io/portfolio/html/document/posts/spring-cloud.html">
     <meta property="og:image" content="https://taehyuklee.github.io/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="JAVA - RxProgramming (feat. Spring Cloud) — TAYLEE Archive">
-    <meta name="twitter:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
+    <meta name="twitter:title" content="Spring Cloud · Reactive Programming — TAYLEE Archive">
+    <meta name="twitter:description" content="Spring Cloud(MSA) + 리액티브(WebFlux·Netty·Mono/Flux·R2DBC) 정리 노트 (코드 + 다이어그램).">
     <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
 
 
-<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-33">
-<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-33">
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-41">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-41">
 
-<script src="../../../js/main.js?v=20260605-33" defer></script>
-<script src="../../../js/components/nav.js?v=20260605-33" sync></script>
-<script src="../../../js/components/footer.js?v=20260605-33" sync></script>
-<script src="../../../js/components/header.js?v=20260605-33" sync></script>
-
-<!-- KaTeX for math -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+<script src="../../../js/main.js?v=20260605-41" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-41" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-41" sync></script>
+<script src="../../../js/components/header.js?v=20260605-41" sync></script>
+<script src="../../../js/components/docs-toc.js?v=20260605-41" defer></script>
 
 <common-header-component></common-header-component>
 </head>
@@ -42,14 +37,377 @@
   <article class="docs-post__article">
     <header class="docs-post__header">
       <p class="docs-post__eyebrow"><a href="../../TAYLEE documents.html">← Documents</a></p>
-      <h1 class="docs-post__title">JAVA - RxProgramming (feat. Spring Cloud)</h1>
+      <h1 class="docs-post__title">Spring Cloud · Reactive Programming</h1>
     </header>
-    <div class="docs-post__body">
-<div class="docs-spacer"></div><h4 class="docs-h4"><strong>springCloud의 활용</strong></h4><hr class="docs-divider"><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><div class="docs-spacer"></div><hr class="docs-divider"><div class="docs-spacer"></div>
+    <div class="docs-post__body" data-paginate="true" data-per-page="2">
+
+<div class="docs-callout">
+  <div class="docs-callout__icon">☁️</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>한 줄 소개</strong> — MSA 를 떠받치는 <strong>Spring Cloud</strong>(Eureka · Gateway · Config · Resilience4J)와, 적은 스레드로 많은 트래픽을 견디는 <strong>리액티브 프로그래밍</strong>(WebFlux · Netty · Mono/Flux · R2DBC · Schedulers)을 묶어 정리한 노트다. RxProgramming 을 하며 직접 부딪힌 <em>Thread Pool Hell</em>, <em>Mono.timeout</em> 실험까지 담았다.</p>
+  </div>
+</div>
+
+<!-- ===================== 1 ===================== -->
+<h2 class="docs-h2">1 · Spring Cloud 란? (MSA)</h2>
+<p class="docs-p"><strong>Spring Cloud</strong> 는 <strong>마이크로서비스 아키텍처(MSA)</strong> 를 지원하기 위한 프레임워크다. 거대한 하나의 애플리케이션(모놀리식)을 작은 서비스들로 쪼개면, "서비스를 어떻게 찾고 · 어디로 보내고 · 설정은 어떻게 공유하고 · 장애는 어떻게 막을지" 같은 문제가 생긴다. Spring Cloud 는 이 문제들을 컴포넌트로 해결한다.</p>
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>관심사</th><th>컴포넌트</th></tr></thead>
+  <tbody>
+    <tr><td>중앙 설정 관리</td><td>Spring Cloud <strong>Config Server</strong></td></tr>
+    <tr><td>서비스 등록·검색 (Location transparency)</td><td>Netflix <strong>Eureka</strong> (Naming Server)</td></tr>
+    <tr><td>로드밸런싱·라우팅</td><td>Spring Cloud <strong>Gateway</strong> (권장) · Ribbon</td></tr>
+    <tr><td>서비스 간 통신</td><td><strong>OpenFeign</strong> · RestTemplate</td></tr>
+    <tr><td>분산 추적·모니터링</td><td><strong>Sleuth + Zipkin</strong> · ELK</td></tr>
+    <tr><td>장애 격리 (Fault Tolerance)</td><td><strong>Resilience4J</strong> (구 Hystrix)</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="docs-fig">
+<svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="360" y="20" text-anchor="middle" fill="#003B62" font-weight="700">Spring Cloud (MSA) 구성</text>
+  <rect x="40" y="120" width="84" height="40" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="82" y="145" text-anchor="middle">Client</text>
+  <rect x="170" y="116" width="120" height="48" rx="10" fill="#e8f3fc" stroke="#0048A7" stroke-width="1.6"/><text x="230" y="138" text-anchor="middle" font-weight="700">API Gateway</text><text x="230" y="153" text-anchor="middle" fill="#64748b" font-size="9.5">라우팅·필터·LB</text>
+  <g text-anchor="middle">
+    <rect x="360" y="60" width="130" height="38" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="425" y="84">user-service</text>
+    <rect x="360" y="120" width="130" height="38" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="425" y="144">order-service</text>
+    <rect x="360" y="180" width="130" height="38" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="425" y="204">catalog-service</text>
+  </g>
+  <rect x="560" y="50" width="130" height="42" rx="9" fill="#fef3e7" stroke="#d98324"/><text x="625" y="68" text-anchor="middle" font-weight="700">Eureka</text><text x="625" y="82" text-anchor="middle" fill="#64748b" font-size="9">Service Registry</text>
+  <rect x="560" y="118" width="130" height="42" rx="9" fill="#f3e8fc" stroke="#8b5cf6"/><text x="625" y="136" text-anchor="middle" font-weight="700">Config Server</text><text x="625" y="150" text-anchor="middle" fill="#64748b" font-size="9">중앙 설정</text>
+  <rect x="560" y="186" width="130" height="42" rx="9" fill="#fde8e8" stroke="#e11d48"/><text x="625" y="204" text-anchor="middle" font-weight="700">Resilience4J</text><text x="625" y="218" text-anchor="middle" fill="#64748b" font-size="9">장애 격리</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569"><line x1="124" y1="140" x2="166" y2="140"/><polygon points="170,140 162,136 162,144"/>
+    <line x1="290" y1="135" x2="356" y2="82"/><line x1="290" y1="140" x2="356" y2="139"/><line x1="290" y1="148" x2="356" y2="196"/>
+    <polygon points="360,82 351,80 354,89"/><polygon points="360,139 352,135 352,143"/><polygon points="360,196 351,193 354,202"/></g>
+  <g stroke="#d98324" stroke-width="1.2" stroke-dasharray="4 3"><line x1="490" y1="79" x2="558" y2="71"/><line x1="490" y1="139" x2="558" y2="90"/><line x1="290" y1="125" x2="558" y2="71"/></g>
+  <text x="525" y="250" text-anchor="middle" fill="#64748b" font-size="9.5">서비스·게이트웨이는 모두 Eureka 에 등록된다 (점선)</text>
+</svg>
+<figcaption>클라이언트 → API Gateway → 마이크로서비스. Eureka(등록·검색)·Config(설정)·Resilience4J(장애)가 이를 받친다</figcaption>
+</div>
+
+<!-- ===================== 2 ===================== -->
+<h2 class="docs-h2">2 · 서비스 검색 — Eureka</h2>
+<p class="docs-p"><strong>Eureka</strong> 는 <strong>Service Discovery</strong>(전화번호부) 역할을 한다. 각 마이크로서비스와 게이트웨이가 자신을 Eureka 에 <em>등록</em>하면, 다른 서비스는 IP·포트를 몰라도 <em>이름</em>으로 서로를 찾는다(Location transparency).</p>
+<div class="docs-code"><code class="language-java">// ① Eureka 서버
+@SpringBootApplication
+@EnableEurekaServer          // 이 앱을 Eureka 서버로 등록
+public class DiscoveryServiceApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(DiscoveryServiceApplication.class, args);
+    }
+}
+
+// ② 마이크로서비스 (Eureka 클라이언트)
+@SpringBootApplication
+@EnableDiscoveryClient       // Eureka 에 자신을 등록
+public class UserServiceApplication { /* ... */ }</code></div>
+<div class="docs-code"><code># Eureka 서버 application.yml
+server:
+  port: 8761                 # Eureka 표준 포트
+spring:
+  application:
+    name: discovery-service
+eureka:
+  client:
+    register-with-eureka: false   # 서버는 자기 자신을 등록하지 않음
+    fetch-registry: false         # (라이브러리가 있으면 기본 true → 자기 등록 시도)
+
+# 마이크로서비스 application.yml
+server:
+  port: 9001
+spring:
+  application:
+    name: user-service
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka   # Eureka 서버 위치</code></div>
+<div class="docs-fig">
+<svg viewBox="0 0 720 200" width="720" height="200" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="360" y="20" text-anchor="middle" fill="#003B62" font-weight="700">Eureka 등록 &amp; 검색</text>
+  <rect x="290" y="44" width="140" height="46" rx="10" fill="#fef3e7" stroke="#d98324" stroke-width="1.6"/><text x="360" y="64" text-anchor="middle" font-weight="700">Eureka Server</text><text x="360" y="80" text-anchor="middle" fill="#64748b" font-size="9.5">:8761 (registry)</text>
+  <g text-anchor="middle">
+    <rect x="40" y="140" width="120" height="38" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="100" y="163">user-service</text>
+    <rect x="190" y="140" width="120" height="38" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="250" y="163">order-service</text>
+    <rect x="410" y="140" width="120" height="38" rx="8" fill="#e8f3fc" stroke="#0048A7"/><text x="470" y="163">API Gateway</text>
+  </g>
+  <g stroke="#d98324" stroke-width="1.5" fill="#d98324"><line x1="100" y1="140" x2="320" y2="90"/><polygon points="324,88 314,88 318,97"/><line x1="250" y1="140" x2="345" y2="92"/><polygon points="349,90 339,90 342,99"/><line x1="470" y1="140" x2="400" y2="92"/><polygon points="396,90 405,89 401,98"/></g>
+  <text x="180" y="116" fill="#b45309" font-size="10">register / heartbeat</text>
+  <rect x="560" y="140" width="120" height="38" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="620" y="163" text-anchor="middle">Gateway → 검색</text>
+  <g stroke="#0078d7" stroke-width="1.5" fill="#0078d7" stroke-dasharray="4 3"><line x1="430" y1="70" x2="600" y2="140"/></g>
+  <text x="560" y="100" fill="#0078d7" font-size="10">lookup by name</text>
+</svg>
+<figcaption>모든 서비스가 Eureka 에 등록(하트비트)하고, 게이트웨이는 이름으로 인스턴스를 찾아 라우팅한다</figcaption>
+</div>
+
+<!-- ===================== 3 ===================== -->
+<h2 class="docs-h2">3 · API Gateway — Spring Cloud Gateway</h2>
+<p class="docs-p">모든 외부 요청의 단일 진입점. 요청이 들어오면 <strong>Handler Mapping(Predicate)</strong> 이 어떤 라우트인지 판단하고, <strong>Pre Filter</strong>(인증·헤더 조작 등)를 거쳐 실제 서비스로 보낸 뒤, 응답에 <strong>Post Filter</strong> 를 적용해 돌려준다.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 150" width="720" height="150" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="10.5">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">Spring Cloud Gateway 파이프라인</text>
+  <g text-anchor="middle">
+    <rect x="10" y="54" width="74" height="42" rx="7" fill="#eef2f7" stroke="#94a3b8"/><text x="47" y="79">Request</text>
+    <rect x="104" y="54" width="104" height="42" rx="7" fill="#e8f3fc" stroke="#0078d7"/><text x="156" y="73">Handler</text><text x="156" y="87" fill="#64748b" font-size="9">Mapping(Predicate)</text>
+    <rect x="228" y="54" width="92" height="42" rx="7" fill="#fef3e7" stroke="#d98324"/><text x="274" y="73">Pre Filter</text><text x="274" y="87" fill="#64748b" font-size="9">인증·헤더</text>
+    <rect x="340" y="54" width="100" height="42" rx="7" fill="#e9f7f3" stroke="#0e8b87"/><text x="390" y="73">Service</text><text x="390" y="87" fill="#64748b" font-size="9">(proxied)</text>
+    <rect x="460" y="54" width="92" height="42" rx="7" fill="#fde8e8" stroke="#e11d48"/><text x="506" y="73">Post Filter</text><text x="506" y="87" fill="#64748b" font-size="9">응답 가공</text>
+    <rect x="572" y="54" width="74" height="42" rx="7" fill="#eef2f7" stroke="#94a3b8"/><text x="609" y="79">Response</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.5" fill="#475569"><polygon points="104,75 95,71 95,79"/><polygon points="228,75 219,71 219,79"/><polygon points="340,75 331,71 331,79"/><polygon points="460,75 451,71 451,79"/><polygon points="572,75 563,71 563,79"/></g>
+  <text x="360" y="124" text-anchor="middle" fill="#64748b">predicate(경로 매칭) → pre-filter → 서비스 → post-filter</text>
+</svg>
+<figcaption>게이트웨이는 predicate 로 라우트를 고르고, pre/post 필터로 요청·응답을 가로채 가공한다</figcaption>
+</div>
+<p class="docs-p">라우트·필터는 <strong>Java 코드(RouteLocator)</strong> 또는 <strong>YAML</strong> 로 선언한다.</p>
+<div class="docs-code"><code class="language-java">// Java 코드로 라우트·필터 구성
+@Configuration
+public class FilterConfig {
+    @Bean
+    public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
+        return builder.routes()
+            .route(r -> r.path("/first-service/**")          // predicate: 경로 매칭
+                .filters(f -> f.addRequestHeader("first-request", "first-request-header")
+                               .addResponseHeader("first-response", "first-response-header"))
+                .uri("http://localhost:8081/"))              // 라우팅 대상
+            .route(r -> r.path("/second-service/**")
+                .filters(f -> f.addRequestHeader("second-request", "second-request-header")
+                               .addResponseHeader("second-response", "second-response-header"))
+                .uri("http://localhost:8082/"))
+            .build();
+    }
+}</code></div>
+<div class="docs-code"><code># YAML 로 같은 라우트 구성
+spring:
+  application:
+    name: apigateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: first-service
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/first-service/**
+          filters:
+            - AddRequestHeader=first-request, first-request-header
+            - AddResponseHeader=first-response, first-response-header</code></div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">⚠️</div>
+  <div class="docs-callout__body">
+    <p class="docs-p">디버깅 메모 — 경로는 <strong>슬래시로 시작</strong>해야 한다(<code>first-service/**</code> ❌ → <code>/first-service/**</code> ✅). 안 그러면 <code>localhost:8000first-service/**</code> 처럼 붙어버린다. 오타(<code>fisrt</code>)도 흔한 실수.</p>
+  </div>
+</div>
+
+<!-- ===================== 4 ===================== -->
+<h2 class="docs-h2">4 · 왜 Reactive 인가? — Web MVC vs WebFlux</h2>
+<p class="docs-p">전통적 <strong>Spring MVC</strong> 는 <strong>Tomcat</strong> 위에서 <em>요청 1개당 스레드 1개</em>(thread-per-request)로 동작한다 — I/O(DB·외부 API) 동안 그 스레드는 <strong>블로킹</strong>되어 논다. 트래픽이 몰리면 스레드가 고갈된다. <strong>Spring WebFlux</strong> 는 <strong>Netty</strong> 위에서 <em>적은 수의 이벤트 루프 스레드</em>로 <strong>논블로킹</strong> 처리한다 — I/O 를 기다리지 않고 다른 요청을 처리하다가, 완료되면 콜백으로 이어간다.</p>
+<div class="docs-code"><code>// Spring MVC  → Tomcat (8080), 블로킹
+implementation 'org.springframework.boot:spring-boot-starter-web'
+
+// Spring WebFlux → Netty (8080), 논블로킹
+implementation 'org.springframework.boot:spring-boot-starter-webflux'
+// 둘 다 추가하면 spring-web(MVC) 이 우선순위를 가진다</code></div>
+<div class="docs-fig">
+<svg viewBox="0 0 720 220" width="720" height="220" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="10.5">
+  <text x="180" y="18" text-anchor="middle" fill="#e11d48" font-weight="700">MVC — Thread per request (blocking)</text>
+  <g text-anchor="middle">
+    <rect x="30" y="40" width="90" height="26" rx="6" fill="#fee2e2" stroke="#e11d48"/><text x="75" y="57">Thread 1 ⏳</text>
+    <rect x="30" y="74" width="90" height="26" rx="6" fill="#fee2e2" stroke="#e11d48"/><text x="75" y="91">Thread 2 ⏳</text>
+    <rect x="30" y="108" width="90" height="26" rx="6" fill="#fee2e2" stroke="#e11d48"/><text x="75" y="125">Thread 3 ⏳</text>
+    <rect x="30" y="142" width="90" height="26" rx="6" fill="#fde8e8" stroke="#e11d48" stroke-dasharray="3 2"/><text x="75" y="159" fill="#b91c1c">… 고갈</text>
+  </g>
+  <rect x="180" y="74" width="120" height="60" rx="8" fill="#f8fafc" stroke="#94a3b8"/><text x="240" y="100" text-anchor="middle">DB / 외부 I/O</text><text x="240" y="118" text-anchor="middle" fill="#64748b" font-size="9">스레드는 대기(블로킹)</text>
+  <g stroke="#e11d48" stroke-width="1.3"><line x1="120" y1="53" x2="180" y2="90"/><line x1="120" y1="87" x2="180" y2="104"/><line x1="120" y1="121" x2="180" y2="118"/></g>
+  <text x="540" y="18" text-anchor="middle" fill="#0e8b87" font-weight="700">WebFlux — Event Loop (non-blocking)</text>
+  <g text-anchor="middle">
+    <rect x="400" y="74" width="110" height="30" rx="7" fill="#e9f7f3" stroke="#0e8b87"/><text x="455" y="93">Event Loop ×N</text>
+    <rect x="400" y="120" width="110" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="455" y="137" font-size="9.5">소수의 스레드</text>
+  </g>
+  <ellipse cx="610" cy="104" rx="56" ry="40" fill="#f8fafc" stroke="#0078d7"/><text x="610" y="100" text-anchor="middle">I/O 이벤트</text><text x="610" y="116" text-anchor="middle" fill="#64748b" font-size="9">완료 시 콜백</text>
+  <g stroke="#0e8b87" stroke-width="1.5" fill="none"><path d="M510 89 C560 80 565 90 558 100"/></g>
+  <g stroke="#0078d7" stroke-width="1.5" fill="none" stroke-dasharray="4 3"><path d="M560 112 C540 130 510 120 512 102"/></g>
+  <text x="540" y="178" text-anchor="middle" fill="#0e6b5e" font-size="10">기다리지 않고 다음 요청 처리 → 적은 스레드로 많은 트래픽</text>
+</svg>
+<figcaption>MVC 는 요청마다 스레드를 잡고 I/O 동안 블로킹, WebFlux 는 적은 이벤트 루프 스레드로 논블로킹 처리한다</figcaption>
+</div>
+
+<!-- ===================== 5 ===================== -->
+<h2 class="docs-h2">5 · 리액티브 핵심 — Publisher/Subscriber와 Mono·Flux</h2>
+<p class="docs-p">리액티브의 본질은 <strong>논블로킹</strong>이고, 처리 모델은 <strong>Publisher–Subscriber</strong>(스트림)다. 데이터를 "당겨오는" 게 아니라, <em>준비되면 흘려보내고(onNext) → 끝나면(onComplete) / 에러나면(onError)</em> 구독자에게 통지한다. Reactor 는 두 가지 Publisher 를 제공한다.</p>
+<ul class="docs-list">
+  <li><strong>Mono&lt;T&gt;</strong> — 0 또는 1개의 결과 (단건 조회·저장 등)</li>
+  <li><strong>Flux&lt;T&gt;</strong> — 0 ~ N개의 스트림 (목록·이벤트 스트림 등)</li>
+</ul>
+<div class="docs-fig">
+<svg viewBox="0 0 720 170" width="720" height="170" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">Mono (0..1) vs Flux (0..N)</text>
+  <text x="40" y="58" fill="#0048A7" font-weight="700">Mono</text>
+  <line x1="100" y1="54" x2="620" y2="54" stroke="#94a3b8" stroke-width="1.5"/>
+  <circle cx="360" cy="54" r="11" fill="#0078d7"/><text x="360" y="58" text-anchor="middle" fill="#fff" font-size="10">1</text>
+  <line x1="620" y1="44" x2="620" y2="64" stroke="#0e8b87" stroke-width="3"/><text x="640" y="58" fill="#0e8b87" font-size="10">onComplete</text>
+  <text x="40" y="122" fill="#0048A7" font-weight="700">Flux</text>
+  <line x1="100" y1="118" x2="620" y2="118" stroke="#94a3b8" stroke-width="1.5"/>
+  <g fill="#0078d7"><circle cx="180" cy="118" r="11"/><circle cx="290" cy="118" r="11"/><circle cx="400" cy="118" r="11"/><circle cx="510" cy="118" r="11"/></g>
+  <g fill="#fff" font-size="10" text-anchor="middle"><text x="180" y="122">e1</text><text x="290" y="122">e2</text><text x="400" y="122">e3</text><text x="510" y="122">e4</text></g>
+  <line x1="620" y1="108" x2="620" y2="128" stroke="#0e8b87" stroke-width="3"/><text x="640" y="122" fill="#0e8b87" font-size="10">onComplete</text>
+  <text x="360" y="152" text-anchor="middle" fill="#64748b" font-size="10">onNext 로 값을 흘려보내고, 끝나면 onComplete (에러 시 onError)</text>
+</svg>
+<figcaption>Mono 는 최대 1개, Flux 는 여러 개의 값을 비동기 스트림으로 흘려보낸다</figcaption>
+</div>
+
+<!-- ===================== 6 ===================== -->
+<h2 class="docs-h2">6 · Netty 구조와 WebFlux 처리 흐름</h2>
+<p class="docs-p">WebFlux 는 <strong>Netty 위에서</strong> 동작한다. <strong>Netty</strong> 는 저수준 <em>네트워크 I/O</em>(소켓·바이트 스트림)를 담당하고, <strong>WebFlux</strong> 는 그 위에서 <em>라우팅·필터·비즈니스 로직</em>을 담당한다.</p>
+<ul class="docs-list">
+  <li><strong>Netty</strong> — <code>ServerBootstrap</code> 이 <code>Channel</code> 을 만들고, 요청은 <code>ChannelPipeline</code> 의 여러 <code>ChannelHandler</code>(예: <code>HttpRequestDecoder</code>)를 거쳐 디코딩된다.</li>
+  <li><strong>WebFlux</strong> — 디코딩된 요청을 <code>WebHandler</code> 가 받아 <code>RouterFunction</code>/<code>HandlerFunction</code> 으로 라우팅하고, <code>WebFilter</code>/<code>GlobalFilter</code> 로 전·후처리한 뒤 <code>Mono</code>/<code>Flux</code> 로 응답을 만든다.</li>
+</ul>
+<div class="docs-fig">
+<svg viewBox="0 0 720 200" width="720" height="200" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="10.5">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">요청 → 응답 흐름 (Netty + WebFlux)</text>
+  <rect x="20" y="80" width="70" height="40" rx="7" fill="#eef2f7" stroke="#94a3b8"/><text x="55" y="104" text-anchor="middle">Client</text>
+  <rect x="120" y="50" width="220" height="100" rx="10" fill="#f0f7ff" stroke="#0078d7"/><text x="230" y="68" text-anchor="middle" fill="#0078d7" font-weight="700">Netty (I/O)</text>
+  <g text-anchor="middle" font-size="9.5"><rect x="135" y="80" width="92" height="26" rx="5" fill="#fff" stroke="#94a3b8"/><text x="181" y="97">Channel/Pipeline</text>
+    <rect x="135" y="114" width="92" height="26" rx="5" fill="#fff" stroke="#94a3b8"/><text x="181" y="131">HttpDecoder</text>
+    <rect x="240" y="80" width="88" height="60" rx="5" fill="#fff" stroke="#94a3b8"/><text x="284" y="106">Encoder</text><text x="284" y="122" fill="#64748b" font-size="8.5">(응답)</text></g>
+  <rect x="370" y="50" width="250" height="100" rx="10" fill="#f0fbf8" stroke="#0e8b87"/><text x="495" y="68" text-anchor="middle" fill="#0e8b87" font-weight="700">Spring WebFlux</text>
+  <g text-anchor="middle" font-size="9.5"><rect x="385" y="80" width="100" height="26" rx="5" fill="#fff" stroke="#0e8b87"/><text x="435" y="97">WebFilter</text>
+    <rect x="500" y="80" width="104" height="26" rx="5" fill="#fff" stroke="#0e8b87"/><text x="552" y="97">WebHandler/Router</text>
+    <rect x="430" y="114" width="160" height="26" rx="5" fill="#e9f7f3" stroke="#0e8b87"/><text x="510" y="131">비즈니스 → Mono/Flux</text></g>
+  <g stroke="#475569" stroke-width="1.5" fill="#475569"><line x1="90" y1="100" x2="116" y2="100"/><polygon points="120,100 112,96 112,104"/><line x1="340" y1="100" x2="366" y2="100"/><polygon points="370,100 362,96 362,104"/></g>
+  <text x="360" y="178" text-anchor="middle" fill="#64748b">Client → Netty(소켓·디코딩) → WebFlux(필터·라우팅·로직 → Mono/Flux) → Netty(인코딩) → Client</text>
+</svg>
+<figcaption>Netty 가 네트워크 I/O 를, WebFlux 가 그 위에서 요청 처리·비즈니스 로직을 담당한다</figcaption>
+</div>
+
+<!-- ===================== 7 ===================== -->
+<h2 class="docs-h2">7 · Reactive DB — R2DBC</h2>
+<p class="docs-p">아무리 WebFlux 로 논블로킹을 만들어도, DB 접근이 <strong>블로킹(JDBC)</strong> 이면 거기서 막힌다. 그래서 <strong>R2DBC</strong>(Reactive Relational DB) · <strong>reactive MongoDB</strong> 같은 논블로킹 드라이버를 쓴다 — JDBC 와 다른 드라이버이고, 반환값이 <code>Mono</code>/<code>Flux</code> 로 감싸져 나온다.</p>
+<div class="docs-code"><code>// 논블로킹 DB 의존성
+implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+runtimeOnly  'org.postgresql:r2dbc-postgresql'
+implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'</code></div>
+<div class="docs-code"><code class="language-java">// JPA 의 PagingAndSortingRepository 처럼, 리액티브는 ReactiveSortingRepository 를 상속
+@Repository
+public interface PersonRepository extends ReactiveSortingRepository<Person, String> {
+    Mono<Void>   deleteById(String id);     // 반환이 Publisher(Mono/Flux) 로 감싸진다
+    Mono<Person> findByEmail(String email);
+}
+
+// R2DBC 설정 — JDBC DataSource 가 아니라 ConnectionFactory 를 사용
+@Configuration
+@EnableR2dbcRepositories(basePackages = "com.manage.reactive.apis.domain.repository")
+@EnableR2dbcAuditing       // JPA Audit 처럼 @CreatedBy 등 자동 생성
+public class R2dbcConfig extends AbstractR2dbcConfiguration {
+    @Value("${spring.r2dbc.url}") private String url;
+    @Override public ConnectionFactory connectionFactory() {
+        return ConnectionFactories.get(url);
+    }
+}</code></div>
+<div class="docs-fig">
+<svg viewBox="0 0 720 150" width="720" height="150" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="10.5">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">블로킹 스택 vs 리액티브 스택</text>
+  <g text-anchor="middle">
+    <rect x="60" y="40" width="120" height="26" rx="6" fill="#fee2e2" stroke="#e11d48"/><text x="120" y="57">Web MVC</text>
+    <rect x="60" y="74" width="120" height="26" rx="6" fill="#fee2e2" stroke="#e11d48"/><text x="120" y="91">JPA / JDBC</text>
+    <rect x="60" y="108" width="120" height="26" rx="6" fill="#f8fafc" stroke="#94a3b8"/><text x="120" y="125">DB (blocking)</text>
+    <rect x="540" y="40" width="120" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="600" y="57">WebFlux</text>
+    <rect x="540" y="74" width="120" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="600" y="91">R2DBC (Mono/Flux)</text>
+    <rect x="540" y="108" width="120" height="26" rx="6" fill="#f8fafc" stroke="#0078d7"/><text x="600" y="125">DB (non-blocking)</text>
+  </g>
+  <text x="360" y="84" text-anchor="middle" fill="#64748b" font-size="10">DB 까지 논블로킹이어야</text>
+  <text x="360" y="100" text-anchor="middle" fill="#64748b" font-size="10">진짜 리액티브</text>
+  <g stroke="#94a3b8" stroke-width="1.3" fill="#94a3b8"><line x1="186" y1="87" x2="244" y2="87"/><polygon points="248,87 240,83 240,91"/><line x1="476" y1="87" x2="534" y2="87"/><polygon points="538,87 530,83 530,91"/></g>
+</svg>
+<figcaption>WebFlux + R2DBC 로 DB 접근까지 논블로킹이어야 이벤트 루프가 막히지 않는다</figcaption>
+</div>
+
+<!-- ===================== 8 ===================== -->
+<h2 class="docs-h2">8 · Mono.timeout 정책 (직접 실험)</h2>
+<p class="docs-p">필터 체인에서 <code>Mono.timeout()</code> 이 어떻게 동작하는지 직접 실험했다. 핵심은 — <strong>timeout 은 별도의 timer 스레드</strong>를 사용하고, <code>subscribeOn()</code> 시점과 <code>timeout()</code> 거는 시점이 맞아야 의도대로 동작한다.</p>
+<div class="docs-code"><code class="language-java">public final Mono<T> timeout(Duration timeout, Mono<? extends T> fallback);
+public final Mono<T> timeout(Duration timeout, Mono<? extends T> fallback, Scheduler timer);
+// 보통 Schedulers.boundedElastic() 같은 스케줄러에서 timer 스레드를 가져온다</code></div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">🧪</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>실험 시나리오</strong> — <code>Filter1 → … → Filter7</code> 체인에서 <em>Filter2 에 4초 sleep → Filter4 에 5초 timeout → Filter5 에 3초 sleep</em>.</p>
+    <p class="docs-p"><strong>결론</strong> — 뒤쪽에 건 timeout 이 <strong>앞단의 시간에는 영향을 주지 않는다</strong>. timeout 의 timer 스레드는 새로 생성되며, 내가 지정한 <code>Scheduler</code>(예: <code>boundedElastic</code>)에서 가져와 쓴다. 단, <code>subscribeOn()</code> 과 <code>timeout()</code> 의 적용 시점이 어긋나면 의도대로 측정되지 않는다.</p>
+  </div>
+</div>
+
+<!-- ===================== 9 ===================== -->
+<h2 class="docs-h2">9 · ThreadPool 과 Reactor Schedulers</h2>
+<p class="docs-p">스레드를 필요할 때마다 생성·종료하면 <strong>오버헤드</strong>(스택·ID·레지스터 할당)가 크다. 그래서 미리 만들어 두고 재사용하는 <strong>스레드 풀</strong>을 쓴다. 자바의 <code>ExecutorService</code> 는 작업을 <strong>WorkingQueue</strong> 에 넣고, <strong>Workers Pool</strong> 의 스레드들이 가져가 처리한다.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 180" width="720" height="180" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="10.5">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">ExecutorService 동작</text>
+  <rect x="30" y="70" width="70" height="40" rx="7" fill="#eef2f7" stroke="#94a3b8"/><text x="65" y="94" text-anchor="middle">Tasks</text>
+  <g text-anchor="middle"><rect x="140" y="60" width="160" height="60" rx="8" fill="#f8fafc" stroke="#0078d7"/><text x="220" y="55" fill="#0078d7" font-size="10">WorkingQueue</text>
+    <g fill="#e8f3fc" stroke="#0078d7"><rect x="152" y="78" width="24" height="24" rx="4"/><rect x="182" y="78" width="24" height="24" rx="4"/><rect x="212" y="78" width="24" height="24" rx="4"/><rect x="242" y="78" width="24" height="24" rx="4"/></g></g>
+  <g text-anchor="middle"><rect x="350" y="50" width="180" height="80" rx="8" fill="#f0fbf8" stroke="#0e8b87"/><text x="440" y="45" fill="#0e8b87" font-size="10">Workers Pool</text>
+    <g fill="#e9f7f3" stroke="#0e8b87"><circle cx="385" cy="78" r="14"/><circle cx="425" cy="78" r="14"/><circle cx="465" cy="78" r="14"/><circle cx="505" cy="105" r="14" stroke-dasharray="3 2"/></g>
+    <text x="440" y="125" fill="#64748b" font-size="8.5">core → max 까지 증설</text></g>
+  <rect x="580" y="70" width="110" height="40" rx="7" fill="#fde8e8" stroke="#e11d48"/><text x="635" y="88" text-anchor="middle" font-size="9.5">RejectedExecution</text><text x="635" y="102" text-anchor="middle" fill="#64748b" font-size="8.5">(큐+max 초과)</text>
+  <g stroke="#475569" stroke-width="1.5" fill="#475569"><line x1="100" y1="90" x2="136" y2="90"/><polygon points="140,90 132,86 132,94"/><line x1="300" y1="90" x2="346" y2="90"/><polygon points="350,90 342,86 342,94"/><line x1="530" y1="90" x2="576" y2="90"/><polygon points="580,90 572,86 572,94"/></g>
+  <text x="360" y="160" text-anchor="middle" fill="#64748b">corePoolSize 우선 → 큐가 차면 maxPoolSize 까지 증설 → 그래도 넘치면 거부</text>
+</svg>
+<figcaption>작업은 큐에 쌓이고 워커 스레드가 처리한다. core→max 까지 늘리고, 큐+max 를 넘으면 RejectedExecutionHandler 로 거부</figcaption>
+</div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">🔥</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>Thread Pool Hell (직접 겪은 문제)</strong> — 소켓처럼 짧은 시간에 트래픽이 폭증하면 풀의 스레드가 <strong>모두 고갈</strong>된다. API-Link 작업에서 이벤트 루프 기반의 Netty 기본 스레드 풀이 이 현상을 겪었다. 자바 스레드 풀은 ① 일반 Java 풀, ② 스프링 제공 풀, ③ WebFlux(Reactor) 풀로 나뉘고, Reactor 에선 <code>publishOn()</code>/<code>subscribeOn()</code> 으로 스케줄러(<code>Schedulers.boundedElastic()</code> 등)를 지정해 어느 스레드에서 돌릴지 제어한다.</p>
+  </div>
+</div>
+
+<!-- ===================== 10 ===================== -->
+<h2 class="docs-h2">10 · 장애 격리 — Resilience4J Circuit Breaker</h2>
+<p class="docs-p">MSA 에선 한 서비스의 장애가 호출 체인을 타고 전체로 번질 수 있다. <strong>Circuit Breaker</strong>(회로 차단기)는 실패율이 임계치를 넘으면 회로를 <strong>열어(Open)</strong> 즉시 fallback 으로 응답해, 죽어가는 서비스로의 호출을 끊는다. Resilience4J 는 Circuit Breaker 외에 Retry · RateLimiter · Bulkhead · TimeLimiter 를 제공한다(구 Netflix Hystrix 의 대체).</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 180" width="720" height="180" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">Circuit Breaker 상태</text>
+  <circle cx="140" cy="95" r="46" fill="#e9f7f3" stroke="#0e8b87" stroke-width="2"/><text x="140" y="92" text-anchor="middle" font-weight="700">CLOSED</text><text x="140" y="108" text-anchor="middle" fill="#64748b" font-size="9">정상 통과</text>
+  <circle cx="580" cy="95" r="46" fill="#fde8e8" stroke="#e11d48" stroke-width="2"/><text x="580" y="92" text-anchor="middle" font-weight="700">OPEN</text><text x="580" y="108" text-anchor="middle" fill="#64748b" font-size="9">즉시 fallback</text>
+  <circle cx="360" cy="95" r="46" fill="#fef3e7" stroke="#d98324" stroke-width="2"/><text x="360" y="89" text-anchor="middle" font-weight="700">HALF</text><text x="360" y="103" text-anchor="middle" font-weight="700">OPEN</text>
+  <g stroke="#e11d48" stroke-width="1.8" fill="#e11d48"><path d="M186 85 C300 50 460 50 540 82" fill="none"/><polygon points="540,82 530,78 533,88"/></g>
+  <text x="360" y="46" text-anchor="middle" fill="#e11d48" font-size="10">실패율 &gt; 임계치</text>
+  <g stroke="#d98324" stroke-width="1.8" fill="#d98324"><path d="M548 120 C480 150 420 140 392 122" fill="none"/><polygon points="392,122 401,127 396,116"/></g>
+  <text x="470" y="158" text-anchor="middle" fill="#d98324" font-size="10">대기시간 후 시험 호출</text>
+  <g stroke="#0e8b87" stroke-width="1.8" fill="#0e8b87"><path d="M325 70 C270 45 210 50 175 70" fill="none"/><polygon points="175,70 185,67 179,77"/></g>
+  <text x="248" y="44" text-anchor="middle" fill="#0e8b87" font-size="10">성공 → 복구</text>
+  <g stroke="#e11d48" stroke-width="1.4" fill="none" stroke-dasharray="4 3"><path d="M390 128 C430 150 500 145 545 122"/></g>
+  <text x="470" y="176" text-anchor="middle" fill="#94a3b8" font-size="9">실패 시 다시 OPEN</text>
+</svg>
+<figcaption>CLOSED(정상) → 실패율 초과 시 OPEN(차단) → 일정 시간 후 HALF-OPEN(시험) → 성공하면 CLOSED 복구</figcaption>
+</div>
+
+<!-- ===================== 11 ===================== -->
+<h2 class="docs-h2">11 · 중앙 설정 — Config Server</h2>
+<p class="docs-p">여러 마이크로서비스의 설정(포트·토큰·DB 정보 등)을 각자 들고 있으면 유지보수가 어렵다. <strong>Spring Cloud Config Server</strong> 가 외부 저장소(Git 등)의 설정을 중앙에서 관리하고, 각 서비스(Config Client)는 부팅 시 이를 받아온다. 구축 순서는 <em>Config Server → Config Client → 값 암호화 → 설정 저장소를 private 으로</em>.</p>
+<div class="docs-code"><code>// Config Server 의존성 (이걸 추가하면 WebFlux 를 넣어도 Netty 대신 Tomcat 으로 뜬다)
+implementation 'org.springframework.cloud:spring-cloud-config-server'
+implementation 'org.springframework.boot:spring-boot-starter-actuator'</code></div>
+<div class="docs-code"><code class="language-java">@SpringBootApplication
+@EnableConfigServer        // 이 앱을 Config Server 로
+public class ConfigServerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ConfigServerApplication.class, args);
+    }
+}</code></div>
+<p class="docs-p">설정값은 비대칭키로 암·복호화하고, 설정 저장소(Git repo)는 private + SSH/PrivateKey 로 연결해 민감 정보를 보호한다. 분산 추적은 <strong>Sleuth + Zipkin</strong>, 부하 테스트는 <strong>Apache Bench</strong>(<code>ab -n 1000 -c 100 ...</code>)로 검증했다.</p>
+
+<hr class="docs-divider">
+<p class="docs-source">📓 <strong>2023년</strong> 제가 KT DS 에서 클라우드·미들웨어 업무를 하며 Spring Cloud 와 리액티브 프로그래밍(RxProgramming)을 직접 학습·실험하고 정리한 노트입니다 · 원본 <a href="https://jealous-watch-86a.notion.site/JAVA-RxProgramming-feat-Spring-Cloud-34dd841d73bd47f3994aceccfe14dca8" target="_blank" rel="noopener">Notion 에서 보기 ↗</a></p>
+
     </div>
   </article>
 </main>
 
 <footer-component></footer-component>
+
 </body>
 </html>

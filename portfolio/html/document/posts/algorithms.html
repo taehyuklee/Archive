@@ -3,35 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>알고리즘 공부 — TAYLEE Archive</title>
+<title>알고리즘 문제집 (Java) — TAYLEE Archive</title>
     <!-- Open Graph / social share -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TAYLEE's Archive">
-    <meta property="og:title" content="알고리즘 공부 — TAYLEE Archive">
-    <meta property="og:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
+    <meta property="og:title" content="알고리즘 문제집 (Java) — TAYLEE Archive">
+    <meta property="og:description" content="직접 푼 알고리즘 문제들을 자료구조·완전탐색·구현/시뮬레이션·DFS/백트래킹·BFS/최단거리·DP·그리디로 분류해 문제집 형식으로 정리한 노트 (Java). 삼성 SW 역량테스트·프로그래머스·Softeer.">
     <meta property="og:url" content="https://taehyuklee.github.io/portfolio/html/document/posts/algorithms.html">
     <meta property="og:image" content="https://taehyuklee.github.io/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="알고리즘 공부 — TAYLEE Archive">
-    <meta name="twitter:description" content="Engineering portfolio — projects, technical documents and research across backend, cloud, AI and CFD.">
+    <meta name="twitter:title" content="알고리즘 문제집 (Java) — TAYLEE Archive">
+    <meta name="twitter:description" content="직접 푼 문제를 알고리즘별로 분류한 문제집 (Java · 삼성/프로그래머스/Softeer).">
     <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
 
 
-<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-33">
-<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-33">
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-41">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-41">
 
-<script src="../../../js/main.js?v=20260605-33" defer></script>
-<script src="../../../js/components/nav.js?v=20260605-33" sync></script>
-<script src="../../../js/components/footer.js?v=20260605-33" sync></script>
-<script src="../../../js/components/header.js?v=20260605-33" sync></script>
-
-<!-- KaTeX for math -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+<script src="../../../js/main.js?v=20260605-41" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-41" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-41" sync></script>
+<script src="../../../js/components/header.js?v=20260605-41" sync></script>
+<script src="../../../js/components/docs-toc.js?v=20260605-41" defer></script>
 
 <common-header-component></common-header-component>
 </head>
@@ -42,51 +37,224 @@
   <article class="docs-post__article">
     <header class="docs-post__header">
       <p class="docs-post__eyebrow"><a href="../../TAYLEE documents.html">← Documents</a></p>
-      <h1 class="docs-post__title">알고리즘 공부</h1>
+      <h1 class="docs-post__title">알고리즘 문제집 (Java)</h1>
     </header>
-    <div class="docs-post__body">
-<div class="docs-spacer"></div><h4 class="docs-h4">Java 알고리즘 </h4><div class="docs-spacer"></div><aside class="docs-callout"><span class="docs-callout__icon">💡</span><div class="docs-callout__body">Java로 알고리즘을 풀기전에 Java 표준이라 할수있는 Library들을 제대로 익히는 것은 필수다<br></div></aside><div class="docs-spacer"></div><aside class="docs-callout"><span class="docs-callout__icon">📎</span><div class="docs-callout__body">알고리즘 - 저지<br></div></aside><div class="docs-spacer"></div><pre class="docs-code"><code data-lang="Java">import java.util.*;
-import java.io.*;
+    <div class="docs-post__body" data-paginate="true" data-per-page="2">
 
+<div class="docs-callout">
+  <div class="docs-callout__icon">🧩</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>한 줄 소개</strong> — 직접 풀었던 알고리즘 문제들을 <strong>유형별로 분류</strong> 해 문제집 형식으로 묶었다. 큰 줄기는 <em>자료구조 활용 → 완전탐색 → 구현·시뮬레이션 → DFS·백트래킹 → BFS·최단거리 → DP → 그리디</em>. 출처는 주로 <strong>삼성 SW 역량테스트(백준)</strong> · <strong>프로그래머스 고득점 키트</strong> · <strong>Softeer</strong> 다. 언어는 <strong>Java</strong>.</p>
+  </div>
+</div>
 
-public class Main
-{
+<!-- ===================== 0 ===================== -->
+<h2 class="docs-h2">0 · 들어가며 — Java 로 알고리즘 풀기</h2>
+<p class="docs-p">Java 로 알고리즘을 풀려면 먼저 <strong>Collection 프레임워크</strong> 의 자료구조가 내부적으로 어떻게 동작하는지 알아야 한다. 어떤 자료구조를 고르냐가 곧 시간복잡도를 결정한다.</p>
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>자료구조</th><th>Java</th><th>주 용도</th></tr></thead>
+  <tbody>
+    <tr><td>가변 배열</td><td><code>ArrayList</code></td><td>인덱스 접근 O(1), 동적 크기</td></tr>
+    <tr><td>스택 / 큐 / 덱</td><td><code>Deque</code> (ArrayDeque)</td><td>DFS·괄호·BFS·슬라이딩 윈도우</td></tr>
+    <tr><td>우선순위 큐</td><td><code>PriorityQueue</code></td><td>다익스트라·최소/최대 추출 O(log n)</td></tr>
+    <tr><td>해시</td><td><code>HashMap</code> / <code>HashSet</code></td><td>존재 확인·카운팅 O(1)</td></tr>
+    <tr><td>정렬</td><td><code>Collections.sort</code> + <code>Comparator</code></td><td>기준 정렬·2차원 정렬</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">⚠️</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>자주 밟는 함정 (직접 겪은 것들)</strong></p>
+    <ul class="docs-list">
+      <li><strong>for 루프 돌며 remove</strong> → <code>IndexOutOfBoundsException</code>. 리스트 크기가 줄어 인덱스가 어긋난다. → <em>역순 순회</em> 하거나 <code>while(!list.isEmpty() &amp;&amp; 조건)</code> 로 앞에서 빼낸다.</li>
+      <li><strong><code>==</code> vs <code>.equals()</code></strong> — <code>Integer</code>(127 초과)·<code>String</code> 비교는 반드시 <code>.equals()</code>. 참조 비교(<code>==</code>)는 값이 같아도 false 가 날 수 있다.</li>
+      <li><strong>int[] → List</strong> 변환: <code>Arrays.stream(arr).boxed().collect(Collectors.toList())</code>.</li>
+      <li><strong>unreachable statement</strong> — <code>break;</code> 뒤의 코드는 도달 불가라 컴파일 에러.</li>
+    </ul>
+  </div>
+</div>
 
-    private static int N, W;
-    private static ArrayList&lt;int[]&gt; list = new ArrayList&lt;&gt;();
+<!-- ===================== 1 ===================== -->
+<h2 class="docs-h2">1 · 자료구조 활용 — 큐 · 스택</h2>
+<p class="docs-p">문제의 동작을 <strong>자료구조의 성질</strong> 로 그대로 흉내 내는 유형. 앞에서 빼고 뒤에 넣는 흐름이면 큐, LIFO 면 스택이다.</p>
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>문제</th><th>출처</th><th>핵심 아이디어</th></tr></thead>
+  <tbody>
+    <tr><td>기능개발</td><td>프로그래머스</td><td>배포 순서대로 처리 → <strong>큐</strong>. 앞에서부터 100% 도달한 작업을 한꺼번에 빼며 카운트</td></tr>
+    <tr><td>표 편집</td><td>프로그래머스 214288</td><td>잦은 삭제·복구 → <strong>이중 연결 리스트</strong> + 삭제 스택(undo)</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="docs-p"><strong>기능개발</strong> — 처음엔 리스트 인덱스를 돌며 제거하다 <code>IndexOutOfBounds</code> 에 걸렸다. "앞에서부터 빼낸다"는 큐의 성질에 맞춰 다시 작성했다.</p>
+<div class="docs-code"><code class="language-java">class Solution {
+    public int[] solution(int[] progresses, int[] speeds) {
+        List<Integer> prog  = Arrays.stream(progresses).boxed().collect(Collectors.toList());
+        List<Integer> speed = Arrays.stream(speeds).boxed().collect(Collectors.toList());
+        List<Integer> answer = new ArrayList<>();
 
-    public static void print(){
+        while (!prog.isEmpty()) {
+            for (int i = 0; i < prog.size(); i++)        // 하루 진행
+                prog.set(i, prog.get(i) + speed.get(i));
 
-    }
-
-    public static void main(String args[]) throws Exception
-    {
-
-        Scanner sc = new Scanner(System.in);
-
-        W = sc.nextInt();
-        N = sc.nextInt();
-
-        for(int i=0; i&lt;N; i++){
-            int[] newInt = new int[] {sc.nextInt(), sc.nextInt()}; //이거 정확히 사용하는 방법
-            list.add(newInt);
+            int count = 0;                                // 앞에서부터 완료된 것 한꺼번에 배포
+            while (!prog.isEmpty() && prog.get(0) >= 100) {
+                prog.remove(0); speed.remove(0); count++;
+            }
+            if (count != 0) answer.add(count);
         }
-
-
-
-        for(int i=0; i&lt;list.size(); i++){
-            System.out.println(list.get(i)[1]);
-        }
-
-        //이 부분들 좀 확실히 확장성을 생각해보자.
-        Collections.sort(list, Comparator.comparing());
-
+        return answer.stream().mapToInt(i -> i).toArray();
     }
-}</code></pre><div class="docs-spacer"></div>
+}</code></div>
+
+<!-- ===================== 2 ===================== -->
+<h2 class="docs-h2">2 · 완전탐색 (Brute Force)</h2>
+<p class="docs-p">경우의 수가 충분히 작을 때, 모든 경우를 다 따져 보는 유형. 반복문·재귀·순열/조합으로 모든 후보를 만든다.</p>
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>문제</th><th>출처</th><th>핵심 아이디어</th></tr></thead>
+  <tbody>
+    <tr><td>모의고사</td><td>프로그래머스</td><td>3명의 찍는 패턴을 정답과 비교. <strong>값 비교는 <code>.equals()</code></strong> 로 (함정)</td></tr>
+    <tr><td>주사위 윷놀이</td><td>백준 17825</td><td>4개 말 × 매 턴 이동 선택 → 모든 경우 <strong>완전탐색(DFS)</strong>, 점수 최대화</td></tr>
+    <tr><td>최소 직사각형</td><td>프로그래머스</td><td>각 명함을 (긴 변·짧은 변)으로 정규화 후 max 끼리 곱 — 구현</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===================== 3 ===================== -->
+<h2 class="docs-h2">3 · 구현 · 시뮬레이션 (삼성 SW 핵심)</h2>
+<p class="docs-p">삼성 SW 역량테스트의 주력 유형. 격자(보드) 위에서 <em>규칙대로 한 턴씩 진행</em> 시키는 문제다. 정해진 절차를 <strong>버그 없이 그대로 옮기는</strong> 구현력이 핵심이다. 거의 모든 격자 문제는 <strong>방향 배열 <code>dx/dy</code></strong> + <strong>시간(턴) 루프</strong> 골격을 공유한다.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 180" width="720" height="180" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="160" y="20" text-anchor="middle" fill="#003B62" font-weight="700">방향 배열 (4방향 이동)</text>
+  <g text-anchor="middle">
+    <rect x="120" y="70" width="50" height="36" rx="6" fill="#e8f3fc" stroke="#0078d7"/><text x="145" y="93">(x,y)</text>
+    <rect x="120" y="28" width="50" height="34" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="145" y="50">상</text>
+    <rect x="120" y="114" width="50" height="34" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="145" y="136">하</text>
+    <rect x="60" y="70" width="50" height="36" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="85" y="93">좌</text>
+    <rect x="180" y="70" width="50" height="36" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="205" y="93">우</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.4" fill="#475569"><line x1="145" y1="70" x2="145" y2="64"/><polygon points="145,60 141,68 149,68"/><line x1="145" y1="106" x2="145" y2="112"/><polygon points="145,116 141,108 149,108"/><line x1="120" y1="88" x2="112" y2="88"/><polygon points="108,88 116,84 116,92"/><line x1="170" y1="88" x2="178" y2="88"/><polygon points="182,88 174,84 174,92"/></g>
+  <text x="500" y="20" text-anchor="middle" fill="#003B62" font-weight="700">턴 루프 골격</text>
+  <rect x="300" y="30" width="400" height="130" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <g font-family="monospace" font-size="10.5" fill="#0f172a" text-anchor="start">
+    <text x="316" y="52">int[] dx={-1,1,0,0}, dy={0,0,-1,1};</text>
+    <text x="316" y="74">while(turn++ &lt; LIMIT) {</text>
+    <text x="332" y="94">move();    // 규칙대로 이동</text>
+    <text x="332" y="114">interact();// 충돌·먹기·회전 등</text>
+    <text x="332" y="134">if(end) break;</text>
+    <text x="316" y="152">}</text>
+  </g>
+</svg>
+<figcaption>격자 시뮬레이션 공통 골격 — 방향 배열로 이동하고, 턴 루프 안에서 규칙을 순서대로 적용한다</figcaption>
+</div>
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>문제</th><th>번호</th><th>핵심 기법</th></tr></thead>
+  <tbody>
+    <tr><td>스타트 택시</td><td>백준 19238</td><td>시뮬레이션 + <strong>BFS</strong>(승객까지 최단거리)</td></tr>
+    <tr><td>컨베이어 벨트와 로봇</td><td>백준 20055</td><td>원형 벨트 회전 시뮬레이션 (인덱스 모듈러)</td></tr>
+    <tr><td>어른 상어</td><td>백준 19237</td><td>냄새 격자 + 우선순위 이동 시뮬레이션</td></tr>
+    <tr><td>모노미노도미노 2</td><td>백준 20061</td><td>블록 낙하·라인 제거 시뮬레이션</td></tr>
+    <tr><td>마법사 상어와 블리자드 / 복제</td><td>백준 20056 / 23290</td><td>격자 회전·이동·합치기 시뮬레이션</td></tr>
+    <tr><td>온풍기 안녕</td><td>백준 23289</td><td><strong>BFS 확산</strong>(온도) + 벽 처리 시뮬레이션</td></tr>
+    <tr><td>원판 돌리기</td><td>백준 17822</td><td>원형 배열 회전 + <strong>BFS</strong>(인접 제거)</td></tr>
+    <tr><td>체스판 말 이동</td><td>백준 17837</td><td>말 객체 + 색(흰/빨/파)별 이동 규칙 시뮬레이션</td></tr>
+    <tr><td>게리맨더링 2</td><td>백준</td><td>경계선 완전탐색 + 구역 나누기 시뮬레이션</td></tr>
+    <tr><td>포탑 부수기 / 메이즈 러너 / 코드트리빵 …</td><td>코드트리</td><td>격자 시뮬레이션 (+ BFS 경로)</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">🧱</div>
+  <div class="docs-callout__body">
+    <p class="docs-p">시뮬레이션은 <strong>상태를 객체로 모델링</strong> 하면 깔끔하다. 예) 체스판 말 이동(17837)은 말을 <code>Horse{num,x,y,dir}</code> 로 두고, 칸마다 <code>List&lt;Horse&gt;</code> 를 쌓아 색(흰=한 칸 이동, 빨=역순으로 쌓기, 파=방향 반전) 규칙을 그대로 옮겼다.</p>
+  </div>
+</div>
+
+<!-- ===================== 4 ===================== -->
+<h2 class="docs-h2">4 · DFS · 백트래킹</h2>
+<p class="docs-p">선택을 <em>깊게</em> 밀고 들어갔다가, 막히면 되돌아오며(backtrack) 모든 경우를 탐색한다. "상태를 바꾸고 → 재귀 → 원복" 패턴이 핵심.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 560 160" width="560" height="160" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="280" y="18" text-anchor="middle" fill="#003B62" font-weight="700">DFS / 백트래킹 — 깊이 우선 + 되돌리기</text>
+  <g fill="#e8f3fc" stroke="#0078d7"><circle cx="280" cy="42" r="14"/><circle cx="180" cy="92" r="14"/><circle cx="380" cy="92" r="14"/><circle cx="120" cy="140" r="13"/><circle cx="240" cy="140" r="13"/><circle cx="440" cy="140" r="13"/></g>
+  <g stroke="#94a3b8" stroke-width="1.4"><line x1="270" y1="53" x2="190" y2="81"/><line x1="290" y1="53" x2="370" y2="81"/><line x1="172" y1="104" x2="128" y2="129"/><line x1="188" y1="104" x2="232" y2="129"/><line x1="380" y1="106" x2="440" y2="128"/></g>
+  <g stroke="#e11d48" stroke-width="1.6" fill="none" stroke-dasharray="4 3"><path d="M132 134 C150 110 168 108 178 104"/></g>
+  <text x="150" y="120" fill="#e11d48" font-size="9.5">backtrack</text>
+</svg>
+<figcaption>한 가지 선택을 끝까지 시도하고, 막히면 직전 분기로 되돌아가 다른 선택을 한다</figcaption>
+</div>
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>문제</th><th>번호</th><th>핵심 아이디어</th></tr></thead>
+  <tbody>
+    <tr><td>청소년 상어</td><td>백준 19236</td><td>물고기 배치 복사 → 상어가 먹는 모든 경우 <strong>DFS 백트래킹</strong>, 최대 점수</td></tr>
+    <tr><td>주사위 윷놀이</td><td>백준 17825</td><td>말 4개의 이동 선택을 DFS 로 완전탐색</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===================== 5 ===================== -->
+<h2 class="docs-h2">5 · BFS · 최단거리</h2>
+<p class="docs-p">"몇 번 만에 도달?", "동시에 퍼져 나감" 류는 <strong>BFS</strong>. 큐로 가까운 칸부터 층(level)별로 방문하면 가중치가 같은 그래프의 <strong>최단거리</strong> 가 보장된다.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 540 160" width="540" height="160" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="270" y="18" text-anchor="middle" fill="#003B62" font-weight="700">BFS — 큐로 층별 확산</text>
+  <g text-anchor="middle">
+    <g fill="#0e8b87" stroke="#0e8b87"><rect x="240" y="60" width="34" height="34" rx="4"/></g><text x="257" y="82" fill="#fff">0</text>
+    <g fill="#cfeee8" stroke="#0e8b87"><rect x="204" y="60" width="34" height="34" rx="4"/><rect x="276" y="60" width="34" height="34" rx="4"/><rect x="240" y="24" width="34" height="34" rx="4"/><rect x="240" y="96" width="34" height="34" rx="4"/></g>
+    <g fill="#0f172a"><text x="221" y="82">1</text><text x="293" y="82">1</text><text x="257" y="46">1</text><text x="257" y="118">1</text></g>
+    <g fill="#eaf6ff" stroke="#0078d7"><rect x="168" y="60" width="34" height="34" rx="4"/><rect x="312" y="60" width="34" height="34" rx="4"/><rect x="204" y="24" width="34" height="34" rx="4"/><rect x="276" y="24" width="34" height="34" rx="4"/></g>
+    <g fill="#0f172a"><text x="185" y="82">2</text><text x="329" y="82">2</text><text x="221" y="46">2</text><text x="293" y="46">2</text></g>
+  </g>
+  <text x="430" y="78" fill="#64748b" font-size="10">거리 = 층 번호</text>
+  <text x="270" y="150" text-anchor="middle" fill="#64748b" font-size="10">시작점에서 가까운 칸부터 큐로 차례차례 (가중치 1 → 최단거리)</text>
+</svg>
+<figcaption>BFS 는 시작점에서 가까운 칸부터 층별로 방문 — 층 번호가 곧 최단거리</figcaption>
+</div>
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>문제</th><th>출처</th><th>핵심 아이디어</th></tr></thead>
+  <tbody>
+    <tr><td>숨바꼭질</td><td>백준 / 코드트리</td><td>±1, ×2 이동을 그래프로 보고 <strong>BFS 최단</strong></td></tr>
+    <tr><td>쉬운 최단거리</td><td>백준</td><td>격자 BFS 거리 전파</td></tr>
+    <tr><td>스타트 택시 (승객 탐색)</td><td>백준 19238</td><td>택시→승객, 승객→목적지 거리를 각각 BFS</td></tr>
+    <tr><td>온풍기 안녕 / 코드트리빵</td><td>백준 23289 / 코드트리</td><td>여러 출발점에서 동시에 퍼지는 <strong>다중 시작 BFS</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===================== 6 ===================== -->
+<h2 class="docs-h2">6 · DP · 그리디 · 그래프</h2>
+<p class="docs-p"><strong>DP</strong> 는 큰 문제를 겹치는 작은 문제로 나눠 메모이제이션한다. <strong>그리디</strong> 는 매 순간 최적을 골라도 전체 최적이 보장될 때 쓴다.</p>
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>문제</th><th>출처</th><th>유형 · 아이디어</th></tr></thead>
+  <tbody>
+    <tr><td>경찰차</td><td>백준 2618</td><td><strong>DP</strong> — 두 경찰차가 처리한 사건 인덱스 <code>dp[i][j]</code>, 최소 이동거리</td></tr>
+    <tr><td>ReserveRoom</td><td>Softeer</td><td><strong>그리디</strong> — 회의실 예약(구간 스케줄링), 끝나는 시간 기준 정렬</td></tr>
+    <tr><td>Virus</td><td>Softeer</td><td><strong>그래프 탐색</strong> — 감염 전파(BFS/DFS) 또는 Union-Find</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">🗺️</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>유형 판별 감각</strong> — "모든 경우" &amp; 작은 입력 → 완전탐색/DFS · "한 턴씩 규칙대로" → 시뮬레이션 · "최소 횟수/거리" &amp; 가중치 동일 → BFS · "겹치는 부분 문제" → DP · "매 순간 최선" → 그리디. 삼성형은 대부분 <strong>시뮬레이션 + BFS/DFS</strong> 의 조합이다.</p>
+  </div>
+</div>
+
+<hr class="docs-divider">
+<p class="docs-source">📓 <strong>2022–2023년</strong> 제가 코딩테스트를 준비하며 직접 푼 문제들(삼성 SW 역량테스트·프로그래머스·Softeer)을 Java 로 풀고 유형별로 정리한 노트입니다 · 원본 <a href="https://jealous-watch-86a.notion.site/c0a78c15c13c497b9e37085752519249" target="_blank" rel="noopener">Notion 에서 보기 ↗</a></p>
+
     </div>
   </article>
 </main>
 
 <footer-component></footer-component>
+
 </body>
 </html>

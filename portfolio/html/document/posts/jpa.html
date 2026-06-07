@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JPA · 자바 ORM 표준 — TAYLEE Archive</title>
+    <!-- Open Graph / social share -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TAYLEE's Archive">
+    <meta property="og:title" content="JPA · 자바 ORM 표준 — TAYLEE Archive">
+    <meta property="og:description" content="JPA(자바 ORM 표준)와 Hibernate, 영속성 컨텍스트(1차 캐시·변경감지·쓰기지연), EntityManager, 엔티티 매핑, 연관관계 매핑을 코드와 다이어그램으로 정리한 학습 노트.">
+    <meta property="og:url" content="https://taehyuklee.github.io/portfolio/html/document/posts/jpa.html">
+    <meta property="og:image" content="https://taehyuklee.github.io/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JPA · 자바 ORM 표준 — TAYLEE Archive">
+    <meta name="twitter:description" content="JPA·영속성 컨텍스트·엔티티/연관관계 매핑 정리 노트 (코드 + 다이어그램).">
+    <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-41">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-41">
+
+<script src="../../../js/main.js?v=20260605-41" defer></script>
+<script src="../../../js/components/nav.js?v=20260605-41" sync></script>
+<script src="../../../js/components/footer.js?v=20260605-41" sync></script>
+<script src="../../../js/components/header.js?v=20260605-41" sync></script>
+<script src="../../../js/components/docs-toc.js?v=20260605-41" defer></script>
+
+<common-header-component></common-header-component>
+</head>
+<body>
+<nav-component></nav-component>
+
+<main class="docs-post">
+  <article class="docs-post__article">
+    <header class="docs-post__header">
+      <p class="docs-post__eyebrow"><a href="../../TAYLEE documents.html">← Documents</a></p>
+      <h1 class="docs-post__title">JPA · 자바 ORM 표준</h1>
+    </header>
+    <div class="docs-post__body" data-paginate="true" data-per-page="2">
+
+<div class="docs-callout">
+  <div class="docs-callout__icon">🗄️</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>한 줄 소개</strong> — JPA 는 자바 객체와 관계형 DB 를 이어주는 <strong>ORM 표준</strong>이다. SQL 을 직접 쓰지 않고 객체를 다루듯 DB 를 CRUD 한다. 이 글은 JPA 의 정체(표준/Hibernate)부터, 그 핵심인 <strong>영속성 컨텍스트</strong>(1차 캐시 · 변경 감지 · 쓰기 지연), <strong>엔티티 매핑</strong>, <strong>연관관계 매핑</strong>까지 코드와 다이어그램으로 정리한 노트다. (김영한님의 JPA 강의 + 개별 학습 정리)</p>
+  </div>
+</div>
+
+<!-- ===================== 1 ===================== -->
+<h2 class="docs-h2">1 · JPA 란?</h2>
+<p class="docs-p"><strong>JPA(Java Persistence API)</strong> 는 자바 진영의 <strong>ORM(Object–Relational Mapping) 표준</strong>이다. "자바 표준"이라는 말은 곧 <strong>인터페이스(기능 명세서)</strong> 라는 뜻이고, 이를 실제로 구현한 것이 <strong>Hibernate</strong> · EclipseLink · DataNucleus 다. (실무 비중은 Hibernate 가 90% 이상.)</p>
+<div class="docs-callout">
+  <div class="docs-callout__icon">💡</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>왜 JPA 인가?</strong> 자바 애플리케이션에서 DB 데이터를 <strong>객체(Object)</strong> 로 매핑해 주므로, 코드단에서 DB 접근이 쉬워진다. SQL 을 직접 날리지 않고 API 를 쓰듯 객체를 저장·조회·수정·삭제할 수 있어 <strong>생산성 · 유지보수 · 패러다임 불일치 해소</strong> 에 유리하다.</p>
+  </div>
+</div>
+<div class="docs-fig">
+<svg viewBox="0 0 720 210" width="720" height="210" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="360" y="20" text-anchor="middle" fill="#003B62" font-weight="700">ORM — 객체와 테이블을 매핑</text>
+  <rect x="60" y="46" width="200" height="96" rx="10" fill="#e8f3fc" stroke="#0078d7"/><text x="160" y="66" text-anchor="middle" font-weight="700">Object (Member)</text>
+  <g text-anchor="start" fill="#0f172a" font-size="11"><text x="84" y="92">Long id;</text><text x="84" y="112">String name;</text><text x="84" y="132">member.getName();</text></g>
+  <g text-anchor="middle">
+    <rect x="460" y="46" width="200" height="96" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="64" font-weight="700">Table  MEMBER</text>
+    <line x1="460" y1="76" x2="660" y2="76" stroke="#0e8b87"/><line x1="560" y1="76" x2="560" y2="142" stroke="#0e8b87"/>
+    <text x="510" y="96">ID</text><text x="610" y="96">NAME</text>
+    <text x="510" y="120">1</text><text x="610" y="120">Lee</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.8" fill="#475569"><line x1="266" y1="84" x2="454" y2="84"/><polygon points="460,84 450,79 450,89"/><line x1="454" y1="104" x2="266" y2="104"/><polygon points="260,104 270,99 270,109"/></g>
+  <text x="360" y="80" text-anchor="middle" fill="#0048A7" font-size="10">매핑</text>
+  <text x="360" y="178" text-anchor="middle" fill="#64748b">JPA(표준 인터페이스) → 구현체 <tspan font-weight="700" fill="#0e8b87">Hibernate</tspan> 가 SQL 을 대신 생성·실행</text>
+</svg>
+<figcaption>객체와 테이블의 형상 차이를 JPA 가 매핑해 준다 — 개발자는 객체만 다루고, Hibernate 가 SQL 을 생성한다</figcaption>
+</div>
+
+<!-- ===================== 2 ===================== -->
+<h2 class="docs-h2">2 · 순수 JPA vs Spring Data JPA</h2>
+<p class="docs-p">SQL 로 하려면 INSERT 구문을 짜고 필드를 일일이 바인딩해야 하지만, JPA 는 <strong>객체 자체를 저장</strong>한다. <strong>Spring Data JPA</strong> 는 여기서 한 발 더 나아가, <code>Repository</code> 인터페이스만 선언하면 기본 CRUD 메서드를 자동으로 만들어 준다.</p>
+<div class="docs-code"><code class="language-java">// 순수 JPA — EntityManager 로 직접
+jpa.persist(member);                 // 등록(영속화)
+Member found = jpa.find(Member.class, memberId);  // 조회
+member.setName("변경할 이름");        // 수정 (변경 감지로 자동 UPDATE)
+jpa.remove(member);                  // 삭제
+
+// Spring Data JPA — Repository 인터페이스만 선언하면 끝
+User user = new User(name, id, password);
+@Autowired UserRepository userRepository;
+userRepository.save(user);           // save·findById·delete … 자동 제공</code></div>
+
+<!-- ===================== 3 ===================== -->
+<h2 class="docs-h2">3 · JPA 동작 — EntityManager 와 트랜잭션</h2>
+<p class="docs-p">JPA 의 동작 단위는 <strong>EntityManagerFactory(EMF)</strong> 와 <strong>EntityManager(EM)</strong> 다. EMF 는 <em>애플리케이션당 하나</em> 만들고(생성 비용이 큼), EM 은 <em>요청/트랜잭션마다 하나</em> 만들어 쓰고 닫는다. 그리고 모든 데이터 변경은 반드시 <strong>트랜잭션 안에서</strong> 일어나야 한다.</p>
+<div class="docs-code"><code class="language-java">EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello"); // 앱당 1개
+
+EntityManager em = emf.createEntityManager();   // 트랜잭션 단위마다 생성
+EntityTransaction tx = em.getTransaction();      // 트랜잭션 없이 변경하면 에러
+tx.begin();
+try {
+    Member member = new Member();
+    member.setId(1L);
+    member.setName("HelloA");
+    em.persist(member);     // 영속화
+    tx.commit();            // commit 시점에 flush → DB 반영
+} catch (Exception e) {
+    tx.rollback();
+} finally {
+    em.close();             // EM 은 쓰고 나면 꼭 닫는다
+}
+emf.close();</code></div>
+<div class="docs-fig">
+<svg viewBox="0 0 720 150" width="720" height="150" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">EMF → EM → Transaction</text>
+  <rect x="40" y="50" width="160" height="54" rx="10" fill="#f3e8fc" stroke="#8b5cf6"/><text x="120" y="74" text-anchor="middle" font-weight="700">EntityManagerFactory</text><text x="120" y="92" text-anchor="middle" fill="#64748b" font-size="9.5">앱당 1개 (무겁다)</text>
+  <g text-anchor="middle">
+    <rect x="280" y="34" width="160" height="40" rx="8" fill="#e8f3fc" stroke="#0078d7"/><text x="360" y="58">EntityManager #1</text>
+    <rect x="280" y="86" width="160" height="40" rx="8" fill="#e8f3fc" stroke="#0078d7"/><text x="360" y="110">EntityManager #2</text>
+  </g>
+  <rect x="520" y="60" width="160" height="40" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="600" y="84" text-anchor="middle">tx.begin → commit</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569"><line x1="200" y1="68" x2="276" y2="54"/><polygon points="280,53 271,52 274,61"/><line x1="200" y1="86" x2="276" y2="106"/><polygon points="280,107 271,102 273,111"/><line x1="440" y1="68" x2="516" y2="78"/><polygon points="520,79 511,75 511,84"/></g>
+  <text x="240" y="30" text-anchor="middle" fill="#64748b" font-size="9.5">요청/트랜잭션마다 생성</text>
+</svg>
+<figcaption>EMF 는 앱당 하나, EM 은 트랜잭션마다 만들어 쓰고 닫는다. 변경은 항상 트랜잭션 안에서</figcaption>
+</div>
+
+<!-- ===================== 4 ===================== -->
+<h2 class="docs-h2">4 · 영속성 컨텍스트 (핵심)</h2>
+<p class="docs-p">JPA 의 심장. <strong>영속성 컨텍스트(Persistence Context)</strong> 는 EntityManager 안의 <em>"엔티티를 보관·관리하는 메모리 버퍼"</em> 다. 객체가 이 버퍼에 올라가 관리 대상이 된 상태를 <strong>영속화</strong> 라 한다. 이 버퍼 덕분에 — 같은 조회는 <strong>1차 캐시</strong> 로 쿼리를 아끼고, 변경은 <strong>자동 감지(Dirty Check)</strong> 하며, INSERT/UPDATE 는 <strong>쓰기 지연 SQL 저장소</strong> 에 모았다가 한 번에 보낸다.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 230" width="720" height="230" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">영속성 컨텍스트 (EntityManager 내부)</text>
+  <rect x="160" y="34" width="400" height="120" rx="12" fill="#f8fafc" stroke="#0078d7" stroke-width="1.5"/>
+  <text x="360" y="52" text-anchor="middle" fill="#0078d7" font-weight="700" font-size="10.5">Persistence Context</text>
+  <g text-anchor="middle" font-size="9.5">
+    <rect x="178" y="62" width="180" height="80" rx="8" fill="#e8f3fc" stroke="#0078d7"/><text x="268" y="78" font-weight="700">1차 캐시</text>
+    <line x1="190" y1="86" x2="346" y2="86" stroke="#94a3b8"/><text x="214" y="100">@Id</text><text x="268" y="100">Entity</text><text x="324" y="100">Snapshot</text>
+    <text x="214" y="122">1</text><text x="268" y="122">member</text><text x="324" y="122">{…}</text>
+    <rect x="378" y="62" width="166" height="80" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="461" y="78" font-weight="700">쓰기 지연 SQL 저장소</text>
+    <text x="461" y="100">INSERT member …</text><text x="461" y="118">UPDATE member …</text>
+  </g>
+  <rect x="40" y="78" width="90" height="36" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="85" y="101" text-anchor="middle">persist/find</text>
+  <rect x="590" y="170" width="90" height="36" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="635" y="193" text-anchor="middle">DB</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569"><line x1="130" y1="96" x2="174" y2="96"/><polygon points="178,96 170,92 170,100"/></g>
+  <g stroke="#d98324" stroke-width="1.6" fill="#d98324"><line x1="461" y1="154" x2="600" y2="200"/><polygon points="604,201 595,198 596,207"/></g>
+  <text x="430" y="186" fill="#b45309" font-size="9.5">flush / commit 시 한 번에 전송</text>
+</svg>
+<figcaption>EM 안의 영속성 컨텍스트 = 1차 캐시 + 쓰기 지연 SQL 저장소. flush(commit) 시점에 모아둔 SQL 을 DB 로 보낸다</figcaption>
+</div>
+<p class="docs-p"><strong>엔티티의 생명주기</strong> 는 네 상태로 나뉜다 — <strong>비영속</strong>(new 로 막 만든 상태) · <strong>영속</strong>(persist/find 로 컨텍스트가 관리) · <strong>준영속</strong>(detach/close 로 관리에서 떨어짐) · <strong>삭제</strong>(remove).</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 120" width="720" height="120" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="10.5">
+  <g text-anchor="middle">
+    <rect x="20" y="44" width="120" height="40" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="80" y="68">비영속 (new)</text>
+    <rect x="270" y="44" width="120" height="40" rx="8" fill="#e8f3fc" stroke="#0078d7"/><text x="330" y="68" font-weight="700">영속 (managed)</text>
+    <rect x="520" y="10" width="120" height="36" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="580" y="33">준영속 (detach)</text>
+    <rect x="520" y="78" width="120" height="36" rx="8" fill="#fde8e8" stroke="#e11d48"/><text x="580" y="101">삭제 (remove)</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.5" fill="#475569"><line x1="140" y1="64" x2="266" y2="64"/><polygon points="270,64 261,60 261,68"/>
+    <line x1="390" y1="56" x2="516" y2="34"/><polygon points="520,33 511,32 513,41"/>
+    <line x1="390" y1="72" x2="516" y2="92"/><polygon points="520,93 511,89 511,98"/></g>
+  <text x="203" y="56" text-anchor="middle" fill="#0078d7" font-size="9">persist / find</text>
+  <text x="455" y="40" text-anchor="middle" fill="#d98324" font-size="9">detach / close</text>
+  <text x="455" y="100" text-anchor="middle" fill="#e11d48" font-size="9">remove</text>
+</svg>
+<figcaption>엔티티 생명주기: 비영속 → (persist/find) 영속 → (detach/close) 준영속 / (remove) 삭제</figcaption>
+</div>
+
+<!-- ===================== 5 ===================== -->
+<h2 class="docs-h2">5 · 1차 캐시 · 동일성 · 변경 감지</h2>
+<p class="docs-p"><strong>1차 캐시</strong> — 같은 EM 안에서 같은 엔티티를 두 번 조회하면, 첫 번째만 DB 쿼리가 나가고 두 번째는 캐시에서 가져온다. 덕분에 <strong>동일성(==)</strong> 도 보장된다.</p>
+<div class="docs-code"><code class="language-java">Member m1 = em.find(Member.class, 1L);  // ① DB 조회 → 1차 캐시에 적재
+Member m2 = em.find(Member.class, 1L);  // ② 1차 캐시에서 반환 (쿼리 X)
+System.out.println(m1 == m2);            // true — 같은 인스턴스 (동일성 보장)</code></div>
+<p class="docs-p"><strong>변경 감지(Dirty Checking)</strong> — 영속 상태의 엔티티는 값만 바꿔도 된다. 굳이 <code>persist</code> 를 다시 호출할 필요가 없다. JPA 가 <em>최초 영속 시점의 스냅샷</em> 과 flush 시점의 값을 비교해, 달라졌으면 <strong>UPDATE 쿼리를 자동 생성</strong> 해 쓰기 지연 저장소에 넣는다.</p>
+<div class="docs-code"><code class="language-java">Member member = em.find(Member.class, 1L);  // 영속 상태
+member.setName("Lee");      // 값만 변경
+// em.persist(member);      // ❌ 필요 없음 — 변경 감지가 알아서 UPDATE
+tx.commit();                // commit 직전 flush → 스냅샷 비교 → UPDATE 쿼리 전송</code></div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">🔎</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>flush</strong> 는 쓰기 지연 SQL 저장소의 쿼리들을 DB 에 <em>반영</em> 하는 것이다(캐시를 비우는 게 아니다). <code>em.flush()</code> 를 직접 호출하거나, 트랜잭션 <code>commit</code> 시점, JPQL 쿼리 실행 직전에 자동으로 일어난다. <code>em.detach()</code> 하면 그 엔티티는 <strong>준영속</strong> 이 되어 더는 변경 감지 대상이 아니다.</p>
+  </div>
+</div>
+
+<!-- ===================== 6 ===================== -->
+<h2 class="docs-h2">6 · 엔티티 매핑 (Entity Mapping)</h2>
+<p class="docs-p">같은 데이터를 애플리케이션(객체)과 DB(테이블)라는 다른 형상에서 다루려면 <strong>매핑 정보</strong> 가 필요하다. 어노테이션으로 객체–테이블, 필드–컬럼, 기본 키를 매핑한다.</p>
+<div class="docs-code"><code class="language-java">@Entity                              // JPA 가 관리하는 엔티티
+@Table(name = "MEMBER")              // 매핑할 테이블 (생략 시 클래스명)
+public class Member {
+
+    @Id                              // 기본 키(PK) 매핑
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // PK 생성 전략 (IDENTITY/SEQUENCE/AUTO)
+    private Long id;
+
+    @Column(name = "name", nullable = false, length = 50)  // 필드 ↔ 컬럼 매핑
+    private String name;
+
+    @Enumerated(EnumType.STRING)     // enum 은 반드시 STRING 으로
+    private Grade grade;
+}</code></div>
+<p class="docs-p"><strong>스키마 자동 생성</strong> — <code>hibernate.hbm2ddl.auto</code>(Spring: <code>spring.jpa.hibernate.ddl-auto</code>) 로 엔티티를 보고 테이블 DDL 을 자동 생성할 수 있다. 옵션은 <code>create</code> · <code>create-drop</code> · <code>update</code> · <code>validate</code> · <code>none</code> — 운영에서는 <code>validate</code>/<code>none</code> 만 쓴다.</p>
+
+<!-- ===================== 7 ===================== -->
+<h2 class="docs-h2">7 · 연관관계 매핑</h2>
+<p class="docs-p">객체는 <em>참조</em> 로, 테이블은 <em>외래 키(FK)</em> 로 관계를 맺는다 — 이 패러다임 차이를 <strong>연관관계 매핑</strong> 으로 잇는다. 다대일(<code>@ManyToOne</code>)·일대다(<code>@OneToMany</code>) 가 가장 흔하다.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 160" width="720" height="160" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">연관관계 — Member(N) : Team(1)</text>
+  <rect x="80" y="56" width="180" height="60" rx="10" fill="#e8f3fc" stroke="#0078d7"/><text x="170" y="80" text-anchor="middle" font-weight="700">Member (N)</text><text x="170" y="100" text-anchor="middle" fill="#64748b" font-size="9.5">@ManyToOne → FK(team_id)</text>
+  <rect x="460" y="56" width="180" height="60" rx="10" fill="#e9f7f3" stroke="#0e8b87"/><text x="550" y="80" text-anchor="middle" font-weight="700">Team (1)</text><text x="550" y="100" text-anchor="middle" fill="#64748b" font-size="9.5">@OneToMany(mappedBy)</text>
+  <g stroke="#475569" stroke-width="1.8" fill="#475569"><line x1="260" y1="80" x2="456" y2="80"/><polygon points="460,80 450,75 450,85"/></g>
+  <text x="360" y="72" text-anchor="middle" fill="#0048A7" font-size="10">team_id (FK)</text>
+  <text x="360" y="140" text-anchor="middle" fill="#64748b" font-size="10">FK 를 가진 쪽(Member)이 <tspan font-weight="700" fill="#0048A7">연관관계의 주인</tspan> — 반대편은 mappedBy 로 읽기 전용</text>
+</svg>
+<figcaption>FK 를 관리하는 쪽이 연관관계의 주인. 양방향이면 반대편은 mappedBy 로 "거울"만 본다</figcaption>
+</div>
+<div class="docs-code"><code class="language-java">@Entity
+public class Member {
+    @Id @GeneratedValue private Long id;
+
+    @ManyToOne                          // 다(Member) : 일(Team)
+    @JoinColumn(name = "team_id")        // FK 컬럼 — 이쪽이 "연관관계의 주인"
+    private Team team;
+}
+
+@Entity
+public class Team {
+    @Id @GeneratedValue private Long id;
+
+    @OneToMany(mappedBy = "team")        // 주인이 아님(읽기 전용) — Member.team 이 주인
+    private List<Member> members = new ArrayList<>();
+}</code></div>
+<div class="docs-callout">
+  <div class="docs-callout__icon">⚠️</div>
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>연관관계의 주인</strong> — 양방향 매핑에서 <em>FK 를 실제로 관리(등록·수정)하는 쪽</em> 이 주인이다. 주인이 아닌 쪽(<code>mappedBy</code>)은 조회만 가능. 값을 넣을 땐 <strong>주인 쪽에 반드시 설정</strong> 해야 DB 에 반영된다. (양쪽 다 세팅하는 연관관계 편의 메서드를 두면 안전하다.)</p>
+  </div>
+</div>
+
+<hr class="docs-divider">
+<p class="docs-source">📓 <strong>2022–2023년</strong> 제가 백엔드를 준비하며 김영한님의 JPA 강의 + 개별 학습을 직접 정리한 노트입니다 · 원본 <a href="https://jealous-watch-86a.notion.site/JPA-54f676da77ac4602b7ee1d7a12f173a6" target="_blank" rel="noopener">Notion 에서 보기 ↗</a></p>
+
+    </div>
+  </article>
+</main>
+
+<footer-component></footer-component>
+
+</body>
+</html>

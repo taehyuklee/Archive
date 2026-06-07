@@ -134,8 +134,10 @@
     font-size: 14px;
     line-height: 1.6;
     overflow-x: auto;
+    white-space: pre;
+    tab-size: 2;
 }
-.docs-code code { background: none; color: inherit; padding: 0; }
+.docs-code code { background: none; color: inherit; padding: 0; white-space: inherit; }
 
 p code, li code {
     background: #f1f5f9;
