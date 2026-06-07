@@ -49,3 +49,21 @@ class common_header_class extends HTMLElement{
 }
 
 customElements.define('common-header-component', common_header_class);
+
+// ─── GoatCounter (privacy-friendly analytics) ────────────────────────────────
+// 모든 페이지가 header.js 를 로드하므로 여기서 한 번만 주입하면 전 페이지에 적용된다.
+// 설정: https://www.goatcounter.com 에서 사이트를 만들고 아래 GC_CODE 를 그 코드로 교체.
+//        (대시보드가 https://<코드>.goatcounter.com 이면 GC_CODE = '<코드>')
+// localhost / 127.0.0.1 / file: 및 코드 미설정(YOURCODE) 시에는 집계하지 않는다.
+(function () {
+  var GC_CODE = 'taylee'; // GoatCounter 코드 (https://taylee.goatcounter.com)
+  if (GC_CODE === 'YOURCODE') return;
+  var h = location.hostname;
+  if (location.protocol === 'file:' || h === 'localhost' || h === '127.0.0.1') return;
+  if (document.querySelector('script[data-goatcounter]')) return; // 중복 방지
+  var s = document.createElement('script');
+  s.async = true;
+  s.setAttribute('data-goatcounter', 'https://' + GC_CODE + '.goatcounter.com/count');
+  s.src = 'https://gc.zgo.at/count.js';
+  document.head.appendChild(s);
+})();
