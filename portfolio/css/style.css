@@ -704,11 +704,16 @@ a.info-chip:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255
 .info-career__period{display:inline-block;font-size:12.5px;font-weight:600;color:var(--muted,#64748b);margin-left:8px;}
 .info-career__role{font-size:14px;font-weight:700;color:var(--accent-2,#0048A7);margin:8px 0 10px;}
 .info-career__list{margin:0;padding-left:18px;}
-.info-career__list li{font-size:14px;line-height:1.7;color:var(--body,#1e293b);margin-bottom:6px;}
+.info-career__list li{font-size:14px;line-height:1.7;color:var(--body,#1e293b);margin-bottom:9px;}
 .info-career__list li:last-child{margin-bottom:0;}
+.info-career__desc{display:block;font-size:13px;font-weight:400;color:var(--muted,#64748b);line-height:1.55;margin-top:2px;}
 .info-done{
   font-size:11px;font-weight:700;color:#16794f;background:#e7f6ee;
   border:1px solid #c4ead4;border-radius:999px;padding:2px 9px;margin-left:6px;
+}
+.info-ongoing{
+  font-size:11px;font-weight:700;color:#b45309;background:#fef3e7;
+  border:1px solid #fadcb4;border-radius:999px;padding:2px 9px;margin-left:6px;
 }
 
 /* awards + certificate two-up */
