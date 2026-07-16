@@ -50,7 +50,6 @@
 <div class="docs-lang" data-lang="en">
 
 <div class="docs-callout">
-  <div class="docs-callout__icon">🛡️</div>
   <div class="docs-callout__body">
     <p class="docs-p"><strong>One line</strong> — A <strong>self-reinforcing security agent</strong> (LLM + ReAct) that replaces rule-of-thumb WAF: it analyzes request context, decides whether it’s an attack, blocks it, and <em>autonomously updates its own defense policy</em> — a closed loop of detection → blocking → policy update → re-detection.</p>
   </div>
@@ -78,7 +77,7 @@
   <text x="450" y="84" text-anchor="middle" fill="#64748b" font-size="10">log-based anomaly detect</text>
   <!-- LLM ReAct -->
   <rect x="370" y="176" width="160" height="64" rx="10" fill="#fff" stroke="#0078d7"/>
-  <text x="450" y="200" text-anchor="middle" fill="#0f172a" font-weight="700">LLM · ReAct</text>
+  <text x="450" y="200" text-anchor="middle" fill="#0f172a" font-weight="700">LLM, ReAct</text>
   <text x="450" y="220" text-anchor="middle" fill="#64748b" font-size="10">reason → threat assess</text>
   <!-- policy -->
   <rect x="580" y="108" width="120" height="64" rx="10" fill="#fef2f2" stroke="#e11d48"/>
@@ -95,7 +94,7 @@
   <polygon points="225,109 219,99 231,99" fill="#0e8b87"/>
   <text x="360" y="270" text-anchor="middle" fill="#0e8b87" font-weight="700">탐지 → 차단 → 정책 업데이트 → 재탐지 (self-reinforcing loop)</text>
 </svg>
-<figcaption>Reinforced Security Agent replaces WAF — Gateway·Monitoring·LLM(ReAct) form a closed self-reinforcing loop</figcaption>
+<figcaption>Reinforced Security Agent replaces WAF — Gateway, Monitoring, and LLM (ReAct) form a closed self-reinforcing loop</figcaption>
 </div>
 
 <h2 class="docs-h2">Impact</h2>
@@ -143,12 +142,12 @@
   <text x="180" y="96" text-anchor="middle" fill="#64748b">메시지 누적 → 앞쪽(Sys/Hum)이 잘림</text>
   <text x="540" y="22" text-anchor="middle" fill="#0e8b87" font-weight="700">Case 2 — 10k 토큰 단위 + Sys/Hum 항상 포함</text>
   <g>
-    <rect x="400" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="465" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk · 10k</text>
-    <rect x="540" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="605" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk · 10k</text>
+    <rect x="400" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="465" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk (10k)</text>
+    <rect x="540" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="605" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk (10k)</text>
   </g>
-  <text x="540" y="96" text-anchor="middle" fill="#64748b">각 chunk 가 System·Human 을 명시 포함 → context 유지</text>
+  <text x="540" y="96" text-anchor="middle" fill="#64748b">각 chunk 가 System/Human 을 명시 포함 → context 유지</text>
 </svg>
-<figcaption>장기 운영 시 초기 컨텍스트 소실을 막기 위해 10,000-token 단위로 분할하고 매 메시지에 System·Human 을 포함</figcaption>
+<figcaption>장기 운영 시 초기 컨텍스트 소실을 막기 위해 10,000-token 단위로 분할하고 매 메시지에 System/Human 을 포함</figcaption>
 </div>
 
 <h2 class="docs-h2">Troubleshooting 2 — Log pipeline (long context to the LLM)</h2>
@@ -177,7 +176,7 @@
     <line x1="440" y1="86" x2="374" y2="86"/><polygon points="370,86 380,81 380,91"/>
     <line x1="560" y1="86" x2="606" y2="86"/><polygon points="610,86 600,81 600,91"/>
   </g>
-  <text x="500" y="138" text-anchor="middle" fill="#64748b" font-size="11">필요한 만큼만 polling · 요청 건수는 agent 가 자율 결정</text>
+  <text x="500" y="138" text-anchor="middle" fill="#64748b" font-size="11">필요한 만큼만 polling, 요청 건수는 agent 가 자율 결정</text>
 </svg>
 <figcaption>Message Broker 기반 파이프라인 — agent 가 Tool API 로 필요한 만큼만 로그를 가져와 LLM 에 전달</figcaption>
 </div>
@@ -199,7 +198,6 @@
 <div class="docs-lang" data-lang="ko" hidden>
 
 <div class="docs-callout">
-  <div class="docs-callout__icon">🛡️</div>
   <div class="docs-callout__body">
     <p class="docs-p"><strong>한 줄 요약</strong> — Rule-of-Thumb WAF 를 대체하는 <strong>자기강화 보안 에이전트</strong>(LLM + ReAct). 요청의 맥락을 분석해 공격 여부를 판단하고 차단한 뒤, <em>스스로 방어 정책을 갱신</em> 한다 — 탐지 → 차단 → 정책 업데이트 → 재탐지의 닫힌 루프.</p>
   </div>
@@ -207,7 +205,7 @@
 
 <dl class="docs-meta">
   <dt>기간</dt><dd>2024년 4월 1일 – 7월 10일</dd>
-  <dt>역할</dt><dd>시스템 기획·설계·전체 구현</dd>
+  <dt>역할</dt><dd>시스템 기획, 설계, 전체 구현</dd>
   <dt>성격</dt><dd>사내 R&amp;D PoC (개인 단위 연구과제)</dd>
 </dl>
 
@@ -224,7 +222,7 @@
   <text x="450" y="64" text-anchor="middle" fill="#0f172a" font-weight="700">Secure Monitoring</text>
   <text x="450" y="84" text-anchor="middle" fill="#64748b" font-size="10">로그 기반 이상 탐지</text>
   <rect x="370" y="176" width="160" height="64" rx="10" fill="#fff" stroke="#0078d7"/>
-  <text x="450" y="200" text-anchor="middle" fill="#0f172a" font-weight="700">LLM · ReAct</text>
+  <text x="450" y="200" text-anchor="middle" fill="#0f172a" font-weight="700">LLM, ReAct</text>
   <text x="450" y="220" text-anchor="middle" fill="#64748b" font-size="10">추론 → 위협 판단</text>
   <rect x="580" y="108" width="120" height="64" rx="10" fill="#fef2f2" stroke="#e11d48"/>
   <text x="640" y="132" text-anchor="middle" fill="#0f172a" font-weight="700">정책 업데이트</text>
@@ -239,15 +237,15 @@
   <polygon points="225,109 219,99 231,99" fill="#0e8b87"/>
   <text x="360" y="270" text-anchor="middle" fill="#0e8b87" font-weight="700">탐지 → 차단 → 정책 업데이트 → 재탐지 (자기강화 루프)</text>
 </svg>
-<figcaption>WAF 를 대체하는 Reinforced Security Agent — Gateway·Monitoring·LLM(ReAct)이 닫힌 자기강화 루프를 이룬다</figcaption>
+<figcaption>WAF 를 대체하는 Reinforced Security Agent — Gateway, Monitoring, LLM(ReAct)이 닫힌 자기강화 루프를 이룬다</figcaption>
 </div>
 
 <h2 class="docs-h2">성과</h2>
 <ul class="docs-list">
-  <li><strong>실시간 이상 탐지</strong> — 예측 불가능한 신규 위협에 적응하면서 응답 시간·자원 효율 개선.</li>
+  <li><strong>실시간 이상 탐지</strong> — 예측 불가능한 신규 위협에 적응하면서 응답 시간과 자원 효율 개선.</li>
   <li><strong>자기강화 보안 루프</strong> — 탐지 → 차단 → 정책 업데이트 → 재탐지.</li>
   <li><strong>자동 정책 업데이트</strong> — 위협 판단을 즉시 Gateway 정책에 반영.</li>
-  <li><strong>관리자 알림 + 자동 차단 통합</strong> — 운영 효율·보안 신뢰성 향상.</li>
+  <li><strong>관리자 알림 + 자동 차단 통합</strong> — 운영 효율과 보안 신뢰성 향상.</li>
 </ul>
 
 <h2 class="docs-h2">기술 스택</h2>
@@ -258,25 +256,25 @@
 </div>
 
 <h2 class="docs-h2">핵심 역할 &amp; 성과</h2>
-<p class="docs-p">Secure Monitoring 과 Secure Gateway 에이전트를 LLM 기반 ReAct 프레임워크로 통합하여, 로그 기반 탐지부터 실시간 차단·정책 강화까지 아우르는 <strong>완전 자동화 end-to-end 보안 시스템(Feedback System)</strong> 을 설계·구현했다.</p>
+<p class="docs-p">Secure Monitoring 과 Secure Gateway 에이전트를 LLM 기반 ReAct 프레임워크로 통합하여, 로그 기반 탐지부터 실시간 차단과 정책 강화까지 아우르는 <strong>완전 자동화 end-to-end 보안 시스템(Feedback System)</strong> 을 설계하고 구현했다.</p>
 <h3 class="docs-h3">⊙ Monitoring–Gateway 통합 아키텍처</h3>
 <ul class="docs-list">
   <li><strong>자기강화 루프</strong> 설계: 초기 차단 → 로그 수집 → 이상 탐지 → 자동 대응.</li>
   <li>Gateway–Monitoring 에이전트 간 <strong>양방향 피드백</strong> 메커니즘 구현.</li>
-  <li>LLM 기반 <strong>ReAct 추론·정책 강화 흐름</strong> 개발.</li>
+  <li>LLM 기반 <strong>ReAct 추론과 정책 강화 흐름</strong> 개발.</li>
 </ul>
-<h3 class="docs-h3">⊙ LLM 기반 위협 탐지·대응</h3>
+<h3 class="docs-h3">⊙ LLM 기반 위협 탐지 및 대응</h3>
 <ul class="docs-list">
-  <li>로그 요약·위협 판단을 위한 <strong>LLM 프롬프트·툴</strong> 설계.</li>
+  <li>로그 요약과 위협 판단을 위한 <strong>LLM 프롬프트와 툴</strong> 설계.</li>
   <li><strong>Qdrant 벡터 DB 캐싱</strong> 으로 빠른 대응.</li>
-  <li>의심 요청 분류(IP·URL·User-Agent)를 <strong>few-shot</strong> 로 구축.</li>
+  <li>의심 요청 분류(IP, URL, User-Agent)를 <strong>few-shot</strong> 로 구축.</li>
   <li>관리자 자동 알림 + <strong>Gateway 정책 자동 업데이트</strong> 구현.</li>
 </ul>
 
 <hr class="docs-divider">
 
 <h2 class="docs-h2">트러블슈팅 1 — 에이전트 메모리(토큰 기반 메시지 관리)</h2>
-<p class="docs-p">사용자와 계속 메시지를 주고받는 일반 대화 시스템과 달리, 여기서는 서버가 시작 시 <strong>System·Human 메시지만</strong> 에이전트에 전달한 뒤 반복 루프로 동작한다. 이 과정에서 메시지가 쌓이면 초기 System/Human 컨텍스트가 결국 <strong>사라질 수 있다</strong>. 이를 막기 위해 메시지를 <strong>10,000-token 단위</strong> 로 분할하고, 모든 새 메시지가 System·Human 메시지를 명시적으로 포함하도록 하여 장기 운영 내내 컨텍스트를 일관되게 유지했다.</p>
+<p class="docs-p">사용자와 계속 메시지를 주고받는 일반 대화 시스템과 달리, 여기서는 서버가 시작 시 <strong>System/Human 메시지만</strong> 에이전트에 전달한 뒤 반복 루프로 동작한다. 이 과정에서 메시지가 쌓이면 초기 System/Human 컨텍스트가 결국 <strong>사라질 수 있다</strong>. 이를 막기 위해 메시지를 <strong>10,000-token 단위</strong> 로 분할하고, 모든 새 메시지가 System/Human 메시지를 명시적으로 포함하도록 하여 장기 운영 내내 컨텍스트를 일관되게 유지했다.</p>
 
 <div class="docs-fig">
 <svg viewBox="0 0 720 180" width="720" height="180" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
@@ -287,16 +285,16 @@
   <text x="180" y="96" text-anchor="middle" fill="#64748b">메시지 누적 → 앞쪽(Sys/Hum)이 잘림</text>
   <text x="540" y="22" text-anchor="middle" fill="#0e8b87" font-weight="700">Case 2 — 10k 토큰 단위 + Sys/Hum 항상 포함</text>
   <g>
-    <rect x="400" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="465" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk · 10k</text>
-    <rect x="540" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="605" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk · 10k</text>
+    <rect x="400" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="465" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk (10k)</text>
+    <rect x="540" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="605" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk (10k)</text>
   </g>
-  <text x="540" y="96" text-anchor="middle" fill="#64748b">각 chunk 가 System·Human 을 명시 포함 → context 유지</text>
+  <text x="540" y="96" text-anchor="middle" fill="#64748b">각 chunk 가 System/Human 을 명시 포함 → context 유지</text>
 </svg>
-<figcaption>장기 운영 시 초기 컨텍스트 소실을 막기 위해 10,000-token 단위로 분할하고 매 메시지에 System·Human 을 포함</figcaption>
+<figcaption>장기 운영 시 초기 컨텍스트 소실을 막기 위해 10,000-token 단위로 분할하고 매 메시지에 System/Human 을 포함</figcaption>
 </div>
 
 <h2 class="docs-h2">트러블슈팅 2 — 로그 파이프라인(LLM 에 긴 컨텍스트 전달)</h2>
-<p class="docs-p">전체 raw 로그를 그대로 LLM 에 보내면 토큰 한도를 넘길 위험이 있고, 반대로 raw 로그를 Vector DB 에 넣고 쿼리하면 로그의 <strong>흐름·연속성</strong> 을 놓쳐 맥락이 끊긴다. 게다가 벡터 저장소 용량이 폭증한다 — <code>text-embedding-3-large</code> 로 <strong>13.3 MB</strong> 의 raw 로그를 임베딩하면 Vector DB 에서 <strong>914.2 MB</strong> 로 늘어난다.</p>
+<p class="docs-p">전체 raw 로그를 그대로 LLM 에 보내면 토큰 한도를 넘길 위험이 있고, 반대로 raw 로그를 Vector DB 에 넣고 쿼리하면 로그의 <strong>흐름과 연속성</strong> 을 놓쳐 맥락이 끊긴다. 게다가 벡터 저장소 용량이 폭증한다 — <code>text-embedding-3-large</code> 로 <strong>13.3 MB</strong> 의 raw 로그를 임베딩하면 Vector DB 에서 <strong>914.2 MB</strong> 로 늘어난다.</p>
 
 <div class="docs-table-wrap">
 <table class="docs-table">
@@ -321,7 +319,7 @@
     <line x1="440" y1="86" x2="374" y2="86"/><polygon points="370,86 380,81 380,91"/>
     <line x1="560" y1="86" x2="606" y2="86"/><polygon points="610,86 600,81 600,91"/>
   </g>
-  <text x="500" y="138" text-anchor="middle" fill="#64748b" font-size="11">필요한 만큼만 polling · 요청 건수는 agent 가 자율 결정</text>
+  <text x="500" y="138" text-anchor="middle" fill="#64748b" font-size="11">필요한 만큼만 polling, 요청 건수는 agent 가 자율 결정</text>
 </svg>
 <figcaption>Message Broker 기반 파이프라인 — agent 가 Tool API 로 필요한 만큼만 로그를 가져와 LLM 에 전달</figcaption>
 </div>

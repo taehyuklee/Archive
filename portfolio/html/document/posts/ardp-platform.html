@@ -8,14 +8,14 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TAYLEE's Archive">
     <meta property="og:title" content="AI Readable Data Platform (ARDP) — SK Inc. AX">
-    <meta property="og:description" content="온톨로지 기반 데이터 자동 구축·추출·추론 통합 플랫폼. 애플리케이션 아키텍트로서 모듈 간 데이터 flow(data_management→structured→deploy-hooks→Ontop/Trino) 설계, Ontop·Trino 연합 구조와 AWS 인프라, RDB→그래프 PK 클러스터링 방법론, NL→SPARQL 추론(One-shot·N-shot·Graph-Explorer·Graph-Hop) 개발.">
+    <meta property="og:description" content="온톨로지 기반 데이터 자동 구축, 추출, 추론 통합 플랫폼. 애플리케이션 아키텍트로서 모듈 간 데이터 flow(data_management→structured→deploy-hooks→Ontop/Trino) 설계, Ontop과 Trino 연합 구조와 AWS 인프라, RDB→그래프 PK 클러스터링 방법론, NL→SPARQL 추론(One-shot, N-shot, Graph-Explorer, Graph-Hop) 개발.">
     <meta property="og:url" content="https://taehyuklee.github.io/portfolio/html/document/posts/ardp-platform.html">
     <meta property="og:image" content="https://taehyuklee.github.io/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI Readable Data Platform (ARDP) — SK Inc. AX">
-    <meta name="twitter:description" content="온톨로지/VKG 데이터 플랫폼 — 앱 아키텍처·Ontop/Trino·AWS·그래프 모델링·NL→SPARQL 추론 설계/개발.">
+    <meta name="twitter:description" content="온톨로지/VKG 데이터 플랫폼 — 앱 아키텍처, Ontop/Trino, AWS, 그래프 모델링, NL→SPARQL 추론 설계/개발.">
     <meta name="twitter:image" content="https://taehyuklee.github.io/og-image.jpg">
 
 
@@ -50,18 +50,17 @@
 <div class="docs-lang" data-lang="en">
 
 <div class="docs-callout">
-  <div class="docs-callout__icon">🧠</div>
   <div class="docs-callout__body">
     <p class="docs-p"><strong>One line</strong> — <strong>AI Readable Data Platform (ARDP)</strong> turns a company's databases &amp; documents into data an AI can read — an <strong>ontology / Virtual Knowledge Graph</strong> — and answers natural-language questions over it. As <strong>application architect &amp; backend engineer</strong> I designed the <strong>cross-module data flow</strong> and built the structured-build, deploy, and inference pieces. <em>(Ongoing — applied to the AI-SCM domain)</em></p>
   </div>
 </div>
 
 <dl class="docs-meta">
-  <dt>Duration</dt><dd>2026 – Present (ongoing)</dd>
+  <dt>Duration</dt><dd>March 2026 – Present (ongoing)</dd>
   <dt>Role</dt><dd>Application Architect &amp; Backend Engineer</dd>
-  <dt>Org</dt><dd>SK Inc. AX · AI Innovation Lab</dd>
-  <dt>Tech</dt><dd>FastAPI · PostgreSQL · Ontop (VKG) · Trino · Neo4j · SPARQL · LangChain / LangGraph · Azure OpenAI · AWS · Docker / Kubernetes · React</dd>
-  <dt>Scope</dt><dd>5 of 6 modules — data_management · structured · inference · deploy-hooks · frontend (not unstructured)</dd>
+  <dt>Org</dt><dd>SK Inc. AX, AI Innovation Lab</dd>
+  <dt>Tech</dt><dd>FastAPI, PostgreSQL, Ontop (VKG), Trino, Neo4j, SPARQL, LangChain / LangGraph, Azure OpenAI, AWS, Docker / Kubernetes, React, Claude Code (AI pair programming)</dd>
+  <dt>Scope</dt><dd>5 of 6 modules — data_management, structured, inference, deploy-hooks, frontend (not unstructured)</dd>
 </dl>
 
 <h2 class="docs-h2">Overview</h2>
@@ -70,13 +69,13 @@
 <svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
   <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">Platform architecture (microservices)</text>
   <rect x="40" y="36" width="120" height="40" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="100" y="60" text-anchor="middle">Frontend</text>
-  <rect x="270" y="34" width="180" height="48" rx="10" fill="#e8f3fc" stroke="#0048A7" stroke-width="1.6"/><text x="360" y="54" text-anchor="middle" font-weight="700">data_management</text><text x="360" y="70" text-anchor="middle" fill="#64748b" font-size="9">SoT · datasources·files·artifacts</text>
+  <rect x="270" y="34" width="180" height="48" rx="10" fill="#e8f3fc" stroke="#0048A7" stroke-width="1.6"/><text x="360" y="54" text-anchor="middle" font-weight="700">data_management</text><text x="360" y="70" text-anchor="middle" fill="#64748b" font-size="9">SoT, datasources/files/artifacts</text>
   <g text-anchor="middle">
-    <rect x="270" y="108" width="180" height="40" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="360" y="132">structured · ontology build</text>
-    <rect x="270" y="158" width="180" height="36" rx="8" fill="#f0fbf8" stroke="#0e8b87"/><text x="360" y="180">unstructured · docs</text>
+    <rect x="270" y="108" width="180" height="40" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="360" y="132">structured, ontology build</text>
+    <rect x="270" y="158" width="180" height="36" rx="8" fill="#f0fbf8" stroke="#0e8b87"/><text x="360" y="180">unstructured, docs</text>
   </g>
   <rect x="520" y="108" width="160" height="40" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="600" y="128" text-anchor="middle">deploy-hooks</text><text x="600" y="142" text-anchor="middle" fill="#64748b" font-size="9">artifacts → restart</text>
-  <rect x="520" y="158" width="160" height="40" rx="8" fill="#fff" stroke="#0078d7"/><text x="600" y="176" text-anchor="middle" font-weight="700">Ontop + Trino</text><text x="600" y="190" text-anchor="middle" fill="#64748b" font-size="9">VKG · 5-DB federation</text>
+  <rect x="520" y="158" width="160" height="40" rx="8" fill="#fff" stroke="#0078d7"/><text x="600" y="176" text-anchor="middle" font-weight="700">Ontop + Trino</text><text x="600" y="190" text-anchor="middle" fill="#64748b" font-size="9">VKG, 5-DB federation</text>
   <rect x="200" y="224" width="320" height="40" rx="9" fill="#f3e8fc" stroke="#8b5cf6"/><text x="360" y="244" text-anchor="middle" font-weight="700">inference — NL → SPARQL / Cypher</text><text x="360" y="258" text-anchor="middle" fill="#64748b" font-size="9">semantic Q&amp;A over the knowledge graph</text>
   <defs><marker id="arArchEn" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker></defs>
   <g stroke="#475569" stroke-width="1.6" fill="none">
@@ -100,7 +99,7 @@
     <rect x="14" y="46" width="120" height="44" rx="8" fill="#e8f3fc" stroke="#0048A7"/><text x="74" y="64">data_management</text><text x="74" y="80" fill="#64748b" font-size="9">SoT 데이터 제공</text>
     <rect x="160" y="46" width="120" height="44" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="220" y="64">structured</text><text x="220" y="80" fill="#64748b" font-size="9">ontology build 완료</text>
     <rect x="306" y="46" width="120" height="44" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="366" y="64">deploy-hooks</text><text x="366" y="80" fill="#64748b" font-size="9">artifacts 배포</text>
-    <rect x="452" y="46" width="120" height="44" rx="8" fill="#fff" stroke="#0078d7"/><text x="512" y="64">Ontop / Trino</text><text x="512" y="80" fill="#64748b" font-size="9">기동·갱신</text>
+    <rect x="452" y="46" width="120" height="44" rx="8" fill="#fff" stroke="#0078d7"/><text x="512" y="64">Ontop / Trino</text><text x="512" y="80" fill="#64748b" font-size="9">기동/갱신</text>
     <rect x="598" y="46" width="108" height="44" rx="8" fill="#f3e8fc" stroke="#8b5cf6"/><text x="652" y="68">queryable</text>
   </g>
   <defs><marker id="arFlowEn" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker></defs>
@@ -111,15 +110,16 @@
     <line x1="572" y1="68" x2="597" y2="68" marker-end="url(#arFlowEn)"/>
   </g>
 </svg>
-<figcaption>structured 빌드가 끝나면 deploy-hooks 가 자동으로 산출물을 배포하고 Ontop/Trino 를 기동/갱신한다 — 이 트리거·흐름을 설계.</figcaption>
+<figcaption>structured 빌드가 끝나면 deploy-hooks 가 자동으로 산출물을 배포하고 Ontop/Trino 를 기동/갱신한다 — 이 트리거와 흐름을 설계.</figcaption>
 </div>
 
 <ul class="docs-list">
-  <li><strong>② Ontop + Trino structure.</strong> Designed the serving layer — <strong>Trino</strong> federates 5 heterogeneous DBs (PostgreSQL · MySQL · MSSQL · Oracle · MongoDB) into one SQL surface, and <strong>Ontop</strong> exposes it as a SPARQL-queryable VKG.</li>
+  <li><strong>② Ontop + Trino structure.</strong> Designed the serving layer — <strong>Trino</strong> federates 5 heterogeneous DBs (PostgreSQL, MySQL, MSSQL, Oracle, MongoDB) into one SQL surface, and <strong>Ontop</strong> exposes it as a SPARQL-queryable VKG.</li>
   <li><strong>③ AWS infrastructure architecture</strong> — defined the cloud architecture in coordination with the infrastructure team.</li>
   <li><strong>④ RDB → graph modeling methodology.</strong> Developed the <strong>PK/FK-based table-clustering</strong> method that decides how relational tables map to a property graph — classifying each table (Entity / Junction / …) from its <strong>primary/foreign keys &amp; cardinality</strong>, combining rule-based classification with LLM correction.</li>
   <li><strong>⑤ Semantic inference (catalog-grounded NL → SPARQL).</strong> Built the inference modes; <strong>Graph-Explorer and Graph-Hop are my own ideas</strong> — and Graph-Explorer performs notably well.</li>
   <li><strong>⑥ AI-SCM golden set</strong> — building, testing, and tuning the evaluation/golden answer set that the platform is measured and improved against.</li>
+  <li><strong>⑦ Unified datasource management.</strong> Built a structure that connects and manages heterogeneous datasources <strong>dynamically without service restarts</strong>, and led inter-service API integration and infrastructure setup.</li>
 </ul>
 
 <div class="docs-table-wrap">
@@ -128,18 +128,24 @@
   <tbody>
     <tr><td><strong>One-Shot</strong></td><td>NL → 1 SPARQL → answer (schema + value catalog grounding)</td><td>simple lookups</td></tr>
     <tr><td><strong>N-Shot</strong></td><td>decompose into sub-questions → multiple SPARQL → synthesize</td><td>complex / multi-condition</td></tr>
-    <tr><td><strong>Graph-Explorer</strong> ★</td><td>LLM agent (LangGraph) explores the KnowledgeGraph and queries directly</td><td>relationship-following · <em>strong accuracy</em></td></tr>
-    <tr><td><strong>Graph-Hop</strong> ★</td><td>anchor + hop-expansion over very large schemas</td><td>large schemas that don't fit one prompt</td></tr>
+    <tr><td><strong>Graph-Explorer</strong>&nbsp;★</td><td>LLM agent (LangGraph) explores the KnowledgeGraph and queries directly</td><td>relationship-following, <em>strong accuracy</em></td></tr>
+    <tr><td><strong>Graph-Hop</strong></td><td>anchor + hop-expansion over very large schemas</td><td>large schemas that don't fit one prompt</td></tr>
   </tbody>
 </table>
 </div>
 
 <div class="docs-callout">
-  <div class="docs-callout__icon">💡</div>
   <div class="docs-callout__body">
     <p class="docs-p"><strong>Why a Virtual Knowledge Graph?</strong> Unlike Text-to-SQL (the LLM must read raw, cryptic DB schemas) or RAG (data must be pre-embedded and can't reflect live changes), the VKG puts a <strong>semantic layer + value catalog</strong> between the DB and the LLM, so the LLM writes SPARQL against clean business concepts while Ontop translates it to SQL on the live, federated database.</p>
   </div>
 </div>
+
+<h2 class="docs-h2">Results</h2>
+<ul class="docs-list">
+  <li>Unified cross-system data into a knowledge graph, <strong>eliminating data silos</strong>, and delivered natural-language graph querying (<strong>Graph-Explorer</strong>).</li>
+  <li>Passed <strong>116 of 117 real-world validation cases (99%)</strong> — earning a <strong>"ready to open" assessment</strong> from the business-side PM.</li>
+  <li>Confirmed for adoption as a <strong>chat-style service</strong> on the HR-information and project systems, with phased expansion to company-wide systems.</li>
+</ul>
 
 </div>
 
@@ -147,33 +153,32 @@
 <div class="docs-lang" data-lang="ko" hidden>
 
 <div class="docs-callout">
-  <div class="docs-callout__icon">🧠</div>
   <div class="docs-callout__body">
-    <p class="docs-p"><strong>한 줄 요약</strong> — <strong>AI Readable Data Platform (ARDP)</strong> 는 기업의 DB·문서를 AI가 읽을 수 있는 데이터(<strong>온톨로지 / 가상 지식그래프</strong>)로 바꾸고 자연어로 질의·추론하는 플랫폼이다. <strong>애플리케이션 아키텍트 겸 백엔드 엔지니어</strong>로서 <strong>모듈 간 데이터 flow</strong> 를 설계하고 정형 빌드·배포·추론 영역을 개발했다. <em>(진행 중 — AI-SCM 도메인 적용)</em></p>
+    <p class="docs-p"><strong>한 줄 요약</strong> — <strong>AI Readable Data Platform (ARDP)</strong> 는 기업의 DB와 문서를 AI가 읽을 수 있는 데이터(<strong>온톨로지 / 가상 지식그래프</strong>)로 바꾸고 자연어로 질의하고 추론하는 플랫폼이다. <strong>애플리케이션 아키텍트 겸 백엔드 엔지니어</strong>로서 <strong>모듈 간 데이터 flow</strong> 를 설계하고 정형 빌드, 배포, 추론 영역을 개발했다. <em>(진행 중 — AI-SCM 도메인 적용)</em></p>
   </div>
 </div>
 
 <dl class="docs-meta">
-  <dt>기간</dt><dd>2026 – 현재 (진행 중)</dd>
-  <dt>역할</dt><dd>애플리케이션 아키텍트 · 백엔드 엔지니어</dd>
-  <dt>소속</dt><dd>SK Inc. AX · AI Innovation Lab</dd>
-  <dt>기술</dt><dd>FastAPI · PostgreSQL · Ontop (VKG) · Trino · Neo4j · SPARQL · LangChain / LangGraph · Azure OpenAI · AWS · Docker / Kubernetes · React</dd>
-  <dt>관여</dt><dd>6개 모듈 중 5개 — data_management · structured · inference · deploy-hooks · frontend (unstructured 제외)</dd>
+  <dt>기간</dt><dd>2026년 3월 – 현재 (진행 중)</dd>
+  <dt>역할</dt><dd>애플리케이션 아키텍트, 백엔드 엔지니어</dd>
+  <dt>소속</dt><dd>SK Inc. AX, AI Innovation Lab</dd>
+  <dt>기술</dt><dd>FastAPI, PostgreSQL, Ontop (VKG), Trino, Neo4j, SPARQL, LangChain / LangGraph, Azure OpenAI, AWS, Docker / Kubernetes, React, Claude Code (AI 페어 프로그래밍)</dd>
+  <dt>관여</dt><dd>6개 모듈 중 5개 — data_management, structured, inference, deploy-hooks, frontend (unstructured 제외)</dd>
 </dl>
 
 <h2 class="docs-h2">개요</h2>
-<p class="docs-p">ARDP 는 정형(RDB/CSV)·비정형(정책/SI 문서) 데이터를 <strong>온톨로지</strong>로 변환해 LLM 이 안정적으로 질의할 수 있게 한다. 정형 DB 는 <strong>Trino</strong> 로 5개 이기종 DB 를 연합한 뒤 <strong>Ontop</strong> 으로 <strong>가상 지식그래프(VKG)</strong> 로 노출(데이터 복제 없음)하고, 사용자는 <strong>자연어</strong>로 물으면 <strong>SPARQL</strong> 로 변환·실행된다. 단일 진실원(SoT) 중심의 마이크로서비스로 구성되며 <strong>AI-SCM</strong>(인사/SI 인력) 도메인에 적용 중이다.</p>
+<p class="docs-p">ARDP 는 정형(RDB/CSV)과 비정형(정책/SI 문서) 데이터를 <strong>온톨로지</strong>로 변환해 LLM 이 안정적으로 질의할 수 있게 한다. 정형 DB 는 <strong>Trino</strong> 로 5개 이기종 DB 를 연합한 뒤 <strong>Ontop</strong> 으로 <strong>가상 지식그래프(VKG)</strong> 로 노출(데이터 복제 없음)하고, 사용자는 <strong>자연어</strong>로 물으면 <strong>SPARQL</strong> 로 변환되어 실행된다. 단일 진실원(SoT) 중심의 마이크로서비스로 구성되며 <strong>AI-SCM</strong>(인사/SI 인력) 도메인에 적용 중이다.</p>
 <div class="docs-fig">
 <svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
   <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">플랫폼 아키텍처 (마이크로서비스)</text>
   <rect x="40" y="36" width="120" height="40" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="100" y="60" text-anchor="middle">프론트엔드</text>
-  <rect x="270" y="34" width="180" height="48" rx="10" fill="#e8f3fc" stroke="#0048A7" stroke-width="1.6"/><text x="360" y="54" text-anchor="middle" font-weight="700">data_management</text><text x="360" y="70" text-anchor="middle" fill="#64748b" font-size="9">SoT · 데이터소스·파일·산출물</text>
+  <rect x="270" y="34" width="180" height="48" rx="10" fill="#e8f3fc" stroke="#0048A7" stroke-width="1.6"/><text x="360" y="54" text-anchor="middle" font-weight="700">data_management</text><text x="360" y="70" text-anchor="middle" fill="#64748b" font-size="9">SoT, 데이터소스/파일/산출물</text>
   <g text-anchor="middle">
-    <rect x="270" y="108" width="180" height="40" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="360" y="132">structured · 온톨로지 빌드</text>
-    <rect x="270" y="158" width="180" height="36" rx="8" fill="#f0fbf8" stroke="#0e8b87"/><text x="360" y="180">unstructured · 문서</text>
+    <rect x="270" y="108" width="180" height="40" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="360" y="132">structured, 온톨로지 빌드</text>
+    <rect x="270" y="158" width="180" height="36" rx="8" fill="#f0fbf8" stroke="#0e8b87"/><text x="360" y="180">unstructured, 문서</text>
   </g>
   <rect x="520" y="108" width="160" height="40" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="600" y="128" text-anchor="middle">deploy-hooks</text><text x="600" y="142" text-anchor="middle" fill="#64748b" font-size="9">산출물 → 재기동</text>
-  <rect x="520" y="158" width="160" height="40" rx="8" fill="#fff" stroke="#0078d7"/><text x="600" y="176" text-anchor="middle" font-weight="700">Ontop + Trino</text><text x="600" y="190" text-anchor="middle" fill="#64748b" font-size="9">VKG · 5-DB 연합</text>
+  <rect x="520" y="158" width="160" height="40" rx="8" fill="#fff" stroke="#0078d7"/><text x="600" y="176" text-anchor="middle" font-weight="700">Ontop + Trino</text><text x="600" y="190" text-anchor="middle" fill="#64748b" font-size="9">VKG, 5-DB 연합</text>
   <rect x="200" y="224" width="320" height="40" rx="9" fill="#f3e8fc" stroke="#8b5cf6"/><text x="360" y="244" text-anchor="middle" font-weight="700">inference — 자연어 → SPARQL / Cypher</text><text x="360" y="258" text-anchor="middle" fill="#64748b" font-size="9">지식그래프 위에서 시멘틱 질의응답</text>
   <defs><marker id="arArchKo" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker></defs>
   <g stroke="#475569" stroke-width="1.6" fill="none">
@@ -184,7 +189,7 @@
     <line x1="558" y1="198" x2="503" y2="222" marker-end="url(#arArchKo)"/>
   </g>
 </svg>
-<figcaption>단일 진실원이 빌드 파이프라인에 정보를 공급하고, deploy-hooks 가 산출물 배포·Ontop/Trino 기동, inference 가 그 위에서 질의에 답한다.</figcaption>
+<figcaption>단일 진실원이 빌드 파이프라인에 정보를 공급하고, deploy-hooks 가 산출물 배포와 Ontop/Trino 기동, inference 가 그 위에서 질의에 답한다.</figcaption>
 </div>
 
 <h2 class="docs-h2">담당 역할 &amp; 핵심 기여</h2>
@@ -192,12 +197,12 @@
 <p class="docs-p"><strong>① 애플리케이션 아키텍처 — 모듈 간 데이터 flow.</strong> 앱 아키텍트로서 전체 파이프라인을 설계했다. <strong>data_management</strong> 가 데이터를 어떻게 처리해 단일 진실원으로 제공하는지, <strong>structured</strong> 에서 온톨로지 빌드가 끝났을 때 <strong>deploy-hooks</strong> 가 어떻게 작동해 산출물을 배포하고 <strong>Ontop / Trino</strong> 를 기동시켜 새 그래프를 바로 질의 가능하게 만드는지 — 이 트리거와 흐름 전체를 잡았다.</p>
 <div class="docs-fig">
 <svg viewBox="0 0 720 130" width="720" height="130" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="10.5">
-  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">빌드 → 배포 → 서빙 (내가 설계한 flow)</text>
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">빌드 → 배포 → 서빙 (직접 설계한 flow)</text>
   <g text-anchor="middle">
     <rect x="14" y="46" width="120" height="44" rx="8" fill="#e8f3fc" stroke="#0048A7"/><text x="74" y="64">data_management</text><text x="74" y="80" fill="#64748b" font-size="9">SoT 데이터 제공</text>
     <rect x="160" y="46" width="120" height="44" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="220" y="64">structured</text><text x="220" y="80" fill="#64748b" font-size="9">온톨로지 빌드 완료</text>
     <rect x="306" y="46" width="120" height="44" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="366" y="64">deploy-hooks</text><text x="366" y="80" fill="#64748b" font-size="9">산출물 배포</text>
-    <rect x="452" y="46" width="120" height="44" rx="8" fill="#fff" stroke="#0078d7"/><text x="512" y="64">Ontop / Trino</text><text x="512" y="80" fill="#64748b" font-size="9">기동·갱신</text>
+    <rect x="452" y="46" width="120" height="44" rx="8" fill="#fff" stroke="#0078d7"/><text x="512" y="64">Ontop / Trino</text><text x="512" y="80" fill="#64748b" font-size="9">기동/갱신</text>
     <rect x="598" y="46" width="108" height="44" rx="8" fill="#f3e8fc" stroke="#8b5cf6"/><text x="652" y="68">질의 가능</text>
   </g>
   <defs><marker id="arFlowKo" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker></defs>
@@ -208,15 +213,16 @@
     <line x1="572" y1="68" x2="597" y2="68" marker-end="url(#arFlowKo)"/>
   </g>
 </svg>
-<figcaption>structured 빌드가 끝나면 deploy-hooks 가 자동으로 산출물을 배포하고 Ontop/Trino 를 기동/갱신 — 이 트리거·흐름을 설계.</figcaption>
+<figcaption>structured 빌드가 끝나면 deploy-hooks 가 자동으로 산출물을 배포하고 Ontop/Trino 를 기동/갱신 — 이 트리거와 흐름을 설계.</figcaption>
 </div>
 
 <ul class="docs-list">
-  <li><strong>② Ontop + Trino 구조.</strong> 서빙 레이어를 설계 — <strong>Trino</strong> 로 5개 이기종 DB(PostgreSQL · MySQL · MSSQL · Oracle · MongoDB)를 하나의 SQL 로 연합하고, <strong>Ontop</strong> 으로 SPARQL 질의 가능한 VKG 로 노출.</li>
+  <li><strong>② Ontop + Trino 구조.</strong> 서빙 레이어를 설계 — <strong>Trino</strong> 로 5개 이기종 DB(PostgreSQL, MySQL, MSSQL, Oracle, MongoDB)를 하나의 SQL 로 연합하고, <strong>Ontop</strong> 으로 SPARQL 질의 가능한 VKG 로 노출.</li>
   <li><strong>③ AWS 인프라 아키텍처</strong> — 인프라팀과 협의해 클라우드 아키텍처를 설계.</li>
-  <li><strong>④ RDB → 그래프 모델링 방법론.</strong> 관계형 테이블을 프로퍼티 그래프로 어떻게 매핑할지 결정하는 <strong>PK/FK 기반 테이블 클러스터링</strong> 방법론을 개발 — <strong>기본키/외래키·카디널리티</strong>로 각 테이블을 Entity/Junction 등으로 분류(규칙 기반 + LLM 보정).</li>
-  <li><strong>⑤ 시멘틱 추론 (카탈로그 기반 자연어 → SPARQL).</strong> 추론 모드들을 개발했고, <strong>Graph-Explorer 와 Graph-Hop 은 내 아이디어로 개발</strong> — 특히 Graph-Explorer 가 상당히 잘 동작한다.</li>
-  <li><strong>⑥ AI-SCM 골든셋</strong> — 플랫폼을 측정·개선하는 기준이 되는 평가/정답셋을 구축·테스트·튜닝.</li>
+  <li><strong>④ RDB → 그래프 모델링 방법론.</strong> 관계형 테이블을 프로퍼티 그래프로 어떻게 매핑할지 결정하는 <strong>PK/FK 기반 테이블 클러스터링</strong> 방법론을 개발 — <strong>기본키/외래키와 카디널리티</strong>로 각 테이블을 Entity/Junction 등으로 분류(규칙 기반 + LLM 보정).</li>
+  <li><strong>⑤ 시멘틱 추론 (카탈로그 기반 자연어 → SPARQL).</strong> 추론 모드들을 개발했고, <strong>Graph-Explorer 와 Graph-Hop 은 직접 고안하여 개발</strong> — 특히 Graph-Explorer 가 상당히 잘 동작한다.</li>
+  <li><strong>⑥ AI-SCM 골든셋</strong> — 플랫폼을 측정하고 개선하는 기준이 되는 평가/정답셋을 구축, 테스트, 튜닝.</li>
+  <li><strong>⑦ 데이터소스 통합 관리 체계.</strong> 서비스 <strong>재기동 없이</strong> 이기종 데이터소스를 동적으로 연결하고 관리하는 구조를 구축하고, 서비스 간 API 연동 및 인프라 구성을 주도.</li>
 </ul>
 
 <div class="docs-table-wrap">
@@ -224,24 +230,30 @@
   <thead><tr><th>추론 모드</th><th>방식</th><th>적합</th></tr></thead>
   <tbody>
     <tr><td><strong>One-Shot</strong></td><td>자연어 → SPARQL 1개 → 답변 (스키마 + 값 카탈로그 grounding)</td><td>단순 조회</td></tr>
-    <tr><td><strong>N-Shot</strong></td><td>하위 질문 분해 → 여러 SPARQL → 결과 종합</td><td>복합 · 다중 조건</td></tr>
-    <tr><td><strong>Graph-Explorer</strong> ★</td><td>LLM 에이전트(LangGraph)가 KnowledgeGraph 를 탐색하며 직접 질의</td><td>관계 추적 · <em>정확도 우수</em></td></tr>
-    <tr><td><strong>Graph-Hop</strong> ★</td><td>앵커 + hop 확장으로 대규모 스키마 처리</td><td>한 프롬프트에 안 들어가는 큰 스키마</td></tr>
+    <tr><td><strong>N-Shot</strong></td><td>하위 질문 분해 → 여러 SPARQL → 결과 종합</td><td>복합, 다중 조건</td></tr>
+    <tr><td><strong>Graph-Explorer</strong>&nbsp;★</td><td>LLM 에이전트(LangGraph)가 KnowledgeGraph 를 탐색하며 직접 질의</td><td>관계 추적, <em>정확도 우수</em></td></tr>
+    <tr><td><strong>Graph-Hop</strong></td><td>앵커 + hop 확장으로 대규모 스키마 처리</td><td>한 프롬프트에 안 들어가는 큰 스키마</td></tr>
   </tbody>
 </table>
 </div>
 
 <div class="docs-callout">
-  <div class="docs-callout__icon">💡</div>
   <div class="docs-callout__body">
-    <p class="docs-p"><strong>왜 가상 지식그래프(VKG)인가?</strong> Text-to-SQL(LLM 이 난해한 원시 DB 스키마를 직접 봐야 함)·RAG(미리 임베딩해야 하고 실시간 변경 반영 불가)와 달리, VKG 는 DB 와 LLM 사이에 <strong>시맨틱 레이어 + 값 카탈로그</strong>를 둔다. LLM 은 깔끔한 비즈니스 개념으로 SPARQL 을 쓰고, Ontop 이 이를 실시간·연합 DB 의 SQL 로 변환한다.</p>
+    <p class="docs-p"><strong>왜 가상 지식그래프(VKG)인가?</strong> Text-to-SQL(LLM 이 난해한 원시 DB 스키마를 직접 봐야 함), RAG(미리 임베딩해야 하고 실시간 변경 반영 불가)와 달리, VKG 는 DB 와 LLM 사이에 <strong>시맨틱 레이어 + 값 카탈로그</strong>를 둔다. LLM 은 깔끔한 비즈니스 개념으로 SPARQL 을 쓰고, Ontop 이 이를 실시간 연합 DB 의 SQL 로 변환한다.</p>
   </div>
 </div>
+
+<h2 class="docs-h2">성과</h2>
+<ul class="docs-list">
+  <li>시스템 간 데이터를 지식그래프로 통합해 <strong>데이터 사일로를 해소</strong>하고, 자연어 기반 그래프 조회(<strong>Graph-Explorer</strong>)를 구현.</li>
+  <li>실무 검증셋 <strong>117건 중 116건 통과 (99%)</strong> — 현업 PM 으로부터 <strong>'오픈 가능' 평가</strong> 확보.</li>
+  <li>인사정보와 프로젝트 시스템에 <strong>채팅형 서비스로 적용 확정</strong>, 이후 전사 시스템으로 단계적 확장.</li>
+</ul>
 
 </div>
 
 <hr class="docs-divider">
-<p class="docs-source">🏢 SK Inc. AX 재직 중 진행한 사내 프로젝트(AI Readable Data Platform)입니다 · 보안상 내부 데이터·자격증명·고객 정보는 제외하고 아키텍처·역할 중심으로 정리했습니다.</p>
+<p class="docs-source">SK Inc. AX 재직 중 진행한 사내 프로젝트(AI Readable Data Platform)입니다. 보안상 내부 데이터, 자격증명, 고객 정보는 제외하고 아키텍처와 역할 중심으로 정리했습니다.</p>
 
     </div>
   </article>

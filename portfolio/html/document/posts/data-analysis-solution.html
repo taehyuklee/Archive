@@ -50,7 +50,6 @@
 <div class="docs-lang" data-lang="en">
 
 <div class="docs-callout">
-  <div class="docs-callout__icon">📊</div>
   <div class="docs-callout__body">
     <p class="docs-p"><strong>One line</strong> — An <strong>analysis-driven process management platform</strong> that goes beyond monitoring-only SPC: users upload raw data and run statistical analyses (normality, t-test, ANOVA) directly through the UI, powered by a Python statistical engine exposed as APIs.</p>
   </div>
@@ -59,7 +58,7 @@
 <dl class="docs-meta">
   <dt>Period</dt><dd>August 2024 – March 2025</dd>
   <dt>Role</dt><dd>Design &amp; Development of the Data Analysis Engine and UI/UX</dd>
-  <dt>Scope</dt><dd>Solution Enhancement &nbsp;·&nbsp; (Dev result: Confidential)</dd>
+  <dt>Scope</dt><dd>Solution Enhancement  (Dev result: Confidential)</dd>
 </dl>
 
 <h2 class="docs-h2">Overview</h2>
@@ -77,7 +76,7 @@
   <!-- preprocess (centered on flow axis y=93) -->
   <rect x="158" y="64" width="96" height="58" rx="8" fill="#e9f7f3" stroke="#0e8b87"/>
   <text x="206" y="88" text-anchor="middle" fill="#0f172a" font-weight="700">Preprocess</text>
-  <text x="206" y="106" text-anchor="middle" fill="#64748b" font-size="10">검증·결측·변환</text>
+  <text x="206" y="106" text-anchor="middle" fill="#64748b" font-size="10">검증/결측/변환</text>
   <!-- backend -->
   <rect x="296" y="47" width="150" height="92" rx="10" fill="#e8f3fc" stroke="#0078d7"/>
   <text x="371" y="69" text-anchor="middle" fill="#003B62" font-weight="700">FastAPI backend</text>
@@ -155,15 +154,15 @@
   <!-- process manager -->
   <rect x="170" y="70" width="150" height="90" rx="10" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
   <text x="245" y="98" text-anchor="middle" fill="#003B62" font-weight="700">Process Manager</text>
-  <text x="245" y="118" text-anchor="middle" fill="#64748b" font-size="10">gateway · 사용자 state</text>
+  <text x="245" y="118" text-anchor="middle" fill="#64748b" font-size="10">gateway, 사용자 state</text>
   <text x="245" y="134" text-anchor="middle" fill="#64748b" font-size="10">import+analysis = 1 unit</text>
   <text x="245" y="150" text-anchor="middle" fill="#64748b" font-size="10">health check</text>
   <!-- subprocesses (multi-core) -->
   <text x="560" y="40" text-anchor="middle" fill="#64748b" font-weight="700">Dedicated subprocess / core</text>
   <g fill="#0f172a">
-    <rect x="430" y="52" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="70" text-anchor="middle">subprocess · CPU core 1</text>
-    <rect x="430" y="100" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="118" text-anchor="middle">subprocess · CPU core 2</text>
-    <rect x="430" y="148" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="166" text-anchor="middle">subprocess · CPU core N</text>
+    <rect x="430" y="52" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="70" text-anchor="middle">subprocess, CPU core 1</text>
+    <rect x="430" y="100" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="118" text-anchor="middle">subprocess, CPU core 2</text>
+    <rect x="430" y="148" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="166" text-anchor="middle">subprocess, CPU core N</text>
   </g>
   <g stroke="#475569" stroke-width="1.5" fill="#475569">
     <line x1="100" y1="100" x2="168" y2="108"/><polygon points="170,108 161,105 163,113"/>
@@ -171,9 +170,9 @@
     <line x1="320" y1="113" x2="428" y2="113"/><polygon points="430,113 421,109 421,117"/>
     <line x1="320" y1="126" x2="428" y2="161"/><polygon points="430,161 421,156 419,164"/>
   </g>
-  <text x="245" y="200" text-anchor="middle" fill="#0e8b87" font-weight="700">외부 저장소(Redis) 없이 stateful 유지 · GIL 병목 회피</text>
+  <text x="245" y="200" text-anchor="middle" fill="#0e8b87" font-weight="700">외부 저장소(Redis) 없이 stateful 유지, GIL 병목 회피</text>
 </svg>
-<figcaption>Process Manager가 게이트웨이처럼 사용자 state·프로세스 연결을 직접 관리 → 외부 저장소 없이 다중코어 활용</figcaption>
+<figcaption>Process Manager가 게이트웨이처럼 사용자 state 와 프로세스 연결을 직접 관리 → 외부 저장소 없이 다중코어 활용</figcaption>
 </div>
 
 <p class="docs-p"><strong>Solution:</strong> Implemented a <strong>Process Manager</strong> that centrally controls processes and manages per-user state. Acting like a gateway, it handles inter-process state delivery and connectivity, keeping a stateful context <strong>without external storage</strong>. By managing data import + analysis as a single unit in the DB keyed by user ID, session continuity is preserved — yielding a scalable, reliable distributed-computation structure that avoids the GIL bottleneck while using multi-core resources.</p>
@@ -207,20 +206,19 @@
 <div class="docs-lang" data-lang="ko" hidden>
 
 <div class="docs-callout">
-  <div class="docs-callout__icon">📊</div>
   <div class="docs-callout__body">
-    <p class="docs-p"><strong>한 줄 요약</strong> — 단순 모니터링 위주의 기존 SPC 를 넘어, 사용자가 raw data 를 올려 통계 분석(정규성·t-검정·ANOVA)을 UI 에서 직접 수행하는 <strong>분석 중심 공정관리 플랫폼</strong>. Python 통계 엔진을 API 로 제공한다.</p>
+    <p class="docs-p"><strong>한 줄 요약</strong> — 단순 모니터링 위주의 기존 SPC 를 넘어, 사용자가 raw data 를 올려 통계 분석(정규성, t-검정, ANOVA)을 UI 에서 직접 수행하는 <strong>분석 중심 공정관리 플랫폼</strong>. Python 통계 엔진을 API 로 제공한다.</p>
   </div>
 </div>
 
 <dl class="docs-meta">
   <dt>기간</dt><dd>2024년 8월 – 2025년 3월</dd>
-  <dt>역할</dt><dd>데이터 분석 엔진 및 UI/UX 설계·개발</dd>
-  <dt>범위</dt><dd>솔루션 고도화 &nbsp;·&nbsp; (개발 결과: 대외비)</dd>
+  <dt>역할</dt><dd>데이터 분석 엔진 및 UI/UX 설계 및 개발</dd>
+  <dt>범위</dt><dd>솔루션 고도화  (개발 결과: 대외비)</dd>
 </dl>
 
 <h2 class="docs-h2">개요</h2>
-<p class="docs-p">전통적인 SPC(통계적 공정관리) 시스템은 단순 모니터링에 초점이 맞춰져 있다. 이 플랫폼은 사용자가 raw data 를 업로드해 통계 분석을 직접 수행할 수 있게 한다. <strong>정규성 검정, t-검정, ANOVA</strong> 등 핵심 통계 기법을 API 로 구현하고 결과 시각화 UI 를 제공했으며, Python 기반 통계 엔진·백엔드 서버·웹 UI 를 잇는 통합 아키텍처를 설계·개발했다.</p>
+<p class="docs-p">전통적인 SPC(통계적 공정관리) 시스템은 단순 모니터링에 초점이 맞춰져 있다. 이 플랫폼은 사용자가 raw data 를 업로드해 통계 분석을 직접 수행할 수 있게 한다. <strong>정규성 검정, t-검정, ANOVA</strong> 등 핵심 통계 기법을 API 로 구현하고 결과 시각화 UI 를 제공했으며, Python 기반 통계 엔진, 백엔드 서버, 웹 UI 를 잇는 통합 아키텍처를 설계하고 개발했다.</p>
 
 <div class="docs-fig">
 <svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
@@ -232,7 +230,7 @@
   </g>
   <rect x="150" y="64" width="96" height="58" rx="8" fill="#e9f7f3" stroke="#0e8b87"/>
   <text x="198" y="88" text-anchor="middle" fill="#0f172a" font-weight="700">전처리</text>
-  <text x="198" y="106" text-anchor="middle" fill="#64748b" font-size="10">검증·결측·변환</text>
+  <text x="198" y="106" text-anchor="middle" fill="#64748b" font-size="10">검증/결측/변환</text>
   <rect x="288" y="48" width="150" height="92" rx="10" fill="#e8f3fc" stroke="#0078d7"/>
   <text x="363" y="70" text-anchor="middle" fill="#003B62" font-weight="700">FastAPI 백엔드</text>
   <rect x="304" y="80" width="118" height="22" rx="5" fill="#fff" stroke="#0078d7"/><text x="363" y="95" text-anchor="middle" font-size="10">Process Manager</text>
@@ -259,10 +257,10 @@
 
 <h2 class="docs-h2">성과</h2>
 <ul class="docs-list">
-  <li>표준화된 <strong>분석 API</strong> 로 분석 결과의 일관성·자동화를 확보.</li>
+  <li>표준화된 <strong>분석 API</strong> 로 분석 결과의 일관성과 자동화를 확보.</li>
   <li>외부 도구(예: Minitab) 없이 <strong>플랫폼 내부에 자동 분석 프레임워크</strong> 를 구축.</li>
   <li>기존 ifacts SPC 솔루션에 분석 기능을 내장하여 <strong>공정 이상에 선제 대응</strong> 가능.</li>
-  <li>다양한 파일 포맷(CSV/JSON)·DB 입력을 지원하여 UI 에서 직접 분석.</li>
+  <li>다양한 파일 포맷(CSV/JSON)과 DB 입력을 지원하여 UI 에서 직접 분석.</li>
 </ul>
 
 <h2 class="docs-h2">기술 스택</h2>
@@ -274,11 +272,11 @@
 </div>
 
 <h2 class="docs-h2">핵심 역할 &amp; 성과</h2>
-<h3 class="docs-h3">⊙ 분석 기능 UI·API 설계</h3>
+<h3 class="docs-h3">⊙ 분석 기능 UI 및 API 설계</h3>
 <ul class="docs-list">
   <li>Minitab, JMP 등 상용 도구를 벤치마킹하여 직관적인 UI 설계.</li>
   <li>분석 요청을 처리하는 <strong>FastAPI</strong> 기반 REST API 서버 구현.</li>
-  <li>핵심 통계 기법(정규성 검정, t-검정, ANOVA)을 API 로 정의·노출.</li>
+  <li>핵심 통계 기법(정규성 검정, t-검정, ANOVA)을 API 로 정의하고 노출.</li>
 </ul>
 <h3 class="docs-h3">⊙ 안정적인 분석 엔진 아키텍처</h3>
 <ul class="docs-list">
@@ -286,16 +284,16 @@
   <li>각 분석 요청을 <strong>전용 subprocess</strong> 에서 실행하여 안정적 병렬 처리.</li>
   <li>프로세스 간 <strong>health check</strong> 기능 개발.</li>
 </ul>
-<h3 class="docs-h3">⊙ 유연한 데이터 적재·전처리</h3>
+<h3 class="docs-h3">⊙ 유연한 데이터 적재와 전처리</h3>
 <ul class="docs-list">
   <li>다양한 입력 포맷(DB, JSON, CSV) 파서 구현.</li>
-  <li>데이터 검증·결측 처리·변환을 위한 자동 전처리 흐름 구축.</li>
+  <li>데이터 검증, 결측 처리, 변환을 위한 자동 전처리 흐름 구축.</li>
 </ul>
 
 <hr class="docs-divider">
 
 <h2 class="docs-h2">트러블슈팅 1 — Python GIL &amp; 멀티코어</h2>
-<p class="docs-p"><strong>문제:</strong> Python 의 <strong>GIL(Global Interpreter Lock)</strong> 은 CPU-bound 작업을 제약하므로 멀티프로세스 방식이 강제된다. 여러 사용자가 동시에 분석을 요청하면 CPU 자원 경합으로 병목이 생긴다. 그런데 멀티프로세스 구조에서는 <strong>사용자별 state 유지</strong> 가 구조적으로 어렵다(Uvicorn 은 worker 만 늘리고 round-robin 으로 분배) — 데이터를 업로드한 뒤 분석을 요청하면 서로 다른 프로세스가 처리해 사용자 state 가 끊긴다. 또 Java 와 달리 Python 은 멀티프로세스에서 메모리 공유 기반 세션 관리가 약하다. 게다가 솔루션 팀 정책상 외부 상태 저장소(예: Redis)는 운영 부담·복잡도 때문에 허용되지 않아, <strong>내재화된 방식</strong> 이 필요했다.</p>
+<p class="docs-p"><strong>문제:</strong> Python 의 <strong>GIL(Global Interpreter Lock)</strong> 은 CPU-bound 작업을 제약하므로 멀티프로세스 방식이 강제된다. 여러 사용자가 동시에 분석을 요청하면 CPU 자원 경합으로 병목이 생긴다. 그런데 멀티프로세스 구조에서는 <strong>사용자별 state 유지</strong> 가 구조적으로 어렵다(Uvicorn 은 worker 만 늘리고 round-robin 으로 분배) — 데이터를 업로드한 뒤 분석을 요청하면 서로 다른 프로세스가 처리해 사용자 state 가 끊긴다. 또 Java 와 달리 Python 은 멀티프로세스에서 메모리 공유 기반 세션 관리가 약하다. 게다가 솔루션 팀 정책상 외부 상태 저장소(예: Redis)는 운영 부담과 복잡도 때문에 허용되지 않아, <strong>내재화된 방식</strong> 이 필요했다.</p>
 
 <div class="docs-fig">
 <svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
@@ -304,14 +302,14 @@
   <rect x="20" y="140" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="158" text-anchor="middle">사용자 …</text></g>
   <rect x="170" y="70" width="150" height="90" rx="10" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
   <text x="245" y="98" text-anchor="middle" fill="#003B62" font-weight="700">Process Manager</text>
-  <text x="245" y="118" text-anchor="middle" fill="#64748b" font-size="10">게이트웨이 · 사용자 state</text>
+  <text x="245" y="118" text-anchor="middle" fill="#64748b" font-size="10">게이트웨이, 사용자 state</text>
   <text x="245" y="134" text-anchor="middle" fill="#64748b" font-size="10">import+분석 = 1 단위</text>
   <text x="245" y="150" text-anchor="middle" fill="#64748b" font-size="10">health check</text>
   <text x="560" y="40" text-anchor="middle" fill="#64748b" font-weight="700">전용 subprocess / 코어</text>
   <g fill="#0f172a">
-    <rect x="430" y="52" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="70" text-anchor="middle">subprocess · CPU core 1</text>
-    <rect x="430" y="100" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="118" text-anchor="middle">subprocess · CPU core 2</text>
-    <rect x="430" y="148" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="166" text-anchor="middle">subprocess · CPU core N</text>
+    <rect x="430" y="52" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="70" text-anchor="middle">subprocess, CPU core 1</text>
+    <rect x="430" y="100" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="118" text-anchor="middle">subprocess, CPU core 2</text>
+    <rect x="430" y="148" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="166" text-anchor="middle">subprocess, CPU core N</text>
   </g>
   <g stroke="#475569" stroke-width="1.5" fill="#475569">
     <line x1="100" y1="100" x2="168" y2="108"/><polygon points="170,108 161,105 163,113"/>
@@ -319,12 +317,12 @@
     <line x1="320" y1="113" x2="428" y2="113"/><polygon points="430,113 421,109 421,117"/>
     <line x1="320" y1="126" x2="428" y2="161"/><polygon points="430,161 421,156 419,164"/>
   </g>
-  <text x="245" y="200" text-anchor="middle" fill="#0e8b87" font-weight="700">외부 저장소(Redis) 없이 stateful 유지 · GIL 병목 회피</text>
+  <text x="245" y="200" text-anchor="middle" fill="#0e8b87" font-weight="700">외부 저장소(Redis) 없이 stateful 유지, GIL 병목 회피</text>
 </svg>
-<figcaption>Process Manager가 게이트웨이처럼 사용자 state·프로세스 연결을 직접 관리 → 외부 저장소 없이 다중코어 활용</figcaption>
+<figcaption>Process Manager가 게이트웨이처럼 사용자 state 와 프로세스 연결을 직접 관리 → 외부 저장소 없이 다중코어 활용</figcaption>
 </div>
 
-<p class="docs-p"><strong>해결:</strong> 프로세스를 중앙에서 제어하고 사용자별 state 를 관리하는 <strong>Process Manager</strong> 를 구현했다. 게이트웨이처럼 동작하여 프로세스 간 state 전달·연결을 직접 처리함으로써 <strong>외부 저장소 없이</strong> stateful context 를 유지한다. 사용자 ID 기준으로 data import + 분석을 DB 에서 하나의 단위로 관리해 세션 연속성을 보장했고, 결과적으로 GIL 병목을 피하면서 멀티코어를 활용하는 <strong>확장 가능하고 신뢰성 있는 분산 연산 구조</strong> 를 만들었다.</p>
+<p class="docs-p"><strong>해결:</strong> 프로세스를 중앙에서 제어하고 사용자별 state 를 관리하는 <strong>Process Manager</strong> 를 구현했다. 게이트웨이처럼 동작하여 프로세스 간 state 전달과 연결을 직접 처리함으로써 <strong>외부 저장소 없이</strong> stateful context 를 유지한다. 사용자 ID 기준으로 data import + 분석을 DB 에서 하나의 단위로 관리해 세션 연속성을 보장했고, 결과적으로 GIL 병목을 피하면서 멀티코어를 활용하는 <strong>확장 가능하고 신뢰성 있는 분산 연산 구조</strong> 를 만들었다.</p>
 
 <h2 class="docs-h2">트러블슈팅 2 — 시각화 CPU 과부하</h2>
 <p class="docs-p"><strong>문제:</strong> 브라우저에서 10만 개 이상의 데이터(예: 전체 점을 그리는 산점도)를 시각화하면 브라우저가 감당하지 못했다. 대용량 전송 시 서버 부하도 컸고, 클라이언트 PC 도 심하게 과부하되어 사용자 경험이 나빠졌다 — 시각화가 가장 큰 성능 과제였다.</p>
@@ -347,7 +345,7 @@
 <figcaption>전수(10만) 대신 random sampling — 추세 파악이 목적이므로 표본 분포가 거의 동일해 효율적 시각화</figcaption>
 </div>
 
-<p class="docs-p"><strong>해결(이론적·도메인 접근):</strong> 상용 도구(Minitab, JMP)는 Windows 실행 앱으로 로컬에서 데이터를 처리하거나 DB 에 직접 연결해 브라우저 한계를 넘는다 — 즉 이는 <em>시스템 레벨의 한계</em> 임을 명확히 인지했다. 완전한 시스템적 해결이 불가능하므로 <strong>통계 이론적</strong> 접근을 적용했다. <strong>Glivenko–Cantelli 정리</strong> 는 경험적 누적분포(ECDF)가 참 누적분포(CDF)로 거의 확실하게(almost surely) 수렴함을 보장한다. 시각화의 목적은 전체 추세 파악이므로(이상치에 집착하지 않음) <strong>random sampling</strong> 을 채택했고, 표본 데이터의 분포가 거의 차이가 없어 효율적인 시각화가 가능했다.</p>
+<p class="docs-p"><strong>해결(이론 및 도메인 접근):</strong> 상용 도구(Minitab, JMP)는 Windows 실행 앱으로 로컬에서 데이터를 처리하거나 DB 에 직접 연결해 브라우저 한계를 넘는다 — 즉 이는 <em>시스템 레벨의 한계</em> 임을 명확히 인지했다. 완전한 시스템적 해결이 불가능하므로 <strong>통계 이론적</strong> 접근을 적용했다. <strong>Glivenko–Cantelli 정리</strong> 는 경험적 누적분포(ECDF)가 참 누적분포(CDF)로 거의 확실하게(almost surely) 수렴함을 보장한다. 시각화의 목적은 전체 추세 파악이므로(이상치에 집착하지 않음) <strong>random sampling</strong> 을 채택했고, 표본 데이터의 분포가 거의 차이가 없어 효율적인 시각화가 가능했다.</p>
 
 </div>
 

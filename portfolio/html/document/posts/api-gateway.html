@@ -50,7 +50,6 @@
 <div class="docs-lang" data-lang="en">
 
 <div class="docs-callout">
-  <div class="docs-callout__icon">⚡</div>
   <div class="docs-callout__body">
     <p class="docs-p"><strong>One line</strong> — A single API Gateway that unifies many different provider APIs (Netflix, Disney, Kakao …) under one authentication / routing layer. Now the core engine of <strong>KT API-Link</strong>, reliably handling <strong>50M+ requests/day</strong>.</p>
   </div>
@@ -58,7 +57,7 @@
 
 <dl class="docs-meta">
   <dt>Period</dt><dd>March 2022 ~ December 2023</dd>
-  <dt>Role</dt><dd>Backend Server Developer · Performance Optimization</dd>
+  <dt>Role</dt><dd>Backend Server Developer, Performance Optimization</dd>
   <dt>Scope</dt><dd>Solutions for both internal and external use</dd>
 </dl>
 
@@ -96,7 +95,7 @@
   </g>
   <!-- back-office -->
   <rect x="270" y="240" width="180" height="34" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="5 4"/>
-  <text x="360" y="261" text-anchor="middle" fill="#475569">Back-office portal (monitoring · 관리)</text>
+  <text x="360" y="261" text-anchor="middle" fill="#475569">Back-office portal (monitoring, 관리)</text>
   <line x1="360" y1="220" x2="360" y2="238" stroke="#94a3b8" stroke-dasharray="4 3"/>
   <text x="200" y="295" fill="#64748b">50M+ requests / day</text>
 </svg>
@@ -193,7 +192,7 @@
   <rect x="420" y="116" width="240" height="40" rx="8" fill="#e9f7f3" stroke="#0e8b87"/>
   <text x="540" y="141" text-anchor="middle" fill="#0f172a">Dedicated pool (TaskScheduler) — blocking ops</text>
   <rect x="420" y="172" width="240" height="40" rx="8" fill="#e8f3fc" stroke="#0078d7"/>
-  <text x="540" y="197" text-anchor="middle" fill="#0f172a">R2DBC · Reactive MongoDB (non-blocking)</text>
+  <text x="540" y="197" text-anchor="middle" fill="#0f172a">R2DBC, Reactive MongoDB (non-blocking)</text>
   <text x="540" y="230" text-anchor="middle" fill="#0e8b87" font-weight="700">stable high throughput</text>
 </svg>
 <figcaption>Blocking work moved off the EventLoop into a dedicated pool; DB access made reactive</figcaption>
@@ -213,20 +212,19 @@
 <div class="docs-lang" data-lang="ko" hidden>
 
 <div class="docs-callout">
-  <div class="docs-callout__icon">⚡</div>
   <div class="docs-callout__body">
-    <p class="docs-p"><strong>한 줄 요약</strong> — 서로 다른 공급사 API(Netflix, Disney, Kakao …)를 하나의 인증·라우팅 계층으로 통합한 단일 <strong>API Gateway</strong>. 현재 <strong>KT API-Link</strong> 의 핵심 엔진으로 <strong>하루 5,000만 건 이상</strong> 의 요청을 안정적으로 처리한다.</p>
+    <p class="docs-p"><strong>한 줄 요약</strong> — 서로 다른 공급사 API(Netflix, Disney, Kakao …)를 하나의 인증과 라우팅 계층으로 통합한 단일 <strong>API Gateway</strong>. 현재 <strong>KT API-Link</strong> 의 핵심 엔진으로 <strong>하루 5,000만 건 이상</strong> 의 요청을 안정적으로 처리한다.</p>
   </div>
 </div>
 
 <dl class="docs-meta">
   <dt>기간</dt><dd>2022년 3월 ~ 2023년 12월</dd>
-  <dt>역할</dt><dd>백엔드 서버 개발 · 성능 최적화</dd>
-  <dt>범위</dt><dd>사내·사외 양쪽을 위한 솔루션 개발</dd>
+  <dt>역할</dt><dd>백엔드 서버 개발, 성능 최적화</dd>
+  <dt>범위</dt><dd>사내외 양쪽을 위한 솔루션 개발</dd>
 </dl>
 
 <h2 class="docs-h2">무엇을 하는가</h2>
-<p class="docs-p">이 솔루션은 <strong>API Gateway Core System</strong> 과 API 모니터링·관리를 위한 <strong>백오피스 포털</strong> 로 구성된다. 서로 다른 API 인터페이스를 통합하고 인증·인가를 중앙화하여, 복잡한 연동 구조를 하나의 게이트웨이로 단순화한다.</p>
+<p class="docs-p">이 솔루션은 <strong>API Gateway Core System</strong> 과 API 모니터링과 관리를 위한 <strong>백오피스 포털</strong> 로 구성된다. 서로 다른 API 인터페이스를 통합하고 인증/인가를 중앙화하여, 복잡한 연동 구조를 하나의 게이트웨이로 단순화한다.</p>
 
 <div class="docs-fig">
 <svg viewBox="0 0 720 300" width="720" height="300" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
@@ -254,16 +252,16 @@
     <line x1="472" y1="120" x2="564" y2="105"/><polygon points="568,104 558,103 561,111"/>
   </g>
   <rect x="270" y="240" width="180" height="34" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="5 4"/>
-  <text x="360" y="261" text-anchor="middle" fill="#475569">백오피스 포털 (모니터링·관리)</text>
+  <text x="360" y="261" text-anchor="middle" fill="#475569">백오피스 포털 (모니터링과 관리)</text>
   <line x1="360" y1="220" x2="360" y2="238" stroke="#94a3b8" stroke-dasharray="4 3"/>
   <text x="200" y="295" fill="#64748b">하루 5,000만+ 요청</text>
 </svg>
-<figcaption>여러 공급사 API 앞단의 단일 게이트웨이 — 인증·라우팅·요청 변환을 통합</figcaption>
+<figcaption>여러 공급사 API 앞단의 단일 게이트웨이 — 인증, 라우팅, 요청 변환을 통합</figcaption>
 </div>
 
 <h2 class="docs-h2">성과</h2>
 <ul class="docs-list">
-  <li>서로 다른 API 인터페이스(예: Netflix, Disney)를 통합하고 인증·인가를 중앙화하여, 복잡한 연동 구조를 하나의 게이트웨이로 단순화했다.</li>
+  <li>서로 다른 API 인터페이스(예: Netflix, Disney)를 통합하고 인증/인가를 중앙화하여, 복잡한 연동 구조를 하나의 게이트웨이로 단순화했다.</li>
   <li><strong>KT API-Link</strong> 에 통합되어 API 통합 플랫폼의 핵심 엔진으로 동작하며, <strong>하루 5,000만 건 이상</strong> 의 요청을 안정적으로 처리한다.</li>
 </ul>
 <p class="docs-p">실서비스: <a href="https://apilink.kt.co.kr/" target="_blank" rel="noopener">KT API-Link</a>.</p>
@@ -302,17 +300,17 @@
 
 <h3 class="docs-h3">⊙ 1단계 — 백오피스 포털 개발</h3>
 <ul class="docs-list">
-  <li><strong>대시보드:</strong> API 상태·성능 실시간 모니터링.</li>
-  <li><strong>API 관리:</strong> 등록·수정·삭제 및 생명주기(lifecycle) 관리.</li>
-  <li><strong>데이터 수집·집계:</strong> 주기적 로그 집계 스케줄링.</li>
-  <li><strong>커뮤니티 지원:</strong> 공지·사용자 커뮤니티 기능.</li>
+  <li><strong>대시보드:</strong> API 상태와 성능 실시간 모니터링.</li>
+  <li><strong>API 관리:</strong> 등록, 수정, 삭제 및 생명주기(lifecycle) 관리.</li>
+  <li><strong>데이터 수집 및 집계:</strong> 주기적 로그 집계 스케줄링.</li>
+  <li><strong>커뮤니티 지원:</strong> 공지 및 사용자 커뮤니티 기능.</li>
 </ul>
 
 <h3 class="docs-h3">⊙ 2단계 — 시스템 통합 (KT API-Link)</h3>
 <ul class="docs-list">
   <li>게이트웨이 솔루션을 <strong>KT API-Link</strong> 에 통합하고 시스템 성능을 개선.</li>
   <li><strong>쿼리 성능 최적화:</strong> 복합 인덱스 적용 및 데이터 구조 최적화.</li>
-  <li><strong>핸들러 관리:</strong> 커스터마이즈 가능한 배포·설정 기능 구현.</li>
+  <li><strong>핸들러 관리:</strong> 커스터마이즈 가능한 배포 및 설정 기능 구현.</li>
   <li><strong>보안 대응:</strong> 방화벽 환경 등 인프라 특성에 맞춘 기능 조정(우회 기능 추가).</li>
 </ul>
 
@@ -321,7 +319,7 @@
   <li>고성능 처리를 위해 WebFlux 기반 <strong>Reactive REST API</strong> 로 전환.</li>
   <li><strong>논블로킹 ORM:</strong> R2DBC, Reactive MongoDB 적용.</li>
   <li><strong>스레드 풀 최적화:</strong> Netty 이벤트 루프 구조를 활용하고 비동기 작업을 별도 스레드 풀(TaskScheduler)로 재구성하여 blocking I/O 해소.</li>
-  <li><strong>성능 테스트:</strong> Apache Bench 로 TPS·응답시간 분석 후 최적화.</li>
+  <li><strong>성능 테스트:</strong> Apache Bench 로 TPS와 응답시간 분석 후 최적화.</li>
 </ul>
 
 <hr class="docs-divider">
@@ -349,7 +347,7 @@
   <rect x="420" y="116" width="240" height="40" rx="8" fill="#e9f7f3" stroke="#0e8b87"/>
   <text x="540" y="141" text-anchor="middle" fill="#0f172a">전용 풀 (TaskScheduler) — blocking 작업</text>
   <rect x="420" y="172" width="240" height="40" rx="8" fill="#e8f3fc" stroke="#0078d7"/>
-  <text x="540" y="197" text-anchor="middle" fill="#0f172a">R2DBC · Reactive MongoDB (논블로킹)</text>
+  <text x="540" y="197" text-anchor="middle" fill="#0f172a">R2DBC, Reactive MongoDB (논블로킹)</text>
   <text x="540" y="230" text-anchor="middle" fill="#0e8b87" font-weight="700">안정적 고처리량</text>
 </svg>
 <figcaption>blocking 작업을 EventLoop 밖 전용 풀로 분리하고 DB 접근을 리액티브로 전환</figcaption>
@@ -359,7 +357,7 @@
 <ul class="docs-list">
   <li>blocking 작업을 <strong>전용 스레드 풀</strong>(예: TaskScheduler)로 분리하여, 메인 EventLoop 은 순수 I/O 처리만 담당하도록 함.</li>
   <li>blocking 호출을 <strong>멀티스레드 비동기 실행</strong> 으로 전환하여, 한 핸들러의 지연이 전체 시스템에 영향을 주지 않도록 함.</li>
-  <li>로그 적재 등 DB 작업을 <strong>Reactive MongoDB·R2DBC</strong> 로 이전하여 시스템 전반의 blocking 최소화.</li>
+  <li>로그 적재 등 DB 작업을 <strong>Reactive MongoDB 와 R2DBC</strong> 로 이전하여 시스템 전반의 blocking 최소화.</li>
   <li>재구성 이후 게이트웨이는 성능 저하 없이 고트래픽을 안정적으로 처리하여 운영 장애 재발을 방지.</li>
 </ul>
 
