@@ -37,16 +37,36 @@
   .pd-main{min-width:0;}
   .pd-article{display:none;}
   .pd-article.active{display:block;}
+  /* ---------- sidebar collapse toggle ---------- */
+  .pd-layout{transition:grid-template-columns .38s cubic-bezier(.4,0,.2,1);overflow-x:clip;}
+  .pd-side{width:300px;min-width:0;transform:translateX(0);opacity:1;
+    transition:transform .38s cubic-bezier(.4,0,.2,1),opacity .3s ease;will-change:transform;}
+  .pd-side-toggle{position:fixed;top:24px;left:calc(max(0px, (100vw - 1280px)/2) + 286px);z-index:60;
+    width:28px;height:28px;border-radius:50%;
+    border:1px solid #dde3ec;background:#fff;color:#64748b;cursor:pointer;font-size:10px;line-height:1;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 1px 5px rgba(15,23,42,.12);
+    transition:left .38s cubic-bezier(.4,0,.2,1),background .15s,color .15s;font-family:inherit;}
+  .pd-side-toggle:hover{color:#003B62;border-color:#b6c6d8;}
+  .pd-side-toggle:hover{background:#e8f3fc;}
+  body.pd-collapsed .pd-layout{grid-template-columns:0 minmax(0,1fr);}
+  body.pd-collapsed .pd-side{transform:translateX(-100%);opacity:0;pointer-events:none;border-right:0;}
+  body.pd-collapsed .pd-side-toggle{left:calc(max(0px, (100vw - 1280px)/2) + 14px);}
+  body.pd-no-anim .pd-layout,body.pd-no-anim .pd-side,body.pd-no-anim .pd-side-toggle{transition:none !important;}
   /* research figure rows reuse docs-fig-row from posts.css; gifs scale */
   .docs-fig-row img{width:100%;height:auto;border:1px solid #e6e9f1;border-radius:10px;}
   @media (max-width:900px){
     .pd-layout{grid-template-columns:1fr;}
     .pd-side{position:static;height:auto;border-right:0;border-bottom:1px solid #e6e9f1;padding:24px 20px 14px;}
     .pd-group{margin:14px 0 4px;padding-top:12px;}
+    .pd-side-toggle{left:auto;right:12px;top:12px;}
+    body.pd-collapsed .pd-side{display:none;}
+    body.pd-collapsed .pd-side-toggle{left:auto;}
   }
 </style>
 </head>
 <body>
+
+<button id="pdSideToggle" class="pd-side-toggle" aria-label="사이드바 접기/펴기" title="사이드바 접기/펴기">◀</button>
 
 <div class="pd-layout">
   <aside class="pd-side">
@@ -1922,6 +1942,24 @@
     var id = location.hash.replace('#','');
     if(document.getElementById(id)) show(id, false);
   });
+
+  // ---- sidebar collapse toggle ----
+  var tgl = document.getElementById('pdSideToggle');
+  function setCollapsed(c){
+    document.body.classList.toggle('pd-collapsed', c);
+    tgl.textContent = c ? '▶' : '◀';
+    try{ localStorage.setItem('pdSideCollapsed', c ? '1' : '0'); }catch(e){}
+  }
+  tgl.addEventListener('click', function(){
+    setCollapsed(!document.body.classList.contains('pd-collapsed'));
+  });
+  try{
+    if(localStorage.getItem('pdSideCollapsed') === '1'){
+      document.body.classList.add('pd-no-anim');
+      setCollapsed(true);
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ document.body.classList.remove('pd-no-anim'); }); });
+    }
+  }catch(e){}
 
   // ---- language tabs (global switch across all articles) ----
   function setLang(lang){
