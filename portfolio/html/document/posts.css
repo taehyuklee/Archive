@@ -274,7 +274,7 @@ p code, li code {
 }
 .docs-table td:empty::after { content: "\00a0"; }
 .docs-caption {
-    margin: 8px 0 0;
+    margin: 10px 0 24px;
     text-align: center;
     font-size: 13px;
     color: #5b6470;
@@ -333,9 +333,17 @@ p code, li code {
     align-items: flex-start;
     margin: 30px 0;
 }
-.docs-fig-row figure{ margin: 0; flex: 1 1 280px; max-width: 380px; }
+.docs-fig-row figure{ margin: 0; flex: 1 1 280px; max-width: 380px; text-align: center; }
 .docs-fig-row figure canvas,
 .docs-fig-row figure svg{ width: 100%; }
+.docs-fig-row figcaption{
+    margin-top: 8px;
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+    font-style: italic;
+    font-weight: 400;
+}
 
 /* Original PPT slides — collapsed at the bottom of re-authored posts */
 .docs-slides{

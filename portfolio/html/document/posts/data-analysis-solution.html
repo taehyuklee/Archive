@@ -20,7 +20,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-48">
-<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-48">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260717-49">
 
 <script src="../../../js/main.js?v=20260605-48" defer></script>
 <script src="../../../js/components/nav.js?v=20260605-48" sync></script>
@@ -102,7 +102,7 @@
   </g>
   <text x="270" y="262" fill="#64748b" font-size="11">기존 ifacts SPC 솔루션에 분석 기능을 내장</text>
 </svg>
-<figcaption>Integrated architecture — sources → preprocess → FastAPI(Process Manager) → analysis subprocess → Vue UI</figcaption>
+<figcaption>Figure 01. Integrated architecture — sources → preprocess → FastAPI(Process Manager) → analysis subprocess → Vue UI</figcaption>
 </div>
 
 <h2 class="docs-h2">Impact</h2>
@@ -172,7 +172,7 @@
   </g>
   <text x="245" y="200" text-anchor="middle" fill="#0e8b87" font-weight="700">외부 저장소(Redis) 없이 stateful 유지, GIL 병목 회피</text>
 </svg>
-<figcaption>Process Manager가 게이트웨이처럼 사용자 state 와 프로세스 연결을 직접 관리 → 외부 저장소 없이 다중코어 활용</figcaption>
+<figcaption>Figure 02. The Process Manager acts like a gateway, directly managing user state and process connections → stateful without external storage, utilizing multiple cores</figcaption>
 </div>
 
 <p class="docs-p"><strong>Solution:</strong> Implemented a <strong>Process Manager</strong> that centrally controls processes and manages per-user state. Acting like a gateway, it handles inter-process state delivery and connectivity, keeping a stateful context <strong>without external storage</strong>. By managing data import + analysis as a single unit in the DB keyed by user ID, session continuity is preserved — yielding a scalable, reliable distributed-computation structure that avoids the GIL bottleneck while using multi-core resources.</p>
@@ -195,7 +195,7 @@
   </g>
   <text x="540" y="214" text-anchor="middle" fill="#64748b" font-size="11">ECDF → CDF (Glivenko–Cantelli) : 분포 차이 거의 없음</text>
 </svg>
-<figcaption>전수(100k) 대신 random sampling — 추세 파악이 목적이므로 표본 분포가 거의 동일해 효율적 시각화</figcaption>
+<figcaption>Figure 03. Random sampling instead of the full 100k records — the goal is trend visualization, and the sample distribution is nearly identical, so visualization stays efficient</figcaption>
 </div>
 
 <p class="docs-p"><strong>Solution (theoretical, domain-specific):</strong> Commercial tools (Minitab, JMP) are Windows executables that process data locally or connect directly to a DB, overcoming browser limits — a clear recognition that this is a <em>system-level limitation</em>. Since a full system-level fix was infeasible, I applied a <strong>statistical-theoretical</strong> approach: the <strong>Glivenko–Cantelli theorem</strong> guarantees the empirical CDF (ECDF) almost surely converges to the true CDF. Because visualization aims to capture overall trends (not outliers), <strong>random sampling</strong> was adopted; sampled datasets showed no significant distributional difference, enabling efficient visualization.</p>
@@ -252,7 +252,7 @@
   </g>
   <text x="270" y="258" fill="#64748b" font-size="11">기존 ifacts SPC 솔루션에 분석 기능을 내장</text>
 </svg>
-<figcaption>통합 아키텍처 — 소스 → 전처리 → FastAPI(Process Manager) → 분석 subprocess → Vue UI</figcaption>
+<figcaption>그림 01. 통합 아키텍처 — 소스 → 전처리 → FastAPI(Process Manager) → 분석 subprocess → Vue UI</figcaption>
 </div>
 
 <h2 class="docs-h2">성과</h2>
@@ -319,7 +319,7 @@
   </g>
   <text x="245" y="200" text-anchor="middle" fill="#0e8b87" font-weight="700">외부 저장소(Redis) 없이 stateful 유지, GIL 병목 회피</text>
 </svg>
-<figcaption>Process Manager가 게이트웨이처럼 사용자 state 와 프로세스 연결을 직접 관리 → 외부 저장소 없이 다중코어 활용</figcaption>
+<figcaption>그림 02. Process Manager가 게이트웨이처럼 사용자 state 와 프로세스 연결을 직접 관리 → 외부 저장소 없이 다중코어 활용</figcaption>
 </div>
 
 <p class="docs-p"><strong>해결:</strong> 프로세스를 중앙에서 제어하고 사용자별 state 를 관리하는 <strong>Process Manager</strong> 를 구현했다. 게이트웨이처럼 동작하여 프로세스 간 state 전달과 연결을 직접 처리함으로써 <strong>외부 저장소 없이</strong> stateful context 를 유지한다. 사용자 ID 기준으로 data import + 분석을 DB 에서 하나의 단위로 관리해 세션 연속성을 보장했고, 결과적으로 GIL 병목을 피하면서 멀티코어를 활용하는 <strong>확장 가능하고 신뢰성 있는 분산 연산 구조</strong> 를 만들었다.</p>
@@ -342,7 +342,7 @@
   </g>
   <text x="540" y="214" text-anchor="middle" fill="#64748b" font-size="11">ECDF → CDF (Glivenko–Cantelli) : 분포 차이 거의 없음</text>
 </svg>
-<figcaption>전수(10만) 대신 random sampling — 추세 파악이 목적이므로 표본 분포가 거의 동일해 효율적 시각화</figcaption>
+<figcaption>그림 03. 전수(10만) 대신 random sampling — 추세 파악이 목적이므로 표본 분포가 거의 동일해 효율적 시각화</figcaption>
 </div>
 
 <p class="docs-p"><strong>해결(이론 및 도메인 접근):</strong> 상용 도구(Minitab, JMP)는 Windows 실행 앱으로 로컬에서 데이터를 처리하거나 DB 에 직접 연결해 브라우저 한계를 넘는다 — 즉 이는 <em>시스템 레벨의 한계</em> 임을 명확히 인지했다. 완전한 시스템적 해결이 불가능하므로 <strong>통계 이론적</strong> 접근을 적용했다. <strong>Glivenko–Cantelli 정리</strong> 는 경험적 누적분포(ECDF)가 참 누적분포(CDF)로 거의 확실하게(almost surely) 수렴함을 보장한다. 시각화의 목적은 전체 추세 파악이므로(이상치에 집착하지 않음) <strong>random sampling</strong> 을 채택했고, 표본 데이터의 분포가 거의 차이가 없어 효율적인 시각화가 가능했다.</p>

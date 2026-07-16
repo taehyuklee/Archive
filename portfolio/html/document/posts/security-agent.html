@@ -20,7 +20,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="../../../css/style.css?v=20260605-48">
-<link rel="stylesheet" type="text/css" href="../posts.css?v=20260605-48">
+<link rel="stylesheet" type="text/css" href="../posts.css?v=20260717-49">
 
 <script src="../../../js/main.js?v=20260605-48" defer></script>
 <script src="../../../js/components/nav.js?v=20260605-48" sync></script>
@@ -94,7 +94,7 @@
   <polygon points="225,109 219,99 231,99" fill="#0e8b87"/>
   <text x="360" y="270" text-anchor="middle" fill="#0e8b87" font-weight="700">탐지 → 차단 → 정책 업데이트 → 재탐지 (self-reinforcing loop)</text>
 </svg>
-<figcaption>Reinforced Security Agent replaces WAF — Gateway, Monitoring, and LLM (ReAct) form a closed self-reinforcing loop</figcaption>
+<figcaption>Figure 01. Reinforced Security Agent replaces WAF — Gateway, Monitoring, and LLM (ReAct) form a closed self-reinforcing loop</figcaption>
 </div>
 
 <h2 class="docs-h2">Impact</h2>
@@ -147,7 +147,7 @@
   </g>
   <text x="540" y="96" text-anchor="middle" fill="#64748b">각 chunk 가 System/Human 을 명시 포함 → context 유지</text>
 </svg>
-<figcaption>장기 운영 시 초기 컨텍스트 소실을 막기 위해 10,000-token 단위로 분할하고 매 메시지에 System/Human 을 포함</figcaption>
+<figcaption>Figure 02. To prevent early-context loss in long-running operation, messages are split into 10,000-token chunks and every chunk explicitly includes the System/Human messages</figcaption>
 </div>
 
 <h2 class="docs-h2">Troubleshooting 2 — Log pipeline (long context to the LLM)</h2>
@@ -178,7 +178,7 @@
   </g>
   <text x="500" y="138" text-anchor="middle" fill="#64748b" font-size="11">필요한 만큼만 polling, 요청 건수는 agent 가 자율 결정</text>
 </svg>
-<figcaption>Message Broker 기반 파이프라인 — agent 가 Tool API 로 필요한 만큼만 로그를 가져와 LLM 에 전달</figcaption>
+<figcaption>Figure 03. Message Broker-based pipeline — the agent pulls only as much log data as needed via Tool APIs and passes it to the LLM</figcaption>
 </div>
 
 <p class="docs-p"><strong>Solution:</strong> deliver logs through a <strong>Message Broker–based pipeline</strong>. The agent polls data from the broker <strong>only as needed</strong>; polling is implemented as a <strong>Tool API</strong>; the agent invokes the tool and <strong>autonomously decides how many entries</strong> to request — ensuring efficient context handling.</p>
@@ -237,7 +237,7 @@
   <polygon points="225,109 219,99 231,99" fill="#0e8b87"/>
   <text x="360" y="270" text-anchor="middle" fill="#0e8b87" font-weight="700">탐지 → 차단 → 정책 업데이트 → 재탐지 (자기강화 루프)</text>
 </svg>
-<figcaption>WAF 를 대체하는 Reinforced Security Agent — Gateway, Monitoring, LLM(ReAct)이 닫힌 자기강화 루프를 이룬다</figcaption>
+<figcaption>그림 01. WAF 를 대체하는 Reinforced Security Agent — Gateway, Monitoring, LLM(ReAct)이 닫힌 자기강화 루프를 이룬다</figcaption>
 </div>
 
 <h2 class="docs-h2">성과</h2>
@@ -290,7 +290,7 @@
   </g>
   <text x="540" y="96" text-anchor="middle" fill="#64748b">각 chunk 가 System/Human 을 명시 포함 → context 유지</text>
 </svg>
-<figcaption>장기 운영 시 초기 컨텍스트 소실을 막기 위해 10,000-token 단위로 분할하고 매 메시지에 System/Human 을 포함</figcaption>
+<figcaption>그림 02. 장기 운영 시 초기 컨텍스트 소실을 막기 위해 10,000-token 단위로 분할하고 매 메시지에 System/Human 을 포함</figcaption>
 </div>
 
 <h2 class="docs-h2">트러블슈팅 2 — 로그 파이프라인(LLM 에 긴 컨텍스트 전달)</h2>
@@ -321,7 +321,7 @@
   </g>
   <text x="500" y="138" text-anchor="middle" fill="#64748b" font-size="11">필요한 만큼만 polling, 요청 건수는 agent 가 자율 결정</text>
 </svg>
-<figcaption>Message Broker 기반 파이프라인 — agent 가 Tool API 로 필요한 만큼만 로그를 가져와 LLM 에 전달</figcaption>
+<figcaption>그림 03. Message Broker 기반 파이프라인 — agent 가 Tool API 로 필요한 만큼만 로그를 가져와 LLM 에 전달</figcaption>
 </div>
 
 <p class="docs-p"><strong>해결:</strong> 로그를 <strong>Message Broker 기반 파이프라인</strong> 으로 전달한다. 에이전트가 broker 에서 <strong>필요한 만큼만</strong> polling 하고, polling 은 <strong>Tool API</strong> 로 구현했으며, 에이전트가 tool 을 호출하면서 <strong>요청 건수를 스스로 결정</strong> 한다 — 효율적인 컨텍스트 처리가 가능해졌다.</p>

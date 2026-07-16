@@ -2,6 +2,7 @@
 <html lang="en">
     
 <head>
+    <meta charset="UTF-8">
     <title>TAYLEE Research</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Open Graph / social share -->
@@ -20,7 +21,7 @@
 
 
     <!--Style css Link-->
-    <link rel="stylesheet" type="text/css" href="../../css/style research.css?v=20260605-48">
+    <link rel="stylesheet" type="text/css" href="../../css/style research.css?v=20260717-49">
     <link rel="stylesheet" type="text/css" href="../../css/style.css?v=20260605-48">
 
     <!--Java script event-->
@@ -49,32 +50,37 @@
 
             <div class="Control-div">
                 <img id="burgers", src="../../resources/reinforcement/Burgers equation nu=0.1.gif" width=360 height=330>
-                <p class="burgers_cap">(a) burgers equation (no control)</p>
+                <p class="burgers_cap">(a) No control — the sinusoidal initial condition breaks down by the viscous term</p>
             </div>
 
             <div class="Control-div">
                 <img id="burgers", src="../../resources/reinforcement/TD3 burgers.gif" width=360 height=330>
-                <p class="TD3_cap">(b) TD3-Control</p>
+                <p class="TD3_cap">(b) TD3-Control — deterministic-policy family</p>
             </div>
 
             <div class="Control-div">
                 <img id="burgers", src="../../resources/reinforcement/ppo burgers.gif" width=360 height=330>
-                <p class="PPO_cap">(c) PPO-Control</p>
+                <p class="PPO_cap">(c) PPO-Control — stochastic-policy family</p>
             </div>    
 
         </div>        
-        
-        <p class="burgers-description">&nbsp <b>Description</b>: Machine learning is applied with CFD as a domain. Here, the Burgers equation is simply Controlled by reinforcement learning is shown above.
-            (Burgers equation is one-dimensional Navier-Stoeks equation - here it is solved by spectral method). 
-            (a) is the burgers equation without control. Initial condition is sinusoidal, you can see that the sin waveform is broken down by the viscous term.
-            The results of training with reinforcement learning to maintain the initial state (sin waveform) are (b) and (c).
-            (b) is implemented with the TD3 algorithm of the deterministic policy family,
-            (c) is implemented as a PPO algorithm of the stochastic policy family.
+
+        <p class="Turb_con_cap">Figure 01. DRL validation on the Burgers equation — (a) no control, (b) TD3, (c) PPO</p>
+
+        <p class="burgers-description">&nbsp <b>Description</b>: Machine learning is applied with CFD as a domain. Here, the Burgers equation controlled by reinforcement learning is shown above.
+            (Burgers equation is the one-dimensional Navier-Stokes equation - here it is solved by spectral method).
+            (b) and (c) are the results of training the agent to maintain the initial state (sin waveform); both algorithms hold the waveform successfully.
             <br></p>
     
         <!--CFD Control-->
         <h4 class="DRL-title">Turbulence control for drag reduction through deep reinforcement learning</h4>  
         
+        <p class="Turb_con-description">&nbsp <b>Background</b>: This research aims to reduce the skin friction that develops near the wall as a fluid flows. It is known that successfully controlling this frictional resistance in the shipbuilding and aviation industries could save roughly $38 billion per year, so the topic carries significant engineering and social value.</p>
+
+        <p class="Turb_con-description">&nbsp <b>Method</b>: The Navier-Stokes equations were solved directly by numerical methods to build the flow simulation, which was then coupled with a reinforcement-learning algorithm implemented directly in Tensorflow. The flow was modeled as a simplified channel flow, and the walls were equipped with numerically modeled blowing/suction actuators controlled by reinforcement learning. TD3 (Twin Delayed Deep Deterministic Policy Gradient) was applied as the control algorithm to reduce the drag of the fully developed flow.</p>
+
+        <p class="Turb_con-description">&nbsp <b>Limitations of prior approaches &amp; result</b>: The classical Opposition Control technique requires sensors inside the flow field when applied to real experiments. Supervised learning based on Opposition Control was proposed to compensate, but it could not overcome the performance limit and was in fact even less efficient. In this research a new strategy was derived through reinforcement learning, overcoming these constraints: about 25% drag reduction, compared with the average 20% achieved by supervised-learning-based control.</p>
+
         <div class="Turb_con">
 
             <div class="Control-div">
@@ -83,7 +89,9 @@
             </div>
 
         </div>   
-        
+
+        <p class="Turb_con_cap">Figure 02. Actor-Critic network structure inserted in the TD3 algorithm</p>
+
         <div class="Turb_con">
 
             <div class="Control-div">
@@ -97,16 +105,17 @@
             </div>
 
         </div>
+
+        <p class="Turb_con_cap">Figure 03. Shear fields — (b) no control, (c) DRL control reduces the high shear stress (RED to BLUE)</p>
+
+        <p class="Turb_con-description">&nbsp <b>Hardest challenge - training stability</b>: Using DDPG alone led to low training stability and frequent performance collapse. Switching from DDPG to TD3 and applying Double Critic Network (prevents Q-value overestimation), Target Policy Smoothing (relaxes the target policy's excessive sensitivity), and Delayed Policy Update (updates the policy only after the critic has stabilized) greatly improved both stability and performance. In addition, tuning the discount factor of the Q-function led to a new drag-reduction strategy distinct from classical Opposition Control.</p>
+
+        <p class="Turb_con-description">&nbsp <b>Physical interpretation</b>: Reinforcement learning helps discover phenomena that are hard for humans to find, but the physical interpretation must ultimately be done by humans. Based on the control strategy derived by the agent, a general differential equation describing the drag reduction was derived and its effect was partially verified quantitatively.</p>
+
+        <p class="Turb_con-description">&nbsp <b>Outcome</b>: This work was submitted as a graduate thesis and published in the international journal Physical Review Fluids (2023).</p> 
         
-        <p class="Turb_con-description">&nbsp <b>Description</b>: Drag reduction in a fluid is associated with a variety of social problems ranging from economic loss to environmental problems. The goal of this research is to develop a strategy
-            for drag reduction in turbulent channel flow by controlling blowing suction using Deep reinforcement learning. As a result, performance is increased by approximately 5% over previous deep learning models. My involvement in this work was to construct a reinforcement
-            learning algorithm directly in Tensorflow, connect it to CFD, and then trained the network
-            and analyzed it. (a) Actor-Critic network structure inserted in TD3 algorithm, (b) No control shear field (c) As can be seen, the DRL control reduces the high shear stress (RED to BLUE).
-            and  This is currently being worked on in preparation for submission to a journal thesis.
-            <br><br></p> 
-        
-        <p class="Link_tur"> <a class = "conf_tur" href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10607412">It is presented at the KSME 2021 spring Conference.</a> </p>
-        <p class="Link_tur"> <a class = "conf_tur" href="https://journals.aps.org/prfluids/abstract/10.1103/PhysRevFluids.8.024604">publised in PRF(Physical Review Fluids)on 2023-02-08.</a> </p>
+        <p class="Link_tur"> <a class = "conf_tur" href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10607412">Presented at the KSME 2021 Spring Conference.</a> </p>
+        <p class="Link_tur"> <a class = "conf_tur" href="https://journals.aps.org/prfluids/abstract/10.1103/PhysRevFluids.8.024604">Published in PRF (Physical Review Fluids) on 2023-02-08.</a> </p>
 
         <p class="bottom"></p>
     

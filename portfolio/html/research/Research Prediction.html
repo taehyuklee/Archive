@@ -2,6 +2,7 @@
 <html lang="en">
     
 <head>
+    <meta charset="UTF-8">
     <title>TAYLEE Research</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Open Graph / social share -->
@@ -20,7 +21,7 @@
 
 
     <!--Style css Link-->
-    <link rel="stylesheet" type="text/css" href="../../css/style research.css?v=20260605-48">
+    <link rel="stylesheet" type="text/css" href="../../css/style research.css?v=20260717-49">
     <link rel="stylesheet" type="text/css" href="../../css/style.css?v=20260605-48">
 
     <!--Java script event-->
@@ -46,25 +47,51 @@
 
         <h4 class="Window-title">Forecasting model for particle matters (PM2.5)</h4>
 
-        <div class="Forecasting-image" >
+        <p class="prediction-description">&nbsp <b>Background</b>: Existing PM-forecasting systems are highly accurate, but a single run takes a long time and enormous computing resources. This work aimed to cut the computational cost drastically by training a neural network on roughly 100,000 records with minimal resources. It was my undergraduate thesis topic and won the Gold Prize at the KSME Fluid Engineering Division competition (2019).</p>
 
-            <img class="NN-model-img" width="1000" height="250"
-            src="../../resources/prediction/6hrs NN.png"alt="6hrs prediction">
+        <p class="prediction-description">&nbsp <b>Data</b>: Hourly data from 2008 to Q3 2018 was collected from Air Korea (air quality) and the Korean open meteorological data portal — 32 variables, 94,225 records, covering air-quality measurements (PM2.5, PM10, NOx, SOx, etc.) and weather variables (temperature, humidity, etc.).</p>
 
-            <img class="NN-model-img" width="1000" height="250"
-            src="../../resources/prediction/12hrs NN.png"alt="12hrs prediction">
+        <p class="prediction-description">&nbsp <b>Statistical variable selection &amp; preprocessing</b>: (1) variables with over 50% missing values were dropped to avoid contaminating the later imputation step; (2) AIC (Akaike Information Criterion) with stepwise selection removed variables with low explanatory power for PM2.5 (32 &rarr; 21 variables); (3) multicollinearity was removed via VIF — among highly correlated pairs, the physically more fundamental variable was kept based on engineering knowledge (e.g. vapor pressure over relative humidity); (4) the final 13 explanatory variables: PM10, visibility, SO2, CO, NO2, vapor pressure, O3, sea-level pressure, temperature, solar radiation, total cloud, wind direction, wind speed; (5) linear-model imputation produced non-physical values and was rejected — PMM (Predictive Mean Matching) filled the gaps with trends consistent with the measured data.</p>
 
+        <div class="Forecasting-image">
+            <img class="NN-model-img" style="width:780px;max-width:100%;height:auto;"
+            src="../../resources/prediction/pmm-imputation.webp" alt="PMM imputation">
+            <p class="Turb_con_cap">Figure 01. PMM imputation — imputed values (red) follow the trend of observed values (teal)</p>
         </div>
 
-        <p class="prediction-description">&nbsp <b>Description</b>: In order to predict the concentration of fine dust, we have received about 10 years(from 2008 to 2018) of data from public protal for meteorological data and air quality data. 
-            It consists of data in units of time and has about 90,000 numbers of data.
-            There are about 30 explanatory variables (as Input information) such as temperature and humidity, NO2, PM10, and SO2 etc. And the goal is to multivariative non-linear regression of PM2.5 through a neural network using above 30 explanatory variables.
-            Among the explanatory variables, the variables that are able to explain PM2.5 most were selected based on the Akaike Information Criteria (AIC) value. Afterwards, Imputation was performed to fill in the empty values.
-            To ensure independence among explanatory selected variables, a Variance Inflation factor was used.
-            Finally, the concentration of PM2.5 was predicted by window learning with 14 selected variables.
-            The above time series plot is about 6hrs and 12hrs forecasts.</p>    
+        <p class="prediction-description">&nbsp <b>Model training</b>: A basic ANN with a window-learning scheme — the previous 72 hours of data (selected variables + PM2.5, 14 in total) were reshaped as input (batch size 100) to forecast PM2.5 concentration 6, 12, and 24 hours ahead.</p>
 
-        <p class="Link_tur"> <a class = "conf_tur" href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE09344962">It is presented at the KSME 2019 Autumn Annual Conference.</a> </p>
+        <div class="Forecasting-image">
+            <img class="NN-model-img" style="width:780px;max-width:100%;height:auto;"
+            src="../../resources/prediction/window-batch.webp" alt="Window batch construction">
+            <p class="Turb_con_cap">Figure 02. Batch construction — 72 hrs &times; 14 variables reshaped as a matrix input (batch size 100)</p>
+
+            <img class="NN-model-img" style="width:780px;max-width:100%;height:auto;"
+            src="../../resources/prediction/nn-structure.webp" alt="Neural network structure">
+            <p class="Turb_con_cap">Figure 03. Network structure &amp; loss — 6-hr model: 3 layers &times; 32 nodes, 12-hr model: 2 layers &times; 256 nodes, Loss = MSE + L2 regularization</p>
+        </div>
+
+        <div class="Forecasting-image" >
+
+            <img class="NN-model-img" style="width:780px;max-width:100%;height:auto;"
+            src="../../resources/prediction/6hrs NN.png" alt="6hrs prediction">
+
+            <img class="NN-model-img" style="width:780px;max-width:100%;height:auto;"
+            src="../../resources/prediction/12hrs NN.png" alt="12hrs prediction">
+
+            <p class="Turb_con_cap">Figure 04. 6hrs (top) and 12hrs (bottom) forecasts</p>
+        </div>
+
+        <div class="Forecasting-image">
+            <img class="NN-model-img" style="width:780px;max-width:100%;height:auto;"
+            src="../../resources/prediction/training-scatter.webp" alt="Training curves and scatter plots">
+            <p class="Turb_con_cap">Figure 05. Training curves and real-vs-predicted scatter — R=0.725 (6 hrs), R=0.655 (12 hrs)</p>
+        </div>
+
+        <p class="prediction-description">&nbsp <b>Results, limitations &amp; follow-up</b>: The time-series plots above show the 6-hour and 12-hour forecasts, with real-vs-predicted correlation of R=0.725 (6 hrs) and R=0.655 (12 hrs); at the time, the 6-hour model appeared to perform best. Later analysis, however, revealed a time-lag phenomenon — the prediction curve trails the measured values — a structural limitation of training on simple Euclidean (error-distance) loss. Performance also degraded toward high-concentration regimes. To compensate, a follow-up experiment in graduate school (2021) applied reinforcement learning that reflects the slope (angle) of the error in addition to its magnitude, confirming partial improvement.</p>
+
+        <p class="Link_tur"> <a class = "conf_tur" href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE09344962">Presented at the KSME 2019 Autumn Annual Conference.</a> </p>
+        <p class="Link_tur"> Gold Prize, KSME Fluid Engineering Division Competition (2019). </p>
 
         <p class="bottom"></p>
             
