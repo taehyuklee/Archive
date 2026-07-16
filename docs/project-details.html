@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.ico">
+<title>이태혁 — Project Details</title>
+
+<link rel="stylesheet" type="text/css" href="../portfolio/css/style.css?v=20260605-18">
+<link rel="stylesheet" type="text/css" href="../portfolio/html/document/posts.css?v=20260605-18">
+
+<style>
+  /* ---------- docs shell (sidebar + article switching) ---------- */
+  body{margin:0;background:#fff;}
+  .pd-layout{display:grid;grid-template-columns:300px minmax(0,1fr);max-width:1280px;margin:0 auto;min-height:100vh;}
+  .pd-side{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;box-sizing:border-box;
+    padding:40px 26px 40px;border-right:1px solid #e6e9f1;background:#f8fafc;
+    font-family:'Montserrat','Noto Sans KR',sans-serif;}
+  .pd-brand .pd-kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#003B62;font-weight:700;}
+  .pd-brand h1{font-size:24px;letter-spacing:-.02em;margin:8px 0 2px;font-weight:800;color:#0f172a;}
+  .pd-brand .pd-en{font-size:12.5px;color:#64748b;}
+  .pd-brand .pd-links{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:12px;}
+  .pd-brand .pd-links a{color:#64748b;text-decoration:none;}
+  .pd-brand .pd-links a:hover{color:#003B62;}
+  .pd-group{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#003B62;font-weight:700;
+    margin:26px 0 6px;padding-top:18px;border-top:1px solid #e6e9f1;}
+  .pd-nav{display:flex;flex-direction:column;gap:2px;}
+  .pd-navlink{display:flex;gap:10px;align-items:baseline;text-align:left;width:100%;border:0;background:none;cursor:pointer;
+    color:#0f172a;font-family:inherit;padding:9px 11px;border-radius:8px;transition:background .15s;box-sizing:border-box;}
+  .pd-navlink:hover{background:#e8f3fc;}
+  .pd-navlink .n{font-size:11px;color:#94a3b8;min-width:16px;font-weight:600;}
+  .pd-navlink .t{font-size:13.5px;font-weight:600;line-height:1.4;}
+  .pd-navlink .o{display:block;font-size:11px;color:#64748b;margin-top:2px;font-weight:400;}
+  .pd-navlink[aria-current="true"]{background:#e8f3fc;}
+  .pd-navlink[aria-current="true"] .t,.pd-navlink[aria-current="true"] .n{color:#003B62;}
+  .pd-main{min-width:0;}
+  .pd-article{display:none;}
+  .pd-article.active{display:block;}
+  /* research figure rows reuse docs-fig-row from posts.css; gifs scale */
+  .docs-fig-row img{width:100%;height:auto;border:1px solid #e6e9f1;border-radius:10px;}
+  @media (max-width:900px){
+    .pd-layout{grid-template-columns:1fr;}
+    .pd-side{position:static;height:auto;border-right:0;border-bottom:1px solid #e6e9f1;padding:24px 20px 14px;}
+    .pd-group{margin:14px 0 4px;padding-top:12px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="pd-layout">
+  <aside class="pd-side">
+    <div class="pd-brand">
+      <div class="pd-kicker">Project Details</div>
+      <h1>이태혁</h1>
+      <div class="pd-en">Taehyuk Lee · Software / AI Engineer</div>
+      <div class="pd-links">
+        <a href="../portfolio/html/TAYLEE%20Home.html" target="_blank" rel="noopener">portfolio ↗</a>
+        <a href="https://github.com/taehyuklee" target="_blank" rel="noopener">github ↗</a>
+        <a href="mailto:thlee991@gmail.com">mail</a>
+      </div>
+    </div>
+    <nav class="pd-nav" id="pdIndex"></nav>
+  </aside>
+
+  <div class="pd-main" id="pdMain">
+
+    <!-- ================= p0 : ARDP ================= -->
+    <article class="pd-article" id="p0" data-group="SK Inc. AX" data-nav='1|AI Readable Data Platform (ARDP)|2026 · 진행 중 · AI-SCM'>
+      <main class="docs-post">
+        <div class="docs-post__article">
+          <header class="docs-post__header">
+            <h1 class="docs-post__title">AI Readable Data Platform (ARDP)</h1>
+          </header>
+          <div class="docs-post__body">
+
+<div class="docs-langtabs" role="tablist">
+  <button class="docs-langbtn is-active" data-lang="en">English</button>
+  <button class="docs-langbtn" data-lang="ko">한국어</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="docs-lang" data-lang="en">
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>One line</strong> — <strong>AI Readable Data Platform (ARDP)</strong> turns a company's databases &amp; documents into data an AI can read — an <strong>ontology / Virtual Knowledge Graph</strong> — and answers natural-language questions over it. As <strong>application architect &amp; backend engineer</strong> I designed the <strong>cross-module data flow</strong> and built the structured-build, deploy, and inference pieces. <em>(Ongoing — applied to the AI-SCM domain)</em></p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>Duration</dt><dd>2026 – Present (ongoing)</dd>
+  <dt>Role</dt><dd>Application Architect &amp; Backend Engineer</dd>
+  <dt>Org</dt><dd>SK Inc. AX · AI Innovation Lab</dd>
+  <dt>Tech</dt><dd>FastAPI · PostgreSQL · Ontop (VKG) · Trino · Neo4j · SPARQL · LangChain / LangGraph · Azure OpenAI · AWS · Docker / Kubernetes · React</dd>
+  <dt>Scope</dt><dd>5 of 6 modules — data_management · structured · inference · deploy-hooks · frontend (not unstructured)</dd>
+</dl>
+
+<h2 class="docs-h2">Overview</h2>
+<p class="docs-p">ARDP converts structured (RDB/CSV) and unstructured (policy/SI documents) data into an <strong>ontology</strong> so an LLM can query it reliably. Structured DBs are exposed as a <strong>Virtual Knowledge Graph</strong> via <strong>Ontop</strong> (no data duplication) over a <strong>Trino</strong> federation of 5 heterogeneous DBs, and users ask questions in plain language that are translated to <strong>SPARQL</strong>. It is built as microservices around a single source of truth, and is applied to the <strong>AI-SCM</strong> (HR / SI workforce) domain.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">Platform architecture (microservices)</text>
+  <rect x="40" y="36" width="120" height="40" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="100" y="60" text-anchor="middle">Frontend</text>
+  <rect x="270" y="34" width="180" height="48" rx="10" fill="#e8f3fc" stroke="#0048A7" stroke-width="1.6"/><text x="360" y="54" text-anchor="middle" font-weight="700">data_management</text><text x="360" y="70" text-anchor="middle" fill="#64748b" font-size="9">SoT · datasources·files·artifacts</text>
+  <g text-anchor="middle">
+    <rect x="270" y="108" width="180" height="40" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="360" y="132">structured · ontology build</text>
+    <rect x="270" y="158" width="180" height="36" rx="8" fill="#f0fbf8" stroke="#0e8b87"/><text x="360" y="180">unstructured · docs</text>
+  </g>
+  <rect x="520" y="108" width="160" height="40" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="600" y="128" text-anchor="middle">deploy-hooks</text><text x="600" y="142" text-anchor="middle" fill="#64748b" font-size="9">artifacts → restart</text>
+  <rect x="520" y="158" width="160" height="40" rx="8" fill="#fff" stroke="#0078d7"/><text x="600" y="176" text-anchor="middle" font-weight="700">Ontop + Trino</text><text x="600" y="190" text-anchor="middle" fill="#64748b" font-size="9">VKG · 5-DB federation</text>
+  <rect x="200" y="224" width="320" height="40" rx="9" fill="#f3e8fc" stroke="#8b5cf6"/><text x="360" y="244" text-anchor="middle" font-weight="700">inference — NL → SPARQL / Cypher</text><text x="360" y="258" text-anchor="middle" fill="#64748b" font-size="9">semantic Q&amp;A over the knowledge graph</text>
+  <defs><marker id="arArchEn" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker></defs>
+  <g stroke="#475569" stroke-width="1.6" fill="none">
+    <line x1="160" y1="56" x2="269" y2="57" marker-end="url(#arArchEn)"/>
+    <line x1="360" y1="82" x2="360" y2="107" marker-end="url(#arArchEn)"/>
+    <line x1="450" y1="128" x2="519" y2="128" marker-end="url(#arArchEn)"/>
+    <line x1="600" y1="148" x2="600" y2="157" marker-end="url(#arArchEn)"/>
+    <line x1="558" y1="198" x2="503" y2="222" marker-end="url(#arArchEn)"/>
+  </g>
+</svg>
+<figcaption>Single source of truth feeds the build pipelines; deploy-hooks publish artifacts &amp; bring up Ontop/Trino; inference answers questions over the graph.</figcaption>
+</div>
+
+<h2 class="docs-h2">My role &amp; key contributions</h2>
+
+<p class="docs-p"><strong>① Application architecture — the data flow between modules.</strong> I designed the end-to-end pipeline as application architect: how <strong>data_management</strong> ingests and serves data as the single source of truth, how the <strong>structured</strong> service finishes an ontology build, and how <strong>deploy-hooks</strong> then fires to publish the artifacts and bring up <strong>Ontop / Trino</strong> so the new graph is immediately queryable.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 130" width="720" height="130" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="10.5">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">Build → deploy → serve (the flow I designed)</text>
+  <g text-anchor="middle">
+    <rect x="14" y="46" width="120" height="44" rx="8" fill="#e8f3fc" stroke="#0048A7"/><text x="74" y="64">data_management</text><text x="74" y="80" fill="#64748b" font-size="9">SoT 데이터 제공</text>
+    <rect x="160" y="46" width="120" height="44" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="220" y="64">structured</text><text x="220" y="80" fill="#64748b" font-size="9">ontology build 완료</text>
+    <rect x="306" y="46" width="120" height="44" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="366" y="64">deploy-hooks</text><text x="366" y="80" fill="#64748b" font-size="9">artifacts 배포</text>
+    <rect x="452" y="46" width="120" height="44" rx="8" fill="#fff" stroke="#0078d7"/><text x="512" y="64">Ontop / Trino</text><text x="512" y="80" fill="#64748b" font-size="9">기동·갱신</text>
+    <rect x="598" y="46" width="108" height="44" rx="8" fill="#f3e8fc" stroke="#8b5cf6"/><text x="652" y="68">queryable</text>
+  </g>
+  <defs><marker id="arFlowEn" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker></defs>
+  <g stroke="#475569" stroke-width="1.6" fill="none">
+    <line x1="134" y1="68" x2="159" y2="68" marker-end="url(#arFlowEn)"/>
+    <line x1="280" y1="68" x2="305" y2="68" marker-end="url(#arFlowEn)"/>
+    <line x1="426" y1="68" x2="451" y2="68" marker-end="url(#arFlowEn)"/>
+    <line x1="572" y1="68" x2="597" y2="68" marker-end="url(#arFlowEn)"/>
+  </g>
+</svg>
+<figcaption>structured 빌드가 끝나면 deploy-hooks 가 자동으로 산출물을 배포하고 Ontop/Trino 를 기동/갱신한다 — 이 트리거·흐름을 설계.</figcaption>
+</div>
+
+<ul class="docs-list">
+  <li><strong>② Ontop + Trino structure.</strong> Designed the serving layer — <strong>Trino</strong> federates 5 heterogeneous DBs (PostgreSQL · MySQL · MSSQL · Oracle · MongoDB) into one SQL surface, and <strong>Ontop</strong> exposes it as a SPARQL-queryable VKG.</li>
+  <li><strong>③ AWS infrastructure architecture</strong> — defined the cloud architecture in coordination with the infrastructure team.</li>
+  <li><strong>④ RDB → graph modeling methodology.</strong> Developed the <strong>PK/FK-based table-clustering</strong> method that decides how relational tables map to a property graph — classifying each table (Entity / Junction / …) from its <strong>primary/foreign keys &amp; cardinality</strong>, combining rule-based classification with LLM correction.</li>
+  <li><strong>⑤ Semantic inference (catalog-grounded NL → SPARQL).</strong> Built the inference modes; <strong>Graph-Explorer and Graph-Hop are my own ideas</strong> — and Graph-Explorer performs notably well.</li>
+  <li><strong>⑥ AI-SCM golden set</strong> — building, testing, and tuning the evaluation/golden answer set that the platform is measured and improved against.</li>
+</ul>
+
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>Inference mode</th><th>How</th><th>Best for</th></tr></thead>
+  <tbody>
+    <tr><td><strong>One-Shot</strong></td><td>NL → 1 SPARQL → answer (schema + value catalog grounding)</td><td>simple lookups</td></tr>
+    <tr><td><strong>N-Shot</strong></td><td>decompose into sub-questions → multiple SPARQL → synthesize</td><td>complex / multi-condition</td></tr>
+    <tr><td><strong>Graph-Explorer</strong> ★</td><td>LLM agent (LangGraph) explores the KnowledgeGraph and queries directly</td><td>relationship-following · <em>strong accuracy</em></td></tr>
+    <tr><td><strong>Graph-Hop</strong> ★</td><td>anchor + hop-expansion over very large schemas</td><td>large schemas that don't fit one prompt</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>Why a Virtual Knowledge Graph?</strong> Unlike Text-to-SQL (the LLM must read raw, cryptic DB schemas) or RAG (data must be pre-embedded and can't reflect live changes), the VKG puts a <strong>semantic layer + value catalog</strong> between the DB and the LLM, so the LLM writes SPARQL against clean business concepts while Ontop translates it to SQL on the live, federated database.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- ============================ 한국어 ============================ -->
+<div class="docs-lang" data-lang="ko" hidden>
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>한 줄 요약</strong> — <strong>AI Readable Data Platform (ARDP)</strong> 는 기업의 DB·문서를 AI가 읽을 수 있는 데이터(<strong>온톨로지 / 가상 지식그래프</strong>)로 바꾸고 자연어로 질의·추론하는 플랫폼이다. <strong>애플리케이션 아키텍트 겸 백엔드 엔지니어</strong>로서 <strong>모듈 간 데이터 flow</strong> 를 설계하고 정형 빌드·배포·추론 영역을 개발했다. <em>(진행 중 — AI-SCM 도메인 적용)</em></p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>기간</dt><dd>2026 – 현재 (진행 중)</dd>
+  <dt>역할</dt><dd>애플리케이션 아키텍트 · 백엔드 엔지니어</dd>
+  <dt>소속</dt><dd>SK Inc. AX · AI Innovation Lab</dd>
+  <dt>기술</dt><dd>FastAPI · PostgreSQL · Ontop (VKG) · Trino · Neo4j · SPARQL · LangChain / LangGraph · Azure OpenAI · AWS · Docker / Kubernetes · React</dd>
+  <dt>관여</dt><dd>6개 모듈 중 5개 — data_management · structured · inference · deploy-hooks · frontend (unstructured 제외)</dd>
+</dl>
+
+<h2 class="docs-h2">개요</h2>
+<p class="docs-p">ARDP 는 정형(RDB/CSV)·비정형(정책/SI 문서) 데이터를 <strong>온톨로지</strong>로 변환해 LLM 이 안정적으로 질의할 수 있게 한다. 정형 DB 는 <strong>Trino</strong> 로 5개 이기종 DB 를 연합한 뒤 <strong>Ontop</strong> 으로 <strong>가상 지식그래프(VKG)</strong> 로 노출(데이터 복제 없음)하고, 사용자는 <strong>자연어</strong>로 물으면 <strong>SPARQL</strong> 로 변환·실행된다. 단일 진실원(SoT) 중심의 마이크로서비스로 구성되며 <strong>AI-SCM</strong>(인사/SI 인력) 도메인에 적용 중이다.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">플랫폼 아키텍처 (마이크로서비스)</text>
+  <rect x="40" y="36" width="120" height="40" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="100" y="60" text-anchor="middle">프론트엔드</text>
+  <rect x="270" y="34" width="180" height="48" rx="10" fill="#e8f3fc" stroke="#0048A7" stroke-width="1.6"/><text x="360" y="54" text-anchor="middle" font-weight="700">data_management</text><text x="360" y="70" text-anchor="middle" fill="#64748b" font-size="9">SoT · 데이터소스·파일·산출물</text>
+  <g text-anchor="middle">
+    <rect x="270" y="108" width="180" height="40" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="360" y="132">structured · 온톨로지 빌드</text>
+    <rect x="270" y="158" width="180" height="36" rx="8" fill="#f0fbf8" stroke="#0e8b87"/><text x="360" y="180">unstructured · 문서</text>
+  </g>
+  <rect x="520" y="108" width="160" height="40" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="600" y="128" text-anchor="middle">deploy-hooks</text><text x="600" y="142" text-anchor="middle" fill="#64748b" font-size="9">산출물 → 재기동</text>
+  <rect x="520" y="158" width="160" height="40" rx="8" fill="#fff" stroke="#0078d7"/><text x="600" y="176" text-anchor="middle" font-weight="700">Ontop + Trino</text><text x="600" y="190" text-anchor="middle" fill="#64748b" font-size="9">VKG · 5-DB 연합</text>
+  <rect x="200" y="224" width="320" height="40" rx="9" fill="#f3e8fc" stroke="#8b5cf6"/><text x="360" y="244" text-anchor="middle" font-weight="700">inference — 자연어 → SPARQL / Cypher</text><text x="360" y="258" text-anchor="middle" fill="#64748b" font-size="9">지식그래프 위에서 시멘틱 질의응답</text>
+  <defs><marker id="arArchKo" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker></defs>
+  <g stroke="#475569" stroke-width="1.6" fill="none">
+    <line x1="160" y1="56" x2="269" y2="57" marker-end="url(#arArchKo)"/>
+    <line x1="360" y1="82" x2="360" y2="107" marker-end="url(#arArchKo)"/>
+    <line x1="450" y1="128" x2="519" y2="128" marker-end="url(#arArchKo)"/>
+    <line x1="600" y1="148" x2="600" y2="157" marker-end="url(#arArchKo)"/>
+    <line x1="558" y1="198" x2="503" y2="222" marker-end="url(#arArchKo)"/>
+  </g>
+</svg>
+<figcaption>단일 진실원이 빌드 파이프라인에 정보를 공급하고, deploy-hooks 가 산출물 배포·Ontop/Trino 기동, inference 가 그 위에서 질의에 답한다.</figcaption>
+</div>
+
+<h2 class="docs-h2">담당 역할 &amp; 핵심 기여</h2>
+
+<p class="docs-p"><strong>① 애플리케이션 아키텍처 — 모듈 간 데이터 flow.</strong> 앱 아키텍트로서 전체 파이프라인을 설계했다. <strong>data_management</strong> 가 데이터를 어떻게 처리해 단일 진실원으로 제공하는지, <strong>structured</strong> 에서 온톨로지 빌드가 끝났을 때 <strong>deploy-hooks</strong> 가 어떻게 작동해 산출물을 배포하고 <strong>Ontop / Trino</strong> 를 기동시켜 새 그래프를 바로 질의 가능하게 만드는지 — 이 트리거와 흐름 전체를 잡았다.</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 130" width="720" height="130" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="10.5">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">빌드 → 배포 → 서빙 (직접 설계한 flow)</text>
+  <g text-anchor="middle">
+    <rect x="14" y="46" width="120" height="44" rx="8" fill="#e8f3fc" stroke="#0048A7"/><text x="74" y="64">data_management</text><text x="74" y="80" fill="#64748b" font-size="9">SoT 데이터 제공</text>
+    <rect x="160" y="46" width="120" height="44" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="220" y="64">structured</text><text x="220" y="80" fill="#64748b" font-size="9">온톨로지 빌드 완료</text>
+    <rect x="306" y="46" width="120" height="44" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="366" y="64">deploy-hooks</text><text x="366" y="80" fill="#64748b" font-size="9">산출물 배포</text>
+    <rect x="452" y="46" width="120" height="44" rx="8" fill="#fff" stroke="#0078d7"/><text x="512" y="64">Ontop / Trino</text><text x="512" y="80" fill="#64748b" font-size="9">기동·갱신</text>
+    <rect x="598" y="46" width="108" height="44" rx="8" fill="#f3e8fc" stroke="#8b5cf6"/><text x="652" y="68">질의 가능</text>
+  </g>
+  <defs><marker id="arFlowKo" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker></defs>
+  <g stroke="#475569" stroke-width="1.6" fill="none">
+    <line x1="134" y1="68" x2="159" y2="68" marker-end="url(#arFlowKo)"/>
+    <line x1="280" y1="68" x2="305" y2="68" marker-end="url(#arFlowKo)"/>
+    <line x1="426" y1="68" x2="451" y2="68" marker-end="url(#arFlowKo)"/>
+    <line x1="572" y1="68" x2="597" y2="68" marker-end="url(#arFlowKo)"/>
+  </g>
+</svg>
+<figcaption>structured 빌드가 끝나면 deploy-hooks 가 자동으로 산출물을 배포하고 Ontop/Trino 를 기동/갱신 — 이 트리거·흐름을 설계.</figcaption>
+</div>
+
+<ul class="docs-list">
+  <li><strong>② Ontop + Trino 구조.</strong> 서빙 레이어를 설계 — <strong>Trino</strong> 로 5개 이기종 DB(PostgreSQL · MySQL · MSSQL · Oracle · MongoDB)를 하나의 SQL 로 연합하고, <strong>Ontop</strong> 으로 SPARQL 질의 가능한 VKG 로 노출.</li>
+  <li><strong>③ AWS 인프라 아키텍처</strong> — 인프라팀과 협의해 클라우드 아키텍처를 설계.</li>
+  <li><strong>④ RDB → 그래프 모델링 방법론.</strong> 관계형 테이블을 프로퍼티 그래프로 어떻게 매핑할지 결정하는 <strong>PK/FK 기반 테이블 클러스터링</strong> 방법론을 개발 — <strong>기본키/외래키·카디널리티</strong>로 각 테이블을 Entity/Junction 등으로 분류(규칙 기반 + LLM 보정).</li>
+  <li><strong>⑤ 시멘틱 추론 (카탈로그 기반 자연어 → SPARQL).</strong> 추론 모드들을 개발했고, <strong>Graph-Explorer 와 Graph-Hop 은 직접 고안하여 개발</strong> — 특히 Graph-Explorer 가 상당히 잘 동작한다.</li>
+  <li><strong>⑥ AI-SCM 골든셋</strong> — 플랫폼을 측정·개선하는 기준이 되는 평가/정답셋을 구축·테스트·튜닝.</li>
+</ul>
+
+<div class="docs-table-wrap">
+<table class="docs-table">
+  <thead><tr><th>추론 모드</th><th>방식</th><th>적합</th></tr></thead>
+  <tbody>
+    <tr><td><strong>One-Shot</strong></td><td>자연어 → SPARQL 1개 → 답변 (스키마 + 값 카탈로그 grounding)</td><td>단순 조회</td></tr>
+    <tr><td><strong>N-Shot</strong></td><td>하위 질문 분해 → 여러 SPARQL → 결과 종합</td><td>복합 · 다중 조건</td></tr>
+    <tr><td><strong>Graph-Explorer</strong> ★</td><td>LLM 에이전트(LangGraph)가 KnowledgeGraph 를 탐색하며 직접 질의</td><td>관계 추적 · <em>정확도 우수</em></td></tr>
+    <tr><td><strong>Graph-Hop</strong> ★</td><td>앵커 + hop 확장으로 대규모 스키마 처리</td><td>한 프롬프트에 안 들어가는 큰 스키마</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>왜 가상 지식그래프(VKG)인가?</strong> Text-to-SQL(LLM 이 난해한 원시 DB 스키마를 직접 봐야 함)·RAG(미리 임베딩해야 하고 실시간 변경 반영 불가)와 달리, VKG 는 DB 와 LLM 사이에 <strong>시맨틱 레이어 + 값 카탈로그</strong>를 둔다. LLM 은 깔끔한 비즈니스 개념으로 SPARQL 을 쓰고, Ontop 이 이를 실시간·연합 DB 의 SQL 로 변환한다.</p>
+  </div>
+</div>
+
+</div>
+
+<hr class="docs-divider">
+<p class="docs-source">SK Inc. AX 재직 중 진행한 사내 프로젝트(AI Readable Data Platform)입니다 · 보안상 내부 데이터·자격증명·고객 정보는 제외하고 아키텍처·역할 중심으로 정리했습니다.</p>
+
+          </div>
+        </div>
+      </main>
+    </article>
+
+    <!-- ================= p1 : IT-VoC Deployment Platform ================= -->
+    <article class="pd-article" id="p1" data-group="SK Inc. AX" data-nav='2|IT-VoC Deployment Platform|2025 · TA · SK ON'>
+      <main class="docs-post">
+        <div class="docs-post__article">
+          <header class="docs-post__header">
+            <h1 class="docs-post__title">IT-VoC CI/CD Platform (SK ON)</h1>
+          </header>
+          <div class="docs-post__body">
+
+<div class="docs-langtabs" role="tablist">
+  <button class="docs-langbtn is-active" data-lang="en">English</button>
+  <button class="docs-langbtn" data-lang="ko">한국어</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="docs-lang" data-lang="en">
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>One line</strong> — As <strong>Technical Architect (TA)</strong>, designing a unified platform that standardizes the <strong>VoC (Voice of Customer)</strong> system and <strong>CI/CD</strong> environments — previously run independently by each overseas subsidiary — under HQ standards. <em>(Ongoing project)</em></p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>Duration</dt><dd>July 2025 – Present</dd>
+  <dt>Role</dt><dd>Technical Architect (TA) · Backend &amp; Infrastructure Developer</dd>
+  <dt>Client</dt><dd>SK ON (Headquarters)</dd>
+  <dt>Tech</dt><dd>Vue 3 · Spring Boot · JPA · Oracle · Red Hat 9.4</dd>
+</dl>
+
+<h2 class="docs-h2">Overview</h2>
+<p class="docs-p">Each overseas subsidiary had been operating its own VoC system and CI/CD environment independently. I participated in planning a <strong>unified platform</strong> that standardizes them all under HQ standards, serving as <strong>Technical Architect (TA)</strong> throughout.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <text x="150" y="26" text-anchor="middle" fill="#e11d48" font-weight="700">Before — 자회사별 개별 운영</text>
+  <g fill="#0f172a">
+    <rect x="40" y="44" width="100" height="44" rx="8" fill="#fef2f2" stroke="#fecaca"/><text x="90" y="64" text-anchor="middle" font-size="11">Subsidiary A</text><text x="90" y="80" text-anchor="middle" font-size="9" fill="#64748b">VoC + CI/CD</text>
+    <rect x="40" y="98" width="100" height="44" rx="8" fill="#fef2f2" stroke="#fecaca"/><text x="90" y="118" text-anchor="middle" font-size="11">Subsidiary B</text><text x="90" y="134" text-anchor="middle" font-size="9" fill="#64748b">VoC + CI/CD</text>
+    <rect x="40" y="152" width="100" height="44" rx="8" fill="#fef2f2" stroke="#fecaca"/><text x="90" y="172" text-anchor="middle" font-size="11">Subsidiary …</text><text x="90" y="188" text-anchor="middle" font-size="9" fill="#64748b">VoC + CI/CD</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="140" y1="66" x2="300" y2="110"/><line x1="140" y1="120" x2="300" y2="120"/><line x1="140" y1="174" x2="300" y2="130"/>
+    <polygon points="304,120 294,114 295,124"/>
+  </g>
+  <text x="430" y="26" text-anchor="middle" fill="#0e8b87" font-weight="700">After — HQ 표준 통합 플랫폼</text>
+  <rect x="310" y="56" width="240" height="120" rx="12" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
+  <text x="430" y="82" text-anchor="middle" fill="#003B62" font-weight="700">Unified IT-VoC Platform</text>
+  <rect x="330" y="96" width="200" height="30" rx="6" fill="#fff" stroke="#0078d7"/><text x="430" y="116" text-anchor="middle" font-size="11">VoC (표준화)</text>
+  <rect x="330" y="132" width="200" height="30" rx="6" fill="#fff" stroke="#0078d7"/><text x="430" y="152" text-anchor="middle" font-size="11">CI/CD (표준화)</text>
+  <!-- dev/prod -->
+  <rect x="586" y="70" width="110" height="44" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="641" y="90" text-anchor="middle" font-size="11">Dev server</text><text x="641" y="106" text-anchor="middle" font-size="9" fill="#64748b">Red Hat 9.4</text>
+  <rect x="586" y="124" width="110" height="44" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="641" y="144" text-anchor="middle" font-size="11">Prod server</text><text x="641" y="160" text-anchor="middle" font-size="9" fill="#64748b">closed network</text>
+  <g stroke="#475569" stroke-width="1.4" fill="#475569"><line x1="550" y1="104" x2="584" y2="92"/><line x1="550" y1="130" x2="584" y2="142"/></g>
+</svg>
+<figcaption>자회사별로 흩어져 있던 VoC·CI/CD 를 HQ 표준의 단일 플랫폼으로 통합 (TA 로 인프라·아키텍처 설계)</figcaption>
+</div>
+
+<h2 class="docs-h2">Roles up to the first pilot release</h2>
+<ul class="docs-list">
+  <li>Led the <strong>overall infrastructure &amp; software architecture design</strong> for both development and production servers.</li>
+  <li>Addressed <strong>closed-network constraints</strong> — configured Red Hat 9.4 RPM packages and resolved OS-version compatibility issues.</li>
+  <li>Designed <strong>dev-environment workarounds</strong> for mismatches with the authentication server, and established a <strong>migration plan</strong> for production.</li>
+  <li>Provided developers with a <strong>fully equipped dev environment</strong> and delivered <strong>technical guidelines</strong>.</li>
+  <li>Performed end-to-end TA duties — <strong>technical communication with the client, requirements analysis, and deployment-strategy design</strong>.</li>
+</ul>
+
+</div>
+
+<!-- ============================ 한국어 ============================ -->
+<div class="docs-lang" data-lang="ko" hidden>
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>한 줄 요약</strong> — <strong>Technical Architect(TA)</strong> 로서, 해외 자회사별로 따로 운영되던 <strong>VoC(Voice of Customer)</strong> 시스템과 <strong>CI/CD</strong> 환경을 HQ 표준으로 통합하는 단일 플랫폼을 설계 중. <em>(진행 중 프로젝트)</em></p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>기간</dt><dd>2025년 7월 – 현재</dd>
+  <dt>역할</dt><dd>Technical Architect (TA) · 백엔드 &amp; 인프라 개발</dd>
+  <dt>고객</dt><dd>SK ON (본사)</dd>
+  <dt>기술</dt><dd>Vue 3 · Spring Boot · JPA · Oracle · Red Hat 9.4</dd>
+</dl>
+
+<h2 class="docs-h2">개요</h2>
+<p class="docs-p">해외 자회사들이 각자 VoC 시스템과 CI/CD 환경을 독립적으로 운영하고 있었다. 이를 HQ 표준으로 통합하는 <strong>단일 플랫폼</strong> 기획에 참여했고, 전 과정에서 <strong>Technical Architect(TA)</strong> 역할을 수행했다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <text x="150" y="26" text-anchor="middle" fill="#e11d48" font-weight="700">Before — 자회사별 개별 운영</text>
+  <g fill="#0f172a">
+    <rect x="40" y="44" width="100" height="44" rx="8" fill="#fef2f2" stroke="#fecaca"/><text x="90" y="64" text-anchor="middle" font-size="11">자회사 A</text><text x="90" y="80" text-anchor="middle" font-size="9" fill="#64748b">VoC + CI/CD</text>
+    <rect x="40" y="98" width="100" height="44" rx="8" fill="#fef2f2" stroke="#fecaca"/><text x="90" y="118" text-anchor="middle" font-size="11">자회사 B</text><text x="90" y="134" text-anchor="middle" font-size="9" fill="#64748b">VoC + CI/CD</text>
+    <rect x="40" y="152" width="100" height="44" rx="8" fill="#fef2f2" stroke="#fecaca"/><text x="90" y="172" text-anchor="middle" font-size="11">자회사 …</text><text x="90" y="188" text-anchor="middle" font-size="9" fill="#64748b">VoC + CI/CD</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="140" y1="66" x2="300" y2="110"/><line x1="140" y1="120" x2="300" y2="120"/><line x1="140" y1="174" x2="300" y2="130"/>
+    <polygon points="304,120 294,114 295,124"/>
+  </g>
+  <text x="430" y="26" text-anchor="middle" fill="#0e8b87" font-weight="700">After — HQ 표준 통합 플랫폼</text>
+  <rect x="310" y="56" width="240" height="120" rx="12" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
+  <text x="430" y="82" text-anchor="middle" fill="#003B62" font-weight="700">Unified IT-VoC Platform</text>
+  <rect x="330" y="96" width="200" height="30" rx="6" fill="#fff" stroke="#0078d7"/><text x="430" y="116" text-anchor="middle" font-size="11">VoC (표준화)</text>
+  <rect x="330" y="132" width="200" height="30" rx="6" fill="#fff" stroke="#0078d7"/><text x="430" y="152" text-anchor="middle" font-size="11">CI/CD (표준화)</text>
+  <rect x="586" y="70" width="110" height="44" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="641" y="90" text-anchor="middle" font-size="11">개발 서버</text><text x="641" y="106" text-anchor="middle" font-size="9" fill="#64748b">Red Hat 9.4</text>
+  <rect x="586" y="124" width="110" height="44" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="641" y="144" text-anchor="middle" font-size="11">운영 서버</text><text x="641" y="160" text-anchor="middle" font-size="9" fill="#64748b">폐쇄망</text>
+  <g stroke="#475569" stroke-width="1.4" fill="#475569"><line x1="550" y1="104" x2="584" y2="92"/><line x1="550" y1="130" x2="584" y2="142"/></g>
+</svg>
+<figcaption>자회사별로 흩어져 있던 VoC·CI/CD 를 HQ 표준의 단일 플랫폼으로 통합 (TA 로 인프라·아키텍처 설계)</figcaption>
+</div>
+
+<h2 class="docs-h2">1차 파일럿 릴리스까지의 역할</h2>
+<ul class="docs-list">
+  <li>개발·운영 서버 양쪽의 <strong>전체 인프라 &amp; 소프트웨어 아키텍처 설계</strong> 주도.</li>
+  <li><strong>폐쇄망(closed-network) 제약</strong> 대응 — Red Hat 9.4 RPM 패키지 구성 및 OS 버전 호환성 문제 해결.</li>
+  <li>인증 서버 불일치에 대한 <strong>개발 환경 우회책</strong> 설계 및 운영 배포를 위한 <strong>마이그레이션 계획</strong> 수립.</li>
+  <li>개발자들에게 <strong>완비된 개발 환경</strong> 제공 및 <strong>기술 가이드라인</strong> 전달.</li>
+  <li><strong>고객 기술 커뮤니케이션, 요구사항 분석, 배포 전략 설계</strong> 등 end-to-end TA 업무 수행.</li>
+</ul>
+
+</div>
+
+          </div>
+        </div>
+      </main>
+    </article>
+
+    <!-- ================= p2 : Reinforced Security Agent ================= -->
+    <article class="pd-article" id="p2" data-group="SK Inc. AX" data-nav='3|Reinforced Security Agent|2024 · R&amp;D PoC'>
+      <main class="docs-post">
+        <div class="docs-post__article">
+          <header class="docs-post__header">
+            <h1 class="docs-post__title">Reinforced Security Agent (AI Agent)</h1>
+          </header>
+          <div class="docs-post__body">
+
+<div class="docs-langtabs" role="tablist">
+  <button class="docs-langbtn is-active" data-lang="en">English</button>
+  <button class="docs-langbtn" data-lang="ko">한국어</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="docs-lang" data-lang="en">
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>One line</strong> — A <strong>self-reinforcing security agent</strong> (LLM + ReAct) that replaces rule-of-thumb WAF: it analyzes request context, decides whether it’s an attack, blocks it, and <em>autonomously updates its own defense policy</em> — a closed loop of detection → blocking → policy update → re-detection.</p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>Period</dt><dd>April 1, 2024 – July 10, 2024</dd>
+  <dt>Role</dt><dd>System planning, design, and full implementation</dd>
+  <dt>Type</dt><dd>In-house R&amp;D PoC (Proof of Concept)</dd>
+</dl>
+
+<h2 class="docs-h2">Background &amp; planning</h2>
+<p class="docs-p">Recent hacking incidents at organizations such as SKT and the Korea Employment Information Service made cybersecurity a major social issue. In our team’s AWS Cloud environment, security checks ran on a <strong>WAF with a rule-of-thumb approach</strong>, which was weak against newly emerging attack patterns. So I started an R&amp;D PoC for a <strong>self-reinforcing security agent</strong> that reads the context of incoming requests, judges potential attacks, and autonomously strengthens defense policies.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 290" width="720" height="290" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <rect x="20" y="108" width="90" height="64" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="65" y="145" text-anchor="middle">Request</text>
+  <!-- gateway -->
+  <rect x="150" y="108" width="150" height="64" rx="10" fill="#e8f3fc" stroke="#0078d7"/>
+  <text x="225" y="132" text-anchor="middle" fill="#003B62" font-weight="700">Secure Gateway</text>
+  <text x="225" y="152" text-anchor="middle" fill="#64748b" font-size="10">block / allow</text>
+  <!-- monitoring -->
+  <rect x="370" y="40" width="160" height="64" rx="10" fill="#e9f7f3" stroke="#0e8b87"/>
+  <text x="450" y="64" text-anchor="middle" fill="#0f172a" font-weight="700">Secure Monitoring</text>
+  <text x="450" y="84" text-anchor="middle" fill="#64748b" font-size="10">log-based anomaly detect</text>
+  <!-- LLM ReAct -->
+  <rect x="370" y="176" width="160" height="64" rx="10" fill="#fff" stroke="#0078d7"/>
+  <text x="450" y="200" text-anchor="middle" fill="#0f172a" font-weight="700">LLM · ReAct</text>
+  <text x="450" y="220" text-anchor="middle" fill="#64748b" font-size="10">reason → threat assess</text>
+  <!-- policy -->
+  <rect x="580" y="108" width="120" height="64" rx="10" fill="#fef2f2" stroke="#e11d48"/>
+  <text x="640" y="132" text-anchor="middle" fill="#0f172a" font-weight="700">Policy update</text>
+  <text x="640" y="152" text-anchor="middle" fill="#64748b" font-size="10">+ admin alert</text>
+  <!-- arrows: loop -->
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="110" y1="140" x2="146" y2="140"/><polygon points="150,140 140,135 140,145"/>
+    <line x1="300" y1="120" x2="368" y2="84"/><polygon points="370,82 360,82 364,90"/>
+    <line x1="450" y1="104" x2="450" y2="174"/><polygon points="450,176 446,167 454,167"/>
+    <line x1="530" y1="200" x2="600" y2="172"/><polygon points="600,170 591,172 595,179"/>
+  </g>
+  <path d="M640 108 C640 46 560 18 450 18 C340 18 225 50 225 100" fill="none" stroke="#0e8b87" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <polygon points="225,109 219,99 231,99" fill="#0e8b87"/>
+  <text x="360" y="270" text-anchor="middle" fill="#0e8b87" font-weight="700">탐지 → 차단 → 정책 업데이트 → 재탐지 (self-reinforcing loop)</text>
+</svg>
+<figcaption>Reinforced Security Agent replaces WAF — Gateway·Monitoring·LLM(ReAct) form a closed self-reinforcing loop</figcaption>
+</div>
+
+<h2 class="docs-h2">Impact</h2>
+<ul class="docs-list">
+  <li><strong>Real-time anomaly detection</strong> — adapts to unpredictable new threats while improving response time and resource efficiency.</li>
+  <li><strong>Self-reinforcing security loop</strong> — detection → blocking → policy update → re-detection.</li>
+  <li><strong>Automated policy updates</strong> — threat assessments are immediately reflected in Gateway policies.</li>
+  <li><strong>Integrated admin notifications + auto-blocking</strong> — better operational efficiency and reliability.</li>
+</ul>
+
+<h2 class="docs-h2">Tech stack</h2>
+<div class="docs-chips">
+  <span class="docs-chip docs-chip--key">Security</span><span class="docs-chip docs-chip--key">Agent</span><span class="docs-chip docs-chip--key">RAG</span><span class="docs-chip docs-chip--key">ReAct</span><span class="docs-chip docs-chip--key">Log</span>
+  <span class="docs-chip">Python</span><span class="docs-chip">FastAPI</span><span class="docs-chip">LangGraph</span><span class="docs-chip">LangChain</span>
+  <span class="docs-chip">Qdrant (VectorDB)</span>
+</div>
+
+<h2 class="docs-h2">Key roles &amp; achievements</h2>
+<p class="docs-p">Designed and implemented a <strong>fully automated end-to-end security system (Feedback System)</strong> by integrating Secure Monitoring and Secure Gateway agents into an LLM-based ReAct framework — covering log-based detection, real-time blocking and policy reinforcement.</p>
+<h3 class="docs-h3">⊙ Monitoring–Gateway integration architecture</h3>
+<ul class="docs-list">
+  <li>Designed a <strong>self-reinforcing loop</strong>: initial blocking → log collection → anomaly detection → automated response.</li>
+  <li>Implemented a <strong>bi-directional feedback</strong> mechanism between the Gateway and Monitoring agents.</li>
+  <li>Developed a <strong>ReAct-based reasoning &amp; policy-reinforcement flow</strong> powered by LLMs.</li>
+</ul>
+<h3 class="docs-h3">⊙ LLM-based threat detection &amp; response</h3>
+<ul class="docs-list">
+  <li>Designed <strong>LLM prompts &amp; tools</strong> for log summarization and threat assessment.</li>
+  <li>Enabled rapid response via <strong>Qdrant vector-DB caching</strong>.</li>
+  <li>Built suspicious-request classification (IP, URL, User-Agent) with <strong>few-shot</strong> techniques.</li>
+  <li>Implemented automated admin notifications and <strong>Gateway policy auto-update</strong>.</li>
+</ul>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">Troubleshooting 1 — Agent memory (token-based message management)</h2>
+<p class="docs-p">Unlike typical chat systems that continuously exchange messages with a user, here the server delivers only the initial <strong>System</strong> and <strong>Human</strong> messages at startup, then runs in a repeated loop. As messages accumulate, the initial System/Human context can eventually <strong>drop out</strong>. To prevent this, messages are segmented into <strong>10,000-token units</strong>, and every new message must explicitly include both the System and Human messages — keeping context consistent over long-term operation.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 180" width="720" height="180" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="180" y="22" text-anchor="middle" fill="#e11d48" font-weight="700">Case 1 — 초기 메시지 소실</text>
+  <g><rect x="40" y="40" width="40" height="34" rx="5" fill="#e8f3fc" stroke="#0078d7"/><text x="60" y="61" text-anchor="middle" font-size="9">Sys</text>
+  <rect x="84" y="40" width="40" height="34" rx="5" fill="#e9f7f3" stroke="#0e8b87"/><text x="104" y="61" text-anchor="middle" font-size="9">Hum</text>
+  <rect x="128" y="40" width="34" height="34" rx="5" fill="#eef2f7" stroke="#94a3b8"/><rect x="166" y="40" width="34" height="34" rx="5" fill="#eef2f7" stroke="#94a3b8"/><rect x="204" y="40" width="34" height="34" rx="5" fill="#eef2f7" stroke="#94a3b8"/><rect x="242" y="40" width="34" height="34" rx="5" fill="#fee2e2" stroke="#e11d48" stroke-dasharray="4 3"/></g>
+  <text x="180" y="96" text-anchor="middle" fill="#64748b">메시지 누적 → 앞쪽(Sys/Hum)이 잘림</text>
+  <text x="540" y="22" text-anchor="middle" fill="#0e8b87" font-weight="700">Case 2 — 10k 토큰 단위 + Sys/Hum 항상 포함</text>
+  <g>
+    <rect x="400" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="465" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk · 10k</text>
+    <rect x="540" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="605" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk · 10k</text>
+  </g>
+  <text x="540" y="96" text-anchor="middle" fill="#64748b">각 chunk 가 System·Human 을 명시 포함 → context 유지</text>
+</svg>
+<figcaption>장기 운영 시 초기 컨텍스트 소실을 막기 위해 10,000-token 단위로 분할하고 매 메시지에 System·Human 을 포함</figcaption>
+</div>
+
+<h2 class="docs-h2">Troubleshooting 2 — Log pipeline (long context to the LLM)</h2>
+<p class="docs-p">Sending the entire raw log to the LLM risks exceeding token limits; conversely, dumping raw logs into a Vector DB and querying them loses the <strong>flow/continuity</strong> of the logs. Vector storage also explodes — embedding just <strong>13.3 MB</strong> of raw log with <code>text-embedding-3-large</code> expands to <strong>914.2 MB</strong>.</p>
+
+<div class="docs-table-wrap">
+<table class="docs-table">
+<thead><tr><th>Embedding model</th><th>Location</th><th>Dim</th><th>Raw (log)</th><th>Vectorized</th><th>Time</th></tr></thead>
+<tbody>
+<tr><td>text-embedding-3-large</td><td>External</td><td>3072</td><td>13.3 MB</td><td>914.2 MB</td><td>41m 30.6s</td></tr>
+<tr><td>text-embedding-3-small</td><td>External</td><td>1536</td><td>13.3 MB</td><td>754.3 MB</td><td>20m 44.0s</td></tr>
+<tr><td>all-MiniLM-L6-v2</td><td>Local</td><td>384</td><td>13.3 MB</td><td>625.6 MB</td><td>22m 53.0s</td></tr>
+</tbody>
+</table>
+</div>
+<p class="docs-caption">[Table] Storage expansion by embedding model</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 170" width="720" height="170" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <rect x="30" y="64" width="120" height="44" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="90" y="84" text-anchor="middle">Logs</text><text x="90" y="100" text-anchor="middle" fill="#64748b" font-size="10">대용량 raw</text>
+  <rect x="220" y="60" width="150" height="52" rx="10" fill="#e8f3fc" stroke="#0078d7"/><text x="295" y="82" text-anchor="middle" fill="#003B62" font-weight="700">Message Broker</text><text x="295" y="100" text-anchor="middle" fill="#64748b" font-size="10">버퍼</text>
+  <rect x="440" y="56" width="120" height="60" rx="10" fill="#e9f7f3" stroke="#0e8b87"/><text x="500" y="80" text-anchor="middle" font-weight="700">Agent</text><text x="500" y="98" text-anchor="middle" fill="#64748b" font-size="10">poll (Tool API)</text>
+  <rect x="610" y="64" width="90" height="44" rx="10" fill="#fff" stroke="#0078d7"/><text x="655" y="90" text-anchor="middle" font-weight="700">LLM</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="150" y1="86" x2="216" y2="86"/><polygon points="220,86 210,81 210,91"/>
+    <line x1="440" y1="86" x2="374" y2="86"/><polygon points="370,86 380,81 380,91"/>
+    <line x1="560" y1="86" x2="606" y2="86"/><polygon points="610,86 600,81 600,91"/>
+  </g>
+  <text x="500" y="138" text-anchor="middle" fill="#64748b" font-size="11">필요한 만큼만 polling · 요청 건수는 agent 가 자율 결정</text>
+</svg>
+<figcaption>Message Broker 기반 파이프라인 — agent 가 Tool API 로 필요한 만큼만 로그를 가져와 LLM 에 전달</figcaption>
+</div>
+
+<p class="docs-p"><strong>Solution:</strong> deliver logs through a <strong>Message Broker–based pipeline</strong>. The agent polls data from the broker <strong>only as needed</strong>; polling is implemented as a <strong>Tool API</strong>; the agent invokes the tool and <strong>autonomously decides how many entries</strong> to request — ensuring efficient context handling.</p>
+
+<h2 class="docs-h2">Troubleshooting 3 — Limited reasoning (Inference Tool)</h2>
+<p class="docs-p">A ReAct agent mostly focuses on <strong>tool invocation</strong> with limited autonomous reasoning. I added an <strong>Inference Tool (<code>think_aloud</code>)</strong> so the agent can reason independently at intermediate steps. Tools can also conflict (Tool 1 says OK, Tool 2 says Not OK; only the last result may be applied) — resolved via <strong>prompt engineering</strong> so the agent weighs multiple tool outputs appropriately.</p>
+
+<h2 class="docs-h2">Troubleshooting 4 — Reducing external-API latency</h2>
+<ul class="docs-list">
+  <li><strong>Local embedding</strong> — a SentenceTransformer-based embedding layer is deployed locally, minimizing reliance on external API calls.</li>
+  <li><strong>Optimized initial judgment</strong> — if the LLM can make a first-level decision immediately, the system handles it directly (fast path) without invoking the full ReAct graph; only ambiguous cases go to the ReAct tools.</li>
+</ul>
+
+</div>
+
+<!-- ============================ 한국어 ============================ -->
+<div class="docs-lang" data-lang="ko" hidden>
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>한 줄 요약</strong> — Rule-of-Thumb WAF 를 대체하는 <strong>자기강화 보안 에이전트</strong>(LLM + ReAct). 요청의 맥락을 분석해 공격 여부를 판단하고 차단한 뒤, <em>스스로 방어 정책을 갱신</em> 한다 — 탐지 → 차단 → 정책 업데이트 → 재탐지의 닫힌 루프.</p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>기간</dt><dd>2024년 4월 1일 – 7월 10일</dd>
+  <dt>역할</dt><dd>시스템 기획·설계·전체 구현</dd>
+  <dt>성격</dt><dd>사내 R&amp;D PoC (개인 단위 연구과제)</dd>
+</dl>
+
+<h2 class="docs-h2">배경 &amp; 기획</h2>
+<p class="docs-p">최근 SKT, 한국고용정보원 등의 해킹 사고로 사이버 보안이 큰 사회적 이슈가 되었다. 우리 팀 AWS Cloud 환경에서는 <strong>Rule-of-Thumb 방식의 WAF</strong> 로 보안 점검을 했는데, 새롭게 등장하는 공격 패턴에 취약했다. 이 한계를 해결하고자, 들어오는 요청의 맥락을 분석해 공격을 판단하고 스스로 방어 정책을 강화하는 <strong>자기강화 보안 에이전트</strong> R&amp;D 과제를 시작했다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 290" width="720" height="290" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <rect x="20" y="120" width="90" height="40" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="65" y="144" text-anchor="middle">요청</text>
+  <rect x="150" y="108" width="150" height="64" rx="10" fill="#e8f3fc" stroke="#0078d7"/>
+  <text x="225" y="132" text-anchor="middle" fill="#003B62" font-weight="700">Secure Gateway</text>
+  <text x="225" y="152" text-anchor="middle" fill="#64748b" font-size="10">차단 / 허용</text>
+  <rect x="370" y="40" width="160" height="64" rx="10" fill="#e9f7f3" stroke="#0e8b87"/>
+  <text x="450" y="64" text-anchor="middle" fill="#0f172a" font-weight="700">Secure Monitoring</text>
+  <text x="450" y="84" text-anchor="middle" fill="#64748b" font-size="10">로그 기반 이상 탐지</text>
+  <rect x="370" y="176" width="160" height="64" rx="10" fill="#fff" stroke="#0078d7"/>
+  <text x="450" y="200" text-anchor="middle" fill="#0f172a" font-weight="700">LLM · ReAct</text>
+  <text x="450" y="220" text-anchor="middle" fill="#64748b" font-size="10">추론 → 위협 판단</text>
+  <rect x="580" y="108" width="120" height="64" rx="10" fill="#fef2f2" stroke="#e11d48"/>
+  <text x="640" y="132" text-anchor="middle" fill="#0f172a" font-weight="700">정책 업데이트</text>
+  <text x="640" y="152" text-anchor="middle" fill="#64748b" font-size="10">+ 관리자 알림</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="110" y1="140" x2="146" y2="140"/><polygon points="150,140 140,135 140,145"/>
+    <line x1="300" y1="120" x2="368" y2="84"/><polygon points="370,82 360,82 364,90"/>
+    <line x1="450" y1="104" x2="450" y2="174"/><polygon points="450,176 446,167 454,167"/>
+    <line x1="530" y1="200" x2="600" y2="172"/><polygon points="600,170 591,172 595,179"/>
+  </g>
+  <path d="M640 108 C640 46 560 18 450 18 C340 18 225 50 225 100" fill="none" stroke="#0e8b87" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <polygon points="225,109 219,99 231,99" fill="#0e8b87"/>
+  <text x="360" y="270" text-anchor="middle" fill="#0e8b87" font-weight="700">탐지 → 차단 → 정책 업데이트 → 재탐지 (자기강화 루프)</text>
+</svg>
+<figcaption>WAF 를 대체하는 Reinforced Security Agent — Gateway·Monitoring·LLM(ReAct)이 닫힌 자기강화 루프를 이룬다</figcaption>
+</div>
+
+<h2 class="docs-h2">성과</h2>
+<ul class="docs-list">
+  <li><strong>실시간 이상 탐지</strong> — 예측 불가능한 신규 위협에 적응하면서 응답 시간·자원 효율 개선.</li>
+  <li><strong>자기강화 보안 루프</strong> — 탐지 → 차단 → 정책 업데이트 → 재탐지.</li>
+  <li><strong>자동 정책 업데이트</strong> — 위협 판단을 즉시 Gateway 정책에 반영.</li>
+  <li><strong>관리자 알림 + 자동 차단 통합</strong> — 운영 효율·보안 신뢰성 향상.</li>
+</ul>
+
+<h2 class="docs-h2">기술 스택</h2>
+<div class="docs-chips">
+  <span class="docs-chip docs-chip--key">Security</span><span class="docs-chip docs-chip--key">Agent</span><span class="docs-chip docs-chip--key">RAG</span><span class="docs-chip docs-chip--key">ReAct</span><span class="docs-chip docs-chip--key">Log</span>
+  <span class="docs-chip">Python</span><span class="docs-chip">FastAPI</span><span class="docs-chip">LangGraph</span><span class="docs-chip">LangChain</span>
+  <span class="docs-chip">Qdrant (VectorDB)</span>
+</div>
+
+<h2 class="docs-h2">핵심 역할 &amp; 성과</h2>
+<p class="docs-p">Secure Monitoring 과 Secure Gateway 에이전트를 LLM 기반 ReAct 프레임워크로 통합하여, 로그 기반 탐지부터 실시간 차단·정책 강화까지 아우르는 <strong>완전 자동화 end-to-end 보안 시스템(Feedback System)</strong> 을 설계·구현했다.</p>
+<h3 class="docs-h3">⊙ Monitoring–Gateway 통합 아키텍처</h3>
+<ul class="docs-list">
+  <li><strong>자기강화 루프</strong> 설계: 초기 차단 → 로그 수집 → 이상 탐지 → 자동 대응.</li>
+  <li>Gateway–Monitoring 에이전트 간 <strong>양방향 피드백</strong> 메커니즘 구현.</li>
+  <li>LLM 기반 <strong>ReAct 추론·정책 강화 흐름</strong> 개발.</li>
+</ul>
+<h3 class="docs-h3">⊙ LLM 기반 위협 탐지·대응</h3>
+<ul class="docs-list">
+  <li>로그 요약·위협 판단을 위한 <strong>LLM 프롬프트·툴</strong> 설계.</li>
+  <li><strong>Qdrant 벡터 DB 캐싱</strong> 으로 빠른 대응.</li>
+  <li>의심 요청 분류(IP·URL·User-Agent)를 <strong>few-shot</strong> 로 구축.</li>
+  <li>관리자 자동 알림 + <strong>Gateway 정책 자동 업데이트</strong> 구현.</li>
+</ul>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">트러블슈팅 1 — 에이전트 메모리(토큰 기반 메시지 관리)</h2>
+<p class="docs-p">사용자와 계속 메시지를 주고받는 일반 대화 시스템과 달리, 여기서는 서버가 시작 시 <strong>System·Human 메시지만</strong> 에이전트에 전달한 뒤 반복 루프로 동작한다. 이 과정에서 메시지가 쌓이면 초기 System/Human 컨텍스트가 결국 <strong>사라질 수 있다</strong>. 이를 막기 위해 메시지를 <strong>10,000-token 단위</strong> 로 분할하고, 모든 새 메시지가 System·Human 메시지를 명시적으로 포함하도록 하여 장기 운영 내내 컨텍스트를 일관되게 유지했다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 180" width="720" height="180" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="180" y="22" text-anchor="middle" fill="#e11d48" font-weight="700">Case 1 — 초기 메시지 소실</text>
+  <g><rect x="40" y="40" width="40" height="34" rx="5" fill="#e8f3fc" stroke="#0078d7"/><text x="60" y="61" text-anchor="middle" font-size="9">Sys</text>
+  <rect x="84" y="40" width="40" height="34" rx="5" fill="#e9f7f3" stroke="#0e8b87"/><text x="104" y="61" text-anchor="middle" font-size="9">Hum</text>
+  <rect x="128" y="40" width="34" height="34" rx="5" fill="#eef2f7" stroke="#94a3b8"/><rect x="166" y="40" width="34" height="34" rx="5" fill="#eef2f7" stroke="#94a3b8"/><rect x="204" y="40" width="34" height="34" rx="5" fill="#eef2f7" stroke="#94a3b8"/><rect x="242" y="40" width="34" height="34" rx="5" fill="#fee2e2" stroke="#e11d48" stroke-dasharray="4 3"/></g>
+  <text x="180" y="96" text-anchor="middle" fill="#64748b">메시지 누적 → 앞쪽(Sys/Hum)이 잘림</text>
+  <text x="540" y="22" text-anchor="middle" fill="#0e8b87" font-weight="700">Case 2 — 10k 토큰 단위 + Sys/Hum 항상 포함</text>
+  <g>
+    <rect x="400" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="465" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk · 10k</text>
+    <rect x="540" y="40" width="130" height="34" rx="5" fill="#fff" stroke="#0078d7"/><text x="605" y="61" text-anchor="middle" font-size="9">[Sys+Hum] chunk · 10k</text>
+  </g>
+  <text x="540" y="96" text-anchor="middle" fill="#64748b">각 chunk 가 System·Human 을 명시 포함 → context 유지</text>
+</svg>
+<figcaption>장기 운영 시 초기 컨텍스트 소실을 막기 위해 10,000-token 단위로 분할하고 매 메시지에 System·Human 을 포함</figcaption>
+</div>
+
+<h2 class="docs-h2">트러블슈팅 2 — 로그 파이프라인(LLM 에 긴 컨텍스트 전달)</h2>
+<p class="docs-p">전체 raw 로그를 그대로 LLM 에 보내면 토큰 한도를 넘길 위험이 있고, 반대로 raw 로그를 Vector DB 에 넣고 쿼리하면 로그의 <strong>흐름·연속성</strong> 을 놓쳐 맥락이 끊긴다. 게다가 벡터 저장소 용량이 폭증한다 — <code>text-embedding-3-large</code> 로 <strong>13.3 MB</strong> 의 raw 로그를 임베딩하면 Vector DB 에서 <strong>914.2 MB</strong> 로 늘어난다.</p>
+
+<div class="docs-table-wrap">
+<table class="docs-table">
+<thead><tr><th>Embedding model</th><th>위치</th><th>차원</th><th>Raw (log)</th><th>Vectorized</th><th>시간</th></tr></thead>
+<tbody>
+<tr><td>text-embedding-3-large</td><td>External</td><td>3072</td><td>13.3 MB</td><td>914.2 MB</td><td>41m 30.6s</td></tr>
+<tr><td>text-embedding-3-small</td><td>External</td><td>1536</td><td>13.3 MB</td><td>754.3 MB</td><td>20m 44.0s</td></tr>
+<tr><td>all-MiniLM-L6-v2</td><td>Local</td><td>384</td><td>13.3 MB</td><td>625.6 MB</td><td>22m 53.0s</td></tr>
+</tbody>
+</table>
+</div>
+<p class="docs-caption">[표] 임베딩 모델별 저장 용량 팽창</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 170" width="720" height="170" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <rect x="30" y="64" width="120" height="44" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="90" y="84" text-anchor="middle">Logs</text><text x="90" y="100" text-anchor="middle" fill="#64748b" font-size="10">대용량 raw</text>
+  <rect x="220" y="60" width="150" height="52" rx="10" fill="#e8f3fc" stroke="#0078d7"/><text x="295" y="82" text-anchor="middle" fill="#003B62" font-weight="700">Message Broker</text><text x="295" y="100" text-anchor="middle" fill="#64748b" font-size="10">버퍼</text>
+  <rect x="440" y="56" width="120" height="60" rx="10" fill="#e9f7f3" stroke="#0e8b87"/><text x="500" y="80" text-anchor="middle" font-weight="700">Agent</text><text x="500" y="98" text-anchor="middle" fill="#64748b" font-size="10">poll (Tool API)</text>
+  <rect x="610" y="64" width="90" height="44" rx="10" fill="#fff" stroke="#0078d7"/><text x="655" y="90" text-anchor="middle" font-weight="700">LLM</text>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="150" y1="86" x2="216" y2="86"/><polygon points="220,86 210,81 210,91"/>
+    <line x1="440" y1="86" x2="374" y2="86"/><polygon points="370,86 380,81 380,91"/>
+    <line x1="560" y1="86" x2="606" y2="86"/><polygon points="610,86 600,81 600,91"/>
+  </g>
+  <text x="500" y="138" text-anchor="middle" fill="#64748b" font-size="11">필요한 만큼만 polling · 요청 건수는 agent 가 자율 결정</text>
+</svg>
+<figcaption>Message Broker 기반 파이프라인 — agent 가 Tool API 로 필요한 만큼만 로그를 가져와 LLM 에 전달</figcaption>
+</div>
+
+<p class="docs-p"><strong>해결:</strong> 로그를 <strong>Message Broker 기반 파이프라인</strong> 으로 전달한다. 에이전트가 broker 에서 <strong>필요한 만큼만</strong> polling 하고, polling 은 <strong>Tool API</strong> 로 구현했으며, 에이전트가 tool 을 호출하면서 <strong>요청 건수를 스스로 결정</strong> 한다 — 효율적인 컨텍스트 처리가 가능해졌다.</p>
+
+<h2 class="docs-h2">트러블슈팅 3 — 제한된 추론(Inference Tool)</h2>
+<p class="docs-p">ReAct 에이전트는 주로 <strong>tool 호출</strong> 에 초점이 맞춰져 자율적 추론 능력이 제한적이다. 중간 단계의 추론을 보강하기 위해 <strong>Inference Tool(<code>think_aloud</code>)</strong> 을 추가하여 에이전트가 독립적으로 사고할 수 있게 했다. 또한 tool 간 충돌(예: Tool 1 은 OK, Tool 2 는 Not OK 인데 마지막 tool 결과만 적용)이 생길 수 있는데, 이는 <strong>프롬프트 엔지니어링</strong> 으로 여러 tool 결과를 적절히 고려하도록 해결했다.</p>
+
+<h2 class="docs-h2">트러블슈팅 4 — 외부 API 지연 감소</h2>
+<ul class="docs-list">
+  <li><strong>로컬 임베딩</strong> — SentenceTransformer 기반 임베딩 레이어를 로컬에 두어 외부 API 호출 의존을 최소화.</li>
+  <li><strong>초기 판단 최적화</strong> — LLM 이 1차 판단을 즉시 내릴 수 있으면 ReAct Graph 의 tool 을 거치지 않고 <strong>빠르게 직접 처리</strong>; 모호한 경우만 ReAct tool 로 넘긴다.</li>
+</ul>
+
+</div>
+
+          </div>
+        </div>
+      </main>
+    </article>
+
+    <!-- ================= p3 : Data Analysis Solution ================= -->
+    <article class="pd-article" id="p3" data-group="SK Inc. AX" data-nav='4|Data Analysis Solution|2024–2025 · SPC'>
+      <main class="docs-post">
+        <div class="docs-post__article">
+          <header class="docs-post__header">
+            <h1 class="docs-post__title">Data Analysis Solution</h1>
+          </header>
+          <div class="docs-post__body">
+
+<div class="docs-langtabs" role="tablist">
+  <button class="docs-langbtn is-active" data-lang="en">English</button>
+  <button class="docs-langbtn" data-lang="ko">한국어</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="docs-lang" data-lang="en">
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>One line</strong> — An <strong>analysis-driven process management platform</strong> that goes beyond monitoring-only SPC: users upload raw data and run statistical analyses (normality, t-test, ANOVA) directly through the UI, powered by a Python statistical engine exposed as APIs.</p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>Period</dt><dd>August 2024 – March 2025</dd>
+  <dt>Role</dt><dd>Design &amp; Development of the Data Analysis Engine and UI/UX</dd>
+  <dt>Scope</dt><dd>Solution Enhancement &nbsp;·&nbsp; (Dev result: Confidential)</dd>
+</dl>
+
+<h2 class="docs-h2">Overview</h2>
+<p class="docs-p">Traditional SPC(Statistical Process Control) systems focus on simple monitoring. This platform lets users upload raw data and perform statistical analyses directly. Core methods — <strong>normality tests, t-tests, ANOVA</strong> — are implemented as APIs with a UI for visualizing results, and the Python statistical engine, backend server and web UI are wired into one integrated architecture.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <!-- sources -->
+  <text x="76" y="28" text-anchor="middle" fill="#64748b" font-weight="700">Data sources</text>
+  <g fill="#0f172a">
+    <rect x="24" y="39" width="104" height="28" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="76" y="57" text-anchor="middle">DB (Oracle…)</text>
+    <rect x="24" y="79" width="104" height="28" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="76" y="97" text-anchor="middle">CSV</text>
+    <rect x="24" y="119" width="104" height="28" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="76" y="137" text-anchor="middle">JSON</text>
+  </g>
+  <!-- preprocess (centered on flow axis y=93) -->
+  <rect x="158" y="64" width="96" height="58" rx="8" fill="#e9f7f3" stroke="#0e8b87"/>
+  <text x="206" y="88" text-anchor="middle" fill="#0f172a" font-weight="700">Preprocess</text>
+  <text x="206" y="106" text-anchor="middle" fill="#64748b" font-size="10">검증·결측·변환</text>
+  <!-- backend -->
+  <rect x="296" y="47" width="150" height="92" rx="10" fill="#e8f3fc" stroke="#0078d7"/>
+  <text x="371" y="69" text-anchor="middle" fill="#003B62" font-weight="700">FastAPI backend</text>
+  <rect x="312" y="80" width="118" height="22" rx="5" fill="#fff" stroke="#0078d7"/><text x="371" y="95" text-anchor="middle" font-size="10">Process Manager</text>
+  <rect x="312" y="108" width="118" height="22" rx="5" fill="#fff" stroke="#0078d7"/><text x="371" y="123" text-anchor="middle" font-size="10">REST analysis API</text>
+  <!-- engine (same rows as sources column) -->
+  <text x="555" y="28" text-anchor="middle" fill="#64748b" font-weight="700">분석 엔진 (subprocess)</text>
+  <g fill="#0f172a">
+    <rect x="480" y="39" width="150" height="28" rx="6" fill="#fff" stroke="#0e8b87"/><text x="555" y="57" text-anchor="middle">Normality test</text>
+    <rect x="480" y="79" width="150" height="28" rx="6" fill="#fff" stroke="#0e8b87"/><text x="555" y="97" text-anchor="middle">t-test</text>
+    <rect x="480" y="119" width="150" height="28" rx="6" fill="#fff" stroke="#0e8b87"/><text x="555" y="137" text-anchor="middle">ANOVA</text>
+  </g>
+  <!-- UI -->
+  <rect x="296" y="184" width="150" height="44" rx="10" fill="#eef2f7" stroke="#94a3b8"/>
+  <text x="371" y="206" text-anchor="middle" fill="#0f172a" font-weight="700">Web UI (Vue.js)</text>
+  <text x="371" y="222" text-anchor="middle" fill="#64748b" font-size="10">결과 시각화</text>
+  <!-- arrows (all aligned on flow axis y=93) -->
+  <g stroke="#475569" stroke-width="1.5" fill="#475569">
+    <line x1="128" y1="93" x2="156" y2="93"/><polygon points="158,93 150,89 150,97"/>
+    <line x1="254" y1="93" x2="294" y2="93"/><polygon points="296,93 288,89 288,97"/>
+    <line x1="446" y1="93" x2="478" y2="93"/><polygon points="480,93 472,89 472,97"/>
+    <line x1="371" y1="139" x2="371" y2="182"/><polygon points="371,184 367,176 375,176"/>
+  </g>
+  <text x="270" y="262" fill="#64748b" font-size="11">기존 ifacts SPC 솔루션에 분석 기능을 내장</text>
+</svg>
+<figcaption>Integrated architecture — sources → preprocess → FastAPI(Process Manager) → analysis subprocess → Vue UI</figcaption>
+</div>
+
+<h2 class="docs-h2">Impact</h2>
+<ul class="docs-list">
+  <li>Ensured consistency and automation of analysis results through <strong>standardized analysis APIs</strong>.</li>
+  <li>Established an automated analysis framework <strong>inside the platform without external tools</strong> (e.g., Minitab).</li>
+  <li>Enabled <strong>proactive response to process anomalies</strong> by embedding analysis into the existing ifacts SPC solution.</li>
+  <li>Supported multiple file formats (CSV/JSON) and DB inputs, letting users analyze directly via the UI.</li>
+</ul>
+
+<h2 class="docs-h2">Tech stack</h2>
+<div class="docs-chips">
+  <span class="docs-chip docs-chip--key">Data Analytics Solution</span><span class="docs-chip docs-chip--key">SPC</span>
+  <span class="docs-chip">Python 3.11</span><span class="docs-chip">FastAPI</span><span class="docs-chip">JavaScript</span><span class="docs-chip">Vue.js</span>
+  <span class="docs-chip">Oracle</span><span class="docs-chip">MariaDB</span><span class="docs-chip">SQLAlchemy</span>
+  <span class="docs-chip">Linux (Ubuntu/CentOS)</span><span class="docs-chip">AWS</span><span class="docs-chip">On-premise</span>
+</div>
+
+<h2 class="docs-h2">Key roles &amp; achievements</h2>
+<h3 class="docs-h3">⊙ UI &amp; API design for analysis</h3>
+<ul class="docs-list">
+  <li>Benchmarked commercial tools (Minitab, JMP) to design an intuitive UI.</li>
+  <li>Implemented a <strong>FastAPI</strong>-based REST API server to handle analysis requests.</li>
+  <li>Exposed core statistical methods (normality tests, t-tests, ANOVA) as APIs.</li>
+</ul>
+<h3 class="docs-h3">⊙ Stable analysis-engine architecture</h3>
+<ul class="docs-list">
+  <li>Built a <strong>Process Manager</strong> to overcome Python GIL — state management + multi-core utilization.</li>
+  <li>Ran each analysis request in a <strong>dedicated subprocess</strong> for stable parallelism.</li>
+  <li>Developed inter-process <strong>health-check</strong> functionality.</li>
+</ul>
+<h3 class="docs-h3">⊙ Flexible data ingestion &amp; preprocessing</h3>
+<ul class="docs-list">
+  <li>Parsers for multiple input formats (DB, JSON, CSV).</li>
+  <li>Automated preprocessing — validation, missing-value handling, transformation.</li>
+</ul>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">Troubleshooting 1 — Python GIL &amp; multi-core</h2>
+<p class="docs-p"><strong>Problem:</strong> Python’s <strong>GIL(Global Interpreter Lock)</strong> restricts CPU-bound work, so a multi-process approach is forced. When many users analyze simultaneously, CPU contention causes bottlenecks. But in a multi-process setup it is structurally hard to keep <strong>per-user state</strong> (Uvicorn just adds workers with round-robin) — uploading data and then requesting analysis may hit different processes, disconnecting the user’s state. Unlike Java, Python is weak at memory-shared session management across processes. And due to solution-team policy, external state stores (e.g., Redis) were not allowed — an internalized approach was required.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <!-- users -->
+  <g fill="#0f172a"><rect x="20" y="60" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="78" text-anchor="middle">User A</text>
+  <rect x="20" y="100" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="118" text-anchor="middle">User B</text>
+  <rect x="20" y="140" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="158" text-anchor="middle">User …</text></g>
+  <!-- process manager -->
+  <rect x="170" y="70" width="150" height="90" rx="10" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
+  <text x="245" y="98" text-anchor="middle" fill="#003B62" font-weight="700">Process Manager</text>
+  <text x="245" y="118" text-anchor="middle" fill="#64748b" font-size="10">gateway · 사용자 state</text>
+  <text x="245" y="134" text-anchor="middle" fill="#64748b" font-size="10">import+analysis = 1 unit</text>
+  <text x="245" y="150" text-anchor="middle" fill="#64748b" font-size="10">health check</text>
+  <!-- subprocesses (multi-core) -->
+  <text x="560" y="40" text-anchor="middle" fill="#64748b" font-weight="700">Dedicated subprocess / core</text>
+  <g fill="#0f172a">
+    <rect x="430" y="52" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="70" text-anchor="middle">subprocess · CPU core 1</text>
+    <rect x="430" y="100" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="118" text-anchor="middle">subprocess · CPU core 2</text>
+    <rect x="430" y="148" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="166" text-anchor="middle">subprocess · CPU core N</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.5" fill="#475569">
+    <line x1="100" y1="100" x2="168" y2="108"/><polygon points="170,108 161,105 163,113"/>
+    <line x1="320" y1="100" x2="428" y2="65"/><polygon points="430,65 421,63 423,71"/>
+    <line x1="320" y1="113" x2="428" y2="113"/><polygon points="430,113 421,109 421,117"/>
+    <line x1="320" y1="126" x2="428" y2="161"/><polygon points="430,161 421,156 419,164"/>
+  </g>
+  <text x="245" y="200" text-anchor="middle" fill="#0e8b87" font-weight="700">외부 저장소(Redis) 없이 stateful 유지 · GIL 병목 회피</text>
+</svg>
+<figcaption>Process Manager가 게이트웨이처럼 사용자 state·프로세스 연결을 직접 관리 → 외부 저장소 없이 다중코어 활용</figcaption>
+</div>
+
+<p class="docs-p"><strong>Solution:</strong> Implemented a <strong>Process Manager</strong> that centrally controls processes and manages per-user state. Acting like a gateway, it handles inter-process state delivery and connectivity, keeping a stateful context <strong>without external storage</strong>. By managing data import + analysis as a single unit in the DB keyed by user ID, session continuity is preserved — yielding a scalable, reliable distributed-computation structure that avoids the GIL bottleneck while using multi-core resources.</p>
+
+<h2 class="docs-h2">Troubleshooting 2 — Visualization CPU overload</h2>
+<p class="docs-p"><strong>Problem:</strong> Rendering 100,000+ points in the browser (e.g., a scatter plot of all points) overwhelmed it; transmitting large datasets risked heavy server load; and client PCs were overloaded — visualization became the biggest performance challenge.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 230" width="720" height="230" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="180" y="24" text-anchor="middle" fill="#e11d48" font-weight="700">100,000+ points → overload</text>
+  <rect x="40" y="36" width="280" height="160" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+  <g fill="#e11d48" opacity="0.7">
+    <circle cx="80" cy="150" r="2"/><circle cx="95" cy="140" r="2"/><circle cx="110" cy="155" r="2"/><circle cx="120" cy="120" r="2"/><circle cx="135" cy="135" r="2"/><circle cx="150" cy="110" r="2"/><circle cx="165" cy="128" r="2"/><circle cx="180" cy="100" r="2"/><circle cx="195" cy="118" r="2"/><circle cx="210" cy="95" r="2"/><circle cx="225" cy="108" r="2"/><circle cx="240" cy="85" r="2"/><circle cx="255" cy="98" r="2"/><circle cx="270" cy="78" r="2"/>
+    <circle cx="88" cy="130" r="2"/><circle cx="118" cy="148" r="2"/><circle cx="148" cy="132" r="2"/><circle cx="178" cy="122" r="2"/><circle cx="208" cy="112" r="2"/><circle cx="238" cy="104" r="2"/><circle cx="268" cy="96" r="2"/><circle cx="100" cy="160" r="2"/><circle cx="160" cy="150" r="2"/><circle cx="220" cy="130" r="2"/><circle cx="130" cy="105" r="2"/><circle cx="190" cy="138" r="2"/><circle cx="250" cy="120" r="2"/><circle cx="105" cy="118" r="2"/><circle cx="200" cy="80" r="2"/><circle cx="145" cy="92" r="2"/>
+  </g>
+  <text x="400" y="24" text-anchor="middle" fill="#0e8b87" font-weight="700">Random sample → 같은 분포</text>
+  <rect x="400" y="36" width="280" height="160" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <g fill="#0e8b87">
+    <circle cx="440" cy="150" r="3"/><circle cx="490" cy="135" r="3"/><circle cx="520" cy="120" r="3"/><circle cx="560" cy="105" r="3"/><circle cx="600" cy="92" r="3"/><circle cx="640" cy="80" r="3"/><circle cx="470" cy="128" r="3"/><circle cx="540" cy="112" r="3"/><circle cx="620" cy="98" r="3"/>
+  </g>
+  <text x="540" y="214" text-anchor="middle" fill="#64748b" font-size="11">ECDF → CDF (Glivenko–Cantelli) : 분포 차이 거의 없음</text>
+</svg>
+<figcaption>전수(100k) 대신 random sampling — 추세 파악이 목적이므로 표본 분포가 거의 동일해 효율적 시각화</figcaption>
+</div>
+
+<p class="docs-p"><strong>Solution (theoretical, domain-specific):</strong> Commercial tools (Minitab, JMP) are Windows executables that process data locally or connect directly to a DB, overcoming browser limits — a clear recognition that this is a <em>system-level limitation</em>. Since a full system-level fix was infeasible, I applied a <strong>statistical-theoretical</strong> approach: the <strong>Glivenko–Cantelli theorem</strong> guarantees the empirical CDF (ECDF) almost surely converges to the true CDF. Because visualization aims to capture overall trends (not outliers), <strong>random sampling</strong> was adopted; sampled datasets showed no significant distributional difference, enabling efficient visualization.</p>
+
+</div>
+
+<!-- ============================ 한국어 ============================ -->
+<div class="docs-lang" data-lang="ko" hidden>
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>한 줄 요약</strong> — 단순 모니터링 위주의 기존 SPC 를 넘어, 사용자가 raw data 를 올려 통계 분석(정규성·t-검정·ANOVA)을 UI 에서 직접 수행하는 <strong>분석 중심 공정관리 플랫폼</strong>. Python 통계 엔진을 API 로 제공한다.</p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>기간</dt><dd>2024년 8월 – 2025년 3월</dd>
+  <dt>역할</dt><dd>데이터 분석 엔진 및 UI/UX 설계·개발</dd>
+  <dt>범위</dt><dd>솔루션 고도화 &nbsp;·&nbsp; (개발 결과: 대외비)</dd>
+</dl>
+
+<h2 class="docs-h2">개요</h2>
+<p class="docs-p">전통적인 SPC(통계적 공정관리) 시스템은 단순 모니터링에 초점이 맞춰져 있다. 이 플랫폼은 사용자가 raw data 를 업로드해 통계 분석을 직접 수행할 수 있게 한다. <strong>정규성 검정, t-검정, ANOVA</strong> 등 핵심 통계 기법을 API 로 구현하고 결과 시각화 UI 를 제공했으며, Python 기반 통계 엔진·백엔드 서버·웹 UI 를 잇는 통합 아키텍처를 설계·개발했다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <text x="70" y="30" text-anchor="middle" fill="#64748b" font-weight="700">데이터 소스</text>
+  <g fill="#0f172a">
+    <rect x="24" y="46" width="92" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="70" y="64" text-anchor="middle">DB (Oracle…)</text>
+    <rect x="24" y="80" width="92" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="70" y="98" text-anchor="middle">CSV</text>
+    <rect x="24" y="114" width="92" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="70" y="132" text-anchor="middle">JSON</text>
+  </g>
+  <rect x="150" y="64" width="96" height="58" rx="8" fill="#e9f7f3" stroke="#0e8b87"/>
+  <text x="198" y="88" text-anchor="middle" fill="#0f172a" font-weight="700">전처리</text>
+  <text x="198" y="106" text-anchor="middle" fill="#64748b" font-size="10">검증·결측·변환</text>
+  <rect x="288" y="48" width="150" height="92" rx="10" fill="#e8f3fc" stroke="#0078d7"/>
+  <text x="363" y="70" text-anchor="middle" fill="#003B62" font-weight="700">FastAPI 백엔드</text>
+  <rect x="304" y="80" width="118" height="22" rx="5" fill="#fff" stroke="#0078d7"/><text x="363" y="95" text-anchor="middle" font-size="10">Process Manager</text>
+  <rect x="304" y="108" width="118" height="22" rx="5" fill="#fff" stroke="#0078d7"/><text x="363" y="123" text-anchor="middle" font-size="10">REST 분석 API</text>
+  <text x="556" y="30" text-anchor="middle" fill="#64748b" font-weight="700">분석 엔진 (subprocess)</text>
+  <g fill="#0f172a">
+    <rect x="480" y="44" width="150" height="24" rx="6" fill="#fff" stroke="#0e8b87"/><text x="555" y="60" text-anchor="middle">정규성 검정</text>
+    <rect x="480" y="74" width="150" height="24" rx="6" fill="#fff" stroke="#0e8b87"/><text x="555" y="90" text-anchor="middle">t-검정</text>
+    <rect x="480" y="104" width="150" height="24" rx="6" fill="#fff" stroke="#0e8b87"/><text x="555" y="120" text-anchor="middle">ANOVA</text>
+  </g>
+  <rect x="288" y="180" width="150" height="42" rx="10" fill="#eef2f7" stroke="#94a3b8"/>
+  <text x="363" y="200" text-anchor="middle" fill="#0f172a" font-weight="700">웹 UI (Vue.js)</text>
+  <text x="363" y="216" text-anchor="middle" fill="#64748b" font-size="10">결과 시각화</text>
+  <g stroke="#475569" stroke-width="1.5" fill="#475569">
+    <line x1="116" y1="93" x2="148" y2="93"/><polygon points="150,93 142,89 142,97"/>
+    <line x1="246" y1="93" x2="286" y2="93"/><polygon points="288,93 280,89 280,97"/>
+    <line x1="438" y1="86" x2="478" y2="80"/><polygon points="480,80 471,78 473,86"/>
+    <line x1="363" y1="140" x2="363" y2="178"/><polygon points="363,180 359,172 367,172"/>
+  </g>
+  <text x="270" y="258" fill="#64748b" font-size="11">기존 ifacts SPC 솔루션에 분석 기능을 내장</text>
+</svg>
+<figcaption>통합 아키텍처 — 소스 → 전처리 → FastAPI(Process Manager) → 분석 subprocess → Vue UI</figcaption>
+</div>
+
+<h2 class="docs-h2">성과</h2>
+<ul class="docs-list">
+  <li>표준화된 <strong>분석 API</strong> 로 분석 결과의 일관성·자동화를 확보.</li>
+  <li>외부 도구(예: Minitab) 없이 <strong>플랫폼 내부에 자동 분석 프레임워크</strong> 를 구축.</li>
+  <li>기존 ifacts SPC 솔루션에 분석 기능을 내장하여 <strong>공정 이상에 선제 대응</strong> 가능.</li>
+  <li>다양한 파일 포맷(CSV/JSON)·DB 입력을 지원하여 UI 에서 직접 분석.</li>
+</ul>
+
+<h2 class="docs-h2">기술 스택</h2>
+<div class="docs-chips">
+  <span class="docs-chip docs-chip--key">Data Analytics Solution</span><span class="docs-chip docs-chip--key">SPC</span>
+  <span class="docs-chip">Python 3.11</span><span class="docs-chip">FastAPI</span><span class="docs-chip">JavaScript</span><span class="docs-chip">Vue.js</span>
+  <span class="docs-chip">Oracle</span><span class="docs-chip">MariaDB</span><span class="docs-chip">SQLAlchemy</span>
+  <span class="docs-chip">Linux (Ubuntu/CentOS)</span><span class="docs-chip">AWS</span><span class="docs-chip">On-premise</span>
+</div>
+
+<h2 class="docs-h2">핵심 역할 &amp; 성과</h2>
+<h3 class="docs-h3">⊙ 분석 기능 UI·API 설계</h3>
+<ul class="docs-list">
+  <li>Minitab, JMP 등 상용 도구를 벤치마킹하여 직관적인 UI 설계.</li>
+  <li>분석 요청을 처리하는 <strong>FastAPI</strong> 기반 REST API 서버 구현.</li>
+  <li>핵심 통계 기법(정규성 검정, t-검정, ANOVA)을 API 로 정의·노출.</li>
+</ul>
+<h3 class="docs-h3">⊙ 안정적인 분석 엔진 아키텍처</h3>
+<ul class="docs-list">
+  <li>Python GIL 제약을 넘기 위한 <strong>Process Manager</strong> 구현 — 상태 관리 + 멀티코어 활용.</li>
+  <li>각 분석 요청을 <strong>전용 subprocess</strong> 에서 실행하여 안정적 병렬 처리.</li>
+  <li>프로세스 간 <strong>health check</strong> 기능 개발.</li>
+</ul>
+<h3 class="docs-h3">⊙ 유연한 데이터 적재·전처리</h3>
+<ul class="docs-list">
+  <li>다양한 입력 포맷(DB, JSON, CSV) 파서 구현.</li>
+  <li>데이터 검증·결측 처리·변환을 위한 자동 전처리 흐름 구축.</li>
+</ul>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">트러블슈팅 1 — Python GIL &amp; 멀티코어</h2>
+<p class="docs-p"><strong>문제:</strong> Python 의 <strong>GIL(Global Interpreter Lock)</strong> 은 CPU-bound 작업을 제약하므로 멀티프로세스 방식이 강제된다. 여러 사용자가 동시에 분석을 요청하면 CPU 자원 경합으로 병목이 생긴다. 그런데 멀티프로세스 구조에서는 <strong>사용자별 state 유지</strong> 가 구조적으로 어렵다(Uvicorn 은 worker 만 늘리고 round-robin 으로 분배) — 데이터를 업로드한 뒤 분석을 요청하면 서로 다른 프로세스가 처리해 사용자 state 가 끊긴다. 또 Java 와 달리 Python 은 멀티프로세스에서 메모리 공유 기반 세션 관리가 약하다. 게다가 솔루션 팀 정책상 외부 상태 저장소(예: Redis)는 운영 부담·복잡도 때문에 허용되지 않아, <strong>내재화된 방식</strong> 이 필요했다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <g fill="#0f172a"><rect x="20" y="60" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="78" text-anchor="middle">사용자 A</text>
+  <rect x="20" y="100" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="118" text-anchor="middle">사용자 B</text>
+  <rect x="20" y="140" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="158" text-anchor="middle">사용자 …</text></g>
+  <rect x="170" y="70" width="150" height="90" rx="10" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
+  <text x="245" y="98" text-anchor="middle" fill="#003B62" font-weight="700">Process Manager</text>
+  <text x="245" y="118" text-anchor="middle" fill="#64748b" font-size="10">게이트웨이 · 사용자 state</text>
+  <text x="245" y="134" text-anchor="middle" fill="#64748b" font-size="10">import+분석 = 1 단위</text>
+  <text x="245" y="150" text-anchor="middle" fill="#64748b" font-size="10">health check</text>
+  <text x="560" y="40" text-anchor="middle" fill="#64748b" font-weight="700">전용 subprocess / 코어</text>
+  <g fill="#0f172a">
+    <rect x="430" y="52" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="70" text-anchor="middle">subprocess · CPU core 1</text>
+    <rect x="430" y="100" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="118" text-anchor="middle">subprocess · CPU core 2</text>
+    <rect x="430" y="148" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="166" text-anchor="middle">subprocess · CPU core N</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.5" fill="#475569">
+    <line x1="100" y1="100" x2="168" y2="108"/><polygon points="170,108 161,105 163,113"/>
+    <line x1="320" y1="100" x2="428" y2="65"/><polygon points="430,65 421,63 423,71"/>
+    <line x1="320" y1="113" x2="428" y2="113"/><polygon points="430,113 421,109 421,117"/>
+    <line x1="320" y1="126" x2="428" y2="161"/><polygon points="430,161 421,156 419,164"/>
+  </g>
+  <text x="245" y="200" text-anchor="middle" fill="#0e8b87" font-weight="700">외부 저장소(Redis) 없이 stateful 유지 · GIL 병목 회피</text>
+</svg>
+<figcaption>Process Manager가 게이트웨이처럼 사용자 state·프로세스 연결을 직접 관리 → 외부 저장소 없이 다중코어 활용</figcaption>
+</div>
+
+<p class="docs-p"><strong>해결:</strong> 프로세스를 중앙에서 제어하고 사용자별 state 를 관리하는 <strong>Process Manager</strong> 를 구현했다. 게이트웨이처럼 동작하여 프로세스 간 state 전달·연결을 직접 처리함으로써 <strong>외부 저장소 없이</strong> stateful context 를 유지한다. 사용자 ID 기준으로 data import + 분석을 DB 에서 하나의 단위로 관리해 세션 연속성을 보장했고, 결과적으로 GIL 병목을 피하면서 멀티코어를 활용하는 <strong>확장 가능하고 신뢰성 있는 분산 연산 구조</strong> 를 만들었다.</p>
+
+<h2 class="docs-h2">트러블슈팅 2 — 시각화 CPU 과부하</h2>
+<p class="docs-p"><strong>문제:</strong> 브라우저에서 10만 개 이상의 데이터(예: 전체 점을 그리는 산점도)를 시각화하면 브라우저가 감당하지 못했다. 대용량 전송 시 서버 부하도 컸고, 클라이언트 PC 도 심하게 과부하되어 사용자 경험이 나빠졌다 — 시각화가 가장 큰 성능 과제였다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 230" width="720" height="230" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="180" y="24" text-anchor="middle" fill="#e11d48" font-weight="700">10만+ 점 → 과부하</text>
+  <rect x="40" y="36" width="280" height="160" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+  <g fill="#e11d48" opacity="0.7">
+    <circle cx="80" cy="150" r="2"/><circle cx="95" cy="140" r="2"/><circle cx="110" cy="155" r="2"/><circle cx="120" cy="120" r="2"/><circle cx="135" cy="135" r="2"/><circle cx="150" cy="110" r="2"/><circle cx="165" cy="128" r="2"/><circle cx="180" cy="100" r="2"/><circle cx="195" cy="118" r="2"/><circle cx="210" cy="95" r="2"/><circle cx="225" cy="108" r="2"/><circle cx="240" cy="85" r="2"/><circle cx="255" cy="98" r="2"/><circle cx="270" cy="78" r="2"/>
+    <circle cx="88" cy="130" r="2"/><circle cx="118" cy="148" r="2"/><circle cx="148" cy="132" r="2"/><circle cx="178" cy="122" r="2"/><circle cx="208" cy="112" r="2"/><circle cx="238" cy="104" r="2"/><circle cx="268" cy="96" r="2"/><circle cx="100" cy="160" r="2"/><circle cx="160" cy="150" r="2"/><circle cx="220" cy="130" r="2"/><circle cx="130" cy="105" r="2"/><circle cx="190" cy="138" r="2"/><circle cx="250" cy="120" r="2"/><circle cx="105" cy="118" r="2"/><circle cx="200" cy="80" r="2"/><circle cx="145" cy="92" r="2"/>
+  </g>
+  <text x="400" y="24" text-anchor="middle" fill="#0e8b87" font-weight="700">Random sample → 같은 분포</text>
+  <rect x="400" y="36" width="280" height="160" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <g fill="#0e8b87">
+    <circle cx="440" cy="150" r="3"/><circle cx="490" cy="135" r="3"/><circle cx="520" cy="120" r="3"/><circle cx="560" cy="105" r="3"/><circle cx="600" cy="92" r="3"/><circle cx="640" cy="80" r="3"/><circle cx="470" cy="128" r="3"/><circle cx="540" cy="112" r="3"/><circle cx="620" cy="98" r="3"/>
+  </g>
+  <text x="540" y="214" text-anchor="middle" fill="#64748b" font-size="11">ECDF → CDF (Glivenko–Cantelli) : 분포 차이 거의 없음</text>
+</svg>
+<figcaption>전수(10만) 대신 random sampling — 추세 파악이 목적이므로 표본 분포가 거의 동일해 효율적 시각화</figcaption>
+</div>
+
+<p class="docs-p"><strong>해결(이론적·도메인 접근):</strong> 상용 도구(Minitab, JMP)는 Windows 실행 앱으로 로컬에서 데이터를 처리하거나 DB 에 직접 연결해 브라우저 한계를 넘는다 — 즉 이는 <em>시스템 레벨의 한계</em> 임을 명확히 인지했다. 완전한 시스템적 해결이 불가능하므로 <strong>통계 이론적</strong> 접근을 적용했다. <strong>Glivenko–Cantelli 정리</strong> 는 경험적 누적분포(ECDF)가 참 누적분포(CDF)로 거의 확실하게(almost surely) 수렴함을 보장한다. 시각화의 목적은 전체 추세 파악이므로(이상치에 집착하지 않음) <strong>random sampling</strong> 을 채택했고, 표본 데이터의 분포가 거의 차이가 없어 효율적인 시각화가 가능했다.</p>
+
+</div>
+
+          </div>
+        </div>
+      </main>
+    </article>
+
+    <!-- ================= p4 : API Gateway Solution (BEAST) ================= -->
+    <article class="pd-article" id="p4" data-group="KT DS" data-nav='5|API Gateway Solution (BEAST)|2022–2023 · 50M+/day'>
+      <main class="docs-post">
+        <div class="docs-post__article">
+          <header class="docs-post__header">
+            <h1 class="docs-post__title">API Gateway Solution (BEAST)</h1>
+          </header>
+          <div class="docs-post__body">
+
+<div class="docs-langtabs" role="tablist">
+  <button class="docs-langbtn is-active" data-lang="en">English</button>
+  <button class="docs-langbtn" data-lang="ko">한국어</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="docs-lang" data-lang="en">
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>One line</strong> — A single API Gateway that unifies many different provider APIs (Netflix, Disney, Kakao …) under one authentication / routing layer. Now the core engine of <strong>KT API-Link</strong>, reliably handling <strong>50M+ requests/day</strong>.</p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>Period</dt><dd>March 2022 ~ December 2023</dd>
+  <dt>Role</dt><dd>Backend Server Developer · Performance Optimization</dd>
+  <dt>Scope</dt><dd>Solutions for both internal and external use</dd>
+</dl>
+
+<h2 class="docs-h2">What it does</h2>
+<p class="docs-p">The solution consists of an <strong>API Gateway Core System</strong> and a <strong>back-office portal</strong> for monitoring and managing APIs. It unifies different API interfaces and centralizes authentication / authorization, collapsing a complex integration structure into a single gateway.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 300" width="720" height="300" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <!-- clients -->
+  <text x="80" y="60" text-anchor="middle" fill="#64748b" font-weight="700">Clients</text>
+  <g fill="#0f172a">
+    <rect x="24" y="71" width="112" height="30" rx="7" fill="#eef2f7" stroke="#94a3b8"/><text x="80" y="91" text-anchor="middle">Netflix / OTT</text>
+    <rect x="24" y="115" width="112" height="30" rx="7" fill="#eef2f7" stroke="#94a3b8"/><text x="80" y="135" text-anchor="middle">Kakao</text>
+    <rect x="24" y="159" width="112" height="30" rx="7" fill="#eef2f7" stroke="#94a3b8"/><text x="80" y="179" text-anchor="middle">Partners …</text>
+  </g>
+  <!-- gateway (center axis y=130) -->
+  <rect x="250" y="40" width="220" height="180" rx="14" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
+  <text x="360" y="64" text-anchor="middle" fill="#003B62" font-weight="700" font-size="14">API Gateway (BEAST)</text>
+  <g fill="#0f172a">
+    <rect x="270" y="78" width="180" height="30" rx="7" fill="#fff" stroke="#0078d7"/><text x="360" y="98" text-anchor="middle">Auth / AuthZ</text>
+    <rect x="270" y="116" width="180" height="30" rx="7" fill="#fff" stroke="#0078d7"/><text x="360" y="136" text-anchor="middle">Routing</text>
+    <rect x="270" y="154" width="180" height="30" rx="7" fill="#fff" stroke="#0078d7"/><text x="360" y="174" text-anchor="middle">Handlers (JSON ↔ XML, transform)</text>
+  </g>
+  <!-- backends (same rows as clients) -->
+  <text x="628" y="60" text-anchor="middle" fill="#64748b" font-weight="700">Backend APIs</text>
+  <g fill="#0f172a">
+    <rect x="568" y="71" width="120" height="30" rx="7" fill="#e9f7f3" stroke="#0e8b87"/><text x="628" y="91" text-anchor="middle">Provider A</text>
+    <rect x="568" y="115" width="120" height="30" rx="7" fill="#e9f7f3" stroke="#0e8b87"/><text x="628" y="135" text-anchor="middle">Provider B</text>
+    <rect x="568" y="159" width="120" height="30" rx="7" fill="#e9f7f3" stroke="#0e8b87"/><text x="628" y="179" text-anchor="middle">Provider …</text>
+  </g>
+  <!-- arrows (horizontal on center axis y=130) -->
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="136" y1="130" x2="246" y2="130"/><polygon points="250,130 242,126 242,134"/>
+    <line x1="470" y1="130" x2="564" y2="130"/><polygon points="568,130 560,126 560,134"/>
+  </g>
+  <!-- back-office -->
+  <rect x="270" y="240" width="180" height="34" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="360" y="261" text-anchor="middle" fill="#475569">Back-office portal (monitoring · 관리)</text>
+  <line x1="360" y1="220" x2="360" y2="238" stroke="#94a3b8" stroke-dasharray="4 3"/>
+  <text x="200" y="295" fill="#64748b">50M+ requests / day</text>
+</svg>
+<figcaption>One gateway in front of many provider APIs — unified auth, routing and request transformation</figcaption>
+</div>
+
+<h2 class="docs-h2">Impact</h2>
+<ul class="docs-list">
+  <li>Unified different API interfaces (e.g., Netflix, Disney) and centralized authentication / authorization, simplifying a complex integration structure into a single gateway.</li>
+  <li>Integrated into <strong>KT API-Link</strong>, where it now operates as the core engine of the API integration platform, reliably handling over <strong>50 million requests per day</strong>.</li>
+</ul>
+<p class="docs-p">Live service: <a href="https://apilink.kt.co.kr/" target="_blank" rel="noopener">KT API-Link</a>.</p>
+
+<h2 class="docs-h2">Tech stack</h2>
+<div class="docs-chips">
+  <span class="docs-chip docs-chip--key">API Gateway</span><span class="docs-chip docs-chip--key">Handler</span><span class="docs-chip docs-chip--key">RESTful API</span><span class="docs-chip docs-chip--key">Protocol / Network</span>
+  <span class="docs-chip">Java</span><span class="docs-chip">Spring Boot</span><span class="docs-chip">Spring WebFlux</span><span class="docs-chip">Spring Cloud</span>
+  <span class="docs-chip">PostgreSQL</span><span class="docs-chip">MongoDB</span><span class="docs-chip">JPA</span><span class="docs-chip">R2DBC</span><span class="docs-chip">Reactive MongoDB</span>
+  <span class="docs-chip">Linux (Ubuntu)</span><span class="docs-chip">AWS</span><span class="docs-chip">On-premise</span>
+</div>
+
+<h2 class="docs-h2">Key roles &amp; achievements</h2>
+<p class="docs-p">The project was carried out in <strong>three phases over two years</strong>.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 130" width="720" height="130" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <g>
+    <rect x="14" y="34" width="216" height="62" rx="10" fill="#eef2f7" stroke="#94a3b8"/>
+    <text x="122" y="58" text-anchor="middle" fill="#0f172a" font-weight="700">Phase 1</text>
+    <text x="122" y="78" text-anchor="middle" fill="#64748b">Back-Office Portal</text>
+    <rect x="252" y="34" width="216" height="62" rx="10" fill="#e8f3fc" stroke="#0078d7"/>
+    <text x="360" y="58" text-anchor="middle" fill="#0f172a" font-weight="700">Phase 2</text>
+    <text x="360" y="78" text-anchor="middle" fill="#64748b">KT API-Link Integration</text>
+    <rect x="490" y="34" width="216" height="62" rx="10" fill="#e9f7f3" stroke="#0e8b87"/>
+    <text x="598" y="58" text-anchor="middle" fill="#0f172a" font-weight="700">Phase 3</text>
+    <text x="598" y="78" text-anchor="middle" fill="#64748b">WebFlux / Reactive Core</text>
+  </g>
+  <g stroke="#475569" stroke-width="2" fill="#475569">
+    <line x1="230" y1="65" x2="250" y2="65"/><polygon points="252,65 244,61 244,69"/>
+    <line x1="468" y1="65" x2="488" y2="65"/><polygon points="490,65 482,61 482,69"/>
+  </g>
+</svg>
+<figcaption>Three sequential phases over two years</figcaption>
+</div>
+
+<h3 class="docs-h3">⊙ Phase 1 — Back-Office Portal</h3>
+<ul class="docs-list">
+  <li><strong>Dashboard:</strong> real-time monitoring of API status and performance.</li>
+  <li><strong>API Management:</strong> registration, modification, deletion and lifecycle management.</li>
+  <li><strong>Data Collection &amp; Aggregation:</strong> scheduled periodic log aggregation.</li>
+  <li><strong>Community Support:</strong> announcements and user-community features.</li>
+</ul>
+
+<h3 class="docs-h3">⊙ Phase 2 — System Integration (KT API-Link)</h3>
+<ul class="docs-list">
+  <li>Integrated the gateway into <strong>KT API-Link</strong> and improved system performance.</li>
+  <li><strong>Query Performance Optimization:</strong> composite indexes and optimized data structures.</li>
+  <li><strong>Handler Management:</strong> customizable deployment and configuration.</li>
+  <li><strong>Security:</strong> adjustments for infrastructure such as firewall environments (added bypass functions).</li>
+</ul>
+
+<h3 class="docs-h3">⊙ Phase 3 — Core Enhancement &amp; WebFlux Migration</h3>
+<ul class="docs-list">
+  <li>Migrated to a <strong>Reactive REST API</strong> with WebFlux for high-performance processing.</li>
+  <li><strong>Non-blocking ORM:</strong> applied R2DBC and Reactive MongoDB.</li>
+  <li><strong>Thread Pool Optimization:</strong> resolved blocking I/O by leveraging Netty’s event-loop and offloading async tasks to separate thread pools (TaskScheduler).</li>
+  <li><strong>Performance Testing:</strong> TPS / response-time analysis with Apache Bench, then optimization.</li>
+</ul>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">Troubleshooting — Thread-pool exhaustion bottleneck</h2>
+<p class="docs-p"><strong>Issue:</strong> After certain APIs were registered, request processing slowed dramatically — some requests were delayed for tens of seconds or never responded. The cause and the responsible API were initially unclear, causing continuous response delays across the whole system.</p>
+
+<p class="docs-p"><strong>Root cause:</strong> The gateway lets you insert <strong>custom handlers</strong> at intermediate stages (JSON↔XML conversion, format transformation, external API calls). Many handlers made <strong>blocking calls</strong> to external providers. When an external response was slow, the blocking code held Netty <strong>Worker Threads</strong> for a long time → <strong>EventLoop exhaustion</strong> → throughput collapse. JPA-based DB access added further small blocking.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 270" width="720" height="270" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <!-- BEFORE -->
+  <text x="180" y="24" text-anchor="middle" fill="#e11d48" font-weight="700">Before — blocking on EventLoop</text>
+  <rect x="40" y="40" width="280" height="200" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+  <rect x="60" y="60" width="240" height="48" rx="8" fill="#fff" stroke="#e11d48"/>
+  <text x="180" y="80" text-anchor="middle" fill="#0f172a" font-weight="700">Netty EventLoop</text>
+  <text x="180" y="98" text-anchor="middle" fill="#64748b">Worker Threads (I/O)</text>
+  <rect x="78" y="126" width="204" height="40" rx="8" fill="#fee2e2" stroke="#e11d48"/>
+  <text x="180" y="151" text-anchor="middle" fill="#b91c1c">blocking handler → external API ⏳</text>
+  <text x="180" y="196" text-anchor="middle" fill="#b91c1c" font-weight="700">threads held → exhaustion</text>
+  <text x="180" y="218" text-anchor="middle" fill="#64748b">requests pile up / time out</text>
+  <!-- AFTER -->
+  <text x="540" y="24" text-anchor="middle" fill="#0e8b87" font-weight="700">After — offload + reactive</text>
+  <rect x="400" y="40" width="280" height="200" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <rect x="420" y="60" width="240" height="40" rx="8" fill="#fff" stroke="#0078d7"/>
+  <text x="540" y="85" text-anchor="middle" fill="#0f172a">Netty EventLoop — pure I/O only</text>
+  <rect x="420" y="116" width="240" height="40" rx="8" fill="#e9f7f3" stroke="#0e8b87"/>
+  <text x="540" y="141" text-anchor="middle" fill="#0f172a">Dedicated pool (TaskScheduler) — blocking ops</text>
+  <rect x="420" y="172" width="240" height="40" rx="8" fill="#e8f3fc" stroke="#0078d7"/>
+  <text x="540" y="197" text-anchor="middle" fill="#0f172a">R2DBC · Reactive MongoDB (non-blocking)</text>
+  <text x="540" y="230" text-anchor="middle" fill="#0e8b87" font-weight="700">stable high throughput</text>
+</svg>
+<figcaption>Blocking work moved off the EventLoop into a dedicated pool; DB access made reactive</figcaption>
+</div>
+
+<p class="docs-p"><strong>Resolution:</strong></p>
+<ul class="docs-list">
+  <li>Separated blocking operations into <strong>dedicated thread pools</strong> (e.g., TaskScheduler), letting the main EventLoop do pure I/O only.</li>
+  <li>Converted blocking calls to <strong>multi-threaded asynchronous execution</strong>, so one slow handler no longer affects the whole system.</li>
+  <li>Migrated DB operations (e.g., log insertion) to <strong>Reactive MongoDB and R2DBC</strong>, minimizing blocking.</li>
+  <li>After restructuring, the gateway reliably handled high traffic without degradation, preventing recurrence of operational incidents.</li>
+</ul>
+
+</div>
+
+<!-- ============================ 한국어 ============================ -->
+<div class="docs-lang" data-lang="ko" hidden>
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>한 줄 요약</strong> — 서로 다른 공급사 API(Netflix, Disney, Kakao …)를 하나의 인증·라우팅 계층으로 통합한 단일 <strong>API Gateway</strong>. 현재 <strong>KT API-Link</strong> 의 핵심 엔진으로 <strong>하루 5,000만 건 이상</strong> 의 요청을 안정적으로 처리한다.</p>
+  </div>
+</div>
+
+<dl class="docs-meta">
+  <dt>기간</dt><dd>2022년 3월 ~ 2023년 12월</dd>
+  <dt>역할</dt><dd>백엔드 서버 개발 · 성능 최적화</dd>
+  <dt>범위</dt><dd>사내·사외 양쪽을 위한 솔루션 개발</dd>
+</dl>
+
+<h2 class="docs-h2">무엇을 하는가</h2>
+<p class="docs-p">이 솔루션은 <strong>API Gateway Core System</strong> 과 API 모니터링·관리를 위한 <strong>백오피스 포털</strong> 로 구성된다. 서로 다른 API 인터페이스를 통합하고 인증·인가를 중앙화하여, 복잡한 연동 구조를 하나의 게이트웨이로 단순화한다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 300" width="720" height="300" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <text x="80" y="32" text-anchor="middle" fill="#64748b" font-weight="700">클라이언트</text>
+  <g fill="#0f172a">
+    <rect x="24" y="48" width="112" height="30" rx="7" fill="#eef2f7" stroke="#94a3b8"/><text x="80" y="68" text-anchor="middle">Netflix / OTT</text>
+    <rect x="24" y="90" width="112" height="30" rx="7" fill="#eef2f7" stroke="#94a3b8"/><text x="80" y="110" text-anchor="middle">Kakao</text>
+    <rect x="24" y="132" width="112" height="30" rx="7" fill="#eef2f7" stroke="#94a3b8"/><text x="80" y="152" text-anchor="middle">파트너사 …</text>
+  </g>
+  <rect x="250" y="40" width="220" height="180" rx="14" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
+  <text x="360" y="64" text-anchor="middle" fill="#003B62" font-weight="700" font-size="14">API Gateway (BEAST)</text>
+  <g fill="#0f172a">
+    <rect x="270" y="78" width="180" height="30" rx="7" fill="#fff" stroke="#0078d7"/><text x="360" y="98" text-anchor="middle">인증 / 인가</text>
+    <rect x="270" y="116" width="180" height="30" rx="7" fill="#fff" stroke="#0078d7"/><text x="360" y="136" text-anchor="middle">라우팅</text>
+    <rect x="270" y="154" width="180" height="30" rx="7" fill="#fff" stroke="#0078d7"/><text x="360" y="174" text-anchor="middle">핸들러 (JSON ↔ XML 변환)</text>
+  </g>
+  <text x="624" y="32" text-anchor="middle" fill="#64748b" font-weight="700">백엔드 API</text>
+  <g fill="#0f172a">
+    <rect x="568" y="62" width="120" height="30" rx="7" fill="#e9f7f3" stroke="#0e8b87"/><text x="628" y="82" text-anchor="middle">공급사 A</text>
+    <rect x="568" y="104" width="120" height="30" rx="7" fill="#e9f7f3" stroke="#0e8b87"/><text x="628" y="124" text-anchor="middle">공급사 B</text>
+    <rect x="568" y="146" width="120" height="30" rx="7" fill="#e9f7f3" stroke="#0e8b87"/><text x="628" y="166" text-anchor="middle">공급사 …</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.6" fill="#475569">
+    <line x1="138" y1="105" x2="246" y2="120"/><polygon points="250,121 240,116 241,124"/>
+    <line x1="472" y1="120" x2="564" y2="105"/><polygon points="568,104 558,103 561,111"/>
+  </g>
+  <rect x="270" y="240" width="180" height="34" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="360" y="261" text-anchor="middle" fill="#475569">백오피스 포털 (모니터링·관리)</text>
+  <line x1="360" y1="220" x2="360" y2="238" stroke="#94a3b8" stroke-dasharray="4 3"/>
+  <text x="200" y="295" fill="#64748b">하루 5,000만+ 요청</text>
+</svg>
+<figcaption>여러 공급사 API 앞단의 단일 게이트웨이 — 인증·라우팅·요청 변환을 통합</figcaption>
+</div>
+
+<h2 class="docs-h2">성과</h2>
+<ul class="docs-list">
+  <li>서로 다른 API 인터페이스(예: Netflix, Disney)를 통합하고 인증·인가를 중앙화하여, 복잡한 연동 구조를 하나의 게이트웨이로 단순화했다.</li>
+  <li><strong>KT API-Link</strong> 에 통합되어 API 통합 플랫폼의 핵심 엔진으로 동작하며, <strong>하루 5,000만 건 이상</strong> 의 요청을 안정적으로 처리한다.</li>
+</ul>
+<p class="docs-p">실서비스: <a href="https://apilink.kt.co.kr/" target="_blank" rel="noopener">KT API-Link</a>.</p>
+
+<h2 class="docs-h2">기술 스택</h2>
+<div class="docs-chips">
+  <span class="docs-chip docs-chip--key">API Gateway</span><span class="docs-chip docs-chip--key">Handler</span><span class="docs-chip docs-chip--key">RESTful API</span><span class="docs-chip docs-chip--key">Protocol / Network</span>
+  <span class="docs-chip">Java</span><span class="docs-chip">Spring Boot</span><span class="docs-chip">Spring WebFlux</span><span class="docs-chip">Spring Cloud</span>
+  <span class="docs-chip">PostgreSQL</span><span class="docs-chip">MongoDB</span><span class="docs-chip">JPA</span><span class="docs-chip">R2DBC</span><span class="docs-chip">Reactive MongoDB</span>
+  <span class="docs-chip">Linux (Ubuntu)</span><span class="docs-chip">AWS</span><span class="docs-chip">On-premise</span>
+</div>
+
+<h2 class="docs-h2">핵심 역할 &amp; 성과</h2>
+<p class="docs-p">프로젝트는 <strong>2년에 걸쳐 3단계</strong> 로 진행되었다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 130" width="720" height="130" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="12">
+  <g>
+    <rect x="14" y="34" width="216" height="62" rx="10" fill="#eef2f7" stroke="#94a3b8"/>
+    <text x="122" y="58" text-anchor="middle" fill="#0f172a" font-weight="700">1단계</text>
+    <text x="122" y="78" text-anchor="middle" fill="#64748b">백오피스 포털</text>
+    <rect x="252" y="34" width="216" height="62" rx="10" fill="#e8f3fc" stroke="#0078d7"/>
+    <text x="360" y="58" text-anchor="middle" fill="#0f172a" font-weight="700">2단계</text>
+    <text x="360" y="78" text-anchor="middle" fill="#64748b">KT API-Link 통합</text>
+    <rect x="490" y="34" width="216" height="62" rx="10" fill="#e9f7f3" stroke="#0e8b87"/>
+    <text x="598" y="58" text-anchor="middle" fill="#0f172a" font-weight="700">3단계</text>
+    <text x="598" y="78" text-anchor="middle" fill="#64748b">WebFlux / Reactive 코어</text>
+  </g>
+  <g stroke="#475569" stroke-width="2" fill="#475569">
+    <line x1="230" y1="65" x2="250" y2="65"/><polygon points="252,65 244,61 244,69"/>
+    <line x1="468" y1="65" x2="488" y2="65"/><polygon points="490,65 482,61 482,69"/>
+  </g>
+</svg>
+<figcaption>2년에 걸친 3단계 순차 진행</figcaption>
+</div>
+
+<h3 class="docs-h3">⊙ 1단계 — 백오피스 포털 개발</h3>
+<ul class="docs-list">
+  <li><strong>대시보드:</strong> API 상태·성능 실시간 모니터링.</li>
+  <li><strong>API 관리:</strong> 등록·수정·삭제 및 생명주기(lifecycle) 관리.</li>
+  <li><strong>데이터 수집·집계:</strong> 주기적 로그 집계 스케줄링.</li>
+  <li><strong>커뮤니티 지원:</strong> 공지·사용자 커뮤니티 기능.</li>
+</ul>
+
+<h3 class="docs-h3">⊙ 2단계 — 시스템 통합 (KT API-Link)</h3>
+<ul class="docs-list">
+  <li>게이트웨이 솔루션을 <strong>KT API-Link</strong> 에 통합하고 시스템 성능을 개선.</li>
+  <li><strong>쿼리 성능 최적화:</strong> 복합 인덱스 적용 및 데이터 구조 최적화.</li>
+  <li><strong>핸들러 관리:</strong> 커스터마이즈 가능한 배포·설정 기능 구현.</li>
+  <li><strong>보안 대응:</strong> 방화벽 환경 등 인프라 특성에 맞춘 기능 조정(우회 기능 추가).</li>
+</ul>
+
+<h3 class="docs-h3">⊙ 3단계 — 코어 고도화 &amp; WebFlux 전환</h3>
+<ul class="docs-list">
+  <li>고성능 처리를 위해 WebFlux 기반 <strong>Reactive REST API</strong> 로 전환.</li>
+  <li><strong>논블로킹 ORM:</strong> R2DBC, Reactive MongoDB 적용.</li>
+  <li><strong>스레드 풀 최적화:</strong> Netty 이벤트 루프 구조를 활용하고 비동기 작업을 별도 스레드 풀(TaskScheduler)로 재구성하여 blocking I/O 해소.</li>
+  <li><strong>성능 테스트:</strong> Apache Bench 로 TPS·응답시간 분석 후 최적화.</li>
+</ul>
+
+<hr class="docs-divider">
+
+<h2 class="docs-h2">트러블슈팅 — 스레드 풀 고갈 병목</h2>
+<p class="docs-p"><strong>문제:</strong> 특정 API 들이 등록된 이후 클라이언트 요청 처리가 크게 느려졌고, 일부 요청은 수십 초간 지연되거나 아예 응답하지 못했다. 처음에는 원인과 어떤 API 가 문제인지 불분명해 시스템 전반의 응답 지연이 계속되었다.</p>
+
+<p class="docs-p"><strong>원인 분석:</strong> API Gateway 구조는 중간 처리 단계에 <strong>커스텀 핸들러</strong> 를 삽입해 JSON↔XML 변환, 요청 포맷 변환, 외부 API 호출 등을 처리한다. 그런데 많은 핸들러가 외부 공급사 API 호출 시 <strong>blocking 방식</strong> 으로 동작했다. 외부 응답이 지연되면 blocking 코드가 Netty <strong>Worker Thread</strong> 를 오래 점유하여 <strong>EventLoop 스레드 고갈</strong> 이 발생, 전체 처리량이 급감했다. 또한 코어가 <strong>JPA 기반 ORM</strong> 으로 DB 에 접근하면서 소규모 blocking 이 추가로 더해졌다.</p>
+
+<div class="docs-fig">
+<svg viewBox="0 0 720 270" width="720" height="270" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
+  <text x="180" y="24" text-anchor="middle" fill="#e11d48" font-weight="700">Before — EventLoop 위 blocking</text>
+  <rect x="40" y="40" width="280" height="200" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+  <rect x="60" y="60" width="240" height="48" rx="8" fill="#fff" stroke="#e11d48"/>
+  <text x="180" y="80" text-anchor="middle" fill="#0f172a" font-weight="700">Netty EventLoop</text>
+  <text x="180" y="98" text-anchor="middle" fill="#64748b">Worker Threads (I/O)</text>
+  <rect x="78" y="126" width="204" height="40" rx="8" fill="#fee2e2" stroke="#e11d48"/>
+  <text x="180" y="151" text-anchor="middle" fill="#b91c1c">blocking 핸들러 → 외부 API ⏳</text>
+  <text x="180" y="196" text-anchor="middle" fill="#b91c1c" font-weight="700">스레드 점유 → 고갈</text>
+  <text x="180" y="218" text-anchor="middle" fill="#64748b">요청 적체 / 타임아웃</text>
+  <text x="540" y="24" text-anchor="middle" fill="#0e8b87" font-weight="700">After — 분리 + 리액티브</text>
+  <rect x="400" y="40" width="280" height="200" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <rect x="420" y="60" width="240" height="40" rx="8" fill="#fff" stroke="#0078d7"/>
+  <text x="540" y="85" text-anchor="middle" fill="#0f172a">Netty EventLoop — 순수 I/O 전담</text>
+  <rect x="420" y="116" width="240" height="40" rx="8" fill="#e9f7f3" stroke="#0e8b87"/>
+  <text x="540" y="141" text-anchor="middle" fill="#0f172a">전용 풀 (TaskScheduler) — blocking 작업</text>
+  <rect x="420" y="172" width="240" height="40" rx="8" fill="#e8f3fc" stroke="#0078d7"/>
+  <text x="540" y="197" text-anchor="middle" fill="#0f172a">R2DBC · Reactive MongoDB (논블로킹)</text>
+  <text x="540" y="230" text-anchor="middle" fill="#0e8b87" font-weight="700">안정적 고처리량</text>
+</svg>
+<figcaption>blocking 작업을 EventLoop 밖 전용 풀로 분리하고 DB 접근을 리액티브로 전환</figcaption>
+</div>
+
+<p class="docs-p"><strong>해결 및 핵심 조치:</strong></p>
+<ul class="docs-list">
+  <li>blocking 작업을 <strong>전용 스레드 풀</strong>(예: TaskScheduler)로 분리하여, 메인 EventLoop 은 순수 I/O 처리만 담당하도록 함.</li>
+  <li>blocking 호출을 <strong>멀티스레드 비동기 실행</strong> 으로 전환하여, 한 핸들러의 지연이 전체 시스템에 영향을 주지 않도록 함.</li>
+  <li>로그 적재 등 DB 작업을 <strong>Reactive MongoDB·R2DBC</strong> 로 이전하여 시스템 전반의 blocking 최소화.</li>
+  <li>재구성 이후 게이트웨이는 성능 저하 없이 고트래픽을 안정적으로 처리하여 운영 장애 재발을 방지.</li>
+</ul>
+
+</div>
+
+          </div>
+        </div>
+      </main>
+    </article>
+
+    <!-- ================= p5 : Computational Fluid Dynamics ================= -->
+    <article class="pd-article" id="p5" data-group="Research" data-nav='6|Computational Fluid Dynamics|Lid-driven cavity · solver'>
+      <main class="docs-post">
+        <div class="docs-post__article">
+          <header class="docs-post__header">
+            <h1 class="docs-post__title">Computational Fluid Dynamics</h1>
+          </header>
+          <div class="docs-post__body">
+
+
+<div class="docs-langtabs" role="tablist">
+  <button class="docs-langbtn is-active" data-lang="en">English</button>
+  <button class="docs-langbtn" data-lang="ko">한국어</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="docs-lang" data-lang="en">
+
+<dl class="docs-meta">
+  <dt>Topic</dt><dd>Lid-driven cavity — 3D low-Re &amp; 2D high-Re</dd>
+  <dt>Methods</dt><dd>FDM · Crank-Nicholson · Adams-Bashforth · C / Python</dd>
+  <dt>Source</dt><dd><a href="../portfolio/html/research/Research%20Cavity.html" target="_blank" rel="noopener">Portfolio — Research Cavity ↗</a></dd>
+</dl>
+
+<h2 class="docs-h2">3D Lid driven problem (Low Reynolds number)</h2>
+<div class="docs-fig-row">
+  <figure><img src="../portfolio/resources/cavity/3d video u velocity.gif" alt="3D u velocity"><figcaption>(a) 3D-u velocity field</figcaption></figure>
+  <figure><img src="../portfolio/resources/cavity/3d video v velocity.gif" alt="3D v velocity"><figcaption>(b) 3D-v velocity field</figcaption></figure>
+  <figure><img src="../portfolio/resources/cavity/3d video w velocity.gif" alt="3D w velocity"><figcaption>(c) 3D-w velocity field</figcaption></figure>
+</div>
+<p class="docs-p"><b>Description</b>: 3D Low Reynolds number (Re=100) Lid driven problem. For Navier-Stokes equation, the viscous term and convective term are advanced by Crank Nicholson and Adams Bashforth respectively and solved by Finite Difference Method for all directions of x, y and z. The programming languages are C or Python. Each velocity fields and vector fields are shown above.</p>
+
+<h2 class="docs-h2">2D Lid driven (High Reynolds number)</h2>
+<div class="docs-fig-row">
+  <figure><img src="../portfolio/resources/cavity/Re50000 20sec.gif" alt="Vorticity Re 50000"><figcaption>(a) Vorticity (Re:50000) (grids:200×200)</figcaption></figure>
+  <figure><img src="../portfolio/resources/cavity/Re100000 200x200 video.gif" alt="Vorticity Re 100000 200x200"><figcaption>(b) Vorticity (Re:100000) (grids:200×200)</figcaption></figure>
+  <figure><img src="../portfolio/resources/cavity/Re 100000 256x256.gif" alt="Vorticity Re 100000 256x256"><figcaption>(c) Vorticity (Re:100000) (grids:256×256)</figcaption></figure>
+</div>
+<p class="docs-p"><b>Description</b>: High Reynolds number Lid driven problem. Grids resolution becomes important at high Reynolds number, as you can see (b), (c). They are operated as same condition — only difference is grids resolution. (c) high resolution reflects the small scales much better. It is clear that the behavior is completely different from (b) by the small scales. This is reason why grids resolution becomes more important as turbulence develops.</p>
+
+</div>
+
+<!-- ============================ 한국어 ============================ -->
+<div class="docs-lang" data-lang="ko" hidden>
+
+<dl class="docs-meta">
+  <dt>주제</dt><dd>Lid-driven cavity — 3D 저레이놀즈수 &amp; 2D 고레이놀즈수</dd>
+  <dt>방법</dt><dd>FDM · Crank-Nicholson · Adams-Bashforth · C / Python</dd>
+  <dt>출처</dt><dd><a href="../portfolio/html/research/Research%20Cavity.html" target="_blank" rel="noopener">Portfolio — Research Cavity ↗</a></dd>
+</dl>
+
+<h2 class="docs-h2">3D Lid driven 문제 (저레이놀즈수)</h2>
+<div class="docs-fig-row">
+  <figure><img src="../portfolio/resources/cavity/3d video u velocity.gif" alt="3D u velocity"><figcaption>(a) 3D-u 속도장</figcaption></figure>
+  <figure><img src="../portfolio/resources/cavity/3d video v velocity.gif" alt="3D v velocity"><figcaption>(b) 3D-v 속도장</figcaption></figure>
+  <figure><img src="../portfolio/resources/cavity/3d video w velocity.gif" alt="3D w velocity"><figcaption>(c) 3D-w 속도장</figcaption></figure>
+</div>
+<p class="docs-p"><b>설명</b>: 3차원 저레이놀즈수(Re=100) Lid driven 문제. Navier-Stokes 방정식에서 점성항은 Crank-Nicholson, 대류항은 Adams-Bashforth 기법으로 시간 전진시키고, x·y·z 전 방향에 대해 유한차분법(FDM)으로 풀었다. 구현 언어는 C 와 Python. 위는 각 방향의 속도장과 벡터장이다.</p>
+
+<h2 class="docs-h2">2D Lid driven (고레이놀즈수)</h2>
+<div class="docs-fig-row">
+  <figure><img src="../portfolio/resources/cavity/Re50000 20sec.gif" alt="Vorticity Re 50000"><figcaption>(a) 와도 (Re:50000) (격자:200×200)</figcaption></figure>
+  <figure><img src="../portfolio/resources/cavity/Re100000 200x200 video.gif" alt="Vorticity Re 100000 200x200"><figcaption>(b) 와도 (Re:100000) (격자:200×200)</figcaption></figure>
+  <figure><img src="../portfolio/resources/cavity/Re 100000 256x256.gif" alt="Vorticity Re 100000 256x256"><figcaption>(c) 와도 (Re:100000) (격자:256×256)</figcaption></figure>
+</div>
+<p class="docs-p"><b>설명</b>: 고레이놀즈수 Lid driven 문제. (b), (c)에서 볼 수 있듯 레이놀즈수가 높아질수록 격자 해상도가 중요해진다. 두 경우는 격자 해상도만 다를 뿐 동일한 조건으로 계산한 결과다. 고해상도인 (c)가 작은 스케일(small scale)을 훨씬 잘 반영하며, 이 작은 스케일들로 인해 (b)와는 거동이 완전히 달라지는 것을 확인할 수 있다. 이것이 난류가 발달할수록 격자 해상도가 더욱 중요해지는 이유다.</p>
+
+</div>
+
+
+          </div>
+        </div>
+      </main>
+    </article>
+
+    <!-- ================= p6 : Deep Reinforcement Learning ================= -->
+    <article class="pd-article" id="p6" data-group="Research" data-nav='7|Deep Reinforcement Learning|Drag reduction · PRF 2023'>
+      <main class="docs-post">
+        <div class="docs-post__article">
+          <header class="docs-post__header">
+            <h1 class="docs-post__title">Deep Reinforcement Learning (applied to CFD)</h1>
+          </header>
+          <div class="docs-post__body">
+
+
+<div class="docs-langtabs" role="tablist">
+  <button class="docs-langbtn is-active" data-lang="en">English</button>
+  <button class="docs-langbtn" data-lang="ko">한국어</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="docs-lang" data-lang="en">
+
+<dl class="docs-meta">
+  <dt>Topic</dt><dd>Deep Reinforcement Learning applied to CFD — drag reduction</dd>
+  <dt>Publication</dt><dd><a href="https://journals.aps.org/prfluids/abstract/10.1103/PhysRevFluids.8.024604" target="_blank" rel="noopener">Physical Review Fluids 8.024604 (2023-02-08) ↗</a></dd>
+  <dt>Conference</dt><dd><a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10607412" target="_blank" rel="noopener">KSME 2021 Spring Conference ↗</a></dd>
+  <dt>Source</dt><dd><a href="../portfolio/html/research/Research%20DRL.html" target="_blank" rel="noopener">Portfolio — Research DRL ↗</a></dd>
+</dl>
+
+<h2 class="docs-h2">TD3 (off-policy) &amp; PPO (on-policy) — Validation for DRL algorithm</h2>
+<div class="docs-fig-row">
+  <figure><img src="../portfolio/resources/reinforcement/Burgers equation nu=0.1.gif" alt="Burgers no control"><figcaption>(a) Burgers equation (no control)</figcaption></figure>
+  <figure><img src="../portfolio/resources/reinforcement/TD3 burgers.gif" alt="TD3 control"><figcaption>(b) TD3-Control</figcaption></figure>
+  <figure><img src="../portfolio/resources/reinforcement/ppo burgers.gif" alt="PPO control"><figcaption>(c) PPO-Control</figcaption></figure>
+</div>
+<p class="docs-p"><b>Description</b>: Machine learning is applied with CFD as a domain. Here, the Burgers equation simply controlled by reinforcement learning is shown above. (Burgers equation is one-dimensional Navier-Stokes equation — here it is solved by spectral method.) (a) is the Burgers equation without control. Initial condition is sinusoidal; you can see that the sin waveform is broken down by the viscous term. The results of training with reinforcement learning to maintain the initial state (sin waveform) are (b) and (c). (b) is implemented with the TD3 algorithm of the deterministic policy family, (c) is implemented as a PPO algorithm of the stochastic policy family.</p>
+
+<h2 class="docs-h2">Turbulence control for drag reduction through deep reinforcement learning</h2>
+
+<h3 class="docs-h3">Background</h3>
+<p class="docs-p">This research aims to reduce the skin friction that develops near the wall as a fluid flows. It is known that successfully controlling this frictional resistance in the shipbuilding and aviation industries could save roughly <strong>$38 billion per year</strong>, so the topic was judged to carry significant engineering and social value.</p>
+
+<h3 class="docs-h3">Method</h3>
+<p class="docs-p">The Navier–Stokes equations were solved directly by numerical methods to build the flow simulation, which was then coupled with a reinforcement-learning algorithm implemented directly in Tensorflow. The flow was modeled as a simplified channel flow suited to the research goal, and the walls were equipped with numerically modeled blowing/suction actuators controlled by reinforcement learning. <strong>TD3 (Twin Delayed Deep Deterministic Policy Gradient)</strong> was applied as the control algorithm to reduce the drag of the fully developed flow.</p>
+
+<h3 class="docs-h3">Limitations of prior approaches &amp; result</h3>
+<p class="docs-p">The classical <strong>Opposition Control</strong> technique has an inherent limitation when applied to real experiments — sensors must be installed inside the flow field. Supervised learning based on Opposition Control was proposed to compensate, but it could not overcome the performance limit and was in fact even less efficient. In this research a new strategy was derived through reinforcement learning, overcoming these constraints: <strong>about 25% drag reduction</strong>, compared with the average 20% achieved by supervised-learning-based control.</p>
+<div class="docs-fig">
+  <img src="../portfolio/resources/reinforcement/CNN - Network.jpg" alt="Actor-Critic network" style="max-width:100%;height:auto;border:1px solid #e6e9f1;border-radius:10px;">
+  <figcaption>(a) Actor-Critic network structure</figcaption>
+</div>
+<div class="docs-fig-row">
+  <figure><img src="../portfolio/resources/reinforcement/no control 360.gif" alt="No control shear field"><figcaption>(b) No control shear field</figcaption></figure>
+  <figure><img src="../portfolio/resources/reinforcement/Controlling shear flow.gif" alt="Controlled shear field"><figcaption>(c) Control of shear field</figcaption></figure>
+</div>
+<p class="docs-p">(a) Actor-Critic network structure inserted in the TD3 algorithm, (b) shear field without control, (c) the DRL control reduces the high shear stress (RED → BLUE).</p>
+
+<h3 class="docs-h3">Hardest challenge — training stability</h3>
+<p class="docs-p">The most difficult part was improving performance enough to discover new phenomena while keeping the reinforcement learning stable. This required studying many papers and deeply understanding a range of mathematical and statistical techniques. For example, using <strong>DDPG (Deep Deterministic Policy Gradient)</strong> alone led to low training stability and frequent performance collapse — abnormal training runs sometimes even damaged the simulation system. To overcome this, DDPG was replaced with TD3 and the following techniques were applied, greatly improving both stability and performance:</p>
+<ul class="docs-list">
+  <li><strong>Double Critic Network</strong> — prevents Q-value overestimation, securing training stability</li>
+  <li><strong>Target Policy Smoothing</strong> — relaxes the target policy's excessive sensitivity, improving exploration</li>
+  <li><strong>Delayed Policy Update</strong> — updates the policy only after the critic has sufficiently stabilized, improving performance</li>
+</ul>
+<p class="docs-p">In addition, tuning the discount factor of the Q-function led to a <strong>new drag-reduction strategy distinct from classical Opposition Control</strong>.</p>
+
+<h3 class="docs-h3">Physical interpretation</h3>
+<p class="docs-p">Reinforcement learning helps discover phenomena that are hard for humans to find, but the physical interpretation must ultimately be done by humans. Based on the control strategy derived by the agent, a general differential equation describing the drag reduction was derived and its effect was partially verified quantitatively — though the mathematical modeling is not yet complete and needs further refinement.</p>
+
+<h3 class="docs-h3">Outcome</h3>
+<p class="docs-p">This work was submitted as a graduate thesis and also published in the international journal <strong>Physical Review Fluids</strong>.</p>
+
+</div>
+
+<!-- ============================ 한국어 ============================ -->
+<div class="docs-lang" data-lang="ko" hidden>
+
+<dl class="docs-meta">
+  <dt>주제</dt><dd>CFD 에 적용한 심층강화학습 — 항력 감소 (drag reduction)</dd>
+  <dt>게재</dt><dd><a href="https://journals.aps.org/prfluids/abstract/10.1103/PhysRevFluids.8.024604" target="_blank" rel="noopener">Physical Review Fluids 8.024604 (2023-02-08) ↗</a></dd>
+  <dt>학회</dt><dd><a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10607412" target="_blank" rel="noopener">대한기계학회 2021 춘계학술대회 ↗</a></dd>
+  <dt>출처</dt><dd><a href="../portfolio/html/research/Research%20DRL.html" target="_blank" rel="noopener">Portfolio — Research DRL ↗</a></dd>
+</dl>
+
+<h2 class="docs-h2">TD3 (off-policy) &amp; PPO (on-policy) — DRL 알고리즘 검증</h2>
+<div class="docs-fig-row">
+  <figure><img src="../portfolio/resources/reinforcement/Burgers equation nu=0.1.gif" alt="Burgers no control"><figcaption>(a) Burgers 방정식 (제어 없음)</figcaption></figure>
+  <figure><img src="../portfolio/resources/reinforcement/TD3 burgers.gif" alt="TD3 control"><figcaption>(b) TD3 제어</figcaption></figure>
+  <figure><img src="../portfolio/resources/reinforcement/ppo burgers.gif" alt="PPO control"><figcaption>(c) PPO 제어</figcaption></figure>
+</div>
+<p class="docs-p"><b>설명</b>: CFD 를 도메인으로 머신러닝을 적용했다. 위는 강화학습으로 Burgers 방정식을 제어한 결과다. (Burgers 방정식은 1차원 Navier-Stokes 방정식으로, 여기서는 spectral method 로 풀었다.) (a)는 제어가 없는 Burgers 방정식 — 초기 조건은 사인파이며, 점성항에 의해 사인 파형이 무너지는 것을 볼 수 있다. 초기 상태(사인 파형)를 유지하도록 강화학습으로 학습시킨 결과가 (b), (c)다. (b)는 deterministic policy 계열의 TD3 알고리즘, (c)는 stochastic policy 계열의 PPO 알고리즘으로 구현했다.</p>
+
+<h2 class="docs-h2">심층강화학습을 통한 항력 감소 난류 제어</h2>
+
+<h3 class="docs-h3">연구 배경</h3>
+<p class="docs-p">이 연구는 유체가 흐르면서 발생하는 벽면 근처의 표면 마찰을 줄이는 것을 목표로 한다. 조선·항공 산업에서 이러한 마찰 저항을 제어를 통해 성공적으로 줄일 경우 <strong>연간 약 380억 달러</strong>의 비용 절감이 가능한 것으로 알려져 있어, 공학적·사회적으로 중요한 가치가 있다고 판단해 연구를 진행했다.</p>
+
+<h3 class="docs-h3">방법</h3>
+<p class="docs-p">Navier–Stokes 방정식을 수치해석으로 직접 풀어 유체 시뮬레이션을 구현하고, Tensorflow 로 직접 구현한 강화학습 알고리즘과 결합했다. 시뮬레이션은 연구 목적에 맞춰 단순화된 채널 유동으로 모델링했으며, 벽면에는 강화학습으로 제어하는 blowing/suction 을 수치적으로 모델링한 액추에이터로 구현했다. 제어 알고리즘으로는 <strong>TD3 (Twin Delayed Deep Deterministic Policy Gradient)</strong> 를 적용해 발달된 유동의 항력을 줄였다.</p>
+
+<h3 class="docs-h3">기존 기법의 한계와 성과</h3>
+<p class="docs-p">전통적인 <strong>Opposition Control</strong> 기법은 실제 실험에 적용하려면 유동장 내부에 센서를 설치해야 하는 한계가 있었고, 이를 보완하기 위한 Opposition Control 기반 지도학습도 성능 한계를 극복하지 못했으며 오히려 효율이 더 낮았다. 본 연구에서는 강화학습을 통해 새로운 전략을 도출해 이러한 제약을 극복했고, 그 결과 기존 지도학습 기반 제어가 평균 20%의 항력 감소를 달성하던 것에 비해 <strong>약 25%의 감소 효과</strong>를 얻었다.</p>
+<div class="docs-fig">
+  <img src="../portfolio/resources/reinforcement/CNN - Network.jpg" alt="Actor-Critic network" style="max-width:100%;height:auto;border:1px solid #e6e9f1;border-radius:10px;">
+  <figcaption>(a) Actor-Critic 네트워크 구조</figcaption>
+</div>
+<div class="docs-fig-row">
+  <figure><img src="../portfolio/resources/reinforcement/no control 360.gif" alt="No control shear field"><figcaption>(b) 제어가 없는 전단 응력장</figcaption></figure>
+  <figure><img src="../portfolio/resources/reinforcement/Controlling shear flow.gif" alt="Controlled shear field"><figcaption>(c) 전단 응력장 제어</figcaption></figure>
+</div>
+<p class="docs-p">(a) TD3 알고리즘에 삽입된 Actor-Critic 네트워크 구조, (b) 제어가 없는 전단(shear) 응력장, (c) DRL 제어가 높은 전단응력을 감소시키는 모습 (RED → BLUE).</p>
+
+<h3 class="docs-h3">가장 어려웠던 점 — 학습 안정성</h3>
+<p class="docs-p">연구 과정에서 가장 어려웠던 점은 강화학습의 학습 안정성을 유지하면서도 새로운 현상을 발견할 수 있도록 성능을 향상시키는 일이었다. 이를 위해 다수의 논문을 참고했으며, 많은 수학적·통계적 기법을 깊이 이해하고 숙지해야 했다. 예를 들어 <strong>DDPG (Deep Deterministic Policy Gradient)</strong> 를 단독으로 사용했을 때는 학습 안정성이 낮아 성능 저하가 빈번히 발생했고, 학습이 비정상적으로 진행되면 시뮬레이션 시스템에 손상을 입히는 경우도 있었다. 이를 극복하기 위해 DDPG 에서 TD3 로 전환하고 다음 기법들을 적용해 학습 안정성과 성능을 크게 향상시켰다.</p>
+<ul class="docs-list">
+  <li><strong>Double Critic Network</strong> — Q값 과대평가를 방지하여 학습 안정성 확보</li>
+  <li><strong>Target Policy Smoothing</strong> — 타깃 정책의 과도한 민감성을 완화하여 탐색 성능 향상</li>
+  <li><strong>Delayed Policy Update</strong> — critic 이 충분히 안정된 후 정책을 업데이트하여 성능 개선</li>
+</ul>
+<p class="docs-p">또한 Q 함수의 감가율(discount factor)을 조정하여 기존 Opposition Control 과는 <strong>차별화된 새로운 항력 감소 전략</strong>을 도출할 수 있었다.</p>
+
+<h3 class="docs-h3">물리적 해석</h3>
+<p class="docs-p">강화학습은 사람이 쉽게 발견하기 어려운 현상을 찾아내는 데 도움을 주지만, 물리적 해석은 궁극적으로 사람이 수행해야 한다. 이에 본 연구에서는 강화학습으로 도출한 제어 전략을 바탕으로 항력 감소를 설명하는 일반적인 미분방정식을 유도하고, 그 효과를 일정 부분 정량적으로 검증했다. 다만 수식 모델링은 아직 완벽하지 않아 향후 개선이 필요하다.</p>
+
+<h3 class="docs-h3">결과</h3>
+<p class="docs-p">본 연구는 학위논문으로 제출되었을 뿐 아니라 국제 학술지 <strong>Physical Review Fluids</strong> 에 게재되었다.</p>
+
+</div>
+
+
+          </div>
+        </div>
+      </main>
+    </article>
+
+    <!-- ================= p7 : Time Forecasting (PM2.5) ================= -->
+    <article class="pd-article" id="p7" data-group="Research" data-nav='8|Time Forecasting (PM2.5)|KSME 2019'>
+      <main class="docs-post">
+        <div class="docs-post__article">
+          <header class="docs-post__header">
+            <h1 class="docs-post__title">Time Forecasting based on supervised learning</h1>
+          </header>
+          <div class="docs-post__body">
+
+
+<div class="docs-langtabs" role="tablist">
+  <button class="docs-langbtn is-active" data-lang="en">English</button>
+  <button class="docs-langbtn" data-lang="ko">한국어</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="docs-lang" data-lang="en">
+
+<dl class="docs-meta">
+  <dt>Topic</dt><dd>Forecasting model for particle matters (PM2.5)</dd>
+  <dt>Conference</dt><dd><a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE09344962" target="_blank" rel="noopener">KSME 2019 Autumn Annual Conference ↗</a></dd>
+  <dt>Source</dt><dd><a href="../portfolio/html/research/Research%20Prediction.html" target="_blank" rel="noopener">Portfolio — Research Prediction ↗</a></dd>
+</dl>
+
+<h2 class="docs-h2">Forecasting model for particle matters (PM2.5)</h2>
+<div class="docs-fig">
+  <img src="../portfolio/resources/prediction/6hrs NN.png" alt="6hrs prediction" style="max-width:100%;height:auto;border:1px solid #e6e9f1;border-radius:10px;">
+  <figcaption>6hrs forecast</figcaption>
+</div>
+<div class="docs-fig">
+  <img src="../portfolio/resources/prediction/12hrs NN.png" alt="12hrs prediction" style="max-width:100%;height:auto;border:1px solid #e6e9f1;border-radius:10px;">
+  <figcaption>12hrs forecast</figcaption>
+</div>
+<p class="docs-p"><b>Description</b>: In order to predict the concentration of fine dust, we have received about 10 years (from 2008 to 2018) of data from public portal for meteorological data and air quality data. It consists of data in units of time and has about 90,000 numbers of data. There are about 30 explanatory variables (as input information) such as temperature and humidity, NO2, PM10, and SO2 etc. And the goal is multivariative non-linear regression of PM2.5 through a neural network using above 30 explanatory variables. Among the explanatory variables, the variables that are able to explain PM2.5 most were selected based on the Akaike Information Criteria (AIC) value. Afterwards, imputation was performed to fill in the empty values. To ensure independence among selected explanatory variables, a Variance Inflation Factor was used. Finally, the concentration of PM2.5 was predicted by window learning with 14 selected variables. The above time series plot is about 6hrs and 12hrs forecasts.</p>
+
+</div>
+
+<!-- ============================ 한국어 ============================ -->
+<div class="docs-lang" data-lang="ko" hidden>
+
+<dl class="docs-meta">
+  <dt>주제</dt><dd>미세먼지(PM2.5) 예측 모델</dd>
+  <dt>학회</dt><dd><a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE09344962" target="_blank" rel="noopener">대한기계학회 2019 추계학술대회 ↗</a></dd>
+  <dt>출처</dt><dd><a href="../portfolio/html/research/Research%20Prediction.html" target="_blank" rel="noopener">Portfolio — Research Prediction ↗</a></dd>
+</dl>
+
+<h2 class="docs-h2">미세먼지(PM2.5) 예측 모델</h2>
+<div class="docs-fig">
+  <img src="../portfolio/resources/prediction/6hrs NN.png" alt="6hrs prediction" style="max-width:100%;height:auto;border:1px solid #e6e9f1;border-radius:10px;">
+  <figcaption>6시간 예측</figcaption>
+</div>
+<div class="docs-fig">
+  <img src="../portfolio/resources/prediction/12hrs NN.png" alt="12hrs prediction" style="max-width:100%;height:auto;border:1px solid #e6e9f1;border-radius:10px;">
+  <figcaption>12시간 예측</figcaption>
+</div>
+<p class="docs-p"><b>설명</b>: 미세먼지 농도를 예측하기 위해 공공데이터포털에서 약 10년치(2008–2018)의 기상·대기질 데이터를 확보했다. 시간 단위 데이터로 약 9만 건 규모이며, 온도·습도·NO2·PM10·SO2 등 약 30개의 설명변수(입력 정보)로 구성된다. 목표는 이 30여 개 설명변수를 사용해 신경망으로 PM2.5 를 다변량 비선형 회귀하는 것이다. 설명변수 중 PM2.5 를 가장 잘 설명하는 변수들을 AIC(Akaike Information Criteria) 값 기준으로 선별했고, 이후 결측치를 채우는 imputation 을 수행했다. 선별된 설명변수 간 독립성을 확보하기 위해 VIF(Variance Inflation Factor)를 사용했으며, 최종 선별된 14개 변수로 window learning 을 수행해 PM2.5 농도를 예측했다. 위 시계열 그림은 6시간·12시간 예측 결과다.</p>
+
+</div>
+
+
+          </div>
+        </div>
+      </main>
+    </article>
+
+    <!-- ================= p8 : Technical Skills — Infra & Systems ================= -->
+    <article class="pd-article" id="p8" data-group="Technical Skills" data-nav='9|Infra &amp; Systems|AWS · Home Cloud · CI/CD'>
+      <main class="docs-post">
+        <div class="docs-post__article">
+          <header class="docs-post__header">
+            <h1 class="docs-post__title">Cloud Infrastructure Capabilities (AWS / Home Cloud)</h1>
+          </header>
+          <div class="docs-post__body">
+
+<div class="docs-langtabs" role="tablist">
+  <button class="docs-langbtn is-active" data-lang="en">English</button>
+  <button class="docs-langbtn" data-lang="ko">한국어</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="docs-lang" data-lang="en">
+
+<h2 class="docs-h2">TA (Technical Architect)</h2>
+<ul class="docs-list">
+  <li>Planned and designed the <strong>common cloud standard architecture</strong> for <strong>ifacts</strong> (SK AX's manufacturing brand) at the team / division level</li>
+  <li><strong>Case</strong> — <a href="#p1">02 · IT-VoC Deployment Platform (SK ON) ↗</a> : served as TA designing a single platform that unifies the VoC systems and CI/CD environments scattered across overseas subsidiaries into the HQ standard</li>
+</ul>
+
+<h2 class="docs-h2">Infrastructure architecture</h2>
+<ul class="docs-list">
+  <li>Designed and built cloud network structures — <strong>AWS VPC, subnets, routing, security groups</strong></li>
+  <li>Built a <strong>DMZ security layer</strong> based on Nginx Reverse Proxy (Bastion, NAT Gateway)</li>
+</ul>
+
+<h2 class="docs-h2">Software architecture</h2>
+<ul class="docs-list">
+  <li>Optimized and installed the software architecture of <strong>ifacts solutions</strong> (ANS, SPC, MES, etc.)</li>
+  <li>Installed and operated <strong>databases</strong> (Oracle, MariaDB)</li>
+  <li>Installed <strong>CI/CD</strong> (Gitea, Jenkins) and designed &amp; built per-environment deployment pipelines (standardized)</li>
+  <li>Installed and managed the <strong>artifact repository</strong> (Nexus)</li>
+</ul>
+
+<h2 class="docs-h2">Home Cloud</h2>
+<p class="docs-p">Three Linux servers are operated directly on a home network behind a NAT gateway (via router port-forwarding), used mainly as a development environment. The front Reverse Proxy server (Nginx) doubles as a <strong>Bastion</strong> with security hardening such as <strong>Fail2ban</strong>, so the internal servers are protected behind a single entry point. The two backend servers are clustered with <strong>vanilla Kubernetes</strong> (self-installed, no managed service).</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 240" width="720" height="240" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">Home Cloud topology (3 Linux servers)</text>
+  <rect x="140" y="30" width="566" height="196" rx="12" fill="none" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="156" y="48" fill="#64748b" font-size="9">Home Network</text>
+  <rect x="546" y="44" width="158" height="152" rx="10" fill="#f3e8fc" fill-opacity="0.35" stroke="#8b5cf6" stroke-dasharray="5 4"/>
+  <text x="625" y="60" text-anchor="middle" fill="#7c3aed" font-size="9" font-weight="700">vanilla k8s Cluster</text>
+  <g text-anchor="middle">
+    <rect x="14" y="98" width="90" height="44" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="59" y="124">Internet</text>
+    <rect x="160" y="92" width="120" height="56" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="220" y="116">NAT Gateway</text><text x="220" y="132" fill="#64748b" font-size="9">Router</text>
+    <rect x="350" y="86" width="150" height="68" rx="10" fill="#e8f3fc" stroke="#0048A7" stroke-width="1.6"/><text x="425" y="108" font-weight="700">Reverse Proxy · Bastion</text><text x="425" y="124" fill="#64748b" font-size="9">Nginx · Fail2ban</text><text x="425" y="140" fill="#64748b" font-size="9">2 Core · 4GB RAM</text>
+    <rect x="560" y="68" width="130" height="48" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="625" y="88">Dev Server 1</text><text x="625" y="104" fill="#64748b" font-size="9">4 Core · 8GB RAM</text>
+    <rect x="560" y="136" width="130" height="48" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="625" y="156">Dev Server 2</text><text x="625" y="172" fill="#64748b" font-size="9">4 Core · 16GB RAM</text>
+  </g>
+  <text x="315" y="108" text-anchor="middle" fill="#64748b" font-size="9">port forwarding</text>
+  <defs><marker id="arHomeEn" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker></defs>
+  <g stroke="#475569" stroke-width="1.6" fill="none">
+    <line x1="104" y1="120" x2="153" y2="120" marker-end="url(#arHomeEn)"/>
+    <line x1="280" y1="120" x2="343" y2="120" marker-end="url(#arHomeEn)"/>
+    <line x1="500" y1="110" x2="539" y2="94" marker-end="url(#arHomeEn)"/>
+    <line x1="500" y1="130" x2="539" y2="154" marker-end="url(#arHomeEn)"/>
+  </g>
+</svg>
+<figcaption>All external traffic must pass through router port-forwarding and the Reverse Proxy (Bastion) — a single hardened entry point. The two backend servers form a vanilla k8s cluster.</figcaption>
+</div>
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>Direction</strong> — In AI, I have tried not to stop at using tools like Tensorflow, but to intuitively understand the underlying mathematical and statistical principles and theory. On the software side, beyond simple API development, I have sought to grasp the essence of low-level system structures — memory, kernel, and network — to understand the whole architecture. Going forward, my goal is to fuse these two domains and become an <strong>AI system architect, researcher, and engineer</strong> who designs and implements optimal functional and non-functional structures.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- ============================ 한국어 ============================ -->
+<div class="docs-lang" data-lang="ko" hidden>
+
+<h2 class="docs-h2">TA (Technical Architect) 역량</h2>
+<ul class="docs-list">
+  <li>팀 / 본부 단위의 <strong>ifacts</strong>(SK AX 제조 브랜드) <strong>공통 클라우드 표준 구조</strong> 기획 및 설계</li>
+  <li><strong>대표 사례</strong> — <a href="#p1">02 · IT-VoC Deployment Platform (SK ON) ↗</a> : TA 로서 해외 자회사별로 흩어져 있던 VoC 시스템·CI/CD 환경을 HQ 표준으로 통합하는 단일 플랫폼 구조 설계</li>
+</ul>
+
+<h2 class="docs-h2">인프라 아키텍처 역량</h2>
+<ul class="docs-list">
+  <li><strong>AWS VPC · 서브넷 · 라우팅 · 보안 그룹</strong> 등 클라우드 네트워크 구조 설계 및 구축</li>
+  <li>Nginx Reverse Proxy (Bastion, NAT Gateway) 기반 <strong>DMZ 보안 계층</strong> 구축</li>
+</ul>
+
+<h2 class="docs-h2">소프트웨어 아키텍처 역량</h2>
+<ul class="docs-list">
+  <li><strong>ifacts 솔루션</strong>(ANS, SPC, MES 등) 소프트웨어 구조 최적화 및 설치</li>
+  <li><strong>데이터베이스</strong>(Oracle, MariaDB) 설치 및 운영 관리</li>
+  <li><strong>CI/CD</strong>(Gitea, Jenkins) 설치 및 환경별 배포 파이프라인 설계·구축 (표준화 적용)</li>
+  <li><strong>아티팩트 저장소</strong>(Nexus) 설치 및 관리</li>
+</ul>
+
+<h2 class="docs-h2">Home Cloud</h2>
+<p class="docs-p">자가 네트워크 내 NAT Gateway(공유기 포트포워딩)를 통해 <strong>리눅스 서버 3대</strong>를 직접 운영 중이며, 주로 개발 환경으로 활용하고 있다. 전면의 Reverse Proxy 서버(Nginx)는 <strong>Bastion</strong> 을 겸하며 <strong>Fail2ban</strong> 등 보안 설정을 적용해, 내부 서버는 단일 진입점 뒤에서 보호된다. 뒤단의 서버 2대는 <strong>vanilla Kubernetes</strong> 로 직접 클러스터링해 운영한다 (매니지드 서비스 미사용).</p>
+<div class="docs-fig">
+<svg viewBox="0 0 720 240" width="720" height="240" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
+  <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">Home Cloud 구성 (리눅스 서버 3대)</text>
+  <rect x="140" y="30" width="566" height="196" rx="12" fill="none" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="156" y="48" fill="#64748b" font-size="9">자가 네트워크</text>
+  <rect x="546" y="44" width="158" height="152" rx="10" fill="#f3e8fc" fill-opacity="0.35" stroke="#8b5cf6" stroke-dasharray="5 4"/>
+  <text x="625" y="60" text-anchor="middle" fill="#7c3aed" font-size="9" font-weight="700">vanilla k8s Cluster</text>
+  <g text-anchor="middle">
+    <rect x="14" y="98" width="90" height="44" rx="8" fill="#eef2f7" stroke="#94a3b8"/><text x="59" y="124">Internet</text>
+    <rect x="160" y="92" width="120" height="56" rx="8" fill="#fef3e7" stroke="#d98324"/><text x="220" y="116">NAT Gateway</text><text x="220" y="132" fill="#64748b" font-size="9">공유기 (Router)</text>
+    <rect x="350" y="86" width="150" height="68" rx="10" fill="#e8f3fc" stroke="#0048A7" stroke-width="1.6"/><text x="425" y="108" font-weight="700">Reverse Proxy · Bastion</text><text x="425" y="124" fill="#64748b" font-size="9">Nginx · Fail2ban</text><text x="425" y="140" fill="#64748b" font-size="9">2 Core · 4GB RAM</text>
+    <rect x="560" y="68" width="130" height="48" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="625" y="88">Dev Server 1</text><text x="625" y="104" fill="#64748b" font-size="9">4 Core · 8GB RAM</text>
+    <rect x="560" y="136" width="130" height="48" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="625" y="156">Dev Server 2</text><text x="625" y="172" fill="#64748b" font-size="9">4 Core · 16GB RAM</text>
+  </g>
+  <text x="315" y="108" text-anchor="middle" fill="#64748b" font-size="9">포트포워딩</text>
+  <defs><marker id="arHomeKo" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker></defs>
+  <g stroke="#475569" stroke-width="1.6" fill="none">
+    <line x1="104" y1="120" x2="153" y2="120" marker-end="url(#arHomeKo)"/>
+    <line x1="280" y1="120" x2="343" y2="120" marker-end="url(#arHomeKo)"/>
+    <line x1="500" y1="110" x2="539" y2="94" marker-end="url(#arHomeKo)"/>
+    <line x1="500" y1="130" x2="539" y2="154" marker-end="url(#arHomeKo)"/>
+  </g>
+</svg>
+<figcaption>외부 트래픽은 반드시 공유기 포트포워딩 → Reverse Proxy(Bastion) 를 거쳐야 내부 서버에 도달 — 단일 진입점으로 공격면 최소화. 뒤단 2대는 vanilla k8s 클러스터.</figcaption>
+</div>
+
+<div class="docs-callout">
+  <div class="docs-callout__body">
+    <p class="docs-p"><strong>지향점</strong> — AI 영역에서는 단순히 Tensorflow 와 같은 도구를 사용하는 데 그치지 않고, 그 근본이 되는 수학·통계적 원리와 이론을 직관적으로 이해하려고 노력해왔다. 소프트웨어 관점에서도 단순한 API 개발을 넘어 메모리·커널·네트워크 등 시스템의 저수준 구조까지 본질을 파악하며 전체 아키텍처를 이해하고자 했다. 앞으로는 이 두 영역을 융합하여 최적의 기능적·비기능적 구조를 설계·구현하는 <strong>AI 시스템 아키텍트 겸 연구자이자 엔지니어</strong>가 되는 것을 목표로 한다.</p>
+  </div>
+</div>
+
+</div>
+
+          </div>
+        </div>
+      </main>
+    </article>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  // ---- sidebar index grouped by data-group ----
+  var arts = Array.prototype.slice.call(document.querySelectorAll('.pd-article'));
+  var index = document.getElementById('pdIndex');
+  var lastGroup = null;
+  arts.forEach(function(a){
+    var g = a.getAttribute('data-group');
+    if(g !== lastGroup){
+      var gl = document.createElement('div');
+      gl.className = 'pd-group'; gl.textContent = g;
+      index.appendChild(gl); lastGroup = g;
+    }
+    var parts = a.getAttribute('data-nav').split('|');
+    var b = document.createElement('button');
+    b.className = 'pd-navlink';
+    b.setAttribute('data-target', a.id);
+    b.innerHTML = '<span class="n">'+('0'+parts[0]).slice(-2)+'</span><span><span class="t">'+parts[1]+'</span><span class="o">'+parts[2]+'</span></span>';
+    b.addEventListener('click', function(){ show(a.id, true); });
+    index.appendChild(b);
+  });
+  function show(id, push){
+    arts.forEach(function(a){ a.classList.toggle('active', a.id===id); });
+    document.querySelectorAll('.pd-navlink').forEach(function(n){
+      n.setAttribute('aria-current', n.getAttribute('data-target')===id ? 'true':'false');
+    });
+    if(push && history.replaceState){ history.replaceState(null,'','#'+id); }
+    window.scrollTo(0,0);
+  }
+  var start = (location.hash||'#p0').replace('#','');
+  if(!document.getElementById(start)) start='p0';
+  show(start, false);
+  window.addEventListener('hashchange', function(){
+    var id = location.hash.replace('#','');
+    if(document.getElementById(id)) show(id, false);
+  });
+
+  // ---- language tabs (global switch across all articles) ----
+  function setLang(lang){
+    document.querySelectorAll('.docs-langbtn').forEach(function(x){
+      x.classList.toggle('is-active', x.getAttribute('data-lang')===lang);
+    });
+    document.querySelectorAll('.docs-lang').forEach(function(p){
+      p.hidden = (p.getAttribute('data-lang')!==lang);
+    });
+  }
+  document.querySelectorAll('.docs-langbtn').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+  });
+  setLang('ko'); // default: Korean
+})();
+</script>
+
+</body>
+</html>

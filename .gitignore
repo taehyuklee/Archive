@@ -24,3 +24,7 @@ pnpm-debug.log*
 
 # 인수인계 문서 (로컬 전용, 배포 제외)
 handsover/
+HANDOVER-*.md
+
+# MCP (playwright 스크린샷 등)
+.playwright-mcp/
