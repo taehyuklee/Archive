@@ -318,6 +318,8 @@ p code, li code {
     background: #fff;
     border: 1px solid #e5e9ef;
     border-radius: 10px;
+    padding: 18px 14px;
+    box-sizing: border-box;
 }
 .docs-fig figcaption{
     margin-top: 10px;
