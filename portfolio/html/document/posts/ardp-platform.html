@@ -51,7 +51,7 @@
 
 <div class="docs-callout">
   <div class="docs-callout__body">
-    <p class="docs-p"><strong>One line</strong> — <strong>AI Readable Data Platform (ARDP)</strong> turns a company's databases &amp; documents into data an AI can read — an <strong>ontology / Virtual Knowledge Graph</strong> — and answers natural-language questions over it. As <strong>application architect &amp; backend engineer</strong> I designed the <strong>cross-module data flow</strong> and built the structured-build, deploy, and inference pieces. <em>(Ongoing — applied to the AI-SCM domain)</em></p>
+    <p class="docs-p"><strong>One line</strong> — <strong>AI Readable Data Platform (ARDP)</strong> turns a company's databases &amp; documents into data an AI can read — an <strong>ontology / Virtual Knowledge Graph</strong> — and answers natural-language questions over it. As <strong>application architect &amp; backend engineer</strong> I designed the <strong>cross-module data flow</strong> and built the structured-build, deploy, and inference pieces. <em>(Ongoing — applied to the in-house HR system)</em></p>
   </div>
 </div>
 
@@ -59,12 +59,13 @@
   <dt>Duration</dt><dd>March 2026 – Present (ongoing)</dd>
   <dt>Role</dt><dd>Application Architect &amp; Backend Engineer</dd>
   <dt>Org</dt><dd>SK Inc. AX, AI Innovation Lab</dd>
+  <dt>Client</dt><dd>In-house systems first, then external expansion</dd>
   <dt>Tech</dt><dd>FastAPI, PostgreSQL, Ontop (VKG), Trino, Neo4j, SPARQL, LangChain / LangGraph, Azure OpenAI, AWS, Docker / Kubernetes, React, Claude Code (AI pair programming)</dd>
-  <dt>Scope</dt><dd>5 of 6 modules — data_management, structured, inference, deploy-hooks, frontend (not unstructured)</dd>
+  <dt>Scope</dt><dd>5 of 6 modules — data_management, structured, inference, deploy-hooks, frontend (not unstructured). The frontend is being developed via AI coding with Claude Code.</dd>
 </dl>
 
 <h2 class="docs-h2">Overview</h2>
-<p class="docs-p">ARDP converts structured (RDB/CSV) and unstructured (policy/SI documents) data into an <strong>ontology</strong> so an LLM can query it reliably. Structured DBs are exposed as a <strong>Virtual Knowledge Graph</strong> via <strong>Ontop</strong> (no data duplication) over a <strong>Trino</strong> federation of 5 heterogeneous DBs, and users ask questions in plain language that are translated to <strong>SPARQL</strong>. It is built as microservices around a single source of truth, and is applied to the <strong>AI-SCM</strong> (HR / SI workforce) domain.</p>
+<p class="docs-p">ARDP converts structured (RDB/CSV) and unstructured (policy/SI documents) data into an <strong>ontology</strong> so an LLM can query it reliably. Structured DBs are exposed as a <strong>Virtual Knowledge Graph</strong> via <strong>Ontop</strong> (no data duplication) over a <strong>Trino</strong> federation of 5 heterogeneous DBs, and users ask questions in plain language that are translated to <strong>SPARQL</strong>. It is built as microservices around a single source of truth, and is applied to the <strong>in-house HR system</strong> (HR / SI workforce domain).</p>
 <div class="docs-fig">
 <svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
   <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">Platform architecture (microservices)</text>
@@ -118,7 +119,7 @@
   <li><strong>③ AWS infrastructure architecture</strong> — defined the cloud architecture in coordination with the infrastructure team.</li>
   <li><strong>④ RDB → graph modeling methodology.</strong> Developed the <strong>PK/FK-based table-clustering</strong> method that decides how relational tables map to a property graph — classifying each table (Entity / Junction / …) from its <strong>primary/foreign keys &amp; cardinality</strong>, combining rule-based classification with LLM correction.</li>
   <li><strong>⑤ Semantic inference (catalog-grounded NL → SPARQL).</strong> Built the inference modes; <strong>Graph-Explorer and Graph-Hop are my own ideas</strong> — and Graph-Explorer performs notably well.</li>
-  <li><strong>⑥ AI-SCM golden set</strong> — building, testing, and tuning the evaluation/golden answer set that the platform is measured and improved against.</li>
+  <li><strong>⑥ HR-domain golden set</strong> — building, testing, and tuning the evaluation/golden answer set that the platform is measured and improved against.</li>
   <li><strong>⑦ Unified datasource management.</strong> Built a structure that connects and manages heterogeneous datasources <strong>dynamically without service restarts</strong>, and led inter-service API integration and infrastructure setup.</li>
 </ul>
 
@@ -128,7 +129,7 @@
   <tbody>
     <tr><td><strong>One-Shot</strong></td><td>NL → 1 SPARQL → answer (schema + value catalog grounding)</td><td>simple lookups</td></tr>
     <tr><td><strong>N-Shot</strong></td><td>decompose into sub-questions → multiple SPARQL → synthesize</td><td>complex / multi-condition</td></tr>
-    <tr><td><strong>Graph-Explorer</strong>&nbsp;★</td><td>LLM agent (LangGraph) explores the KnowledgeGraph and queries directly</td><td>relationship-following, <em>strong accuracy</em></td></tr>
+    <tr><td><strong>Graph-Explorer</strong>&nbsp;★</td><td>ReAct-style LLM agent (LangGraph) explores the KnowledgeGraph and queries directly</td><td>relationship-following, <em>strong accuracy</em></td></tr>
     <tr><td><strong>Graph-Hop</strong></td><td>anchor + hop-expansion over very large schemas</td><td>large schemas that don't fit one prompt</td></tr>
   </tbody>
 </table>
@@ -154,7 +155,7 @@
 
 <div class="docs-callout">
   <div class="docs-callout__body">
-    <p class="docs-p"><strong>한 줄 요약</strong> — <strong>AI Readable Data Platform (ARDP)</strong> 는 기업의 DB와 문서를 AI가 읽을 수 있는 데이터(<strong>온톨로지 / 가상 지식그래프</strong>)로 바꾸고 자연어로 질의하고 추론하는 플랫폼이다. <strong>애플리케이션 아키텍트 겸 백엔드 엔지니어</strong>로서 <strong>모듈 간 데이터 flow</strong> 를 설계하고 정형 빌드, 배포, 추론 영역을 개발했다. <em>(진행 중 — AI-SCM 도메인 적용)</em></p>
+    <p class="docs-p"><strong>한 줄 요약</strong> — <strong>AI Readable Data Platform (ARDP)</strong> 는 기업의 DB와 문서를 AI가 읽을 수 있는 데이터(<strong>온톨로지 / 가상 지식그래프</strong>)로 바꾸고 자연어로 질의하고 추론하는 플랫폼이다. <strong>애플리케이션 아키텍트 겸 백엔드 엔지니어</strong>로서 <strong>모듈 간 데이터 flow</strong> 를 설계하고 정형 빌드, 배포, 추론 영역을 개발했다. <em>(진행 중 — 사내 인사시스템 적용)</em></p>
   </div>
 </div>
 
@@ -162,12 +163,13 @@
   <dt>기간</dt><dd>2026년 3월 – 현재 (진행 중)</dd>
   <dt>역할</dt><dd>애플리케이션 아키텍트, 백엔드 엔지니어</dd>
   <dt>소속</dt><dd>SK Inc. AX, AI Innovation Lab</dd>
+  <dt>고객</dt><dd>사내 시스템 적용 우선, 이후 대외 확장</dd>
   <dt>기술</dt><dd>FastAPI, PostgreSQL, Ontop (VKG), Trino, Neo4j, SPARQL, LangChain / LangGraph, Azure OpenAI, AWS, Docker / Kubernetes, React, Claude Code (AI 페어 프로그래밍)</dd>
-  <dt>관여</dt><dd>6개 모듈 중 5개 — data_management, structured, inference, deploy-hooks, frontend (unstructured 제외)</dd>
+  <dt>관여</dt><dd>6개 모듈 중 5개 — data_management, structured, inference, deploy-hooks, frontend (unstructured 제외). frontend 는 Claude Code 기반 AI 코딩으로 개발 중.</dd>
 </dl>
 
 <h2 class="docs-h2">개요</h2>
-<p class="docs-p">ARDP 는 정형(RDB/CSV)과 비정형(정책/SI 문서) 데이터를 <strong>온톨로지</strong>로 변환해 LLM 이 안정적으로 질의할 수 있게 한다. 정형 DB 는 <strong>Trino</strong> 로 5개 이기종 DB 를 연합한 뒤 <strong>Ontop</strong> 으로 <strong>가상 지식그래프(VKG)</strong> 로 노출(데이터 복제 없음)하고, 사용자는 <strong>자연어</strong>로 물으면 <strong>SPARQL</strong> 로 변환되어 실행된다. 단일 진실원(SoT) 중심의 마이크로서비스로 구성되며 <strong>AI-SCM</strong>(인사/SI 인력) 도메인에 적용 중이다.</p>
+<p class="docs-p">ARDP 는 정형(RDB/CSV)과 비정형(정책/SI 문서) 데이터를 <strong>온톨로지</strong>로 변환해 LLM 이 안정적으로 질의할 수 있게 한다. 정형 DB 는 <strong>Trino</strong> 로 5개 이기종 DB 를 연합한 뒤 <strong>Ontop</strong> 으로 <strong>가상 지식그래프(VKG)</strong> 로 노출(데이터 복제 없음)하고, 사용자는 <strong>자연어</strong>로 물으면 <strong>SPARQL</strong> 로 변환되어 실행된다. 단일 진실원(SoT) 중심의 마이크로서비스로 구성되며 <strong>사내 인사시스템</strong>(인사/SI 인력 도메인)에 적용 중이다.</p>
 <div class="docs-fig">
 <svg viewBox="0 0 720 280" width="720" height="280" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11">
   <text x="360" y="18" text-anchor="middle" fill="#003B62" font-weight="700">플랫폼 아키텍처 (마이크로서비스)</text>
@@ -221,7 +223,7 @@
   <li><strong>③ AWS 인프라 아키텍처</strong> — 인프라팀과 협의해 클라우드 아키텍처를 설계.</li>
   <li><strong>④ RDB → 그래프 모델링 방법론.</strong> 관계형 테이블을 프로퍼티 그래프로 어떻게 매핑할지 결정하는 <strong>PK/FK 기반 테이블 클러스터링</strong> 방법론을 개발 — <strong>기본키/외래키와 카디널리티</strong>로 각 테이블을 Entity/Junction 등으로 분류(규칙 기반 + LLM 보정).</li>
   <li><strong>⑤ 시멘틱 추론 (카탈로그 기반 자연어 → SPARQL).</strong> 추론 모드들을 개발했고, <strong>Graph-Explorer 와 Graph-Hop 은 직접 고안하여 개발</strong> — 특히 Graph-Explorer 가 상당히 잘 동작한다.</li>
-  <li><strong>⑥ AI-SCM 골든셋</strong> — 플랫폼을 측정하고 개선하는 기준이 되는 평가/정답셋을 구축, 테스트, 튜닝.</li>
+  <li><strong>⑥ 인사 도메인 골든셋</strong> — 플랫폼을 측정하고 개선하는 기준이 되는 평가/정답셋을 구축, 테스트, 튜닝.</li>
   <li><strong>⑦ 데이터소스 통합 관리 체계.</strong> 서비스 <strong>재기동 없이</strong> 이기종 데이터소스를 동적으로 연결하고 관리하는 구조를 구축하고, 서비스 간 API 연동 및 인프라 구성을 주도.</li>
 </ul>
 
@@ -231,7 +233,7 @@
   <tbody>
     <tr><td><strong>One-Shot</strong></td><td>자연어 → SPARQL 1개 → 답변 (스키마 + 값 카탈로그 grounding)</td><td>단순 조회</td></tr>
     <tr><td><strong>N-Shot</strong></td><td>하위 질문 분해 → 여러 SPARQL → 결과 종합</td><td>복합, 다중 조건</td></tr>
-    <tr><td><strong>Graph-Explorer</strong>&nbsp;★</td><td>LLM 에이전트(LangGraph)가 KnowledgeGraph 를 탐색하며 직접 질의</td><td>관계 추적, <em>정확도 우수</em></td></tr>
+    <tr><td><strong>Graph-Explorer</strong>&nbsp;★</td><td>ReAct 기반 LLM 에이전트(LangGraph)가 KnowledgeGraph 를 탐색하며 직접 질의</td><td>관계 추적, <em>정확도 우수</em></td></tr>
     <tr><td><strong>Graph-Hop</strong></td><td>앵커 + hop 확장으로 대규모 스키마 처리</td><td>한 프롬프트에 안 들어가는 큰 스키마</td></tr>
   </tbody>
 </table>
