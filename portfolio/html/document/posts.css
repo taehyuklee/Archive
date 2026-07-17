@@ -333,7 +333,10 @@ p code, li code {
     align-items: flex-start;
     margin: 30px 0;
 }
-.docs-fig-row figure{ margin: 0; flex: 1 1 280px; max-width: 380px; text-align: center; }
+.docs-fig-row figure{ margin: 0; flex: 1 1 0; min-width: 0; max-width: 380px; text-align: center; }
+@media (max-width: 700px){
+  .docs-fig-row figure{ flex: 1 1 280px; }
+}
 .docs-fig-row figure canvas,
 .docs-fig-row figure svg{ width: 100%; }
 .docs-fig-row figcaption{

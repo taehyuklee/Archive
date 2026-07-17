@@ -149,31 +149,40 @@
 <div class="docs-fig">
 <svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
   <!-- users -->
-  <g fill="#0f172a"><rect x="20" y="60" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="78" text-anchor="middle">User A</text>
-  <rect x="20" y="100" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="118" text-anchor="middle">User B</text>
-  <rect x="20" y="140" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="158" text-anchor="middle">User …</text></g>
+  <g fill="#0f172a"><rect x="20" y="89" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="107" text-anchor="middle">User A</text>
+  <rect x="20" y="129" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="147" text-anchor="middle">User B</text>
+  <rect x="20" y="169" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="187" text-anchor="middle">User …</text></g>
   <!-- process manager -->
-  <rect x="170" y="70" width="150" height="90" rx="10" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
-  <text x="245" y="98" text-anchor="middle" fill="#003B62" font-weight="700">Process Manager</text>
-  <text x="245" y="118" text-anchor="middle" fill="#64748b" font-size="10">gateway, 사용자 state</text>
-  <text x="245" y="134" text-anchor="middle" fill="#64748b" font-size="10">import+analysis = 1 unit</text>
-  <text x="245" y="150" text-anchor="middle" fill="#64748b" font-size="10">health check</text>
+  <rect x="170" y="97" width="150" height="90" rx="10" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
+  <text x="245" y="125" text-anchor="middle" fill="#003B62" font-weight="700">Process Manager</text>
+  <text x="245" y="145" text-anchor="middle" fill="#64748b" font-size="10">gateway, per-user state</text>
+  <text x="245" y="161" text-anchor="middle" fill="#64748b" font-size="10">import+analysis = 1 unit</text>
+  <text x="245" y="177" text-anchor="middle" fill="#64748b" font-size="10">health check</text>
   <!-- subprocesses (multi-core) -->
-  <text x="560" y="40" text-anchor="middle" fill="#64748b" font-weight="700">Dedicated subprocess / core</text>
+  <text x="560" y="36" text-anchor="middle" fill="#64748b" font-weight="700">Dedicated subprocess / core — each carries the full analysis engine</text>
   <g fill="#0f172a">
-    <rect x="430" y="52" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="70" text-anchor="middle">subprocess, CPU core 1</text>
-    <rect x="430" y="100" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="118" text-anchor="middle">subprocess, CPU core 2</text>
-    <rect x="430" y="148" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="166" text-anchor="middle">subprocess, CPU core N</text>
+    <rect x="430" y="46" width="260" height="56" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="62" text-anchor="middle" font-size="10.5" font-weight="600">subprocess — CPU core 1</text>
+    <rect x="440" y="70" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="477" y="85" text-anchor="middle" font-size="8.5" fill="#0f172a">normality</text>
+    <rect x="523" y="70" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="560" y="85" text-anchor="middle" font-size="8.5" fill="#0f172a">t-test</text>
+    <rect x="606" y="70" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="643" y="85" text-anchor="middle" font-size="8.5" fill="#0f172a">ANOVA</text>
+    <rect x="430" y="114" width="260" height="56" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="130" text-anchor="middle" font-size="10.5" font-weight="600">subprocess — CPU core 2</text>
+    <rect x="440" y="138" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="477" y="153" text-anchor="middle" font-size="8.5" fill="#0f172a">normality</text>
+    <rect x="523" y="138" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="560" y="153" text-anchor="middle" font-size="8.5" fill="#0f172a">t-test</text>
+    <rect x="606" y="138" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="643" y="153" text-anchor="middle" font-size="8.5" fill="#0f172a">ANOVA</text>
+    <rect x="430" y="182" width="260" height="56" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="198" text-anchor="middle" font-size="10.5" font-weight="600">subprocess — CPU core N</text>
+    <rect x="440" y="206" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="477" y="221" text-anchor="middle" font-size="8.5" fill="#0f172a">normality</text>
+    <rect x="523" y="206" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="560" y="221" text-anchor="middle" font-size="8.5" fill="#0f172a">t-test</text>
+    <rect x="606" y="206" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="643" y="221" text-anchor="middle" font-size="8.5" fill="#0f172a">ANOVA</text>
   </g>
   <g stroke="#475569" stroke-width="1.5" fill="#475569">
-    <line x1="100" y1="100" x2="168" y2="108"/><polygon points="170,108 161,105 163,113"/>
-    <line x1="320" y1="100" x2="428" y2="65"/><polygon points="430,65 421,63 423,71"/>
-    <line x1="320" y1="113" x2="428" y2="113"/><polygon points="430,113 421,109 421,117"/>
-    <line x1="320" y1="126" x2="428" y2="161"/><polygon points="430,161 421,156 419,164"/>
+    <line x1="100" y1="142" x2="168" y2="142"/><polygon points="170,142 161,138 161,146"/>
+    <line x1="320" y1="127" x2="428" y2="74"/><polygon points="430,74 421,71 422,79"/>
+    <line x1="320" y1="142" x2="428" y2="142"/><polygon points="430,142 421,138 421,146"/>
+    <line x1="320" y1="157" x2="428" y2="210"/><polygon points="430,210 422,204 420,212"/>
   </g>
-  <text x="245" y="200" text-anchor="middle" fill="#0e8b87" font-weight="700">외부 저장소(Redis) 없이 stateful 유지, GIL 병목 회피</text>
+  <text x="245" y="214" text-anchor="middle" fill="#0e8b87" font-weight="700">Stateful without external storage (Redis), avoiding the GIL bottleneck</text>
 </svg>
-<figcaption>Figure 02. The Process Manager acts like a gateway, directly managing user state and process connections → stateful without external storage, utilizing multiple cores</figcaption>
+<figcaption>Figure 02. The Process Manager acts like a gateway, directly managing user state and process connections — each subprocess carries the full analysis engine → stateful without external storage, utilizing multiple cores</figcaption>
 </div>
 
 <p class="docs-p"><strong>Solution:</strong> Implemented a <strong>Process Manager</strong> that centrally controls processes and manages per-user state. Acting like a gateway, it handles inter-process state delivery and connectivity, keeping a stateful context <strong>without external storage</strong>. By managing data import + analysis as a single unit in the DB keyed by user ID, session continuity is preserved — yielding a scalable, reliable distributed-computation structure that avoids the GIL bottleneck while using multi-core resources.</p>
@@ -299,29 +308,38 @@
 
 <div class="docs-fig">
 <svg viewBox="0 0 720 250" width="720" height="250" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif" font-size="11.5">
-  <g fill="#0f172a"><rect x="20" y="60" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="78" text-anchor="middle">사용자 A</text>
-  <rect x="20" y="100" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="118" text-anchor="middle">사용자 B</text>
-  <rect x="20" y="140" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="158" text-anchor="middle">사용자 …</text></g>
-  <rect x="170" y="70" width="150" height="90" rx="10" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
-  <text x="245" y="98" text-anchor="middle" fill="#003B62" font-weight="700">Process Manager</text>
-  <text x="245" y="118" text-anchor="middle" fill="#64748b" font-size="10">게이트웨이, 사용자 state</text>
-  <text x="245" y="134" text-anchor="middle" fill="#64748b" font-size="10">import+분석 = 1 단위</text>
-  <text x="245" y="150" text-anchor="middle" fill="#64748b" font-size="10">health check</text>
-  <text x="560" y="40" text-anchor="middle" fill="#64748b" font-weight="700">전용 subprocess / 코어</text>
+  <g fill="#0f172a"><rect x="20" y="89" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="107" text-anchor="middle">사용자 A</text>
+  <rect x="20" y="129" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="147" text-anchor="middle">사용자 B</text>
+  <rect x="20" y="169" width="80" height="26" rx="6" fill="#eef2f7" stroke="#94a3b8"/><text x="60" y="187" text-anchor="middle">사용자 …</text></g>
+  <rect x="170" y="97" width="150" height="90" rx="10" fill="#e8f3fc" stroke="#0078d7" stroke-width="1.5"/>
+  <text x="245" y="125" text-anchor="middle" fill="#003B62" font-weight="700">Process Manager</text>
+  <text x="245" y="145" text-anchor="middle" fill="#64748b" font-size="10">게이트웨이, 사용자 state</text>
+  <text x="245" y="161" text-anchor="middle" fill="#64748b" font-size="10">import+분석 = 1 단위</text>
+  <text x="245" y="177" text-anchor="middle" fill="#64748b" font-size="10">health check</text>
+  <text x="560" y="36" text-anchor="middle" fill="#64748b" font-weight="700">전용 subprocess / 코어 — 각각 분석 엔진 전체 탑재</text>
   <g fill="#0f172a">
-    <rect x="430" y="52" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="70" text-anchor="middle">subprocess, CPU core 1</text>
-    <rect x="430" y="100" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="118" text-anchor="middle">subprocess, CPU core 2</text>
-    <rect x="430" y="148" width="260" height="26" rx="6" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="166" text-anchor="middle">subprocess, CPU core N</text>
+    <rect x="430" y="46" width="260" height="56" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="62" text-anchor="middle" font-size="10.5" font-weight="600">subprocess — CPU core 1</text>
+    <rect x="440" y="70" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="477" y="85" text-anchor="middle" font-size="8.5" fill="#0f172a">정규성 검정</text>
+    <rect x="523" y="70" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="560" y="85" text-anchor="middle" font-size="8.5" fill="#0f172a">t-검정</text>
+    <rect x="606" y="70" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="643" y="85" text-anchor="middle" font-size="8.5" fill="#0f172a">ANOVA</text>
+    <rect x="430" y="114" width="260" height="56" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="130" text-anchor="middle" font-size="10.5" font-weight="600">subprocess — CPU core 2</text>
+    <rect x="440" y="138" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="477" y="153" text-anchor="middle" font-size="8.5" fill="#0f172a">정규성 검정</text>
+    <rect x="523" y="138" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="560" y="153" text-anchor="middle" font-size="8.5" fill="#0f172a">t-검정</text>
+    <rect x="606" y="138" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="643" y="153" text-anchor="middle" font-size="8.5" fill="#0f172a">ANOVA</text>
+    <rect x="430" y="182" width="260" height="56" rx="8" fill="#e9f7f3" stroke="#0e8b87"/><text x="560" y="198" text-anchor="middle" font-size="10.5" font-weight="600">subprocess — CPU core N</text>
+    <rect x="440" y="206" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="477" y="221" text-anchor="middle" font-size="8.5" fill="#0f172a">정규성 검정</text>
+    <rect x="523" y="206" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="560" y="221" text-anchor="middle" font-size="8.5" fill="#0f172a">t-검정</text>
+    <rect x="606" y="206" width="74" height="22" rx="5" fill="#fff" stroke="#0e8b87"/><text x="643" y="221" text-anchor="middle" font-size="8.5" fill="#0f172a">ANOVA</text>
   </g>
   <g stroke="#475569" stroke-width="1.5" fill="#475569">
-    <line x1="100" y1="100" x2="168" y2="108"/><polygon points="170,108 161,105 163,113"/>
-    <line x1="320" y1="100" x2="428" y2="65"/><polygon points="430,65 421,63 423,71"/>
-    <line x1="320" y1="113" x2="428" y2="113"/><polygon points="430,113 421,109 421,117"/>
-    <line x1="320" y1="126" x2="428" y2="161"/><polygon points="430,161 421,156 419,164"/>
+    <line x1="100" y1="142" x2="168" y2="142"/><polygon points="170,142 161,138 161,146"/>
+    <line x1="320" y1="127" x2="428" y2="74"/><polygon points="430,74 421,71 422,79"/>
+    <line x1="320" y1="142" x2="428" y2="142"/><polygon points="430,142 421,138 421,146"/>
+    <line x1="320" y1="157" x2="428" y2="210"/><polygon points="430,210 422,204 420,212"/>
   </g>
-  <text x="245" y="200" text-anchor="middle" fill="#0e8b87" font-weight="700">외부 저장소(Redis) 없이 stateful 유지, GIL 병목 회피</text>
+  <text x="245" y="214" text-anchor="middle" fill="#0e8b87" font-weight="700">외부 저장소(Redis) 없이 stateful 유지, GIL 병목 회피</text>
 </svg>
-<figcaption>그림 02. Process Manager가 게이트웨이처럼 사용자 state 와 프로세스 연결을 직접 관리 → 외부 저장소 없이 다중코어 활용</figcaption>
+<figcaption>그림 02. Process Manager가 게이트웨이처럼 사용자 state 와 프로세스 연결을 직접 관리 — 각 subprocess 는 분석 엔진 전체를 탑재 → 외부 저장소 없이 다중코어 활용</figcaption>
 </div>
 
 <p class="docs-p"><strong>해결:</strong> 프로세스를 중앙에서 제어하고 사용자별 state 를 관리하는 <strong>Process Manager</strong> 를 구현했다. 게이트웨이처럼 동작하여 프로세스 간 state 전달과 연결을 직접 처리함으로써 <strong>외부 저장소 없이</strong> stateful context 를 유지한다. 사용자 ID 기준으로 data import + 분석을 DB 에서 하나의 단위로 관리해 세션 연속성을 보장했고, 결과적으로 GIL 병목을 피하면서 멀티코어를 활용하는 <strong>확장 가능하고 신뢰성 있는 분산 연산 구조</strong> 를 만들었다.</p>
