@@ -24,7 +24,7 @@
 
         <!--Style css Link-->
         <link rel="stylesheet" type="text/css" href="portfolio/css/style.css?v=20260605-48">
-        <link rel="stylesheet" type="text/css" href="common/css/index.css?v=20260605-48">
+        <link rel="stylesheet" type="text/css" href="common/css/index.css?v=20260717-54">
 
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PR00E53V0"></script>
@@ -35,7 +35,7 @@
             gtag('config', 'G-0PR00E53V0');
         </script>
 
-        <script src="common/js/index.js?v=20260605-48" defer></script>
+        <script src="common/js/index.js?v=20260717-50" defer></script>
         <script src="portfolio/js/components/header.js?v=20260605-48" sync></script>
         <script src="portfolio/js/components/footer.js?v=20260605-48" defer></script>
 
@@ -54,7 +54,21 @@
           <a class="cv-brand" href="index.html">TAYLEE's <span>Page</span></a>
           <nav class="cv-nav">
             <a href="portfolio/html/TAYLEE Home.html">Portfolio</a>
-            <a href="https://taystudios.com/" target="_blank" rel="noopener">Services</a>
+            <div class="cv-drop">
+              <button type="button" class="cv-drop__toggle" aria-haspopup="true" aria-expanded="false">
+                Services <span class="cv-drop__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="cv-drop__menu" role="menu">
+                <a class="cv-drop__item" role="menuitem" href="https://taystudios.com/" target="_blank" rel="noopener">
+                  <span class="cv-drop__name">TAYSTUDIO</span>
+                  <span class="cv-drop__desc">36+ free, privacy-first web tools</span>
+                </a>
+                <a class="cv-drop__item" role="menuitem" href="https://www.taylee.link/finance/" target="_blank" rel="noopener">
+                  <span class="cv-drop__name">Finance <span class="cv-drop__badge">BETA</span></span>
+                  <span class="cv-drop__desc">Personal finance service</span>
+                </a>
+              </div>
+            </div>
             <a href="https://taystudios.com/blog/en/" target="_blank" rel="noopener">Blog</a>
           </nav>
         </header>
@@ -86,7 +100,7 @@
       <!-- ===================== ENTRY CARDS ===================== -->
       <section class="cv-explore" id="cv-explore">
         <p class="cv-explore__eyebrow">WHERE TO GO</p>
-        <h2 class="cv-explore__title">Three places to explore</h2>
+        <h2 class="cv-explore__title">Four places to explore</h2>
 
         <div class="cv-cards">
 
@@ -112,6 +126,20 @@
             </span>
             <h3 class="cv-card__title">Services <span class="cv-card__ext">↗</span></h3>
             <p class="cv-card__desc"><strong>TAYSTUDIO</strong> — a suite of 36+ free, privacy-first web tools (calculators, image · PDF · video) that run entirely in your browser, no sign-up.</p>
+            <span class="cv-card__more">Open <span class="cv-card__arrow">→</span></span>
+          </a>
+
+          <a class="cv-card" href="https://www.taylee.link/finance/" target="_blank" rel="noopener">
+            <span class="cv-card__badge">Beta</span>
+            <span class="cv-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 8v32h32"/>
+                <path d="M14 31l8-9 6 5 11-14"/>
+                <path d="M39 13h-6M39 13v6"/>
+              </svg>
+            </span>
+            <h3 class="cv-card__title">Finance <span class="cv-card__ext">↗</span></h3>
+            <p class="cv-card__desc">A personal finance service to track and plan your money — built to make budgeting effortless.</p>
             <span class="cv-card__more">Open <span class="cv-card__arrow">→</span></span>
           </a>
 

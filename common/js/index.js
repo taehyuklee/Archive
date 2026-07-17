@@ -13,6 +13,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Services dropdown
+    var drop = document.querySelector('.cv-drop');
+    if (drop) {
+        var toggle = drop.querySelector('.cv-drop__toggle');
+        var setOpen = function (open) {
+            drop.classList.toggle('is-open', open);
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        };
+        toggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            setOpen(!drop.classList.contains('is-open'));
+        });
+        document.addEventListener('click', function (e) {
+            if (!drop.contains(e.target)) setOpen(false);
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') setOpen(false);
+        });
+    }
+
     // Reveal cards on scroll
     var reveal = document.querySelectorAll('.cv-card, .cv-explore__title, .cv-explore__eyebrow');
     if ('IntersectionObserver' in window && reveal.length) {
